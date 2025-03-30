@@ -1,5 +1,7 @@
 package DataStructures.BinarySearchTree;
 
+import java.util.Stack;
+
 public class BinarySearchTreeClass {
 	class BinarySearchTreeNode {
 		int data;
@@ -60,6 +62,23 @@ public class BinarySearchTreeClass {
 	public void printInorderTraversal(){
 		printInorderTraversalUtil(this.root);
 	}
+
+
+	public void printInorderTraversalIterative(){
+		BinarySearchTreeNode current = this.root;
+		Stack<BinarySearchTreeNode> stack = new Stack<>();
+		while(current!=null || !stack.isEmpty()){
+			while(current!=null){
+				stack.push(current);
+				current = current.left;
+			}
+			current = stack.pop();
+			System.out.print(current.data+" ");
+			current = current.right;
+		}
+		System.out.println();
+
+	}
 	
 	private void printInorderTraversalUtil(BinarySearchTreeNode node) {
 		if(node == null) {
@@ -81,6 +100,21 @@ public class BinarySearchTreeClass {
 		printpostOrderTraversalUtil(node.left);
 		printpostOrderTraversalUtil(node.right);
 		System.out.print(node.data+" ");
+	}
+
+	public void printpreOrderTraversalIterative(){
+		BinarySearchTreeNode current = this.root;
+		Stack<BinarySearchTreeNode> stack = new Stack<>();
+		while(current!=null || !stack.isEmpty()){
+			while(current!=null){
+				System.out.print(current.data+" ");
+				stack.push(current);
+				current = current.left;
+			}
+			current = stack.pop();
+			current = current.right;
+		}
+		System.out.println();
 	}
 	
 	public void printpreOrderTraversal(){
