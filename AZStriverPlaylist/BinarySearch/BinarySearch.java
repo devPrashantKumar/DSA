@@ -9,14 +9,6 @@ public class BinarySearch {
         return binarySearchUtilForRecursion(arr,data,0,arr.length-1);
     }
 
-    /*
-     * Time Complexity - O(logn)
-     * Space Complexity - O(1)
-     */
-    public static Integer binarySearchUsingIteration(Integer[] arr, Integer data){
-        return binarySearchUtilForIteration(arr,data,0,arr.length-1);
-    }
-
     public static Integer binarySearchUtilForRecursion(Integer[] arr, Integer data, int start, int end){
         if(start>end) return null;
         int mid = start+((end-start)/2);
@@ -24,9 +16,15 @@ public class BinarySearch {
         if(arr[mid].equals(data)) return arr[mid];
         else if(arr[mid]>data) return binarySearchUtilForRecursion(arr, data, start, mid-1);
         else return binarySearchUtilForRecursion(arr, data, mid+1, end);
-    }
+    }    
 
-    public static Integer binarySearchUtilForIteration(Integer[] arr, Integer data, int start, int end){
+    /*
+     * Time Complexity - O(logn)
+     * Space Complexity - O(1)
+     */
+    public static Integer binarySearchUsingIteration(Integer[] arr, Integer data){
+        int start=0;
+        int end = arr.length-1;
         while(start<=end){
             int mid = start+((end-start)/2);
             // The second formula used in your code, (start - 1) + ((end - start + 1) / 2), 
