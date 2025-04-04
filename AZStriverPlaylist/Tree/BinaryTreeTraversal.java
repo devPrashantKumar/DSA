@@ -3,6 +3,20 @@ package AZStriverPlaylist.Tree;
 import java.util.Stack;
 
 public class BinaryTreeTraversal {
+
+    public static void iterativePreOrderTraversal(BinaryTreeNode root){
+        Stack<BinaryTreeNode> stack = new Stack<>();
+        BinaryTreeNode node = root;
+        while(node!=null){
+            System.out.print(node.data+" ");
+            if(node.right!=null) stack.push(node.right);
+            if(node.left!=null){
+                node = node.left;
+            }else{
+                node = stack.isEmpty() ? null : stack.pop();
+            }
+        }
+    }
     
     public static void iterativeInorderTraversal(BinaryTreeNode root){
         BinaryTreeNode node = root;
@@ -33,6 +47,7 @@ public class BinaryTreeTraversal {
         root1.right.left = new BinaryTreeNode(3);
 
         iterativeInorderTraversal(root1);
+        iterativePreOrderTraversal(root1);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root2 = new BinaryTreeNode(1);
@@ -46,14 +61,17 @@ public class BinaryTreeTraversal {
         root2.right.right.left = new BinaryTreeNode(9);
 
         iterativeInorderTraversal(root2);
+        iterativePreOrderTraversal(root2);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root3 = null;
         iterativeInorderTraversal(root3);
+        iterativePreOrderTraversal(root3);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root4 = new BinaryTreeNode(1);
         iterativeInorderTraversal(root4);
+        iterativePreOrderTraversal(root4);
         System.out.println("------------------------------------------------------");
     }
 }
