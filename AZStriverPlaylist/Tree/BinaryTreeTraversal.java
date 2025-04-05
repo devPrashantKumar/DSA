@@ -4,37 +4,66 @@ import java.util.Stack;
 
 public class BinaryTreeTraversal {
 
-    public static void iterativePreOrderTraversal(BinaryTreeNode root){
+    public static void iterativePreOrderTraversal(BinaryTreeNode root) {
         Stack<BinaryTreeNode> stack = new Stack<>();
         BinaryTreeNode node = root;
-        while(node!=null){
-            System.out.print(node.data+" ");
-            if(node.right!=null) stack.push(node.right);
-            if(node.left!=null){
+        while (node != null) {
+            System.out.print(node.data + " ");
+            if (node.right != null)
+                stack.push(node.right);
+            if (node.left != null) {
                 node = node.left;
-            }else{
+            } else {
                 node = stack.isEmpty() ? null : stack.pop();
             }
         }
+        System.out.println();
     }
-    
-    public static void iterativeInorderTraversal(BinaryTreeNode root){
+
+    public static void iterativeInorderTraversal(BinaryTreeNode root) {
         BinaryTreeNode node = root;
         Stack<BinaryTreeNode> stack = new Stack<>();
-        boolean visited=false;
-        while(node!=null){
-            if(visited!=true && node.left!=null){
+        boolean visited = false;
+        while (node != null) {
+            if (visited != true && node.left != null) {
                 stack.push(node);
                 node = node.left;
-            }
-            else{
-                System.out.print(node.data+" ");
-                if(node.right!=null){
+            } else {
+                System.out.print(node.data + " ");
+                if (node.right != null) {
                     node = node.right;
-                    visited=false;
-                }else{
+                    visited = false;
+                } else {
                     node = stack.isEmpty() ? null : stack.pop();
-                    visited=true;
+                    visited = true;
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    /*
+     * solution: https://www.youtube.com/watch?v=xEPe6aWlRd0
+     */
+    public static void iterativePostOrderTraversal(BinaryTreeNode root) {
+        Stack<BinaryTreeNode> stack = new Stack<>();
+        BinaryTreeNode node = root;
+        BinaryTreeNode lastProcessed = null;
+        boolean visited = false;
+        while (node != null || !stack.isEmpty()) {
+            if (node!=null && visited == false) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                BinaryTreeNode top = stack.peek();
+                if (top.right != null && top.right != lastProcessed) {
+                    node = top.right;
+                    visited = false;
+                } else {
+                    stack.pop();
+                    lastProcessed = top;
+                    System.out.print(top.data + " ");
+                    visited = true;
                 }
             }
         }
@@ -48,6 +77,7 @@ public class BinaryTreeTraversal {
 
         iterativeInorderTraversal(root1);
         iterativePreOrderTraversal(root1);
+        iterativePostOrderTraversal(root1);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root2 = new BinaryTreeNode(1);
@@ -62,16 +92,19 @@ public class BinaryTreeTraversal {
 
         iterativeInorderTraversal(root2);
         iterativePreOrderTraversal(root2);
+        iterativePostOrderTraversal(root2);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root3 = null;
         iterativeInorderTraversal(root3);
         iterativePreOrderTraversal(root3);
+        iterativePostOrderTraversal(root3);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root4 = new BinaryTreeNode(1);
         iterativeInorderTraversal(root4);
         iterativePreOrderTraversal(root4);
+        iterativePostOrderTraversal(root4);
         System.out.println("------------------------------------------------------");
     }
 }
