@@ -70,6 +70,33 @@ public class BinaryTreeTraversal {
         System.out.println();
     }
 
+    /*
+     * PostOrder Traversal can we represented as a reverse of modified preOrderTraversal
+     * left->right->root = reverse(root->right->left)
+     */
+    public static void iterativePostOrderTraversalUsing2Stack(BinaryTreeNode root){
+        BinaryTreeNode node = root;
+        Stack<BinaryTreeNode> stack = new Stack<>();
+        Stack<BinaryTreeNode> resultStack = new Stack<>();
+        while(node!=null){
+            resultStack.push(node);
+            if(node.left!=null){
+                stack.push(node.left);
+            }
+            if(node.right!=null){
+                node = node.right;
+            }
+            else{
+                node = stack.isEmpty() ? null : stack.pop();
+            }
+        }
+
+        while(!resultStack.isEmpty()){
+            System.out.print(resultStack.pop().data+" ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         BinaryTreeNode root1 = new BinaryTreeNode(1);
         root1.right = new BinaryTreeNode(2);
@@ -78,6 +105,7 @@ public class BinaryTreeTraversal {
         iterativeInorderTraversal(root1);
         iterativePreOrderTraversal(root1);
         iterativePostOrderTraversal(root1);
+        iterativePostOrderTraversalUsing2Stack(root1);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root2 = new BinaryTreeNode(1);
@@ -93,18 +121,21 @@ public class BinaryTreeTraversal {
         iterativeInorderTraversal(root2);
         iterativePreOrderTraversal(root2);
         iterativePostOrderTraversal(root2);
+        iterativePostOrderTraversalUsing2Stack(root2);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root3 = null;
         iterativeInorderTraversal(root3);
         iterativePreOrderTraversal(root3);
         iterativePostOrderTraversal(root3);
+        iterativePostOrderTraversalUsing2Stack(root3);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root4 = new BinaryTreeNode(1);
         iterativeInorderTraversal(root4);
         iterativePreOrderTraversal(root4);
         iterativePostOrderTraversal(root4);
+        iterativePostOrderTraversalUsing2Stack(root4);
         System.out.println("------------------------------------------------------");
     }
 }
