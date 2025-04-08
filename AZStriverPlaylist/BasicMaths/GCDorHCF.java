@@ -44,6 +44,5 @@ public class GCDorHCF {
         System.out.println("Input : "+ input31+" "+input32);
         System.out.println("Output : "+GCDorHCF.gcdUsingRecursion(input31,input32));
         System.out.println("Output : "+GCDorHCF.gcd(input31,input32));
-
     }
 }
