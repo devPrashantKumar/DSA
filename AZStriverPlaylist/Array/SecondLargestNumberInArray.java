@@ -35,6 +35,9 @@ public class SecondLargestNumberInArray {
         return previosLargest;
     }
 
+    /*
+     * Time complexity: O(n)
+     */
     public static int secondLargestNumberOptimalApproach(int[] arr) {
         int largest = arr[0];
         int secondLargest = Integer.MIN_VALUE;
@@ -53,7 +56,7 @@ public class SecondLargestNumberInArray {
         int[] input1 = { 2, 4, 1, 7, 8, 3 };
         System.out.println("Input : " + Arrays.toString(input1) + " Output : "
                 + SecondLargestNumberInArray.secondLargestNumber(input1));
-                
+
         System.out.println("------------------------------------------------------");
         int[] input2 = { 2, 4, 3, 7, 8, 3 };
         System.out.println("Input : " + Arrays.toString(input2) + " Output : "
