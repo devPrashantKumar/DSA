@@ -26,13 +26,15 @@ public class IntersectionOfSortedArrays {
     public static int[] intersection(int[] arr1, int[] arr2) {
         List<Integer> result = new ArrayList<>();
         int i = 0, j = 0;
+        int lastUsed=Integer.MIN_VALUE;
         while (i < arr1.length && j < arr2.length) {
             if (arr1[i] == arr2[j]) {
-                if (i>0 && j>0 && arr1[i] == arr1[i - 1] && arr2[j] == arr2[j - 1]) {
+                if (lastUsed==arr1[i]) {
                     i++;
                     j++;
                 } else {
                     result.add(arr1[i]);
+                    lastUsed = arr1[i];
                     i++;
                     j++;
                 }
