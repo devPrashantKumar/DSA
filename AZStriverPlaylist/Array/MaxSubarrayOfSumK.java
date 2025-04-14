@@ -25,6 +25,7 @@ public class MaxSubarrayOfSumK {
     /*
      * Time Complexity : O(n)
      * Space COmplexity : O(n)
+     * this solution will work for negative elements also.
      */
     public static int maxSubArrayBetter(int[] arr, int k){
         int maxLen = Integer.MIN_VALUE;
@@ -48,6 +49,7 @@ public class MaxSubarrayOfSumK {
     
     /*
      * Time Complexity : O(n)
+     * this solution will not work for negative elements.
      */
     public static int maxSubArrayOptimal(int[] arr, int k){
         int maxLen = Integer.MIN_VALUE;
