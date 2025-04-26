@@ -19,7 +19,6 @@ public class ConsecutiveOnce {
         }
         maxWindow = Math.max(maxWindow, arr.length-i-1);
         return maxWindow;
-
     }
 
     /*
