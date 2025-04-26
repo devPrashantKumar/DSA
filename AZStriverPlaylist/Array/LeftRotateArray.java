@@ -32,6 +32,7 @@ public class LeftRotateArray {
 
     /*
      * Time Complexity : O(n+k)
+     * Space complexity : O(k)
      */
     public static int[] leftRotateByKBetter(int[] arr, int k) {
         k = k % arr.length;
