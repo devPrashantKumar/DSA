@@ -40,9 +40,26 @@ public class MajorityElement {
         return -1;
     }
 
+    // better approch using sorting
+    /*
+     * revise it, this is new approch, good for new prespective
+     */
+    public static int findMajorityElementUsingSorting(int[] arr) {
+        Arrays.sort(arr);
+        return arr[arr.length/2];
+    }
+
+
     // optimal approch (Moore's Voting Algorithm)
     public static int findMajorityElementUsingMooresVotingAlgo(int[] arr) {
-        return -1;
+        int majorityElement=-1;
+        int counter=0;
+        for(int num:arr){
+            if(counter==0) majorityElement=num;
+            else if(num==majorityElement) counter++;
+            else counter--;
+        }
+        return majorityElement;
     }
     
     public static void main(String[] args) {
@@ -52,6 +69,7 @@ public class MajorityElement {
         System.out.println("Input : "+Arrays.toString(input1)+" Output : "+MajorityElement.findMajorityElementBruteForce(input1));
         System.out.println("Input : "+Arrays.toString(input12)+" Output : "+MajorityElement.findMajorityElementUsingHashMap(input12));
         System.out.println("Input : "+Arrays.toString(input12)+" Output : "+MajorityElement.findMajorityElementUsingMooresVotingAlgo(input12));
+        System.out.println("Input : "+Arrays.toString(input12)+" Output : "+MajorityElement.findMajorityElementUsingSorting(input12));
 
         System.out.println("------------------------------------------------------");
         int[] input2 = {2,2,1,1,1,2,2};
@@ -60,6 +78,7 @@ public class MajorityElement {
         System.out.println("Input : "+Arrays.toString(input2)+" Output : "+MajorityElement.findMajorityElementBruteForce(input2));
         System.out.println("Input : "+Arrays.toString(input22)+" Output : "+MajorityElement.findMajorityElementUsingHashMap(input22));
         System.out.println("Input : "+Arrays.toString(input22)+" Output : "+MajorityElement.findMajorityElementUsingMooresVotingAlgo(input22));
+        System.out.println("Input : "+Arrays.toString(input22)+" Output : "+MajorityElement.findMajorityElementUsingSorting(input22));
 
     }
 }
