@@ -51,6 +51,7 @@ public class RearrangeArrayElementsbySign {
         System.out.println("Input : " + Arrays.toString(input1) + " Output : "
                 + Arrays.toString(RearrangeArrayElementsbySign.rearrangeBetter(input1)));
         System.out.println("------------------------------------------------------");
+        
         int[] input2 = { 3,1,-2,-5,2,-4 };
         System.out.println("Input : " + Arrays.toString(input2) + " Output : "
                 + Arrays.toString(RearrangeArrayElementsbySign.rearrange(input2)));
@@ -58,13 +59,11 @@ public class RearrangeArrayElementsbySign {
                 + Arrays.toString(RearrangeArrayElementsbySign.rearrangeBetter(input2)));
 
         System.out.println("------------------------------------------------------");
-        System.out.println("------------------------------------------------------");
 
         int[] input3 = { 3,1,-2,-5,2,-4};
         System.out.println("Input : " + Arrays.toString(input3) + " Output : "
                 + Arrays.toString(RearrangeArrayElementsbySign.rearrange(input3)));
         System.out.println("Input : " + Arrays.toString(input3) + " Output : "
                 + Arrays.toString(RearrangeArrayElementsbySign.rearrangeBetter(input3)));
-
     }
 }
