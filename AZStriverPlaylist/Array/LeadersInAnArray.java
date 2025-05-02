@@ -6,6 +6,9 @@ import java.util.List;
 
 public class LeadersInAnArray {
 
+    /*
+     * Time Complexity : O(n^2)
+     */
     public static int[] leadersInArrayBruteForce(int[] arr) {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
@@ -22,6 +25,9 @@ public class LeadersInAnArray {
         return result.stream().mapToInt(Integer::intValue).toArray();
     }
 
+    /*
+     * Time Complexity : O(n)
+     */
     public static int[] leadersInArrayOptimal(int[] arr) {
         int maxi = Integer.MIN_VALUE;
         List<Integer> result = new ArrayList<>();
