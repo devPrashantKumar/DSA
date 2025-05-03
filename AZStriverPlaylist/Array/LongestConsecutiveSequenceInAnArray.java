@@ -40,7 +40,8 @@ public class LongestConsecutiveSequenceInAnArray {
         for(int num:arr){
             set.add(num);
         }
-        for(int num:arr){
+        // Iterating over set instead of arr: Prevents checking duplicate numbers more than once.
+        for(int num:set){
             if(!set.contains(num-1)){
                 int counter=1;
                 while(set.contains(++num))counter++;
