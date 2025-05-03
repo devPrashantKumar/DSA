@@ -70,6 +70,47 @@ public class UnionOfSortedArrays {
 
     }
 
+
+    public static int[] unionOptimal(int[] arr1, int[] arr2) {
+        List<Integer> result = new ArrayList<>();
+        int i = 0, j = 0;
+        int lastUsed=Integer.MIN_VALUE;
+        while (i < arr1.length && j < arr2.length) {
+            if(arr1[i]<=arr2[j]){
+                if(lastUsed!=arr1[i]){
+                    result.add(arr1[i]);
+                    lastUsed=arr1[i];
+                }
+                i++;
+            }
+            else{
+                if(lastUsed!=arr2[j]){
+                    result.add(arr2[j]);
+                    lastUsed=arr2[j];
+                }
+                j++;
+            }
+        }
+        while (i < arr1.length) {
+            if(lastUsed!=arr1[i]){
+                result.add(arr1[i]);
+                lastUsed=arr1[i];
+            }
+            i++;
+        }
+
+        while (j < arr2.length) {
+            if(lastUsed!=arr2[j]){
+                result.add(arr2[j]);
+                lastUsed=arr2[j];
+            }
+            j++;
+        }
+        return result.stream().mapToInt(Integer::intValue).toArray();
+
+    }
+
+
     public static void main(String[] args) {
         int[] input11 = {2,2,2,4,7,8,8};
         int[] input12 = {2,4,5,6,6,8,9,9,9,10};
@@ -77,6 +118,7 @@ public class UnionOfSortedArrays {
         System.out.println("Input12 : "+Arrays.toString(input12));
         System.out.println("Output : "+Arrays.toString(UnionOfSortedArrays.unionBruteforce(input11, input12)));
         System.out.println("Output : "+Arrays.toString(UnionOfSortedArrays.union(input11, input12)));
+        System.out.println("Output : "+Arrays.toString(UnionOfSortedArrays.unionOptimal(input11, input12)));
 
         System.out.println("------------------------------------------------------");
     }
