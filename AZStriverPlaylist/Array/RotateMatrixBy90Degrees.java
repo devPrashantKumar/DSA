@@ -2,7 +2,7 @@ package AZStriverPlaylist.Array;
 
 import java.util.Arrays;
 
-public class RotateMatrixBy90Degress {
+public class RotateMatrixBy90Degrees {
 
     /*
      * Time Complexity : O(n^2)
@@ -82,16 +82,16 @@ public class RotateMatrixBy90Degress {
     }
     public static void main(String[] args) {
         int[][] input1 = {{1,2,3},{4,5,6},{7,8,9}};
-        System.out.println("Input : "+Arrays.deepToString(input1)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degress.rotateMatrixBruteForce(input1)));
-        System.out.println("Input : "+Arrays.deepToString(input1)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degress.rotateMatrixOptimal(input1)));
+        System.out.println("Input : "+Arrays.deepToString(input1)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degrees.rotateMatrixBruteForce(input1)));
+        System.out.println("Input : "+Arrays.deepToString(input1)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degrees.rotateMatrixOptimal(input1)));
         int[][] input11 = {{1,2,3},{4,5,6},{7,8,9}};
-        System.out.println("Input : "+Arrays.deepToString(input11)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degress.rotateMatrixOptimal2(input11)));
+        System.out.println("Input : "+Arrays.deepToString(input11)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degrees.rotateMatrixOptimal2(input11)));
 
         int[][] input12 = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};
-        System.out.println("Input : "+Arrays.deepToString(input12)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degress.rotateMatrixBruteForce(input12)));
-        System.out.println("Input : "+Arrays.deepToString(input12)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degress.rotateMatrixOptimal(input12)));
+        System.out.println("Input : "+Arrays.deepToString(input12)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degrees.rotateMatrixBruteForce(input12)));
+        System.out.println("Input : "+Arrays.deepToString(input12)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degrees.rotateMatrixOptimal(input12)));
         int[][] input121 = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};
-        System.out.println("Input : "+Arrays.deepToString(input121)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degress.rotateMatrixOptimal2(input121)));
+        System.out.println("Input : "+Arrays.deepToString(input121)+" Output : "+Arrays.deepToString(RotateMatrixBy90Degrees.rotateMatrixOptimal2(input121)));
 
     }    
 }
