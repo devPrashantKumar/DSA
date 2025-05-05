@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class NumberOfSubArrayfSumK {
     /*
-     * Time Complexity : O(n);
+     * Time Complexity : O(n)
      * Space Complexity : O(n)
      */
     public static int numberOfSubArray(int[] arr, int k){
