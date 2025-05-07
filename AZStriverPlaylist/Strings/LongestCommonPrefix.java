@@ -5,6 +5,9 @@ import java.util.Arrays;
 public class LongestCommonPrefix {
 
 
+    /*
+     * Time complexity : O(m*n)
+     */
     public static String commanPrefix(String[] strings) {
         int i=0;
         l1 : for(;i<strings[0].length();i++){
