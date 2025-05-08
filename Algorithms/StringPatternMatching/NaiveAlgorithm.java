@@ -24,13 +24,13 @@ public class NaiveAlgorithm {
         String s1 = "abcde";
         String pattern1 = "cde";
         System.out.println("Input : s - "+s1+" , pattern - "+pattern1);
-        System.out.println("Output : " + RotateString.findSubstringIndex(s1,pattern1));
+        System.out.println("Output : " + NaiveAlgorithm.findSubstringIndex(s1,pattern1));
         System.out.println("---------------------------------------------------");
         
         String s2 = "abcde";
         String pattern2 = "afcde";
         System.out.println("Input : s - "+s2+" , pattern - "+pattern2);
-        System.out.println("Output : " + RotateString.findSubstringIndex(s2,pattern2));
+        System.out.println("Output : " + NaiveAlgorithm.findSubstringIndex(s2,pattern2));
         System.out.println("---------------------------------------------------");
         
     }
