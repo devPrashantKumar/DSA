@@ -1,7 +1,12 @@
 package Algorithms.StringPatternMatching;
 
 public class NaiveAlgorithm {
-    public static int rotateStringSimpleApproach(String source, String pattern) {
+   /*
+    * Time complexity :
+    * Best Case: O(n) – if the pattern is found early.
+    * Worst Case: O(n * m) – where n = source.length(), m = pattern.length().
+    */
+    public static int findSubstringIndex(String source, String pattern) {
         if(source.length()<pattern.length()) return -1;
         for(int i=0;i<=source.length()-pattern.length();i++){
             int j=0;
@@ -19,13 +24,13 @@ public class NaiveAlgorithm {
         String s1 = "abcde";
         String pattern1 = "cde";
         System.out.println("Input : s - "+s1+" , pattern - "+pattern1);
-        System.out.println("Output : " + RotateString.rotateStringSimpleApproach(s1,pattern1));
+        System.out.println("Output : " + RotateString.findSubstringIndex(s1,pattern1));
         System.out.println("---------------------------------------------------");
         
         String s2 = "abcde";
         String pattern2 = "afcde";
         System.out.println("Input : s - "+s2+" , pattern - "+pattern2);
-        System.out.println("Output : " + RotateString.rotateStringSimpleApproach(s2,pattern2));
+        System.out.println("Output : " + RotateString.findSubstringIndex(s2,pattern2));
         System.out.println("---------------------------------------------------");
         
     }
