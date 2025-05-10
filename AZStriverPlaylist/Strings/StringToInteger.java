@@ -53,7 +53,8 @@ public class StringToInteger {
             if (!Character.isDigit(s.charAt(i)))
                 break;
             int digit = Character.getNumericValue(s.charAt(i));
-            // min value will automaticaly return Integer.MIN_VALUE due to overflow.
+            // for  Integer.MAX_VALUE it will follow normal flow.
+            // for  Integer.MIN_VALUE it will automaticaly return Integer.MIN_VALUE due to overflow.
             if (result > (Integer.MAX_VALUE - digit) / 10) {
                 return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
