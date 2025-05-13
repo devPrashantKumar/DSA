@@ -1,5 +1,7 @@
 package AZStriverPlaylist.LinkedList;
 
+import javax.management.RuntimeErrorException;
+
 /*
  * 5 Type of Insertion in Linked List
  *      1) Insert at Head
@@ -11,6 +13,10 @@ package AZStriverPlaylist.LinkedList;
  * Length of Linked List
  * Search Linked List
  * (n) Types of Deletion in Linked List
+ *      1) Deletion at Head
+ *      2) Deletion at Last
+ *      3) Deletion at Location
+ *      4) Deletion of Element
  * Clear Linked List
  */
 class SingleLinkedList<T> {
@@ -61,6 +67,9 @@ class SingleLinkedList<T> {
             }
             curr = curr.next;
         }
+        if (curr == null) {
+            throw new RuntimeException("Element Not Found in Linked List");
+        }
     }
 
     public void insertNodeBeforeElementInLinkedList(T element, T value) {
@@ -79,6 +88,9 @@ class SingleLinkedList<T> {
             }
             prev = curr;
             curr = curr.next;
+        }
+        if (curr == null) {
+            throw new RuntimeException("Element Not Found in Linked List");
         }
     }
 
@@ -144,22 +156,83 @@ class SingleLinkedList<T> {
         return false;
     }
 
-    public void deleteNodeInLinkedList(int location) {
+    public void deleteHeadNodeInLinkedList() {
         if (head == null) {
-            throw new RuntimeException("location is wrong, Linked List is Empty");
+            throw new RuntimeException("Linked List is Empty");
+        }
+        head = head.next;
+    }
+
+    public void deleteLastNodeInLinkedList() {
+        if (head == null) {
+            throw new RuntimeException("Linked List is Empty");
+        }
+        if (head.next == null) {
+            head = null;
+            tail = null;
         } else {
-            if (head == tail) {
-                head = null;
-                tail = null;
-            } else if (location == 0) {
-                head = head.next;
-            } else {
-                Node curNode = head;
-                for (int i = 0; i < location - 1; i++) {
-                    curNode = curNode.next;
-                }
-                curNode.next = curNode.next.next;
+            Node curr = head;
+            while (curr.next.next != null) {
+                curr = curr.next;
             }
+            curr.next = null;
+            tail = curr;
+        }
+    }
+
+    public void deleteNodeAtLocationInLinkedList(int location) {
+        if (head == null) {
+            throw new RuntimeException("Linked List is Empty");
+        }
+        Node prev = null;
+        Node curr = head;
+        for (int i = 0; i < location; i++) {
+            prev = curr;
+            curr = curr.next;
+            if (curr == null) {
+                throw new RuntimeException("Invalid Locatiion");
+            }
+        }
+        if (curr == head) {
+            head = head.next;
+            if (head == null) {
+                tail = null;
+            }
+        } else {
+            prev.next = curr.next;
+            if (curr.next == null) {
+                tail = prev;
+            }
+        }
+    }
+
+    public void deleteElementInLinkedList(T element) {
+        if (head == null) {
+            throw new RuntimeException("Linked List is Empty");
+        }
+        Node prev = null;
+        Node curr = head;
+        while (curr != null) {
+            if (curr.value.equals(element)) {
+                if (prev == null) {
+                    head = head.next;
+                    if (head == null) {
+                        tail = null;
+                    }
+                } else {
+                    prev.next = curr.next;
+                    if (curr.next == null) {
+                        tail = prev;
+                    }
+                }
+                break;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+
+        if (curr == null) {
+            throw new RuntimeException("Element Not Found in Linked List");
         }
     }
 
@@ -217,6 +290,13 @@ class SingleLinkedList<T> {
         singleLinkedList.insertNodeAfterElementInLinkedList(0, 1);
         singleLinkedList.insertNodeAfterElementInLinkedList(0, 2);
         singleLinkedList.insertNodeAfterElementInLinkedList(2, 3);
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.insertNodeAfterElementInLinkedList(7, 8);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.traverseLinkedList();
         singleLinkedList.insertNodeAfterElementInLinkedList(3, 4);
         singleLinkedList.insertNodeAfterElementInLinkedList(2, 5);
         singleLinkedList.traverseLinkedList();
@@ -227,6 +307,13 @@ class SingleLinkedList<T> {
         singleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
         singleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
         singleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.insertNodeAfterElementInLinkedList(7, 8);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.traverseLinkedList();
         singleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
         singleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
         singleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
@@ -242,22 +329,137 @@ class SingleLinkedList<T> {
         singleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
         singleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
         singleLinkedList.traverseLinkedList();
-        System.out.println("Element Found in Linked List : "+singleLinkedList.searchInLinkedList(12));
-        System.out.println("Element Found in Linked List : "+singleLinkedList.searchInLinkedList(0));
-        System.out.println("Element Found in Linked List : "+singleLinkedList.searchInLinkedList(1));
-        System.out.println("Element Found in Linked List : "+singleLinkedList.searchInLinkedList(3));
+        System.out.println("Element Found in Linked List : " + singleLinkedList.searchInLinkedList(12));
+        System.out.println("Element Found in Linked List : " + singleLinkedList.searchInLinkedList(0));
+        System.out.println("Element Found in Linked List : " + singleLinkedList.searchInLinkedList(1));
+        System.out.println("Element Found in Linked List : " + singleLinkedList.searchInLinkedList(3));
         singleLinkedList.clearLinkedList();
         singleLinkedList.traverseLinkedList();
         System.out.println("------------------------------------------------------");
 
-        // singleLinkedList.deleteNodeInLinkedList(2);
-        // singleLinkedList.traverseLinkedList();
-        // singleLinkedList.deleteNodeInLinkedList(0);
-        // singleLinkedList.traverseLinkedList();
-        // singleLinkedList.deleteNodeInLinkedList(1);
-        // singleLinkedList.traverseLinkedList();
-        // singleLinkedList.deleteNodeInLinkedList(0);
-        // singleLinkedList.traverseLinkedList();
+        singleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteHeadNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteHeadNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteHeadNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteHeadNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteHeadNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteHeadNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.deleteHeadNodeInLinkedList();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.clearLinkedList();
+        singleLinkedList.traverseLinkedList();
+        System.out.println("------------------------------------------------------");
+
+        singleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteLastNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteLastNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteLastNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteLastNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteLastNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteLastNodeInLinkedList();
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.deleteLastNodeInLinkedList();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.clearLinkedList();
+        singleLinkedList.traverseLinkedList();
+        System.out.println("------------------------------------------------------");
+
+        singleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteNodeAtLocationInLinkedList(0);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteNodeAtLocationInLinkedList(4);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteNodeAtLocationInLinkedList(1);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteNodeAtLocationInLinkedList(2);
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.deleteNodeAtLocationInLinkedList(3);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteNodeAtLocationInLinkedList(1);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteNodeAtLocationInLinkedList(0);
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.deleteNodeAtLocationInLinkedList(0);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.clearLinkedList();
+        singleLinkedList.traverseLinkedList();
+        System.out.println("------------------------------------------------------");
+
+        singleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        singleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteElementInLinkedList(0);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteElementInLinkedList(4);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteElementInLinkedList(1);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteElementInLinkedList(2);
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.deleteElementInLinkedList(10);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteElementInLinkedList(3);
+        singleLinkedList.traverseLinkedList();
+        singleLinkedList.deleteElementInLinkedList(5);
+        singleLinkedList.traverseLinkedList();
+        try {
+            singleLinkedList.deleteElementInLinkedList(10);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        singleLinkedList.clearLinkedList();
+        singleLinkedList.traverseLinkedList();
+        System.out.println("------------------------------------------------------");
     }
 
 }
