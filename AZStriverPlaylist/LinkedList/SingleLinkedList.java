@@ -10,7 +10,7 @@ package AZStriverPlaylist.LinkedList;
  * Traversal of Linked List
  * Length of Linked List
  * Search Linked List
- * (n) Types of Deletion in Linked List
+ * 4 Types of Deletion in Linked List
  *      1) Deletion at Head
  *      2) Deletion at Last
  *      3) Deletion at Location
