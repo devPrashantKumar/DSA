@@ -1,7 +1,5 @@
 package AZStriverPlaylist.LinkedList;
 
-import javax.management.RuntimeErrorException;
-
 /*
  * 5 Type of Insertion in Linked List
  *      1) Insert at Head
