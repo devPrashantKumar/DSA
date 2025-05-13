@@ -17,6 +17,7 @@ class SingleLinkedListOptimize {
     Node head;
     Node tail;
 
+    
     public void insertNodeInLinkedList(int value, int location){
         Node newNode = new Node(value);
         if(head==null){
