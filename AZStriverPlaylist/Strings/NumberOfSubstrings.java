@@ -53,6 +53,7 @@ public class NumberOfSubstrings {
         return ans;
     }
 
+    // wrong solution - this problem is pending
     public static int substringCountOptimal(String s, int k) {
         int n = s.length();
         int[] charOccurenceCounter = new int[26];
