@@ -108,7 +108,7 @@ class SingleLinkedList<T> {
                 for (int i = 0; i < location - 1; i++) {
                     current = current.next;
                     if (current == null) {
-                        throw new RuntimeException("Location is Invalid, Location greater then size of list");
+                        throw new RuntimeException("Location is Invalid, Location greater than size of list");
                     }
                 }
                 newNode.next = current.next;
