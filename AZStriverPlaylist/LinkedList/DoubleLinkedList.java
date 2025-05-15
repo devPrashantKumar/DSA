@@ -177,6 +177,96 @@ public class DoubleLinkedList<T> {
         return false;
     }
 
+    public void deleteHeadNodeInLinkedList() {
+        if (head == null) {
+            throw new RuntimeException("Linked List is Empty");
+        }
+        head = head.next;
+        if(head!=null){
+            head.prev=null;
+        }else{
+            tail=null;
+        }
+    }
+
+    public void deleteLastNodeInLinkedList() {
+        if (head == null) {
+            throw new RuntimeException("Linked List is Empty");
+        }
+        if (head.next == null) {
+            head = null;
+            tail = null;
+        } else {
+            Node curr = head;
+            while (curr.next.next != null) {
+                curr = curr.next;
+            }
+            curr.next = null;
+            tail = curr;
+        }
+    }
+
+    public void deleteNodeAtLocationInLinkedList(int location) {
+        if (head == null) {
+            throw new RuntimeException("Linked List is Empty");
+        }
+        Node curr = head;
+        for (int i = 0; i < location; i++) {
+            curr = curr.next;
+            if (curr == null) {
+                throw new RuntimeException("Invalid Locatiion");
+            }
+        }
+        if (curr == head) {
+            head = head.next;
+            if (head == null) {
+                tail = null;
+            }else{
+                head.prev = null;
+            }
+        } else {
+            curr.prev.next = curr.next;
+            if (curr.next != null) {
+                curr.next.prev = curr.prev;
+            }else{
+                tail = curr.prev;
+            }
+        }
+    }
+
+    public void deleteElementInLinkedList(T element) {
+        if (head == null) {
+            throw new RuntimeException("Linked List is Empty");
+        }
+        Node curr = head;
+        while (curr != null) {
+            if (curr.value.equals(element)) {
+                if (curr == head) {
+                    head = head.next;
+                    if (head == null) {
+                        tail = null;
+                    }else{
+                        head.prev=null;
+                    }
+                } else {
+                    curr.prev.next = curr.next;
+                    if (curr.next == null) {
+                        tail = curr.prev;
+                    }
+                    else{
+                        curr.next.prev = curr.prev;
+                    }
+                }
+                break;
+            }
+            curr = curr.next;
+        }
+
+        if (curr == null) {
+            throw new RuntimeException("Element Not Found in Linked List");
+        }
+    }
+
     public void clearLinkedList() {
         head = null;
         tail = null;
@@ -290,6 +380,164 @@ public class DoubleLinkedList<T> {
         System.out.println("Element Found in Linked List : " + doubleLinkedList.searchInLinkedList(0));
         System.out.println("Element Found in Linked List : " + doubleLinkedList.searchInLinkedList(1));
         System.out.println("Element Found in Linked List : " + doubleLinkedList.searchInLinkedList(3));
+        doubleLinkedList.clearLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        System.out.println("------------------------------------------------------");
+        
+        doubleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteHeadNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteHeadNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteHeadNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteHeadNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteHeadNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteHeadNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        try {
+            doubleLinkedList.deleteHeadNodeInLinkedList();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        doubleLinkedList.clearLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        System.out.println("------------------------------------------------------");
+
+        doubleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteLastNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteLastNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteLastNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteLastNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteLastNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteLastNodeInLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        try {
+            doubleLinkedList.deleteLastNodeInLinkedList();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        doubleLinkedList.clearLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        System.out.println("------------------------------------------------------");
+
+        doubleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteNodeAtLocationInLinkedList(0);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteNodeAtLocationInLinkedList(4);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteNodeAtLocationInLinkedList(1);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteNodeAtLocationInLinkedList(2);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        try {
+            doubleLinkedList.deleteNodeAtLocationInLinkedList(3);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteNodeAtLocationInLinkedList(1);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteNodeAtLocationInLinkedList(0);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        try {
+            doubleLinkedList.deleteNodeAtLocationInLinkedList(0);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        doubleLinkedList.clearLinkedList();
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        System.out.println("------------------------------------------------------");
+
+        doubleLinkedList.insertNodeAtLocationInLinkedList(0, 0);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 1);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(0, 2);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 3);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(3, 4);
+        doubleLinkedList.insertNodeBeforeElementInLinkedList(2, 5);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteElementInLinkedList(0);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteElementInLinkedList(4);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteElementInLinkedList(1);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteElementInLinkedList(2);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        try {
+            doubleLinkedList.deleteElementInLinkedList(10);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteElementInLinkedList(3);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        doubleLinkedList.deleteElementInLinkedList(5);
+        doubleLinkedList.forwardTraverseLinkedList();
+        doubleLinkedList.backwardTraverseLinkedList();
+        try {
+            doubleLinkedList.deleteElementInLinkedList(10);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         doubleLinkedList.clearLinkedList();
         doubleLinkedList.forwardTraverseLinkedList();
         doubleLinkedList.backwardTraverseLinkedList();
