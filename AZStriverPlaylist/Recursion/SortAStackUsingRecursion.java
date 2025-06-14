@@ -26,7 +26,6 @@ public class SortAStackUsingRecursion {
         }else{
            stk.push(element); 
         }
-        
     }
 
     public static void main(String[] args) {
