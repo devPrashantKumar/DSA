@@ -23,8 +23,28 @@ public class PrintAllSubsequencesOrPowerSet {
         generateSubsets(nums,index+1,set2,result);
     }
 
+    /*
+     * Time Complexity : O(n*2^n)
+     */
+    public static List<List<Integer>> subsetsUsinBitManipulation(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        int numberOfElements = (int) Math.pow(2, nums.length);
+        for(int i=0;i<numberOfElements;i++){
+            List<Integer> set = new ArrayList<>();
+            for(int j=0;j<nums.length;j++){
+                if((i & (1<<j))!=0){
+                    set.add(nums[j]);
+                }
+            }
+            result.add(set);
+
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         int[] nums1 = {1,2,3,4};
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+PrintAllSubsequencesOrPowerSet.subsets(nums1));
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+PrintAllSubsequencesOrPowerSet.subsetsUsinBitManipulation(nums1));
     }
 }
