@@ -2,7 +2,6 @@ package AZStriverPlaylist.Recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class SubsetSumII {
@@ -33,6 +32,26 @@ public class SubsetSumII {
         }
     }
 
+    public static List<List<Integer>> subsets2(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        generateSubsets2(nums, 0, new ArrayList<>(), result);
+        return result;
+    }
+
+    public static void generateSubsets2(int[] nums, int index,List<Integer> set, List<List<Integer>> result) {
+        result.add(new ArrayList<>(set));
+        int previous=Integer.MIN_VALUE;
+        for(int i=index;i<nums.length;i++){
+            if(previous!=nums[i]){
+                set.add(nums[i]);
+                generateSubsets2(nums, i+1, set, result);
+                set.remove(set.size()-1);
+            }
+            previous = nums[i];
+        }
+    }
+
     /*
      * Time Complexity : O(n *2^n)
      * (2^n) -> all subsets
@@ -60,5 +79,7 @@ public class SubsetSumII {
         System.out.println("Input 1 " + Arrays.toString(nums1) + " Output : " + SubsetSumII.subsets(nums1));
         System.out.println(
                 "Input 1 " + Arrays.toString(nums1) + " Output : " + SubsetSumII.subsetsUsinBitManipulation(nums1));
+        System.out.println("Input 1 " + Arrays.toString(nums1) + " Output : " + SubsetSumII.subsets2(nums1));
+
     }
 }
