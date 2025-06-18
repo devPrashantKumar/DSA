@@ -34,23 +34,24 @@ public class SubsetSumII {
     }
 
     /*
-     * Time Complexity : O(n *2^n)+(2^n * log 2^n)
-     * (n*2^n) -> to generate subsets
-     * (2^n * log 2^n) -> to sort the final subsets sum
+     * Time Complexity : O(n *2^n)
+     * (2^n) -> all subsets
+     * (n) to process each subset
      */
-    public static List<Integer> subsetsUsinBitManipulation(int[] nums) {
-        List<Integer> result = new ArrayList<>();
+    public static List<List<Integer>> subsetsUsinBitManipulation(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
         int numberOfElements = (int) Math.pow(2, nums.length);
-        for (int i = 0; i < numberOfElements; i++) {
-            int sum = 0;
+        l1 : for (int i = 0; i < numberOfElements; i++) {
+            List<Integer> set = new ArrayList<>();
             for (int j = 0; j < nums.length; j++) {
+                if(j-1>=0 && nums[j]==nums[j-1] &&  ((i & (1 << j-1)) == 0) && ((i & (1 << j)) != 0) ) continue l1; 
                 if ((i & (1 << j)) != 0) {
-                    sum += nums[j];
+                    set.add(nums[j]);
                 }
             }
-            result.add(sum);
+            result.add(set);
         }
-        Collections.sort(result);
         return result;
     }
 
@@ -58,6 +59,6 @@ public class SubsetSumII {
         int[] nums1 = { 1, 2, 2 };
         System.out.println("Input 1 " + Arrays.toString(nums1) + " Output : " + SubsetSumII.subsets(nums1));
         System.out.println(
-                "Input 1 " + Arrays.toString(nums1) + " Output : " + SubsetSumI.subsetsUsinBitManipulation(nums1));
+                "Input 1 " + Arrays.toString(nums1) + " Output : " + SubsetSumII.subsetsUsinBitManipulation(nums1));
     }
 }
