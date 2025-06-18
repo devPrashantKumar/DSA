@@ -5,26 +5,27 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class SubsetSumI {
+public class SubsetSumII {
     /*
      * Time Complexity : O(2^n)+(2^n * log 2^n)
      * (2^n) -> to generate subsets
      * (2^n * log 2^n) -> to sort the final subsets sum
      */ 
-    public static List<Integer> subsets(int[] nums) {
-        List<Integer> result = new ArrayList<>();
-        generateSubsets(nums,0,0,result);
-        Collections.sort(result);
+    public static List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        generateSubsets(nums,0,new ArrayList<>(),result);
         return result;
     }
 
-    public static void generateSubsets(int[] nums, int index, int sum, List<Integer> result) {
+    public static void generateSubsets(int[] nums, int index, List<Integer> set, List<List<Integer>> result) {
         if(index==nums.length){
-            result.add(sum);
+            result.add(new ArrayList<>(set));
             return;
         }
-        generateSubsets(nums,index+1,sum,result);
-        generateSubsets(nums,index+1,sum+nums[index],result);
+        generateSubsets(nums,index+1,set,result);
+        set.add(nums[index]);
+        generateSubsets(nums,index+1,set,result);
+        set.remove(set.size()-1);
     }
 
     /*
@@ -49,8 +50,8 @@ public class SubsetSumI {
     }
 
     public static void main(String[] args) {
-        int[] nums1 = {3,1,2};
-        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+SubsetSumI.subsets(nums1));
+        int[] nums1 = {1,2,2};
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+SubsetSumII.subsets(nums1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+SubsetSumI.subsetsUsinBitManipulation(nums1));
     }
 }
