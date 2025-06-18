@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSum {
+    /*
+     * Time Comlexity: O(n * 2^t) 
+     * where t is number of element in max length combination.
+     */
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> combination = new ArrayList<>();
