@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LetterCombinationsOfAPhoneNumber {
+    /*
+     * Time Complexity : O(3^n * 4^m)
+     * Where n is the number of digits with 3 letters (like 2, 3, 4, 5, 6, 8), 
+     * and m is the number of digits with 4 letters (like 7, 9).
+     */
     public static List<String> combination(String digits) {
         char[][] keypad = { {}, { 'a', 'b', 'c' }, { 'd', 'e', 'f' }, { 'g' ,'h', 'i'}, {'j','k', 'l' },
                 {'m' , 'n', 'o'}, { 'p','q', 'r', 's' }, { 't', 'u', 'v' }, { 'w', 'x', 'y', 'z' } };
