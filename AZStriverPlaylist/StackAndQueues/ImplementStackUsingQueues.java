@@ -60,6 +60,8 @@ public class ImplementStackUsingQueues {
         implementStackUsingQueues.printStack();
 
         implementStackUsingQueues.push(14);
+        System.out.println("Top Element : " + implementStackUsingQueues.top());
+
         implementStackUsingQueues.printStack();
 
         implementStackUsingQueues.push(15);
@@ -70,6 +72,8 @@ public class ImplementStackUsingQueues {
 
         System.out.println("Is Empty : " + implementStackUsingQueues.empty());
         System.out.println("Popped Element : " + implementStackUsingQueues.pop());
+        System.out.println("Top Element : " + implementStackUsingQueues.top());
+
         implementStackUsingQueues.printStack();
 
         System.out.println("Popped Element : " + implementStackUsingQueues.pop());
