@@ -3,7 +3,8 @@ package AZStriverPlaylist.StackAndQueues.ExpressionConversion;
 import java.util.Stack;
 
 /*
- * Reference : https://www.geeksforgeeks.org/dsa/convert-infix-prefix-notation/
+ * Reference : https://www.geeksforgeeks.org/dsa/convert-infix-prefix-notation/ - this article is wrong
+ * refer this video for corrct solution : https://www.youtube.com/watch?v=4pIc9UBHJtk
  */
 public class InfixToPrefixConversion {
     /*
@@ -28,9 +29,16 @@ public class InfixToPrefixConversion {
                 }
                 stk.pop();
             } else {
-                while (!stk.isEmpty() && precedence(stk.peek()) > precedence(character)) {
-                    result.append(stk.pop());
+                if (character == '^') {
+                    while (!stk.isEmpty() && precedence(stk.peek()) >= precedence(character)) {
+                        result.append(stk.pop());
+                    }
+                } else {
+                    while (!stk.isEmpty() && precedence(stk.peek()) > precedence(character)) {
+                        result.append(stk.pop());
+                    }
                 }
+
                 stk.push(character);
             }
         }
