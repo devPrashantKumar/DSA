@@ -7,7 +7,9 @@ import java.util.Stack;
  */
 public class InfixToPostfixConversion {
     /*
-     * Time complexity : O(n)
+     * Time complexity : O(n)+O(n) => O(n)
+     * O(n) - for outer for loop executions
+     * O(n) - total execution of while loops
      */
     public static String infixToPostfix(String exp) {
         StringBuilder result = new StringBuilder();
