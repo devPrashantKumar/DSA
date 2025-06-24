@@ -2,7 +2,13 @@ package AZStriverPlaylist.StackAndQueues.ExpressionConversion;
 
 import java.util.Stack;
 
+/*
+ * Reference : https://www.geeksforgeeks.org/dsa/convert-infix-expression-to-postfix-expression/
+ */
 public class InfixToPostfixConversion {
+    /*
+     * Time complexity : O(n)
+     */
     public static String infixToPostfix(String exp) {
         StringBuilder result = new StringBuilder();
         Stack<Character> stk = new Stack<>();
@@ -44,12 +50,12 @@ public class InfixToPostfixConversion {
     }
 
     // public static int precedence2(char c) {
-    //     switch (c) {
-    //         case '^' : return 3;
-    //         case '*', '/' : return  2;
-    //         case '+', '-' : return  1;
-    //        default : return  -1;
-    //     }
+    // switch (c) {
+    // case '^' : return 3;
+    // case '*', '/' : return 2;
+    // case '+', '-' : return 1;
+    // default : return -1;
+    // }
     // }
 
     public static boolean isArithmaticOperator(char c) {
