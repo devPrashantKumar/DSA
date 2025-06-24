@@ -2,21 +2,21 @@ package AZStriverPlaylist.StackAndQueues.ExpressionConversion;
 
 import java.util.Stack;
 /*
- * Reference : https://www.geeksforgeeks.org/dsa/postfix-to-infix/
+ * Reference : https://www.geeksforgeeks.org/dsa/prefix-infix-conversion/
  */
-public class PostfixToInfixConversion {
+public class PrefixToInfixConversion {
     /*
      * Time complexity : O(n)
      */
-    public static String postfixToInfix(String exp) {
+    public static String prefixToInfix(String exp) {
         Stack<String> stk = new Stack<>();
-        for (int i = 0; i < exp.length(); i++) {
+        for (int i = exp.length()-1; i >=0 ; i--) {
             char character = exp.charAt(i);
             if (Character.isLetterOrDigit(character)) {
                 stk.push(String.valueOf(character));
             } else {
-                String t2 = stk.pop();
                 String t1 = stk.pop();
+                String t2 = stk.pop();
                 stk.push("(" + t1 + character + t2 + ")");
 
                 // StringBuilder sb = new StringBuilder();
@@ -34,13 +34,10 @@ public class PostfixToInfixConversion {
     }
 
     public static void main(String[] args) {
-        String exp1 = "ab*c+";
-        System.out.println("Input : " + exp1 + " Output : " + PostfixToInfixConversion.postfixToInfix(exp1));
+        String exp1 = "*-A/BC-/AKL";
+        System.out.println("Input : " + exp1 + " Output : " + PrefixToInfixConversion.prefixToInfix(exp1));
 
-        String exp2 = "abc+*d/";
-        System.out.println("Input : " + exp2 + " Output : " + PostfixToInfixConversion.postfixToInfix(exp2));
-
-        String exp3 = "abc++";
-        System.out.println("Input : " + exp3 + " Output : " + PostfixToInfixConversion.postfixToInfix(exp3));
+        String exp2 = "*+AB-CD";
+        System.out.println("Input : " + exp2 + " Output : " + PrefixToInfixConversion.prefixToInfix(exp2));
     }
 }
