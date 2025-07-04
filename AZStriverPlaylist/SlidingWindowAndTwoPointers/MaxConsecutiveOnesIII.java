@@ -2,8 +2,6 @@ package AZStriverPlaylist.SlidingWindowAndTwoPointers;
 
 import java.util.Arrays;
 
-import AZStriverPlaylist.StackAndQueues.SumOfSubarrayMinimum;
-
 public class MaxConsecutiveOnesIII {
     public static int longestOnes(int[] nums, int k) {
         int maxLen=0;
