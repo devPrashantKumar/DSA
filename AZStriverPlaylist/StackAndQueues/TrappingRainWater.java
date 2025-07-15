@@ -1,9 +1,16 @@
 package AZStriverPlaylist.StackAndQueues;
 
 import java.util.*;
+/*
+ * We can calculate leftMax and RightMax using concept of prefixMax and SuffixMax also
+ */
 
 public class TrappingRainWater {
 
+    /*
+     * Time Complexity : O(3n)
+     * Auxilary Space Complexity : O(2n)
+     */
     public static int trapUsingTwoPointer(int[] height) {
         int sum = 0;
         int[] leftMaximum = leftMaximum(height);
@@ -37,6 +44,10 @@ public class TrappingRainWater {
         return rightMax;
     }
 
+    /*
+     * Time Complexity : O(2n)
+     * Auxilary Space Complexity : O(2n)
+     */
     public static int trapUsingTwoPointerOptimised(int[] height) {
         int sum = 0;
         List<int[]> leftAndRightMax = leftAndRightMaximum(height);
