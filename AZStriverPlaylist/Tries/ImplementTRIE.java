@@ -70,27 +70,4 @@ public class ImplementTRIE {
         }
         return true;
     }
-
-
-    public String longestValidWord() {
-        TrieNode node = root;
-        StringBuilder stringBuilder = new StringBuilder();
-        
-    }
-
-    public String longestValidWordUtil(TrieNode node, StringBuilder stringBuilder) {
-        if(node==null){
-            
-        }
-        for(int i=0;i<node.character.length;i++){
-            if(node.character[i]!=null && node.character[i].isEndNode()){
-                stringBuilder.append('a'+i);
-                longestValidWordUtil(node.character[i], stringBuilder);
-                stringBuilder.deleteCharAt(stringBuilder.length()-1);
-            }else if(node.character[i]!=null && !node.character[i].isEndNode()){
-
-            }
-        }
-
-    }
 }
