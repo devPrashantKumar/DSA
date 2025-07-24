@@ -1,48 +1,55 @@
 package AZStriverPlaylist.SortingAlgorithms.MergeSort;
 
 public class MergeSortClass {
+    /*
+     * Time Complexity : O(n logn)
+     * Space Complexity : O(log n)+O(n)
+     * O(log n) recursive stack
+     * O(n) tempArray required during merge operation 
+     * not In-Place Algorithm
+     * Stable Algorithm
+     */
     public static int[] mergeSort(int[] arr){
+        int n = arr.length;
         mergeSortUtil(arr,0,arr.length-1);
         return arr;
     }
-
-    private static void mergeSortUtil(int[] arr, int startIndex, int endIndex){
-        if(endIndex-startIndex<=0) return;
-        int midIndex = startIndex+((endIndex-startIndex)/2);
-        mergeSortUtil(arr, startIndex, midIndex);
-        mergeSortUtil(arr,midIndex+1,endIndex);
-        merge(arr, startIndex, midIndex, midIndex+1, endIndex);
+    
+    public static void mergeSortUtil(int[] arr, int start, int end){
+        if(end-start+1<2) return;
+        int mid = start+(end-start)/2;
+        mergeSortUtil(arr, start, mid);
+        mergeSortUtil(arr, mid+1, end);
+        merge(arr, start, mid, end);
+    }
+    
+    public static void merge(int[] arr, int start, int mid, int end){
+        int i=start, j=mid+1;
+        int[] tempArr = new int[end-start+1];
+        int k=0;
+        while(i<=mid && j<=end){
+          if(arr[i]<=arr[j]){
+            tempArr[k++]=arr[i++];
+          }else{
+            tempArr[k++]=arr[j++];
+          }
+        }
+        while(i<=mid){
+            tempArr[k++]=arr[i++];
+        }
+        while(j<=end){
+          tempArr[k++]=arr[j++];
+        }
+        
+        for(int n=start;n<=end;n++){
+          arr[n] = tempArr[n-start];
+        }
     }
 
-    private static int[] merge(int[] arr, int startIndex1, int endIndex1,int startIndex2,int endIndex2){
-        int[] temp1 = new int[endIndex1-startIndex1+1];
-        int[] temp2 = new int[endIndex2-startIndex2+1];
-
-        for(int i=startIndex1,j=0;i<=endIndex1;i++,j++){
-            temp1[j]=arr[i];
-        }
-        for(int i=startIndex2,j=0;i<=endIndex2;i++,j++){
-            temp2[j]=arr[i];
-        }
-
-        int temp1Pointer=0;
-        int temp2Pointer=0;
-        for(int i=startIndex1;i<=endIndex2;i++){
-            if(temp1Pointer+1<=temp1.length && temp2Pointer+1<=temp2.length){
-                if(temp1[temp1Pointer]<=temp2[temp2Pointer]){
-                    arr[i]=temp1[temp1Pointer++];
-                }
-                else{
-                    arr[i]=temp2[temp2Pointer++];
-                }
-            }
-            else if(temp1Pointer+1<=temp1.length){
-                arr[i]=temp1[temp1Pointer++];
-            }
-            else{
-                arr[i]=temp2[temp2Pointer++];
-            }
-        }
-        return arr;
+    public static void main(String[] args) {
+        int[] arr = {2,3,1,7,3,9,6};
+        MergeSortClass.mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
+  
 }
