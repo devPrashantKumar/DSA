@@ -1,5 +1,7 @@
 package AZStriverPlaylist.SortingAlgorithms.MergeSort;
 
+import java.util.*;
+
 public class MergeSortClass {
     /*
      * Time Complexity : O(n logn)
