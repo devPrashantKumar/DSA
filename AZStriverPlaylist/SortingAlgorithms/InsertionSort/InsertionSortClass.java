@@ -4,7 +4,9 @@ import java.util.*;
 
 public class InsertionSortClass {
     /* 
-     * Time Complexity O(n^2)
+     * Time Complexity 
+     * Worst/Average case : O(n^2)
+     * Best Case : O(n)
      * Space Complexity O(1)
      * In-Place Algorithm
      * Stable Algorithm
