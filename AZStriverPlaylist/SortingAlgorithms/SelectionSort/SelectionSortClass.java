@@ -3,7 +3,7 @@ package AZStriverPlaylist.SortingAlgorithms.SelectionSort;
 import java.util.Arrays;
 
 public class SelectionSortClass {
-    /*  NOT CORRECT SELECTION SORT
+    /*  NOT CORRECT SELECTION SORT , this is bubble sort
      * Time Complexity O(n^2)
      * Space Complexity O(1)
      * In-Place Algorithm

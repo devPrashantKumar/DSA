@@ -1,5 +1,7 @@
 package AZStriverPlaylist.SortingAlgorithms.InsertionSort;
 
+import java.util.*;
+
 public class InsertionSortClass {
     /* 
      * Time Complexity O(n^2)
