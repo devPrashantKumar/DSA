@@ -12,7 +12,6 @@ public class MergeSortClass {
      * Stable Algorithm
      */
     public static int[] mergeSort(int[] arr){
-        int n = arr.length;
         mergeSortUtil(arr,0,arr.length-1);
         return arr;
     }
