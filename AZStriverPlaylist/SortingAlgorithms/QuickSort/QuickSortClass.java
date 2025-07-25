@@ -3,6 +3,12 @@ package AZStriverPlaylist.SortingAlgorithms.QuickSort;
 import java.util.Arrays;
 
 public class QuickSortClass {
+    /*
+     * Time Complexity : O(n log n)
+     * Space Complexity : O(1)
+     * Inplace Sorting Algo
+     * Unstable Sorting Algo
+     */
     public static int[] quickSort(int[] arr) {
         quickSortUtil(arr, 0, arr.length-1);
         return arr;
