@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList;
+package AZStriverPlaylist.LinkedList.SingleLinkedList;
 
 /*
  * 5 Type of Insertion in Linked List
