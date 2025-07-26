@@ -2,7 +2,7 @@ package AZStriverPlaylist.LinkedList.SingleLinkedList;
 
 public class ReverseLinkedList {
 
-    public static <T> SingleLinkedListNode<T> reverseListBruteForce(SingleLinkedListNode<T> head){
+    public static <T> SingleLinkedListNode<T> reverseList(SingleLinkedListNode<T> head){
         SingleLinkedListNode<T> curr = head;
         SingleLinkedListNode<T> prev = null;
         while(curr!=null){
@@ -18,7 +18,7 @@ public class ReverseLinkedList {
         SingleLinkedListNode<Integer> head = SingleLinkedListUtility.convertArrayToList(arr1);
         SingleLinkedListUtility.printLinkedList(head);
         
-        head = ReverseLinkedList.reverseListBruteForce(head);
+        head = ReverseLinkedList.reverseList(head);
         SingleLinkedListUtility.printLinkedList(head);
         System.out.println("----------------------------------------------------------");
     }
