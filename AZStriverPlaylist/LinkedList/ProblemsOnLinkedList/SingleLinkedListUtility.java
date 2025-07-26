@@ -30,4 +30,13 @@ public class SingleLinkedListUtility {
         }
         System.out.println();
     }
+
+    public static <T> void printLinkedListNode(SingleLinkedListNode<T> head) {
+        if (head == null) {
+            System.out.println("Linked List Node is Empty");
+            return;
+        }
+
+        System.out.println("Linked List Node is " + head.data);
+    }
 }
