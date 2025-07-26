@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.BasicRecursion;
 
 public class PrintNameNTimes {
     public static void print(int n){

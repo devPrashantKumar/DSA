@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.BasicRecursion;
 
 public class PrintNumbers {
     public static void printLinearly1toN(int i, int n){

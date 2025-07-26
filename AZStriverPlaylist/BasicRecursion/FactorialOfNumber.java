@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.BasicRecursion;
 
 public class FactorialOfNumber {
     // Tail-recursive style.

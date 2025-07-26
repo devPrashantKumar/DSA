@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.BasicRecursion;
 
 public class Palindrome {
     public static boolean checkPalindrom(String str, int left, int right){

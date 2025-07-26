@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.BasicRecursion;
 
 import java.util.Arrays;
 
