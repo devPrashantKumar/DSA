@@ -20,6 +20,15 @@ public class ReverseLinkedList {
         return reverseListTailRecursiveUtil(curr,prev);
     }
 
+    // V.V. Important
+    public static <T> SingleLinkedListNode<T> reverseListClassicRecursive(SingleLinkedListNode<T> head){
+        if(head==null || head.next==null) return head;
+        SingleLinkedListNode<T> newHead = reverseListClassicRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
+
     public static <T> SingleLinkedListNode<T> reverseListTailRecursiveUtil(SingleLinkedListNode<T> head, SingleLinkedListNode<T> prev){
         if(head==null){
             return prev;
@@ -40,6 +49,9 @@ public class ReverseLinkedList {
         SingleLinkedListUtility.printLinkedList(head);
         System.out.println("----------------------------------------------------------");
         head = ReverseLinkedList.reverseListTailRecursive(head);
+        SingleLinkedListUtility.printLinkedList(head);
+        System.out.println("----------------------------------------------------------");
+        head = ReverseLinkedList.reverseListClassicRecursive(head);
         SingleLinkedListUtility.printLinkedList(head);
         System.out.println("----------------------------------------------------------");
     }
