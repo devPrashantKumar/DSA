@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList;
+package AZStriverPlaylist.LinkedList.ProblemsOnDoubleLinkedList;
 
 public class DoubleLinkedListNode<T> {
     T data;

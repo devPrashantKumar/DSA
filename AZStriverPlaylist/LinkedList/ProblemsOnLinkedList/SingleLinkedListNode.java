@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList.SingleLinkedList;
+package AZStriverPlaylist.LinkedList.ProblemsOnLinkedList;
 
 public class SingleLinkedListNode<T> {
     T data;

@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList;
+package AZStriverPlaylist.LinkedList.ProblemsOnDoubleLinkedList;
 
 import java.util.Stack;
 

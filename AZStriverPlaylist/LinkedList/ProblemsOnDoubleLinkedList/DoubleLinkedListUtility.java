@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList;
+package AZStriverPlaylist.LinkedList.ProblemsOnDoubleLinkedList;
 
 public class DoubleLinkedListUtility {
     public static <T> DoubleLinkedListNode<T> convertArrayToList(T[] arr) {
