@@ -32,6 +32,7 @@ public class SegrregateoddAndEvenNodeInLL {
 
     // Short Code
     public static <T> SingleLinkedListNode<T> segregate2(SingleLinkedListNode<T> head){
+        if(head==null || head.next==null) return head;
         SingleLinkedListNode<T> odd = head;
         SingleLinkedListNode<T> evenHead = head.next;
         SingleLinkedListNode<T> even = head.next;
