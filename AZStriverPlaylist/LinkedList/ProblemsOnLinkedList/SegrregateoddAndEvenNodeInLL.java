@@ -16,7 +16,7 @@ public class SegrregateoddAndEvenNodeInLL {
                     evenHead=head;
                     evenTail=head;
                 }else{
-                    evenTail.next=head;
+                    evenTail.next=head; 
                     evenTail = evenTail.next;
                 }
                 prev.next = head.next;
@@ -29,12 +29,31 @@ public class SegrregateoddAndEvenNodeInLL {
         evenTail.next=null;
         return finalHead;
     }
+
+    // Short Code
+    public static <T> SingleLinkedListNode<T> segregate2(SingleLinkedListNode<T> head){
+        SingleLinkedListNode<T> odd = head;
+        SingleLinkedListNode<T> evenHead = head.next;
+        SingleLinkedListNode<T> even = head.next;
+        while(even!=null && even.next!=null){
+            odd.next = odd.next.next;
+            even.next = even.next.next;
+
+            odd = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        return head;
+    }
     public static void main(String[] args) {
         Integer[] arr1 = {1,2,3,4,5,6,7};
         SingleLinkedListNode<Integer> head = SingleLinkedListUtility.convertArrayToList(arr1);
         SingleLinkedListUtility.printLinkedList(head);
         
         head = SegrregateoddAndEvenNodeInLL.segregate(head);
+        SingleLinkedListUtility.printLinkedList(head);
+        System.out.println("----------------------------------------------------------");
+        head = SegrregateoddAndEvenNodeInLL.segregate2(head);
         SingleLinkedListUtility.printLinkedList(head);
         System.out.println("----------------------------------------------------------");
     }
