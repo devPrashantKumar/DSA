@@ -7,4 +7,9 @@ public class SingleLinkedListNode<T> {
     public SingleLinkedListNode(T data){
         this.data = data;
     }
+
+    public SingleLinkedListNode(T data, SingleLinkedListNode<T> next){
+        this.data = data;
+        this.next = next;
+    }
 }
