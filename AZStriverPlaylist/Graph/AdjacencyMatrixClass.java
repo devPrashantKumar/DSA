@@ -104,6 +104,27 @@ public class AdjacencyMatrixClass {
         return traversalResult;
     }
 
+    public int[] DFSInAdjacencyMatrix2(){
+        List<Integer> traversalResult = new ArrayList<>();
+        int[] visited = new int[vertices];
+        for (int v = 0; v < visited.length; v++) {
+            if(visited[v]==0){
+                DFSInAdjacencyMatrixUtil(visited, v, traversalResult);
+            }
+        }
+        return traversalResult.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    public void DFSInAdjacencyMatrixUtil(int[] visited, int vertex, List<Integer> traversalResult){
+        traversalResult.add(vertex);
+        visited[vertex]=1;
+        for(int i=0;i<adjacencyMatrix[vertex].length;i++){
+            if(adjacencyMatrix[vertex][i]!=0 && visited[i]==0){
+                DFSInAdjacencyMatrixUtil(visited, i, traversalResult);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         AdjacencyMatrixClass adjacencyMatrixClass = new AdjacencyMatrixClass(5);
         adjacencyMatrixClass.addUndirectedEdge(0, 1);
@@ -112,8 +133,9 @@ public class AdjacencyMatrixClass {
         adjacencyMatrixClass.addDirectedEdge(0, 3);
         adjacencyMatrixClass.printAdjacencyMatrix();
         System.out.println(Arrays.toString(adjacencyMatrixClass.BFSInAdjacencyMatrix()));
-        System.out.println(Arrays.toString(adjacencyMatrixClass.DFSInAdjacencyMatrix()));
         System.out.println(Arrays.toString(adjacencyMatrixClass.BFSInAdjacencyMatrix2()));
+        System.out.println(Arrays.toString(adjacencyMatrixClass.DFSInAdjacencyMatrix()));
+        System.out.println(Arrays.toString(adjacencyMatrixClass.DFSInAdjacencyMatrix2()));
     }
 
 }

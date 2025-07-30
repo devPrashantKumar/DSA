@@ -83,6 +83,27 @@ public class AdjacencyListClass {
         return traversalResult;
     }
 
+    public int[] DFSInAdjacencyListRecursion() {
+        List<Integer> traversalResult = new ArrayList<>();
+        int[] visited = new int[vertices];
+        for (int v = 0; v < visited.length; v++) {
+            if (visited[v] == 0) {
+                DFSInAdjacencyListRecursionUtil(visited,v,traversalResult);
+            }
+        }
+        return traversalResult.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    public void DFSInAdjacencyListRecursionUtil(int[] visited, int vertex, List<Integer> traversalResult) {
+        traversalResult.add(vertex);
+        visited[vertex]=1;
+        for (int v = 0; v < adjacencyList[vertex].size(); v++) {
+            if (visited[adjacencyList[vertex].get(v)] == 0) {
+                DFSInAdjacencyListRecursionUtil(visited,adjacencyList[vertex].get(v),traversalResult);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         AdjacencyListClass adjacencyListClass = new AdjacencyListClass(5);
         adjacencyListClass.addUndirectedEdge(0, 1);
@@ -92,5 +113,6 @@ public class AdjacencyListClass {
         adjacencyListClass.printAdjacencyList();
         System.out.println(Arrays.toString(adjacencyListClass.BFSInAdjacencyList()));
         System.out.println(Arrays.toString(adjacencyListClass.DFSInAdjacencyList()));
+        System.out.println(Arrays.toString(adjacencyListClass.DFSInAdjacencyListRecursion()));
     }
 }
