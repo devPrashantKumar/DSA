@@ -99,6 +99,42 @@ public class practice {
         return maxfruits;
     }
 
+    public static int totalFruit(int[] fruits) {
+        int maxFruits=0;
+        Map<Integer, Integer> map = new HashMap<>();
+        int left=0,right=0;
+        for(;right<fruits.length;){
+            if(map.size()<2 || map.containsKey(fruits[right])){
+                map.put(fruits[right], map.getOrDefault(fruits[right],0)+1);
+                maxFruits = Math.max(right-left+1, maxFruits);
+                right++;
+            }
+            else{
+                map.put(fruits[left], map.getOrDefault(fruits[left],0)-1);
+                if(map.get(fruits[left])==0){
+                    map.remove(fruits[left]);
+                }
+                left++;
+            }
+
+        }
+        return maxFruits;
+    }
+
+    public static int numOfUnplacedFruits(int[] fruits, int[] baskets) {
+        int count=0;
+        for(int i=0;i<fruits.length;i++){
+            int j=0;
+            for(;j<baskets.length;j++){
+                if(baskets[j]>=fruits[i]){
+                    baskets[j]=0;
+                    break;
+                }
+            }
+            if(j==baskets.length) count++;
+        }
+        return count;
+    }
     public static void main(String[] args) {
         System.out.println(practice.maxTotalFruits(new int[][]{{2,8},{6,3},{8,6}},5,4));
         System.out.println(practice.maxTotalFruits(new int[][]{{0,9},{4,1},{5,7},{6,2},{7,4},{10,9}},5,4));
