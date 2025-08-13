@@ -23,6 +23,9 @@ public class BinaryNotationUtility {
         return decimal;
     }
 
+    /*
+    * ones compliment - reverse all bits
+    */
     public static String onesComplimentOfBinaryString(String binary){
         StringBuilder onesCompliment = new StringBuilder();
         boolean flag=true;
@@ -42,6 +45,9 @@ public class BinaryNotationUtility {
         return onesComplimentString;
     }
 
+    /*
+     * twos compliment - find ones compliment and add 1
+     */
     public static String twosComplimentOfBinaryString(String binary){
         String onesCompliment = BinaryNotationUtility.onesComplimentOfBinaryString(binary);
         StringBuilder twosCompliment = new StringBuilder();

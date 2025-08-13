@@ -236,8 +236,7 @@ public class BinarySearchTreeClass {
 				// Node with two children
 				BinarySearchTreeNode nextMaximum = nextMaximumNode(node);
 				int tempData = nextMaximum.data;
-				node.right = deleteBinarySearchTreeNodeUsingRecursionUtil(node.right, tempData); // Delete in-order
-																									// successor
+				node.right = deleteBinarySearchTreeNodeUsingRecursionUtil(node.right, tempData);
 				node.data = tempData;
 			}
 		}
