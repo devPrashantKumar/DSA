@@ -6,10 +6,16 @@ package AZStriverPlaylist.BitManipulation.Problems;
  */
 public class FindXOROfNumbersFromLToR {
 
+    /*
+     * Time Complexity : O(1)
+     */
     public static int findRangeXOR(int l, int r) {
         return findXOR(r) ^ findXOR(l - 1);
     }
 
+    /*
+     * Time Complexity : O(1)
+     */
     public static int findXOR(int n) {
         int mod = n % 4;
         if (mod == 0)

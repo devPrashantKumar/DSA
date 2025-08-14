@@ -1,6 +1,9 @@
 package AZStriverPlaylist.BitManipulation.Problems;
 
 public class CountNumberOfBitsToBeFlippedToConvertAToB {
+    /*
+     * Time Complexity : O(log(numA^numB))
+     */
     public static int minBitFlips(int numA, int numB) {
         int bitsDifference = numA ^ numB;
         return bitsCount(bitsDifference);

@@ -3,6 +3,9 @@ package AZStriverPlaylist.BitManipulation.Problems;
 import java.util.Arrays;
 
 public class FindNumberThatAppearsOddNumberOfTimes {
+    /*
+     * Time Complexity : O(n)
+     */
     public static int singleNumber(int[] nums) {
         int ans = nums[0];
         for (int i = 1; i < nums.length; i++) {
@@ -11,6 +14,9 @@ public class FindNumberThatAppearsOddNumberOfTimes {
         return ans;
     }
 
+    /*
+     * Time Complexity : O(n)
+     */
     public static int singleNumberUsingStreams(int[] nums) {
         return Arrays.stream(nums).reduce(0, (a, b) -> a ^ b);
     }
