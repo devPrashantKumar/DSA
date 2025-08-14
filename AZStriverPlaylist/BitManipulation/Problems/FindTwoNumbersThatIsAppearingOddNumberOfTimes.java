@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class FindTwoNumbersThatIsAppearingOddNumberOfTimes {
     /*
-     * Time Ccomplexity : O(n)
+     * Time complexity : O(n)
      */
     public static int[] singleNumber(int[] nums) {
         int num1=0, num2=0;
