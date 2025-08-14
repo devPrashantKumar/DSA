@@ -20,6 +20,7 @@ public class CountNumberOfSetBits {
         return count;
     }
 
+    // time complexity : O(log n)
     public static int countSetBitsOptimized(int num) {
         int count = 0;
         while (num != 0) {
