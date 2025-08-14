@@ -9,6 +9,7 @@ public class FindTwoNumbersThatIsAppearingOddNumberOfTimes {
     public static int[] singleNumber(int[] nums) {
         int num1=0, num2=0;
         int xorOfNumber = Arrays.stream(nums).reduce(0, (a, b) -> a ^ b);
+        // important concept
         int rightMostDifferentBit = ((xorOfNumber & (xorOfNumber-1))^xorOfNumber);
         for (int i = 0; i < nums.length; i++) {
             if((nums[i]&rightMostDifferentBit)==0){
