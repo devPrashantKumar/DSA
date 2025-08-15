@@ -62,6 +62,15 @@ public class BinarySearchTreeClass {
 		printInorderTraversalUtil(this.root);
 	}
 
+	private void printInorderTraversalUtil(BinarySearchTreeNode node) {
+		if (node == null) {
+			return;
+		}
+		printInorderTraversalUtil(node.left);
+		System.out.print(node.data + " ");
+		printInorderTraversalUtil(node.right);
+	}
+
 	public void printInorderTraversalIterative() {
 		BinarySearchTreeNode current = this.root;
 		Stack<BinarySearchTreeNode> stack = new Stack<>();
@@ -78,26 +87,17 @@ public class BinarySearchTreeClass {
 
 	}
 
-	private void printInorderTraversalUtil(BinarySearchTreeNode node) {
+	public void printpreOrderTraversal() {
+		printpreOrderTraversalUtil(this.root);
+	}
+
+	private void printpreOrderTraversalUtil(BinarySearchTreeNode node) {
 		if (node == null) {
 			return;
 		}
-		printInorderTraversalUtil(node.left);
 		System.out.print(node.data + " ");
-		printInorderTraversalUtil(node.right);
-	}
-
-	public void printpostOrderTraversal() {
-		printpostOrderTraversalUtil(this.root);
-	}
-
-	private void printpostOrderTraversalUtil(BinarySearchTreeNode node) {
-		if (node == null) {
-			return;
-		}
-		printpostOrderTraversalUtil(node.left);
-		printpostOrderTraversalUtil(node.right);
-		System.out.print(node.data + " ");
+		printpreOrderTraversalUtil(node.left);
+		printpreOrderTraversalUtil(node.right);
 	}
 
 	public void printpreOrderTraversalIterative() {
@@ -115,17 +115,17 @@ public class BinarySearchTreeClass {
 		System.out.println();
 	}
 
-	public void printpreOrderTraversal() {
-		printpreOrderTraversalUtil(this.root);
+	public void printpostOrderTraversal() {
+		printpostOrderTraversalUtil(this.root);
 	}
 
-	private void printpreOrderTraversalUtil(BinarySearchTreeNode node) {
+	private void printpostOrderTraversalUtil(BinarySearchTreeNode node) {
 		if (node == null) {
 			return;
 		}
+		printpostOrderTraversalUtil(node.left);
+		printpostOrderTraversalUtil(node.right);
 		System.out.print(node.data + " ");
-		printpreOrderTraversalUtil(node.left);
-		printpreOrderTraversalUtil(node.right);
 	}
 
 	public BinarySearchTreeNode searchBSTNode(int data) {
@@ -141,8 +141,8 @@ public class BinarySearchTreeClass {
 		return null;
 	}
 
-	public void searchBSTNodeUsingRecursion(int data) {
-		searchBSTNodeUsingRecursionUtil(this.root, data);
+	public BinarySearchTreeNode searchBSTNodeUsingRecursion(int data) {
+		return searchBSTNodeUsingRecursionUtil(this.root, data);
 	}
 
 	private BinarySearchTreeNode searchBSTNodeUsingRecursionUtil(BinarySearchTreeNode root, int data) {
@@ -156,7 +156,7 @@ public class BinarySearchTreeClass {
 			return searchBSTNodeUsingRecursionUtil(root.right, data);
 	}
 
-	public BinarySearchTreeNode deleteBinarySearchTreeNode(int data) {
+	public BinarySearchTreeNode deleteBinarySearchTreeNodeApproach2(int data) {
 		return deleteBinarySearchTreeNodeUtil(this.root, data);
 	}
 
@@ -165,6 +165,59 @@ public class BinarySearchTreeClass {
 			return null;
 		BinarySearchTreeNode parent = null;
 		BinarySearchTreeNode current = node;
+		while (current != null) {
+			if (data < current.data) {
+				parent = current;
+				current = current.left;
+			} else if (data > current.data) {
+				parent = current;
+				current = current.right;
+			} else {
+				if (current.left == null && current.right == null) {
+					if (parent == null)
+						this.root = null;
+					else if (parent.left == current)
+						parent.left = null;
+					else if (parent.right == current)
+						parent.right = null;
+					return current;
+				} else if (current.left == null) {
+					if (parent == null)
+						this.root = current.right;
+					else if (parent.left == current)
+						parent.left = current.right;
+					else if (parent.right == current)
+						parent.right = current.right;
+					return current;
+				} else if (current.right == null) {
+					if (parent == null)
+						this.root = current.left;
+					if (parent.left == current)
+						parent.left = current.left;
+					else if (parent.right == current)
+						parent.right = current.left;
+					return current;
+				} else {
+					BinarySearchTreeNode successorParent = current;
+					BinarySearchTreeNode successor = current.right;
+					while (successor.left != null) {
+						successorParent = successor;
+						successor = successor.left;
+					}
+					current.data = successor.data;
+					parent = successorParent;
+					current = successor;
+					data = current.data;
+				}
+
+			}
+		}
+		return null;
+	}
+
+	public BinarySearchTreeNode deleteBinarySearchTreeNode(int data) {
+		BinarySearchTreeNode parent = null;
+		BinarySearchTreeNode current = this.root;
 		while (current != null && current.data != data) {
 			parent = current;
 			if (data < current.data) {
@@ -174,37 +227,38 @@ public class BinarySearchTreeClass {
 			}
 		}
 		if (current == null)
-			return null;
-		if (current.left == null && current.right == null) {
-			if (parent == null)
-				root = null;
-			else if (parent.left == current)
-				parent.left = null;
-			else if (parent.right == current)
-				parent.right = null;
-			return current;
-		} else if (current.left == null) {
-			if (parent.left == current)
-				parent.left = current.right;
-			else if (parent.right == current)
-				parent.right = current.right;
-			return current;
-		} else if (current.right == null) {
-			if (parent.left == current)
-				parent.left = current.left;
-			else if (parent.right == current)
-				parent.right = current.left;
-			return current;
-		} else {
-			BinarySearchTreeNode nextMaximum = nextMaximumNode(current);
-			int tempData = current.data;
-			current.data = nextMaximum.data;
-			nextMaximum.data = tempData;
-			return deleteBinarySearchTreeNodeUtil(current, tempData);
+			return this.root;
+
+		// Case 1: Node has two children
+		if (current.left != null && current.right != null) {
+			BinarySearchTreeNode successorParent = current;
+			BinarySearchTreeNode successor = current.right;
+			while (successor.left != null) {
+				successorParent = successor;
+				successor = successor.left;
+			}
+			current.data = successor.data;
+			current = successor;
+			parent = successorParent;
 		}
+
+		// Case 2 & 3: Node has at most one child
+		BinarySearchTreeNode child = (current.left != null) ? current.left : current.right;
+
+		if (parent == null) {
+			this.root = child;
+		}
+		else if (parent.left == current) {
+			parent.left = child;
+		}
+		else {
+			parent.right = child;
+		}
+
+		return this.root;
 	}
 
-	private BinarySearchTreeNode nextMaximumNode(BinarySearchTreeNode node) {
+	private BinarySearchTreeNode inorderSuccessorNode(BinarySearchTreeNode node) {
 		BinarySearchTreeNode next = node.right;
 		while (next != null && next.left != null) {
 			next = next.left;
@@ -212,8 +266,8 @@ public class BinarySearchTreeClass {
 		return next;
 	}
 
-	public BinarySearchTreeNode deleteBinarySearchTreeNodeUsingRecursion(int data) {
-		return deleteBinarySearchTreeNodeUsingRecursionUtil(this.root, data);
+	public void deleteBinarySearchTreeNodeUsingRecursion(int data) {
+		deleteBinarySearchTreeNodeUsingRecursionUtil(this.root, data);
 	}
 
 	private BinarySearchTreeNode deleteBinarySearchTreeNodeUsingRecursionUtil(BinarySearchTreeNode node, int data) {
@@ -234,10 +288,11 @@ public class BinarySearchTreeClass {
 				return node.left; // Single left child
 			} else {
 				// Node with two children
-				BinarySearchTreeNode nextMaximum = nextMaximumNode(node);
+				BinarySearchTreeNode nextMaximum = inorderSuccessorNode(node);
 				int tempData = nextMaximum.data;
 				node.right = deleteBinarySearchTreeNodeUsingRecursionUtil(node.right, tempData);
 				node.data = tempData;
+
 			}
 		}
 		return node;
@@ -288,10 +343,77 @@ public class BinarySearchTreeClass {
 		System.out.println();
 		System.out.println("---------------------------------------------");
 
+		System.out.println("node found : " + ((bst.searchBSTNode(5) == null) ? false : true));
+		System.out.println("node found : " + ((bst.searchBSTNode(35) == null) ? false : true));
 		System.out.println("---------------------------------------------");
+		System.out.println("node found : " + ((bst.searchBSTNodeUsingRecursion(5) == null) ? false : true));
+		System.out.println("node found : " + ((bst.searchBSTNodeUsingRecursion(35) == null) ? false : true));
 		System.out.println("---------------------------------------------");
 
-		BinarySearchTreeClass.BinarySearchTreeNode deletedNode = bst.deleteBinarySearchTreeNode(5);
-		System.out.println("node deleted : " + deletedNode.data);
+		bst.deleteBinarySearchTreeNodeUsingRecursion(5);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		bst.deleteBinarySearchTreeNodeUsingRecursion(0);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		bst.deleteBinarySearchTreeNodeUsingRecursion(14);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		bst.deleteBinarySearchTreeNodeUsingRecursion(11);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		System.out.println("---------------------------------------------");
+		bst.deleteBinarySearchTreeNodeApproach2(10);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		bst.deleteBinarySearchTreeNodeApproach2(7);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		bst.deleteBinarySearchTreeNodeApproach2(12);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		bst.deleteBinarySearchTreeNodeApproach2(11);
+		System.out.println("node deleted : ");
+		bst.printInorderTraversalIterative();
+		System.out.println("---------------------------------------------");
+
+		BinarySearchTreeClass bst2 = new BinarySearchTreeClass();
+		bst2.insertBinarySearchTreeNode2(10);
+		bst2.insertBinarySearchTreeNode2(11);
+		bst2.insertBinarySearchTreeNode2(12);
+		bst2.insertBinarySearchTreeNode2(14);
+		bst2.insertBinarySearchTreeNode2(5);
+		bst2.insertBinarySearchTreeNode2(0);
+		bst2.insertBinarySearchTreeNode2(7);
+
+		bst2.printInorderTraversal();
+		System.out.println();
+		System.out.println("---------------------------------------------");
+		bst2.deleteBinarySearchTreeNode(10);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		bst2.deleteBinarySearchTreeNode(7);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		bst2.deleteBinarySearchTreeNode(12);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		bst2.deleteBinarySearchTreeNode(11);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		bst2.deleteBinarySearchTreeNode(0);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		bst2.deleteBinarySearchTreeNode(14);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		bst2.deleteBinarySearchTreeNode(5);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		bst2.deleteBinarySearchTreeNode(11);
+		System.out.println("node deleted : ");
+		bst2.printInorderTraversalIterative();
+		System.out.println("---------------------------------------------");
+
 	}
 }
