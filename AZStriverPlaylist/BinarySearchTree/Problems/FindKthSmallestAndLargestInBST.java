@@ -20,8 +20,8 @@ public class FindKthSmallestAndLargestInBST {
 
     public static Integer kthLargestUtil(BinarySearchTreeNode<Integer> root, int[] k){
         if(root==null) return -1;
-        int left = kthLargestUtil(root.right, k);
-        if(k[0]==0) return left;
+        int right = kthLargestUtil(root.right, k);
+        if(k[0]==0) return right;
         k[0]--;
         if(k[0]==0) return root.data;
         return kthLargestUtil(root.left, k);
