@@ -1,5 +1,6 @@
-package DataStructures.Stack;
+package AZStriverPlaylist.StackAndQueues.CollectionLiberaries;
 import java.util.*;
+
 public class StackClassInJavaTest {
 
     public static void main(String[] args){

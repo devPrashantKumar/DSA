@@ -1,2 +1,0 @@
-stack notes: https://www.geeksforgeeks.org/stack-data-structure/
-arrayDeque notes: https://www.geeksforgeeks.org/arraydeque-in-java/

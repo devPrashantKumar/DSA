@@ -1,4 +1,4 @@
-package DataStructures.Stack;
+package AZStriverPlaylist.StackAndQueues.CollectionLiberaries;
 import java.util.*;
 
 public class StackUsingArrayDequeClassInJava {
