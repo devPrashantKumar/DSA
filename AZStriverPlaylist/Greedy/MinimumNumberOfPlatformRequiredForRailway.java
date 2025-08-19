@@ -85,19 +85,24 @@ public class MinimumNumberOfPlatformRequiredForRailway {
             trains.add(new TrainProcessing(Departure[i], false));
         }
         trains.sort((item1, item2) -> {
-            if(item1.time - item2.time==0){
-                if(item1.isArrive && !item2.isArrive) return -1;
-                else if (item2.isArrive && !item1.isArrive) return 1;
-                else return 0;
+            if (item1.time - item2.time == 0) {
+                if (item1.isArrive && !item2.isArrive)
+                    return -1;
+                else if (item2.isArrive && !item1.isArrive)
+                    return 1;
+                else
+                    return 0;
             }
             return item1.time - item2.time;
         });
-        int maxPlatform=0;
-        int count=0;
-        for (TrainProcessing t:trains) {
-            if(t.isArrive) count++;
-            else count --;
-            maxPlatform = Math.max(maxPlatform,count);
+        int maxPlatform = 0;
+        int count = 0;
+        for (TrainProcessing t : trains) {
+            if (t.isArrive)
+                count++;
+            else
+                count--;
+            maxPlatform = Math.max(maxPlatform, count);
         }
         return maxPlatform;
     }
@@ -145,11 +150,12 @@ public class MinimumNumberOfPlatformRequiredForRailway {
         System.out.println("Minimum Paltform Required 2 : " + findPlatformBruteForce(
                 new int[] { 900, 940, 950, 1100, 1500, 1800 }, new int[] { 910, 1200, 1120, 1130, 1900, 2000 }));
 
+        System.out.println("Minimum Paltform Required : " + findPlatformBetter(
+                new int[] { 900, 940, 950, 1100, 1500, 1800 }, new int[] { 910, 1200, 1120, 1130, 1900, 2000 }));
+
         System.out.println("Minimum Paltform Required Optimised : " + findPlatformSweepLineAlgoOptimised(
                 new int[] { 900, 940, 950, 1100, 1500, 1800 }, new int[] { 910, 1200, 1120, 1130, 1900, 2000 }));
         System.out.println("---------------------------------------------------------------------------------------");
-
-
 
         System.out.println("trains arrival and departure");
 
@@ -162,6 +168,9 @@ public class MinimumNumberOfPlatformRequiredForRailway {
 
         System.out.println("Minimum Paltform Required 2 : "
                 + findPlatformBruteForce(new int[] { 900, 1100, 1235 }, new int[] { 1000, 1200, 1240 }));
+
+        System.out.println("Minimum Paltform Required : "
+                + findPlatformBetter(new int[] { 900, 1100, 1235 }, new int[] { 1000, 1200, 1240 }));
 
         System.out.println("Minimum Paltform Required Optimised : "
                 + findPlatformSweepLineAlgoOptimised(new int[] { 900, 1100, 1235 }, new int[] { 1000, 1200, 1240 }));
