@@ -2,6 +2,7 @@ package AZStriverPlaylist.Greedy;
 
 import java.util.*;
 
+
 public class LRUCache {
     static class Node {
         Node prev;
@@ -28,6 +29,9 @@ public class LRUCache {
         tail.prev = head;
     }
 
+    /*
+    * Time Complexity : O(1)
+    */
     public int get(int key) {
         Node node = map.get(key);
         if (node != null) {
@@ -38,6 +42,9 @@ public class LRUCache {
         return -1;
     }
 
+    /*
+    * Time Complexity : O(1) avg, beacuse insert in map is O(1) in avg case
+    */
     public void put(int key, int value) {
         Node node = map.get(key);
         if (node != null) {
@@ -58,7 +65,7 @@ public class LRUCache {
     }
 
     public void insertAtHead(Node node) {
-        node.prev = head.next;
+        node.prev = head;
         head.next.prev = node;
         node.next = head.next;
         head.next = node;
