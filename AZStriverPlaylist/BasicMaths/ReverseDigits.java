@@ -6,7 +6,7 @@ public class ReverseDigits{
      */
     public static int reverseDigitsOfNumber(int x){
         if(x==Integer.MIN_VALUE) return 0;
-        boolean isNegative = (x<0)?true:false;
+        int sign = (x<0)? -1:1;
         x = Math.abs(x);
         int reverseNum=0;
         if(x==0) return x;
@@ -21,7 +21,7 @@ public class ReverseDigits{
             // else reverseNum = (reverseNum*10)+digit;
             
         }
-        return (isNegative) ? (-1*reverseNum) : reverseNum;
+        return reverseNum*sign;
     }
 
     public static void main(String[] args) {

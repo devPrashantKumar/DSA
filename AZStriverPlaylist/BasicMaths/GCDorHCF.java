@@ -47,9 +47,10 @@ public class GCDorHCF {
         return 1;
     }
 
-    // public static int lcm(int num1, int num2){
-    // return (num1*num2)/gcd(num1,num2);
-    // }
+   // LCM using GCD
+    public static int lcm(int a, int b) {
+        return (a / gcd(a, b)) * b; // safer to avoid overflow
+    }
 
     public static void main(String[] args) {
         int input11 = 11;
