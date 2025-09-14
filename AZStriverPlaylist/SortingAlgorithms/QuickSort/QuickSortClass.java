@@ -37,11 +37,11 @@ public class QuickSortClass {
                 swap(arr, left, right);
             }
         }
-        // swap(arr, right, start);
-        // return right;
+        // swap(arr, left-1, start);
+        // return left-1;
 
-        swap(arr, left-1, start);
-        return left-1;
+        swap(arr, right, start);
+        return right;
     }
 
     private static void randomizePartition(int[] arr, int start, int end){
@@ -57,7 +57,7 @@ public class QuickSortClass {
 
 
     public static void main(String[] args) {
-        int[] arr = {2,3,1,7,9,6};
+        int[] arr = {2,3,1,7,2,9,6};
         QuickSortClass.quickSort(arr);
         System.out.println(Arrays.toString(arr));
 
