@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Array;
+package AZStriverPlaylist.Array.Easy;
 
 import java.util.Arrays;
 
@@ -44,7 +44,7 @@ public class MoveZeroesToEnd {
     public static void main(String[] args) {
         int[] input1 = { 2, 0, 0, 7, 8, 0 };
         int[] input11 = { 2, 0, 0, 7, 8, 0 };
-        
+
         System.out.println("Input : " + Arrays.toString(input1) + " Output : "
                 + Arrays.toString(MoveZeroesToEnd.moveAllZeroesToEnd(input1)));
         System.out.println("Input : " + Arrays.toString(input11) + " Output : "
