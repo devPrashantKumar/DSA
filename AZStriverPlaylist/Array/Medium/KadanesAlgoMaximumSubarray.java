@@ -1,8 +1,9 @@
-package AZStriverPlaylist.Array;
+package AZStriverPlaylist.Array.Medium;
 
 import java.util.Arrays;
 
 public class KadanesAlgoMaximumSubarray {
+    // bruteforce approach - O(n^2)
     public static int maxSubarraySum(int[] arr){
         int maxSum = Integer.MIN_VALUE;
         for(int i=0;i<arr.length;i++){
@@ -15,6 +16,7 @@ public class KadanesAlgoMaximumSubarray {
         return maxSum;
     }
 
+    // another bruteforce approach - O(n^3)
     public static int maxSubarraySum2(int[] arr){
         int maxSum = Integer.MIN_VALUE;
         for(int i=0;i<arr.length;i++){
