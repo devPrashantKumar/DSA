@@ -1,5 +1,7 @@
 package AZStriverPlaylist.Heap;
 
+// video url : https://youtu.be/NFiYQGyL8rg?si=VMDO6B9va94Cox7N
+
 /*
  * The `buildHeap` process will not maintain the order of duplicates, 
  * making the algorithm unstable when duplicates are present. 
