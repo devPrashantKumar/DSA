@@ -31,6 +31,10 @@ public class KadanesAlgoMaximumSubarray {
         return maxSum;
     }
 
+    /*
+     * Time Complexity : O(n)
+     * Optimised approach - Kadanes Algorithm
+     */
     public static int maxSubarraySumKadanesAlgo(int[] arr){
         int maxSum = Integer.MIN_VALUE;
         int sum=0;
