@@ -3,13 +3,7 @@ package AZStriverPlaylist.Heap;
 // video url : https://youtu.be/NFiYQGyL8rg?si=VMDO6B9va94Cox7N
 
 /*
- * The `buildHeap` process will not maintain the order of duplicates, 
- * making the algorithm unstable when duplicates are present. 
- * However, if there are no duplicates during the buildHeap process, 
- * the algorithm is stable in this case.
- *
- * If elements are added one by one using insertion only (starting with an empty heap), 
- * the order of duplicates will be maintained, making the algorithm stable in this case.
+ * buildHeap and Heapify both are unstable
  */
 public class BinaryHeapClass {
     private int[] arr;
