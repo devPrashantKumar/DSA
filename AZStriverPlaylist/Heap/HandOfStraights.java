@@ -5,7 +5,8 @@ import java.util.stream.Collectors;
 
 public class HandOfStraights {
     /*
-     * Time Complexity : O(n*k log n) -> k = number of times element each readded in pq
+     * Time Complexity : O(n*k log n) -> k = number of times element each readded in
+     * pq
      * Space Complexity : O(n)
      */
     public static boolean isNStraightHandUsingMinHeap(int[] hand, int groupSize) {
@@ -61,11 +62,41 @@ public class HandOfStraights {
         return true;
     }
 
+    /*
+     * Time Complexity : O(n log n + n*m ) -> m = number of groups
+     * Space Complexity : O(1)
+     */
+    public static boolean isNStraightHandUsingArray(int[] hand, int groupSize) {
+        int[] arr = Arrays.copyOf(hand, hand.length);
+        Arrays.sort(arr);
+        while (true) {
+            boolean flag = false;
+            int count=0;
+            int lastCard=-1;
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] != -1) {
+                    flag = true;
+                    if(count!=0 && arr[i]==lastCard) continue;
+                    if(count!=0 && arr[i]!=lastCard+1) return false;
+                    count++;
+                    lastCard = arr[i];
+                    arr[i]=-1;
+                    if(count==groupSize) break;
+                }
+            }
+            if(flag==true && count!=groupSize) return false;
+            if (flag == false)
+                break;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         int[] input1 = { 1, 2, 3, 6, 2, 3, 4, 7, 8 };
         int groupSize1 = 3;
         System.out.println("Input1 : " + isNStraightHandUsingMinHeap(input1, groupSize1));
         System.out.println("Input1 : " + isNStraightHandUsingTreeMap(input1, groupSize1));
+        System.out.println("Input1 : " + isNStraightHandUsingArray(input1, groupSize1));
 
         System.out.println("==================================================");
 
@@ -73,6 +104,7 @@ public class HandOfStraights {
         int groupSize2 = 4;
         System.out.println("Input2 : " + isNStraightHandUsingMinHeap(input2, groupSize2));
         System.out.println("Input2 : " + isNStraightHandUsingTreeMap(input2, groupSize2));
+        System.out.println("Input1 : " + isNStraightHandUsingArray(input2, groupSize2));
 
         System.out.println("==================================================");
     }
