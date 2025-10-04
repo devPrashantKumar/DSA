@@ -75,6 +75,53 @@ public class MergekSortedLists {
         return head.next;
     }
 
+    /*
+     * Time Complexity : O(m * log n) -> m = max number of elements in certain node
+     * Space Complexity : O(1)
+     */
+    public static ListNode mergeKListsUsingDivideAndConquerOptimised(ListNode[] lists) {
+        if(lists==null || lists.length==0) return null;
+        return mergeKListsUsingDivideAndConquerUtil(lists,0,lists.length-1);
+    }
+
+    public static ListNode mergeKListsUsingDivideAndConquerUtil(ListNode[] lists, int start, int end) {
+        if(start==end) return lists[start];
+        int mid = start+(end-start)/2;
+        ListNode l1 = mergeKListsUsingDivideAndConquerUtil(lists, start, mid);
+        ListNode l2 = mergeKListsUsingDivideAndConquerUtil(lists, mid+1, end);
+        return mergeList2(l1,l2);
+    }
+
+    public static ListNode mergeList2(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode();
+        ListNode tail = head;
+        ListNode node=null;
+        while(l1!=null && l2!=null){
+            if(l1.val<=l2.val){
+                node = l1;
+                l1=l1.next;
+            }else{
+                node = l2;
+                l2 = l2.next;
+            }
+            tail.next = node;
+            tail = tail.next;
+        }
+        while(l1!=null){
+            node = l1;
+            l1=l1.next;
+            tail.next = node;
+            tail = tail.next;
+        }
+        while(l2!=null){
+            node = l2;
+            l2=l2.next;
+            tail.next = node;
+            tail = tail.next;
+        }
+        return head.next;
+    }
+
     public static void printList(ListNode list) {
         if (list == null) {
             System.out.println("list is empty");
@@ -97,10 +144,15 @@ public class MergekSortedLists {
                 new ListNode(1, new ListNode(3, new ListNode(4))),
                 new ListNode(2, new ListNode(6)) };
         printList(mergeKListsUsingHeap(lists11));
+        ListNode[] lists12 = { new ListNode(1, new ListNode(4, new ListNode(5))),
+                new ListNode(1, new ListNode(3, new ListNode(4))),
+                new ListNode(2, new ListNode(6)) };
+        printList(mergeKListsUsingDivideAndConquerOptimised(lists12));
         System.out.println("======================================================================");
         ListNode[] lists2 = {};
         printList(mergeKLists(lists2));
         printList(mergeKListsUsingHeap(lists2));
+        printList(mergeKListsUsingDivideAndConquerOptimised(lists2));
         System.out.println("======================================================================");
     }
 }
