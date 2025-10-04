@@ -64,5 +64,14 @@ public class TaskScheduler {
         char[] input1 = {'A','A','A','B','B','B'};
         int n1 = 2;
         System.out.println("Output : "+leastInterval(input1, n1));
+        System.out.println("-------------------------------------------------------");
+        char[] input2 = {'A','C','A','B','D','B'};
+        int n2 = 1;
+        System.out.println("Output : "+leastInterval(input2, n2));
+        System.out.println("-------------------------------------------------------");
+        char[] input3 = {'A','A','A','B','B','B'};
+        int n3 = 3;
+        System.out.println("Output : "+leastInterval(input3, n3));
+        System.out.println("-------------------------------------------------------");
     }
 }
