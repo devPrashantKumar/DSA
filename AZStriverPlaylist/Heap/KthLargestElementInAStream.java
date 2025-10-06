@@ -18,6 +18,10 @@ class KthLargest {
     Queue<Integer> pq;
     int k;
 
+    /*
+     * Space Complexity : O(k)
+     * Time Complexity : O(n log k)
+     */
     public KthLargest(int k, int[] nums) {
         pq = new PriorityQueue<>();
         this.k = k;
@@ -27,6 +31,9 @@ class KthLargest {
 
     }
 
+    /*
+     * Time Complexity : O(log k)
+     */
     public int add(int val) {
         if (pq.size() < k)
             pq.add(val);
