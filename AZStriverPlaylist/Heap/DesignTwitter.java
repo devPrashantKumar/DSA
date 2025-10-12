@@ -28,7 +28,7 @@ class Twitter {
     }
 
     Map<Integer, Set<Integer>> followMap;
-    Map<Integer, Set<Post>> userPost;
+    Map<Integer, List<Post>> userPost;
     int timeStamp = 0;
 
     public Twitter() {
@@ -37,20 +37,20 @@ class Twitter {
     }
 
     public void postTweet(int userId, int tweetId) {
-        userPost.putIfAbsent(userId, new HashSet<>());
+        userPost.putIfAbsent(userId, new ArrayList<>());
         userPost.get(userId).add(new Post(tweetId, timeStamp++));
     }
 
     /*
-     * TIme Complexity : O((k+10) log k)
+     * Time Complexity : O((k+10) log k)
      * k -> k = total number of posts , including self posts and follows posts
      */
     public List<Integer> getNewsFeed(int userId) {
         List<Integer> feed = new ArrayList<>();
         PriorityQueue<Post> pq = new PriorityQueue<>((a, b) -> b.timeStamp - a.timeStamp);
-        pq.addAll(userPost.getOrDefault(Integer.valueOf(userId), new HashSet<>()));
+        pq.addAll(userPost.getOrDefault(Integer.valueOf(userId), new ArrayList<>()));
         for (Integer followeeId : followMap.getOrDefault(userId, new HashSet<>())) {
-            pq.addAll(userPost.getOrDefault(followeeId, new HashSet<>()));
+            pq.addAll(userPost.getOrDefault(followeeId, new ArrayList<>()));
         }
         int i = 0;
         while (!pq.isEmpty() && i < 10) {

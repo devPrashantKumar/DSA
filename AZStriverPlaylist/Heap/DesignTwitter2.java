@@ -32,7 +32,7 @@ class Twitter {
         int userId;
         Post post;
 
-        PostFeed(int index, int userId,Post post) {
+        PostFeed(int index, int userId, Post post) {
             this.index = index;
             this.userId = userId;
             this.post = post;
@@ -40,7 +40,7 @@ class Twitter {
     }
 
     Map<Integer, Set<Integer>> followMap;
-    Map<Integer, Set<Post>> userPost;
+    Map<Integer, List<Post>> userPost;
     int timeStamp = 0;
 
     public Twitter() {
@@ -49,34 +49,39 @@ class Twitter {
     }
 
     public void postTweet(int userId, int tweetId) {
-        userPost.putIfAbsent(userId, new HashSet<>());
+        userPost.putIfAbsent(userId, new ArrayList<>());
         userPost.get(userId).add(new Post(tweetId, timeStamp++));
     }
 
     /*
-     * TIme Complexity : O((k+10) log k)
-     * k -> k = total number of posts , including self posts and follows posts
+     * More Optimised
+     * Time Complexity : O((k+10) log k)
+     * k -> k = total number of follows of an user
      */
     public List<Integer> getNewsFeed(int userId) {
         List<Integer> feed = new ArrayList<>();
-        PriorityQueue<Post> pq = new PriorityQueue<>((a, b) -> b.timeStamp - a.timeStamp);
-        pq.addAll(userPost.getOrDefault(Integer.valueOf(userId), new HashSet<>()));
+        PriorityQueue<PostFeed> postFeed = new PriorityQueue<>((a, b) -> b.post.timeStamp - a.post.timeStamp);
+        if (userPost.containsKey(userId)) {
+            List<Post> posts = userPost.get(userId);
+            postFeed.offer(new PostFeed(posts.size() - 1, userId, posts.get(posts.size() - 1)));
+        }
+
         for (Integer followeeId : followMap.getOrDefault(userId, new HashSet<>())) {
-            pq.addAll(userPost.getOrDefault(followeeId, new HashSet<>()));
+            if (userPost.containsKey(followeeId)) {
+                List<Post> posts = userPost.get(followeeId);
+                postFeed.offer(new PostFeed(posts.size() - 1, followeeId, posts.get(posts.size() - 1)));
+            }
         }
         int i = 0;
-        while (!pq.isEmpty() && i < 10) {
-            Post post = pq.poll();
-            feed.add(post.postId);
+        while (!postFeed.isEmpty() && i < 10) {
+            PostFeed singlePost = postFeed.poll();
+            feed.add(singlePost.post.postId);
+            if(singlePost.index!=0){
+                Post nextPost = userPost.get(singlePost.userId).get(singlePost.index-1);
+                postFeed.offer(new PostFeed(singlePost.index-1, singlePost.userId, nextPost));
+            }
             i++;
         }
-        return feed;
-    }
-
-    public List<Integer> getNewsFeed2(int userId) {
-        List<Integer> feed = new ArrayList<>();
-        PriorityQueue<PostFeed> postFeed = new PriorityQueue<>((a,b)->b.post.timeStamp-a.post.timeStamp);
-        userPost.get(userId)
 
         return feed;
     }
