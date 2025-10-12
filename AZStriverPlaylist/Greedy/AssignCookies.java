@@ -4,6 +4,9 @@ import java.util.*;
 
 public class AssignCookies {
 
+    /*
+     * Time Complexity : O(n log n + m log m + m)
+     */
     public static int findContentChildren(int[] greed, int[] cookies) {
         Arrays.sort(greed);
         Arrays.sort(cookies);
@@ -16,6 +19,9 @@ public class AssignCookies {
         return i;
     }
 
+    /*
+     * Time Complexity : O(n log n + m log m + n)
+     */
     public static int findContentChildren2(int[] greed, int[] cookies) {
         Arrays.sort(greed);
         Arrays.sort(cookies);
