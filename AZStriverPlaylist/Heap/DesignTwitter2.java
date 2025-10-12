@@ -2,7 +2,7 @@ package AZStriverPlaylist.Heap;
 
 import java.util.*;
 
-public class DesignTwitter {
+public class DesignTwitter2 {
     public static void main(String[] args) {
         Twitter twitter = new Twitter();
         twitter.postTweet(1, 5);
@@ -24,6 +24,18 @@ class Twitter {
         Post(int postId, int timeStamp) {
             this.postId = postId;
             this.timeStamp = timeStamp;
+        }
+    }
+
+    static class PostFeed {
+        int index;
+        int userId;
+        Post post;
+
+        PostFeed(int index, int userId,Post post) {
+            this.index = index;
+            this.userId = userId;
+            this.post = post;
         }
     }
 
@@ -58,6 +70,14 @@ class Twitter {
             feed.add(post.postId);
             i++;
         }
+        return feed;
+    }
+
+    public List<Integer> getNewsFeed2(int userId) {
+        List<Integer> feed = new ArrayList<>();
+        PriorityQueue<PostFeed> postFeed = new PriorityQueue<>((a,b)->b.post.timeStamp-a.post.timeStamp);
+        userPost.get(userId)
+
         return feed;
     }
 
