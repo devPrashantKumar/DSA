@@ -3,8 +3,26 @@ package AZStriverPlaylist.Greedy;
 import java.util.Arrays;
 
 public class ShortestJobFirstScheduling {
-
+    /*
+     * Time Complexity : O(nlogn + n)
+     * Space Complexity : O(1)
+     */
     public static long solve(int[] bt) {
+        Arrays.sort(bt);
+        long waitingTime=0;
+        long wait=0;
+        for(int i=0;i<bt.length;i++){
+            waitingTime += wait;
+            wait += bt[i];
+        }
+        return waitingTime/bt.length;
+    }
+
+    /*
+     * Time Complexity : O(nlogn + n)
+     * Space Complexity : O(1)
+     */
+    public static long solve2(int[] bt) {
         Arrays.sort(bt);
         long waitingTime=0;
         long wait=bt.length-1;
