@@ -14,6 +14,12 @@ public class CheckIfTheBinaryTreeHeightIsBalancedOrNot {
         }
     }
 
+    /*
+     * TIme Complexity : O(n)
+     * Space Complexity : O(h)
+     *      Balanced tree: h = log(n) → space = O(log n)
+     *      Skewed tree: h = n → space = O(n)
+     */
     public static boolean isBalanced(BinaryTreeNode root) {
         return isBalancedUtil(root).balanced;
     }
