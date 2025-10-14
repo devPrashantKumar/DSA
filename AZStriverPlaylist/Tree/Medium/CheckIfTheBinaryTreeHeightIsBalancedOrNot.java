@@ -1,0 +1,60 @@
+package AZStriverPlaylist.Tree.Medium;
+
+import java.util.Objects;
+
+import AZStriverPlaylist.Tree.BinaryTreeNode;
+
+public class CheckIfTheBinaryTreeHeightIsBalancedOrNot {
+    static class BalanceStatus {
+        boolean balanced;
+        int height;
+        BalanceStatus(boolean balanced, int height) {
+            this.balanced = balanced;
+            this.height = height;
+        }
+    }
+
+    public static boolean isBalanced(BinaryTreeNode root) {
+        return isBalancedUtil(root).balanced;
+    }
+
+    public static BalanceStatus isBalancedUtil(BinaryTreeNode root) {
+        if(Objects.isNull(root)) return new BalanceStatus(true,0);
+        BalanceStatus leftHeight = isBalancedUtil(root.left);
+        if(!leftHeight.balanced) return new BalanceStatus(false,0);
+        BalanceStatus rightHeight = isBalancedUtil(root.right);
+        if(!rightHeight.balanced) return new BalanceStatus(false,0);
+        if(Math.abs(leftHeight.height-rightHeight.height)>1) return new BalanceStatus(false,0);
+        return new BalanceStatus(true,Math.max(leftHeight.height, rightHeight.height)+1);
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeNode root1 = new BinaryTreeNode(
+                3,
+                new BinaryTreeNode(9),
+                new BinaryTreeNode(
+                        20,
+                        new BinaryTreeNode(15),
+                        new BinaryTreeNode(7)));
+        System.out.println(isBalanced(root1));
+        System.out.println("-------------------------------------------------");
+
+        BinaryTreeNode root2 = new BinaryTreeNode(
+                1,
+                new BinaryTreeNode(
+                    2,
+                    new BinaryTreeNode(
+                        3,
+                        new BinaryTreeNode(4),
+                        new BinaryTreeNode(4)
+                    ),
+                    new BinaryTreeNode(3)),
+                new BinaryTreeNode(2));
+        System.out.println(isBalanced(root2));
+        System.out.println("-------------------------------------------------");
+
+        BinaryTreeNode root3 = null;
+        System.out.println(isBalanced(root3));
+        System.out.println("-------------------------------------------------");
+    }
+}
