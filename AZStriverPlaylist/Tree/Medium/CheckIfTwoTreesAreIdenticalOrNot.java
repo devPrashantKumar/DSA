@@ -25,7 +25,7 @@ public class CheckIfTwoTreesAreIdenticalOrNot {
      * Time COmplexity : O(n)
      * Space Complexity : O(n)
      */
-    public static boolean isSameTreeUsingQueue(BinaryTreeNode p, BinaryTreeNode q) {
+    public static boolean isSameTreeUsingBFS(BinaryTreeNode p, BinaryTreeNode q) {
         Queue<BinaryTreeNode> queue1 = new LinkedList<>();
         Queue<BinaryTreeNode> queue2 = new LinkedList<>();
         if (p == null || q == null)
@@ -55,21 +55,21 @@ public class CheckIfTwoTreesAreIdenticalOrNot {
         BinaryTreeNode root11 = new BinaryTreeNode(1, new BinaryTreeNode(2), new BinaryTreeNode(3));
         BinaryTreeNode root12 = new BinaryTreeNode(1, new BinaryTreeNode(2), new BinaryTreeNode(3));
         System.out.println("Are Trees Identical " + isSameTree(root11, root12));
-        System.out.println("Are Trees Identical " + isSameTreeUsingQueue(root11, root12));
+        System.out.println("Are Trees Identical " + isSameTreeUsingBFS(root11, root12));
 
         System.out.println("----------------------------------------------------------------------------");
 
         BinaryTreeNode root21 = new BinaryTreeNode(1, new BinaryTreeNode(2), null);
         BinaryTreeNode root22 = new BinaryTreeNode(1, null, new BinaryTreeNode(2));
         System.out.println("Are Trees Identical " + isSameTree(root21, root22));
-        System.out.println("Are Trees Identical " + isSameTreeUsingQueue(root21, root22));
+        System.out.println("Are Trees Identical " + isSameTreeUsingBFS(root21, root22));
 
         System.out.println("----------------------------------------------------------------------------");
 
         BinaryTreeNode root31 = new BinaryTreeNode(1, new BinaryTreeNode(2), new BinaryTreeNode(1));
         BinaryTreeNode root32 = new BinaryTreeNode(1, new BinaryTreeNode(1), new BinaryTreeNode(2));
         System.out.println("Are Trees Identical " + isSameTree(root31, root32));
-        System.out.println("Are Trees Identical " + isSameTreeUsingQueue(root31, root32));
+        System.out.println("Are Trees Identical " + isSameTreeUsingBFS(root31, root32));
 
     }
 }
