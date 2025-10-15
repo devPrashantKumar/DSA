@@ -6,6 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import AZStriverPlaylist.Tree.BinaryTreeNode;
 
 public class DiameteOfBinaryTree {
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(h) h-> height of tree
+     */
     public static int diameterOfBinaryTree(BinaryTreeNode root) {
         if (Objects.isNull(root))
             return 0;
@@ -23,6 +27,10 @@ public class DiameteOfBinaryTree {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(h) h-> height of tree
+     */
     public static int diameterOfBinaryTreeApproach2(BinaryTreeNode root) {
         if (Objects.isNull(root))
             return 0;
