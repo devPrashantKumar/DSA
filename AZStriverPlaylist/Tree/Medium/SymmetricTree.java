@@ -50,14 +50,55 @@ public class SymmetricTree {
             if(node1==null && node2==null) continue;
             if(node1==null || node2==null) return false;
             if(node1.data!=node2.data) return false;
-            if(node1!=null){
-                queue1.offer(node1.left);
-                queue1.offer(node1.right);
-                queue2.offer(node2.right);
-                queue2.offer(node2.left);
-            }
+   
+            queue1.offer(node1.left);
+            queue1.offer(node1.right);
+            queue2.offer(node2.right);
+            queue2.offer(node2.left);
+            
         }
         return true;
+    }
+
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity :O(n)
+     */
+    public static boolean isSymmetricOptimised(BinaryTreeNode root) {
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        if(Objects.isNull(root)) return true;
+        queue.offer(root.left);
+        queue.offer(root.right);
+        while(!queue.isEmpty()){
+            BinaryTreeNode node1 = queue.poll();
+            BinaryTreeNode node2 = queue.poll();
+            if(node1==null && node2==null) continue;
+            if(node1==null || node2==null) return false;
+            if(node1.data!=node2.data) return false;
+   
+            queue.offer(node1.left);
+            queue.offer(node2.right);
+            queue.offer(node1.right);
+            queue.offer(node2.left);
+            
+        }
+        return true;
+    }
+
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity :O(h), h is height of tree
+     */
+    public static boolean isSymmetricMostOptimised(BinaryTreeNode root) {
+        return root == null || isMirror(root.left, root.right);
+    }
+
+    public static boolean isMirror(BinaryTreeNode left, BinaryTreeNode right) {
+        if (left == null && right == null) return true;
+        if (left == null || right == null) return false;
+        return left.data == right.data &&
+           isMirror(left.left, right.right) &&
+           isMirror(left.right, right.left);
     }
 
     public static void main(String[] args) {
@@ -76,6 +117,8 @@ public class SymmetricTree {
             );
         System.out.println(isSymmetric(root1));
         System.out.println(isSymmetricMoreOptimised(root1));
+        System.out.println(isSymmetricOptimised(root1));
+
         System.out.println("-------------------------------------------------");
 
         BinaryTreeNode root2 = new BinaryTreeNode(
@@ -93,6 +136,8 @@ public class SymmetricTree {
             );
         System.out.println(isSymmetric(root2));
         System.out.println(isSymmetricMoreOptimised(root2));
+        System.out.println(isSymmetricOptimised(root2));
+
         System.out.println("-------------------------------------------------");
         System.out.println("-------------------------------------------------");
     }
