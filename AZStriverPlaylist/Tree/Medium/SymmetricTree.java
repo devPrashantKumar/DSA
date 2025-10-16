@@ -55,7 +55,6 @@ public class SymmetricTree {
             queue1.offer(node1.right);
             queue2.offer(node2.right);
             queue2.offer(node2.left);
-            
         }
         return true;
     }
@@ -80,7 +79,6 @@ public class SymmetricTree {
             queue.offer(node2.right);
             queue.offer(node1.right);
             queue.offer(node2.left);
-            
         }
         return true;
     }
