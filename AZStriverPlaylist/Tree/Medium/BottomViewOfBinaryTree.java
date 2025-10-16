@@ -16,6 +16,10 @@ public class BottomViewOfBinaryTree {
         }
     }
 
+    /*
+     * Time Complexity : O(n log k), where k = number of unique columns (diameter of binary tree)
+     * Space Complexity : O(n)
+     */
     public static List<Integer> bottomView(BinaryTreeNode root) {
         Queue<NodeDetails> queue = new LinkedList<>();
         TreeMap<Integer,Integer> tmap = new TreeMap<>();
