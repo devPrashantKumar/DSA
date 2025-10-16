@@ -34,6 +34,23 @@ public class BinaryTreeRightSideView {
         return rightView;
     }
 
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(h), where h is height of tree
+     */
+    public static List<Integer> rightSideViewRecursive(BinaryTreeNode root) {
+        List<Integer> rightView = new ArrayList<>();
+        rightSideViewRecursiveUtil(root,0,rightView);
+        return rightView;
+    }
+
+    public static void rightSideViewRecursiveUtil(BinaryTreeNode root, int label, List<Integer> rightView) {
+        if (Objects.isNull(root)) return;
+        if(label==rightView.size()) rightView.add(root.data);
+        rightSideViewRecursiveUtil(root.right,label+1,rightView);
+        rightSideViewRecursiveUtil(root.left,label+1,rightView);
+    }
+
     public static void main(String[] args) {
         BinaryTreeNode root1 = new BinaryTreeNode(
                 1,
@@ -49,6 +66,7 @@ public class BinaryTreeRightSideView {
                 )
             );
         System.out.println(rightSideView(root1));
+        System.out.println(rightSideViewRecursive(root1));
 
         System.out.println("-------------------------------------------------");
 
@@ -64,6 +82,7 @@ public class BinaryTreeRightSideView {
                 new BinaryTreeNode(3)
             );
         System.out.println(rightSideView(root2));
+        System.out.println(rightSideViewRecursive(root2));
 
         System.out.println("-------------------------------------------------");
 
@@ -73,11 +92,13 @@ public class BinaryTreeRightSideView {
                 new BinaryTreeNode(3)
             );
         System.out.println(rightSideView(root3));
+        System.out.println(rightSideViewRecursive(root3));
 
         System.out.println("-------------------------------------------------");
 
         BinaryTreeNode root4 = null;
         System.out.println(rightSideView(root4));
+        System.out.println(rightSideViewRecursive(root4));
 
         System.out.println("-------------------------------------------------");
     }

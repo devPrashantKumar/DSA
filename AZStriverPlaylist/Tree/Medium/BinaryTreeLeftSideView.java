@@ -34,6 +34,23 @@ public class BinaryTreeLeftSideView {
         return leftView;
     }
 
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(h), where h is height of tree
+     */
+    public static List<Integer> leftSideViewRecursive(BinaryTreeNode root) {
+        List<Integer> leftView = new ArrayList<>();
+        leftSideViewRecursiveUtil(root,0,leftView);
+        return leftView;
+    }
+
+    public static void leftSideViewRecursiveUtil(BinaryTreeNode root, int label, List<Integer> leftView) {
+        if (Objects.isNull(root)) return;
+        if(label==leftView.size()) leftView.add(root.data);
+        leftSideViewRecursiveUtil(root.left,label+1,leftView);
+        leftSideViewRecursiveUtil(root.right,label+1,leftView);
+    }
+
     public static void main(String[] args) {
         BinaryTreeNode root1 = new BinaryTreeNode(
                 1,
@@ -49,7 +66,7 @@ public class BinaryTreeLeftSideView {
                 )
             );
         System.out.println(leftSideView(root1));
-
+        System.out.println(leftSideViewRecursive(root1));
         System.out.println("-------------------------------------------------");
 
         BinaryTreeNode root2 = new BinaryTreeNode(
@@ -64,7 +81,7 @@ public class BinaryTreeLeftSideView {
                 new BinaryTreeNode(3)
             );
         System.out.println(leftSideView(root2));
-
+        System.out.println(leftSideViewRecursive(root2));
         System.out.println("-------------------------------------------------");
 
         BinaryTreeNode root3 = new BinaryTreeNode(
@@ -73,12 +90,12 @@ public class BinaryTreeLeftSideView {
                 new BinaryTreeNode(3)
             );
         System.out.println(leftSideView(root3));
-
+        System.out.println(leftSideViewRecursive(root3));
         System.out.println("-------------------------------------------------");
 
         BinaryTreeNode root4 = null;
         System.out.println(leftSideView(root4));
-
+        System.out.println(leftSideViewRecursive(root4));
         System.out.println("-------------------------------------------------");
     }
 }
