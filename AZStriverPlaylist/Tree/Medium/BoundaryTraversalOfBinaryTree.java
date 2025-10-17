@@ -7,6 +7,10 @@ import java.util.Stack;
 import AZStriverPlaylist.Tree.BinaryTreeNode;
 
 public class BoundaryTraversalOfBinaryTree {
+    /*
+      * Time Complexity : O(h+n+h+h) -> O(n)
+      * Space Complexity : O(h), h is height of tree
+      */
     public static List<Integer> boundary(BinaryTreeNode root) {
         List<Integer> boundary = new ArrayList<>();
         Stack<Integer> stk = new Stack<>();
