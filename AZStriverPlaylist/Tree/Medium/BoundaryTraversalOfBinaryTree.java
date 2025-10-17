@@ -22,7 +22,7 @@ public class BoundaryTraversalOfBinaryTree {
             node = (node.left != null) ? node.left : node.right;
         }
         inorder(root,boundary);
-        node = root.right;;
+        node = root.right;
         while(node!=null){
             if(node.left!=null || node.right!=null) stk.push(node.data);
             node = (node.right!=null) ? node.right : node.left;
