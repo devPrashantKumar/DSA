@@ -6,31 +6,43 @@ import java.util.Stack;
 
 import AZStriverPlaylist.Tree.BinaryTreeNode;
 
-public class BoundaryTraversalOfBinaryTree {
+public class BoundaryTraversalOfBinaryTree2 {
     public static List<Integer> boundary(BinaryTreeNode root) {
         List<Integer> boundary = new ArrayList<>();
         Stack<Integer> stk = new Stack<>();
-        if(root==null) return boundary;
+        if (root == null)
+            return boundary;
         BinaryTreeNode node = root;
-        while(node != null) {
-            if (node.left != null || node.right != null)
-                boundary.add(node.data);
-            node = (node.left != null) ? node.left : node.right;
+        while (true) {
+            if (node.left == null && node.right == null)
+                break;
+            boundary.add(node.data);
+            if (node.left != null)
+                node = node.left;
+            else if (node.right != null)
+                node = node.right;
         }
-        inorder(root,boundary);
-        node = root.right;;
-        while(node!=null){
-            if(node.left!=null || node.right!=null) stk.push(node.data);
-            node = (node.right!=null) ? node.right : node.left;
-            
+        inorder(root, boundary);
+        node = root.right;
+        while (node!=null) {
+            if (node.left == null && node.right == null)
+                break;
+            stk.push(node.data);
+            if (node.right != null)
+                node = node.right;
+            else if (node.left != null)
+                node = node.left;
         }
-        while(!stk.isEmpty()) boundary.add(stk.pop());
+        while (!stk.empty())
+            boundary.add(stk.pop());
         return boundary;
     }
 
-    public static void inorder(BinaryTreeNode root, List<Integer> boundary){
-        if(root==null) return;
-        if(root.left==null && root.right==null) boundary.add(root.data);
+    public static void inorder(BinaryTreeNode root, List<Integer> boundary) {
+        if (root == null)
+            return;
+        if (root.left == null && root.right == null)
+            boundary.add(root.data);
         inorder(root.left, boundary);
         inorder(root.right, boundary);
     }
