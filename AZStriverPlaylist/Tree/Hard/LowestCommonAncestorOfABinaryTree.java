@@ -8,7 +8,7 @@ import AZStriverPlaylist.Tree.BinaryTreeNode;
 public class LowestCommonAncestorOfABinaryTree {
     /*
      * Time Complexity : O(n + log n)
-     * Space COmplexity : O(log n)
+     * Space Complexity : O(log n)
      */
     public static BinaryTreeNode lowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
         List<List<BinaryTreeNode>> paths = new ArrayList<>();
@@ -39,7 +39,7 @@ public class LowestCommonAncestorOfABinaryTree {
 
     /*
      * Time Complexity : O(n)
-     * Space COmplexity : O(log n)
+     * Space Complexity : O(log n)
      */
     public static BinaryTreeNode lowestCommonAncestorUsingRecusion(BinaryTreeNode root, BinaryTreeNode p,
             BinaryTreeNode q) {
