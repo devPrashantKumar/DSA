@@ -14,61 +14,61 @@ public class DesignTwitter {
         System.out.println(twitter.getNewsFeed(1));
     }
 
-}
+    static class Twitter {
+        static class Post {
+            int postId;
+            int timeStamp;
 
-class Twitter {
-    static class Post {
-        int postId;
-        int timeStamp;
+            Post(int postId, int timeStamp) {
+                this.postId = postId;
+                this.timeStamp = timeStamp;
+            }
+        }
 
-        Post(int postId, int timeStamp) {
-            this.postId = postId;
-            this.timeStamp = timeStamp;
+        Map<Integer, Set<Integer>> followMap;
+        Map<Integer, List<Post>> userPost;
+        int timeStamp = 0;
+
+        public Twitter() {
+            followMap = new HashMap<>();
+            userPost = new HashMap<>();
+        }
+
+        public void postTweet(int userId, int tweetId) {
+            userPost.putIfAbsent(userId, new ArrayList<>());
+            userPost.get(userId).add(new Post(tweetId, timeStamp++));
+        }
+
+        /*
+         * Time Complexity : O((k+10) log k)
+         * k -> k = total number of posts , including self posts and follows posts
+         */
+        public List<Integer> getNewsFeed(int userId) {
+            List<Integer> feed = new ArrayList<>();
+            PriorityQueue<Post> pq = new PriorityQueue<>((a, b) -> b.timeStamp - a.timeStamp);
+            pq.addAll(userPost.getOrDefault(Integer.valueOf(userId), new ArrayList<>()));
+            for (Integer followeeId : followMap.getOrDefault(userId, new HashSet<>())) {
+                pq.addAll(userPost.getOrDefault(followeeId, new ArrayList<>()));
+            }
+            int i = 0;
+            while (!pq.isEmpty() && i < 10) {
+                Post post = pq.poll();
+                feed.add(post.postId);
+                i++;
+            }
+            return feed;
+        }
+
+        public void follow(int followerId, int followeeId) {
+            followMap.putIfAbsent(followerId, new HashSet<>());
+            followMap.get(followerId).add(followeeId);
+        }
+
+        public void unfollow(int followerId, int followeeId) {
+            if (followMap.containsKey(followerId)) {
+                followMap.get(followerId).remove(followeeId);
+            }
         }
     }
 
-    Map<Integer, Set<Integer>> followMap;
-    Map<Integer, List<Post>> userPost;
-    int timeStamp = 0;
-
-    public Twitter() {
-        followMap = new HashMap<>();
-        userPost = new HashMap<>();
-    }
-
-    public void postTweet(int userId, int tweetId) {
-        userPost.putIfAbsent(userId, new ArrayList<>());
-        userPost.get(userId).add(new Post(tweetId, timeStamp++));
-    }
-
-    /*
-     * Time Complexity : O((k+10) log k)
-     * k -> k = total number of posts , including self posts and follows posts
-     */
-    public List<Integer> getNewsFeed(int userId) {
-        List<Integer> feed = new ArrayList<>();
-        PriorityQueue<Post> pq = new PriorityQueue<>((a, b) -> b.timeStamp - a.timeStamp);
-        pq.addAll(userPost.getOrDefault(Integer.valueOf(userId), new ArrayList<>()));
-        for (Integer followeeId : followMap.getOrDefault(userId, new HashSet<>())) {
-            pq.addAll(userPost.getOrDefault(followeeId, new ArrayList<>()));
-        }
-        int i = 0;
-        while (!pq.isEmpty() && i < 10) {
-            Post post = pq.poll();
-            feed.add(post.postId);
-            i++;
-        }
-        return feed;
-    }
-
-    public void follow(int followerId, int followeeId) {
-        followMap.putIfAbsent(followerId, new HashSet<>());
-        followMap.get(followerId).add(followeeId);
-    }
-
-    public void unfollow(int followerId, int followeeId) {
-        if (followMap.containsKey(followerId)) {
-            followMap.get(followerId).remove(followeeId);
-        }
-    }
 }
