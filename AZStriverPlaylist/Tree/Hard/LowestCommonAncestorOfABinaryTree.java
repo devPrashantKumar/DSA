@@ -26,7 +26,7 @@ public class LowestCommonAncestorOfABinaryTree {
 
     public static void rootToNodeBacktrackingUtil(BinaryTreeNode root, List<BinaryTreeNode> path, BinaryTreeNode p,
             BinaryTreeNode q, List<List<BinaryTreeNode>> paths) {
-        if (root == null)
+        if (root == null || paths.size() == 2) // early stop before exploring deeper found both paths
             return;
         path.add(root);
         if (root == p || root == q) {
@@ -50,9 +50,9 @@ public class LowestCommonAncestorOfABinaryTree {
         BinaryTreeNode right = lowestCommonAncestorUsingRecusion(root.right, p, q);
 
         if (left == null)
-            root = right;
-        else if (right == null)
-            root = left;
+            return right;
+        if (right == null)
+            return left;
         return root;
     }
 
