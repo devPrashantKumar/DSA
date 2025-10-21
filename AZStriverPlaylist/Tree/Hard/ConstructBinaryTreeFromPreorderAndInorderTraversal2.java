@@ -29,7 +29,6 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal2 {
     public static BinaryTreeNode buildTreeUtil(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> inOrderIndex) {
         if(inStart>inEnd) return null;
         BinaryTreeNode node = new BinaryTreeNode(preorder[preStart]);
-        // will work only if nodes are not repeated
         int index = inOrderIndex.get(preorder[preStart]);
         //findPreInInorder(preorder[preStart],inorder,inStart,inEnd);
         int leftSide = index-inStart;
