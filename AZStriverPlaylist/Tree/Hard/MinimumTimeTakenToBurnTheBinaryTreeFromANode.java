@@ -5,6 +5,10 @@ import java.util.*;
 import AZStriverPlaylist.Tree.BinaryTreeNode;
 
 public class MinimumTimeTakenToBurnTheBinaryTreeFromANode {
+    /**
+     * Time Complexity: O(N), -> Each node is visited at most twice.
+     * Space Complexity: O(N), -> For queue, parentMap, and visited set.
+     */
     public static Map<BinaryTreeNode, BinaryTreeNode> extractParMap(BinaryTreeNode root) {
         Map<BinaryTreeNode, BinaryTreeNode> parentMap = new HashMap<>();
         Queue<BinaryTreeNode> queue = new LinkedList<>();
@@ -36,6 +40,7 @@ public class MinimumTimeTakenToBurnTheBinaryTreeFromANode {
         if(target==null) return -1;
 
         Queue<BinaryTreeNode> queue = new LinkedList<>();
+        // this approach will fail in case of graph
         // Set<BinaryTreeNode> processed = new HashSet<>();
         // int burnTime=-1;
         // queue.offer(target);
