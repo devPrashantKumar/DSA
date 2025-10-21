@@ -1,20 +1,16 @@
 package AZStriverPlaylist.Tree.Hard;
 
-import java.util.*;
 import AZStriverPlaylist.Tree.BinaryTreeNode;
 import AZStriverPlaylist.Tree.BinaryTreeTraversal;
 
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
-    // public Map<Integer,Integer> extractInorderIndex(int[] inorder){
-    //     Map<Integer, Integer> inOrderIndex = new HashMap<>();
-    //     for(int i=0;i<inorder.length;i++){
-    //         inOrderIndex.put(inorder[i], i);
-    //     }
-    //     return inOrderIndex;
-    // }
+    /*
+     * Time Complexity : O(n^2)
+     *      - O(n) computation
+     *      - O(n) index find
+     * Space Complexity : O(h), h is height of tree 
+     */
     public static BinaryTreeNode buildTree(int[] preorder, int[] inorder) {
-        //Map<Integer, Integer> inOrderIndex = new HashMap<>();
-
         return buildTreeUtil(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
     }
 

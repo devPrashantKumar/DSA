@@ -12,6 +12,14 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal2 {
         }
         return inOrderIndex;
     }
+
+        /*
+     * Time Complexity : O(n)
+     *      - O(n) computation
+     *      - O(1) index find
+     * Space Complexity : O(h)+O(n), h is height of tree, n nodes in inorder
+     */
+
     public static BinaryTreeNode buildTree(int[] preorder, int[] inorder) {
         Map<Integer, Integer> inOrderIndex = extractInorderIndex(inorder);
 
@@ -21,6 +29,7 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal2 {
     public static BinaryTreeNode buildTreeUtil(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> inOrderIndex) {
         if(inStart>inEnd) return null;
         BinaryTreeNode node = new BinaryTreeNode(preorder[preStart]);
+        // will work only if nodes are not repeated
         int index = inOrderIndex.get(preorder[preStart]);
         //findPreInInorder(preorder[preStart],inorder,inStart,inEnd);
         int leftSide = index-inStart;
