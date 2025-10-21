@@ -50,4 +50,23 @@ public class PrintAllTheNodesAtADistanceOfKInABinaryTree {
 
         return result;
     }
+
+    public static void main(String[] args) {
+        BinaryTreeNode root1 = new BinaryTreeNode(
+                3,
+                new BinaryTreeNode(
+                        5,
+                        new BinaryTreeNode(6),
+                        new BinaryTreeNode(
+                            2,
+                            new BinaryTreeNode(7),
+                            new BinaryTreeNode(4))),
+                new BinaryTreeNode(
+                    1,
+                    new BinaryTreeNode(0),
+                    new BinaryTreeNode(8)));
+        System.out.println(distanceK(root1, root1.left,2));
+
+        System.out.println("-------------------------------------------------");
+    }
 }
