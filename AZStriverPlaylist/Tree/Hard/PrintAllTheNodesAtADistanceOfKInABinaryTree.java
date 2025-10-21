@@ -32,7 +32,7 @@ public class PrintAllTheNodesAtADistanceOfKInABinaryTree {
         Set<BinaryTreeNode> visited = new HashSet<>();
         queue.offer(target);
         // this visited approach will fail in case of graph
-        while (k-- > 0) {
+        while (k-- > 0 && !queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 BinaryTreeNode node = queue.poll();
@@ -96,6 +96,11 @@ public class PrintAllTheNodesAtADistanceOfKInABinaryTree {
                         new BinaryTreeNode(0),
                         new BinaryTreeNode(8)));
         System.out.println(distanceK(root1, root1.left, 2));
+
+        System.out.println("-------------------------------------------------");
+
+        BinaryTreeNode root2 = new BinaryTreeNode(1);
+        System.out.println(distanceK(root2, root2, 3));
 
         System.out.println("-------------------------------------------------");
     }
