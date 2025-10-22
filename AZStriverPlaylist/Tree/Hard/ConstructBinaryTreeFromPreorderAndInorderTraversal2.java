@@ -30,18 +30,10 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal2 {
         if(inStart>inEnd) return null;
         BinaryTreeNode node = new BinaryTreeNode(preorder[preStart]);
         int index = inOrderIndex.get(preorder[preStart]);
-        //findPreInInorder(preorder[preStart],inorder,inStart,inEnd);
         int leftSide = index-inStart;
         node.left = buildTreeUtil(preorder, preStart+1, preStart+leftSide, inorder, inStart, index-1, inOrderIndex);
         node.right = buildTreeUtil(preorder,  preStart+leftSide+1, preEnd, inorder, index+1, inEnd, inOrderIndex);
         return node;
-    }
-
-    public static int findPreInInorder(int pre, int[] inorder, int inStart, int inEnd){
-        for(int i=inStart;i<=inEnd;i++){
-            if(inorder[i]==pre) return i;
-        }
-        return -1;
     }
 
     public static void main(String[] args) {
