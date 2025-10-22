@@ -5,32 +5,33 @@ import java.util.*;
 import AZStriverPlaylist.Tree.BinaryTreeNode;
 
 public class SerializeAndDeserializeBinaryTree {
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(n)
+     */
     public static String serialize(BinaryTreeNode root) {
         Queue<BinaryTreeNode> queue = new LinkedList<>();
         StringBuilder str = new StringBuilder();
         if (root == null)
             return str.toString();
         queue.offer(root);
-        str.append(root.data + "#");
         while (!queue.isEmpty()) {
             BinaryTreeNode node = queue.poll();
+            if(node==null) str.append("n#");
+            else str.append(node.data + "#");
+
             if (node != null) {
                 queue.offer(node.left);
                 queue.offer(node.right);
-                if (node.left != null)
-                    str.append(node.left.data + "#");
-                else
-                    str.append("n#");
-                if (node.right != null)
-                    str.append(node.right.data + "#");
-                else
-                    str.append("n#");
             }
         }
         return str.toString();
     }
 
-    // Decodes your encoded data to tree.
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(n)
+     */
     public static BinaryTreeNode deserialize(String SerialisedData) {
         Queue<BinaryTreeNode> queue = new LinkedList<>();
         String[] parts = SerialisedData.split("#");
