@@ -1,5 +1,8 @@
 package AZStriverPlaylist.Graph.ProblemsOnBFSAndDFS;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class NumberOfProvinces {
     public static int findCircleNum(int[][] isConnected) {
         boolean[] visited = new boolean[isConnected.length];
@@ -22,13 +25,40 @@ public class NumberOfProvinces {
         }
     }
 
+    public static int findCircleNumUsingBFS(int[][] isConnected) {
+        boolean[] visited = new boolean[isConnected.length];
+        Queue<Integer> queue = new LinkedList<>();
+        int provinces=0;
+        for(int i=0;i<isConnected.length;i++){
+            if(!visited[i]){
+                queue.offer(i);
+                visited[i]=true;
+                provinces++;
+                while(!queue.isEmpty()){
+                    Integer vertex = queue.poll();
+                    for(int j=0;j<isConnected[vertex].length;j++){
+                        if(isConnected[vertex][j]==1 && !visited[j]){
+                            queue.offer(j);
+                            visited[j]=true;
+                        }
+                    }
+                }
+            }
+        }
+        return provinces;
+    }
+
     public static void main(String[] args) {
         int[][] isConnected1 = {{1,1,0},{1,1,0},{0,0,1}};
         System.out.println("provinces : "+findCircleNum(isConnected1));
+        System.out.println("provinces : "+findCircleNumUsingBFS(isConnected1));
+
         System.out.println("-------------------------------------------------------------");
 
         int[][] isConnected2 = {{1,0,0},{0,1,0},{0,0,1}};
         System.out.println("provinces : "+findCircleNum(isConnected2));
+        System.out.println("provinces : "+findCircleNumUsingBFS(isConnected2));
+
         System.out.println("-------------------------------------------------------------");
     }
     

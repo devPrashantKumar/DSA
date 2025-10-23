@@ -1,6 +1,8 @@
-package AZStriverPlaylist.Graph.Learning;
+package AZStriverPlaylist.Graph.ProblemsOnBFSAndDFS;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class NumberOfConnectedComponentsInGraph {
     /*
@@ -31,15 +33,43 @@ public class NumberOfConnectedComponentsInGraph {
         } 
     }
 
+
+    public static int findNumberOfComponentUsingBFS(int V, List<List<Integer>> edges) {
+        int count = 0;
+        int[] visited = new int[V];
+        Queue<Integer> queue = new LinkedList<>();
+        for(int i=0;i<V;i++){
+            if(visited[i]==0){
+                queue.offer(i);
+                visited[i] = 1;
+                count++;
+                while (!queue.isEmpty()) {
+                    Integer vertex = queue.poll();
+                    for(int j=0;j<edges.get(vertex).size();j++){
+                        if(visited[edges.get(vertex).get(j)]==0){
+                            queue.offer(edges.get(vertex).get(j));
+                            visited[edges.get(vertex).get(j)] = 1;
+                        }
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         int V1 = 4;
         List<List<Integer>> edges1 = List.of(List.of(1),List.of(2,0), List.of(1),List.of());
         System.out.println(findNumberOfComponent(V1,edges1));
+        System.out.println(findNumberOfComponentUsingBFS(V1,edges1));
+
         System.out.println("----------------------------------------------------------------------");
 
         int V2 = 7;
         List<List<Integer>> edges2 = List.of(List.of(1),List.of(0,2), List.of(1,3),List.of(2),List.of(5),List.of(4),List.of());
         System.out.println(findNumberOfComponent(V2,edges2));
+        System.out.println(findNumberOfComponentUsingBFS(V2,edges2));
+
         System.out.println("----------------------------------------------------------------------");
     }
 }
