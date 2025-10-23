@@ -60,31 +60,13 @@ public class AdjacencyMatrixClass {
         return traversalResult;
     }
 
-    public int[] DFSInAdjacencyMatrix(){
-        int[] traversalResult = new int[vertices];
-        Stack<Integer> stk = new Stack<>();
-        int[] visited = new int[vertices];
-        int k = 0;
-        for (int v = 0; v < visited.length; v++) {
-            if (visited[v] == 0) {
-                stk.add(v);
-                visited[v] = 1;
-                while (!stk.isEmpty()) {
-                    Integer vertex = stk.pop();
-                    traversalResult[k++] = vertex;
-                    for (int i = 0; i < adjacencyMatrix[vertex].length; i++) {
-                        if (adjacencyMatrix[vertex][i] != 0 && visited[i] == 0) {
-                            stk.add(i);
-                            visited[i] = 1;
-                        }
-                    }
-                }
-            }
-        }
-        return traversalResult;
-    }
-
-
+    /*⚠️ Issue: When to mark visited[vertex]
+        although time complexity is same, but still it will takw more time.
+        You’re marking visited[vertex] = 1 after dequeuing (inside the loop).
+        That’s logically correct, but less efficient, because it allows the same vertex to be added to the queue multiple times before it’s visited — especially in dense graphs.
+        🧠 Better approach:
+        Mark it as visited when you enqueue it — so you never enqueue the same node twice. (BFSInAdjacencyMatrix is efficient implementation)
+    */
     public int[] BFSInAdjacencyMatrix2() {
         int[] traversalResult = new int[vertices];
         Queue<Integer> queue = new LinkedList<>();
@@ -110,6 +92,37 @@ public class AdjacencyMatrixClass {
         return traversalResult;
     }
 
+
+    public int[] DFSInAdjacencyMatrix(){
+        int[] traversalResult = new int[vertices];
+        Stack<Integer> stk = new Stack<>();
+        int[] visited = new int[vertices];
+        int k = 0;
+        for (int v = 0; v < visited.length; v++) {
+            if (visited[v] == 0) {
+                stk.add(v);
+                visited[v] = 1;
+                while (!stk.isEmpty()) {
+                    Integer vertex = stk.pop();
+                    traversalResult[k++] = vertex;
+                    for (int i = 0; i < adjacencyMatrix[vertex].length; i++) {
+                        if (adjacencyMatrix[vertex][i] != 0 && visited[i] == 0) {
+                            stk.add(i);
+                            visited[i] = 1;
+                        }
+                    }
+                }
+            }
+        }
+        return traversalResult;
+    }
+
+    /*
+     * Time Complexity : O(V)+O(V^2)=O(V^2)
+     * Space Complexity : O(V)+O(V)=O(V),
+     *      - O(V), space occupied by visited
+     *      - O(V), max recursive depth dfs will go if all vertex are in linear chain
+     */
     public int[] DFSInAdjacencyMatrix2(){
         List<Integer> traversalResult = new ArrayList<>();
         int[] visited = new int[vertices];
