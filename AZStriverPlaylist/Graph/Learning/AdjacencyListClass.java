@@ -88,7 +88,13 @@ public class AdjacencyListClass {
         }
         return traversalResult;
     }
-
+    
+    /*
+     * Time Complexity : O(V+2E)=O(V+E)
+     * Space Complexity :O(V)+O(V)=O(V),
+     *      - O(V), space occupied by visited
+     *      - O(V), max recursive depth dfs will go if all vertex are in linear chain
+     */
     public int[] DFSInAdjacencyListRecursion() {
         List<Integer> traversalResult = new ArrayList<>();
         int[] visited = new int[vertices];
