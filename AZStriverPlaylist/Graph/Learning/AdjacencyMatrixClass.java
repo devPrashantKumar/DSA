@@ -30,6 +30,12 @@ public class AdjacencyMatrixClass {
         System.out.println();
     }
 
+    /*
+     * Time Complexity : O(V)+O(V^2)=O(V^2)
+     * Space Complexity : O(V)+O(V)=O(V),
+     *      - O(V), space occupied by visited
+     *      - O(V), space occupied by queue
+     */
     public int[] BFSInAdjacencyMatrix() {
         int[] traversalResult = new int[vertices];
         Queue<Integer> queue = new LinkedList<>();

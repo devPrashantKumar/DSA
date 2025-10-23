@@ -35,6 +35,12 @@ public class AdjacencyListClass {
         System.out.println();
     }
 
+    /*
+     * Time Complexity : O(V+2E)=O(V+E)
+     * Space Complexity : O(V)+O(V)=O(V),
+     *      - O(V), space occupied by visited
+     *      - O(V), space occupied by queue
+     */
     public int[] BFSInAdjacencyList() {
         int[] traversalResult = new int[vertices];
         Queue<Integer> queue = new LinkedList<>();
