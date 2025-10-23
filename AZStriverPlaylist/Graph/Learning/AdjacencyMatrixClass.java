@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Graph;
+package AZStriverPlaylist.Graph.Learning;
 
 import java.util.*;
 
