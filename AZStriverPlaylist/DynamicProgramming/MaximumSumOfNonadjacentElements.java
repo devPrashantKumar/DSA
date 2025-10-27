@@ -110,6 +110,14 @@ public class MaximumSumOfNonadjacentElements {
         System.out.println(maxNonAdjacentSumDPTabulationSpaceOptimised(nums2));
         System.out.println(maxNonAdjacentSumDPTabulationSpaceOptimised2(nums2));
         System.out.println("--------------------------------------------------------------------");
+
+        int[] nums3 = {  };
+        System.out.println(maxNonAdjacentSum(nums3));
+        System.out.println(maxNonAdjacentSumDPMemoization(nums3));
+        System.out.println(maxNonAdjacentSumDPTabulation(nums3)); 
+        System.out.println(maxNonAdjacentSumDPTabulationSpaceOptimised(nums3));
+        System.out.println(maxNonAdjacentSumDPTabulationSpaceOptimised2(nums3));
+        System.out.println("--------------------------------------------------------------------");
     }
 
 }
