@@ -5,10 +5,12 @@ import java.util.Arrays;
 public class HouseRobberII {
 
     public static int robCircular(int[] nums) {
-        if(nums==null || nums.length==0) return 0;
-        if(nums.length==1) return nums[0];
+        if (nums == null || nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
         int notSelect = robCircularUtil(nums, 0, nums.length - 2);
-        int select = nums[nums.length-1]+robCircularUtil(nums, 1, nums.length - 3);
+        int select = nums[nums.length - 1] + robCircularUtil(nums, 1, nums.length - 3);
         return Math.max(notSelect, select);
     }
 
@@ -21,8 +23,10 @@ public class HouseRobberII {
     }
 
     public static int robCircular2(int[] nums) {
-        if(nums==null || nums.length==0) return 0;
-        if(nums.length==1) return nums[0];
+        if (nums == null || nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
         int notSelect = robCircularUtil2(nums, 0, nums.length - 2);
         int select = robCircularUtil2(nums, 1, nums.length - 1);
         return Math.max(notSelect, select);
@@ -37,8 +41,10 @@ public class HouseRobberII {
     }
 
     public static int robCircularMemoization(int[] nums) {
-        if(nums==null || nums.length==0) return 0;
-        if(nums.length==1) return nums[0];
+        if (nums == null || nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
 
         int[] dp1 = new int[nums.length];
         int[] dp2 = new int[nums.length];
@@ -53,7 +59,8 @@ public class HouseRobberII {
     public static int robCircularMemoizationUtil(int[] nums, int start, int end, int[] dp) {
         if (end < start)
             return 0;
-        if(dp[end]!=-1) return dp[end];
+        if (dp[end] != -1)
+            return dp[end];
         int rob = nums[end] + robCircularMemoizationUtil(nums, start, end - 2, dp);
         int notRob = robCircularMemoizationUtil(nums, start, end - 1, dp);
         dp[end] = Math.max(rob, notRob);
@@ -61,8 +68,10 @@ public class HouseRobberII {
     }
 
     public static int robCircularTabulation(int[] nums) {
-        if(nums==null || nums.length==0) return 0;
-        if(nums.length==1) return nums[0];
+        if (nums == null || nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
 
         int notSelect = robCircularTabulationUtil(nums, 0, nums.length - 2);
         int select = robCircularTabulationUtil(nums, 1, nums.length - 1);
@@ -71,18 +80,19 @@ public class HouseRobberII {
 
     public static int robCircularTabulationUtil(int[] nums, int start, int end) {
         int[] dp = new int[nums.length];
-        Arrays.fill(dp, -1);
-        for(int i=start;i<=end;i++){
-            int rob = nums[i] + ((i>1) ? dp[i - 2] : 0);
-            int notRob = ((i>0) ? dp[i - 1] : 0);
+        for (int i = start; i <= end; i++) {
+            int rob = nums[i] + ((i > 1) ? dp[i - 2] : 0);
+            int notRob = ((i > 0) ? dp[i - 1] : 0);
             dp[i] = Math.max(rob, notRob);
         }
         return dp[end];
     }
 
     public static int robCircularTabulationSpaceOptimised(int[] nums) {
-        if(nums==null || nums.length==0) return 0;
-        if(nums.length==1) return nums[0];
+        if (nums == null || nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
 
         int notSelect = robCircularTabulationSpaceOptimisedUtil(nums, 0, nums.length - 2);
         int select = robCircularTabulationSpaceOptimisedUtil(nums, 1, nums.length - 1);
@@ -90,9 +100,9 @@ public class HouseRobberII {
     }
 
     public static int robCircularTabulationSpaceOptimisedUtil(int[] nums, int start, int end) {
-        int farprev=0;
+        int farprev = 0;
         int prev = 0;
-        for(int i=start;i<=end;i++){
+        for (int i = start; i <= end; i++) {
             int rob = nums[i] + farprev;
             int notRob = prev;
             farprev = prev;
@@ -102,25 +112,25 @@ public class HouseRobberII {
     }
 
     public static void main(String[] args) {
-        int[] nums = { 1,2, 3, 1 };
+        int[] nums = { 1, 2, 3, 1 };
         System.out.println(robCircular(nums));
-        System.out.println(robCircular2(nums)); 
+        System.out.println(robCircular2(nums));
         System.out.println(robCircularMemoization(nums));
         System.out.println(robCircularTabulation(nums));
         System.out.println(robCircularTabulationSpaceOptimised(nums));
         System.out.println("--------------------------------------------------------------------");
 
-        int[] nums2 = { 2, 7, 9, 3, 1 };
+        int[] nums2 = { 2, 3, 2 };
         System.out.println(robCircular(nums2));
-        System.out.println(robCircular2(nums2)); 
+        System.out.println(robCircular2(nums2));
         System.out.println(robCircularMemoization(nums2));
         System.out.println(robCircularTabulation(nums2));
         System.out.println(robCircularTabulationSpaceOptimised(nums2));
         System.out.println("--------------------------------------------------------------------");
 
-        int[] nums3 = { };
+        int[] nums3 = { 2, 2, 3, 1, 2 };
         System.out.println(robCircular(nums3));
-        System.out.println(robCircular2(nums3)); 
+        System.out.println(robCircular2(nums3));
         System.out.println(robCircularMemoization(nums3));
         System.out.println(robCircularTabulation(nums3));
         System.out.println(robCircularTabulationSpaceOptimised(nums3));
