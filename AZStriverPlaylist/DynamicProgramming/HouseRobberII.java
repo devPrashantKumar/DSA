@@ -61,7 +61,23 @@ public class HouseRobberII {
     }
 
     public static int robCircularTabulation(int[] nums) {
-        return 0;
+        if(nums==null || nums.length==0) return 0;
+        if(nums.length==1) return nums[0];
+
+        int notSelect = robCircularTabulationUtil(nums, 0, nums.length - 2);
+        int select = robCircularTabulationUtil(nums, 1, nums.length - 1);
+        return Math.max(notSelect, select);
+    }
+
+    public static int robCircularTabulationUtil(int[] nums, int start, int end) {
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp, -1);
+        for(int i=start;i<=end;i++){
+            int rob = nums[i] + ((i>1) ? dp[i - 2] : 0);
+            int notRob = ((i>0) ? dp[i - 1] : 0);
+            dp[i] = Math.max(rob, notRob);
+        }
+        return dp[end];
     }
 
     public static int robCircularDPTabulationSpaceOptimised(int[] nums) {
