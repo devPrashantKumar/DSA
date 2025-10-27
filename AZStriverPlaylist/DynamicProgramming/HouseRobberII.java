@@ -80,8 +80,25 @@ public class HouseRobberII {
         return dp[end];
     }
 
-    public static int robCircularDPTabulationSpaceOptimised(int[] nums) {
-        return 0;
+    public static int robCircularTabulationSpaceOptimised(int[] nums) {
+        if(nums==null || nums.length==0) return 0;
+        if(nums.length==1) return nums[0];
+
+        int notSelect = robCircularTabulationSpaceOptimisedUtil(nums, 0, nums.length - 2);
+        int select = robCircularTabulationSpaceOptimisedUtil(nums, 1, nums.length - 1);
+        return Math.max(notSelect, select);
+    }
+
+    public static int robCircularTabulationSpaceOptimisedUtil(int[] nums, int start, int end) {
+        int farprev=0;
+        int prev = 0;
+        for(int i=start;i<=end;i++){
+            int rob = nums[i] + farprev;
+            int notRob = prev;
+            farprev = prev;
+            prev = Math.max(rob, notRob);
+        }
+        return prev;
     }
 
     public static void main(String[] args) {
@@ -90,7 +107,7 @@ public class HouseRobberII {
         System.out.println(robCircular2(nums)); 
         System.out.println(robCircularMemoization(nums));
         System.out.println(robCircularTabulation(nums));
-        System.out.println(robCircularDPTabulationSpaceOptimised(nums));
+        System.out.println(robCircularTabulationSpaceOptimised(nums));
         System.out.println("--------------------------------------------------------------------");
 
         int[] nums2 = { 2, 7, 9, 3, 1 };
@@ -98,7 +115,7 @@ public class HouseRobberII {
         System.out.println(robCircular2(nums2)); 
         System.out.println(robCircularMemoization(nums2));
         System.out.println(robCircularTabulation(nums2));
-        System.out.println(robCircularDPTabulationSpaceOptimised(nums2));
+        System.out.println(robCircularTabulationSpaceOptimised(nums2));
         System.out.println("--------------------------------------------------------------------");
 
         int[] nums3 = { };
@@ -106,7 +123,7 @@ public class HouseRobberII {
         System.out.println(robCircular2(nums3)); 
         System.out.println(robCircularMemoization(nums3));
         System.out.println(robCircularTabulation(nums3));
-        System.out.println(robCircularDPTabulationSpaceOptimised(nums3));
+        System.out.println(robCircularTabulationSpaceOptimised(nums3));
         System.out.println("--------------------------------------------------------------------");
     }
 }
