@@ -1,4 +1,4 @@
-package AZStriverPlaylist.DynamicProgramming;
+package AZStriverPlaylist.DynamicProgramming.OneDimensionDP;
 
 import java.util.Arrays;
 
