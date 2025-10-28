@@ -3,6 +3,10 @@ package AZStriverPlaylist.DynamicProgramming.DPOnGrids;
 import java.util.Arrays;
 
 public class NinjaTraining {
+    /*
+     * Time Complexity : O(3^n)
+     * Space Complexity : O(n)
+     */
     public static int ninjaTraining(int[][] matrix) {
         return ninjaTrainingUtil(matrix, -1, matrix.length - 1);
     }
@@ -23,6 +27,10 @@ public class NinjaTraining {
         return Math.max(zeroSelect, Math.max(oneSelect, twoSelect));
     }
 
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(n)+O(n), (dp + recursive stack)
+     */
     public static int ninjaTrainingDPMemoization(int[][] matrix) {
         int[][] dp = new int[matrix.length][3];
         for (int[] row : dp) {
@@ -52,15 +60,45 @@ public class NinjaTraining {
         return result;
     }
 
+    /*
+     * Time Complexity : O(n)
+     * Space Complexity : O(n), (dp)
+     */
+    public static int ninjaTrainingDPTabulation(int[][] matrix) {
+        if (matrix==null || matrix.length==0) return 0;
+        int[][] dp = new int[matrix.length][3];
+        for (int[] row : dp) {
+            Arrays.fill(row, -1);
+        }
+
+        dp[0] = matrix[0];
+        for(int i=1;i<matrix.length;i++){
+            dp[i][0] = Math.max(matrix[i][0] + dp[i-1][1], matrix[i][0] + dp[i-1][2]);
+            dp[i][1] = Math.max(matrix[i][1] + dp[i-1][0], matrix[i][1] + dp[i-1][2]);
+            dp[i][2] = Math.max(matrix[i][2] + dp[i-1][0], matrix[i][2] + dp[i-1][1]);
+        }
+
+        return  Math.max(dp[matrix.length-1][0], Math.max(dp[matrix.length-1][1], dp[matrix.length-1][2]));
+    }
+
     public static void main(String[] args) {
         int[][] matrix1 = { { 10, 40, 70 }, { 20, 50, 80 }, { 30, 60, 90 } };
         System.out.println(ninjaTraining(matrix1));
         System.out.println(ninjaTrainingDPMemoization(matrix1));
+        System.out.println(ninjaTrainingDPTabulation(matrix1));
 
         System.out.println("================================================");
         int[][] matrix2 = { { 70, 40, 10 }, { 180, 20, 5 }, { 200, 60, 30 } };
         System.out.println(ninjaTraining(matrix2));
         System.out.println(ninjaTrainingDPMemoization(matrix2));
+        System.out.println(ninjaTrainingDPTabulation(matrix2));
+
+        System.out.println("================================================");
+
+        int[][] matrix3 = { };
+        System.out.println(ninjaTraining(matrix3));
+        System.out.println(ninjaTrainingDPMemoization(matrix3));
+        System.out.println(ninjaTrainingDPTabulation(matrix3));
 
         System.out.println("================================================");
     }
