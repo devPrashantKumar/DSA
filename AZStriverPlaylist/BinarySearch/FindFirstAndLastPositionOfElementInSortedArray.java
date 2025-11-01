@@ -98,11 +98,6 @@ class FindFirstAndLastPositionOfElementInSortedArray {
         return (ans == -1 || arr[ans] != x) ? -1 : ans;
     }
 
-    
-
-}
-
-public class L034_FindFirstAndLastPositionOfElementInSortedArray {
     public static void main(String[] args) {
         int[] nums1 = { 5, 7, 7, 8, 8, 10 };
         int target1 = 8;
