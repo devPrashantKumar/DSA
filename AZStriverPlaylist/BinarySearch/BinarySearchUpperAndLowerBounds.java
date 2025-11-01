@@ -1,7 +1,7 @@
 package AZStriverPlaylist.BinarySearch;
 
 public class BinarySearchUpperAndLowerBounds {
-    public static int upperBound(Integer[] arr, int num){
+    public static int upperBound(int[] arr, int num){
         int ans = arr.length;
         int left =0;
         int right = arr.length-1;
@@ -19,7 +19,7 @@ public class BinarySearchUpperAndLowerBounds {
     }
 
     // lowerBound and ceil both are same.
-    public static int lowerBound(Integer[] arr, int num){
+    public static int lowerBound(int[] arr, int num){
         int ans = arr.length;
         int left=0;
         int right = arr.length-1;
@@ -35,7 +35,7 @@ public class BinarySearchUpperAndLowerBounds {
         return ans;
     }
 
-    public static int ceil(Integer[] arr, int num){
+    public static int ceil(int[] arr, int num){
         int ans = -1;
         int left = 0;
         int right = arr.length-1;
@@ -52,7 +52,7 @@ public class BinarySearchUpperAndLowerBounds {
         return ans;
     }
 
-    public static int floor(Integer[] arr, int num){
+    public static int floor(int[] arr, int num){
         int ans = -1;
         int left=0;
         int right=arr.length-1;
@@ -69,7 +69,7 @@ public class BinarySearchUpperAndLowerBounds {
     }    
 
     public static void main(String[] args) {
-        Integer[] arr = {1,5,7,9,10,14,18};
+        int[] arr = {1,5,7,9,10,14,18};
         System.out.println("UpperBound 1 - "+BinarySearchUpperAndLowerBounds.upperBound(arr, 1));
         System.out.println("UpperBound 7 - "+BinarySearchUpperAndLowerBounds.upperBound(arr, 7));
         System.out.println("UpperBound 9 - "+BinarySearchUpperAndLowerBounds.upperBound(arr, 9));
