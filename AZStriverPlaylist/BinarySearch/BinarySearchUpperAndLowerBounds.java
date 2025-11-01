@@ -27,6 +27,7 @@ public class BinarySearchUpperAndLowerBounds {
             int mid = left+(right-left)/2;
             if(arr[mid]>=num){
                 ans = mid;
+                if(arr[mid]==num) break;
                 right = mid-1;
             }else{
                 left = mid+1;
