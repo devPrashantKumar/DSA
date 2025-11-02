@@ -1,7 +1,12 @@
 package AZStriverPlaylist.BinarySearch.BSOnAnswers;
 
 public class FindTheNthRootOfANumberUsingBinarySearch {
-    
+    /*
+     * Time Complexity : O(logM) * O(logN), O(logM×logN)
+     *      - O(logM) - binary search
+     *      - O(logN) - Math.pow(mid, N), which internally computes the power in O(log N) time using fast exponentiation.
+     * Space Complexity : O(1)
+     */
     public static int NthRoot(int N, int M) {
         int left = 1;
         int right = M;
@@ -20,6 +25,12 @@ public class FindTheNthRootOfANumberUsingBinarySearch {
         return ans;
     }
 
+    /*
+     * Time Complexity : O(logM) * O(N), O(NlogM)
+     *      - O(logM) - binary search
+     *      - O(N) - power(mid, N, M), usually better because it exits early when overflow occurs.
+     * Space Complexity : O(1)
+     */
     public static int NthRoot2(int N, int M) {
         int left = 1, right = M;
         while (left <= right) {
