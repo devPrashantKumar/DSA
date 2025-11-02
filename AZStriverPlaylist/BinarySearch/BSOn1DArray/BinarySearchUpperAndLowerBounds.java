@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BinarySearch;
+package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 
 public class BinarySearchUpperAndLowerBounds {
     public static int upperBound(int[] arr, int num){

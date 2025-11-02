@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BinarySearch;
+package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 
 class FindFirstAndLastPositionOfElementInSortedArray {
     // Time Complexity : O(logn)

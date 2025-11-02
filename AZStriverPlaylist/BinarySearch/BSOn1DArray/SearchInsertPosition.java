@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BinarySearch;
+package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 
 public class SearchInsertPosition {
     public static int searchInsert(int[] nums, int target) {

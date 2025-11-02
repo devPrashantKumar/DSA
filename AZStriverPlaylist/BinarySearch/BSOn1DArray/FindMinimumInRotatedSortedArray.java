@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BinarySearch;
+package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 
 public class FindMinimumInRotatedSortedArray {
     public static int findMin(int[] nums) {
