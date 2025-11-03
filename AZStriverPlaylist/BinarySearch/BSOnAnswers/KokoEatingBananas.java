@@ -2,6 +2,10 @@ package AZStriverPlaylist.BinarySearch.BSOnAnswers;
 
 public class KokoEatingBananas {
 
+    /*
+     * Time Complexity : O(n * log(maxPile))
+     * Space Complexity : O(1)
+     */
     public static int minEatingSpeed(int[] piles, int h) {
         if (h < piles.length)
             return -1;
