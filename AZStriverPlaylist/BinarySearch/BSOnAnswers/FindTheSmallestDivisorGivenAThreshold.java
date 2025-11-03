@@ -3,12 +3,13 @@ package AZStriverPlaylist.BinarySearch.BSOnAnswers;
 public class FindTheSmallestDivisorGivenAThreshold {
 
     public static int smallestDivisor(int[] nums, int threshold) {
+        if(nums.length>threshold) return -1;
         int maxNum = Integer.MIN_VALUE;
         for(int num : nums){
             maxNum = Math.max(maxNum,num);
         }
         int left=1;
-        int right=maxNum+1;
+        int right=maxNum;
         while(left<=right){
             int mid = left+(right-left)/2;
             if(checkDivision(nums,threshold,mid)) right=mid-1;

@@ -5,21 +5,22 @@ import java.util.Arrays;
 public class MinimumNumberOfDaysToMakeMBouquets {
 
     public static int minDays(int[] bloomDay, int m, int k) {
-        if (bloomDay.length < m * k)
+        if (bloomDay.length < 1L * m * k)
             return -1;
         int maxDay = Arrays.stream(bloomDay).max().orElse(0);
-        int left = 1;
+        int minDay = Arrays.stream(bloomDay).min().orElse(0);
+        int left = minDay;
         int right = maxDay;
-        int ans = -1;
+        //int ans = -1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (calculateBouquet(bloomDay, m, k, mid)) {
-                ans = mid;
+                //ans = mid;
                 right = mid - 1;
             } else
                 left = mid + 1;
         }
-        return ans;
+        return left;
     }
 
     public static boolean calculateBouquet(int[] bloomDay, int m, int k, int day) {
@@ -31,11 +32,12 @@ public class MinimumNumberOfDaysToMakeMBouquets {
                     count = 0;
                     m--;
                 }
+                if(m==0) return true;
             } else {
                 count = 0;
             }
         }
-        return (m <= 0) ? true : false;
+        return false;
     }
 
     public static void main(String[] args) {
