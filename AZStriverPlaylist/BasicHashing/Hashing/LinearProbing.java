@@ -1,4 +1,4 @@
-package DataStructures.Hashing;
+package AZStriverPlaylist.BasicHashing.Hashing;
 
 public class LinearProbing {
     String[] hashTable;

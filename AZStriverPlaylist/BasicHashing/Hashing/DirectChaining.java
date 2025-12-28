@@ -1,4 +1,4 @@
-package DataStructures.Hashing;
+package AZStriverPlaylist.BasicHashing.Hashing;
 import java.util.LinkedList;
 
 public class DirectChaining{
