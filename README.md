@@ -1,7 +1,9 @@
 # DSA
 
-### Recursion
-- 
+## Course Url :
+**https://www.youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz**
+
+---
 ---
 # Video 7 :
 - **Title:** Basic Maths for DSA | Euclidean Algorithm | Strivers A2Z DSA Course
