@@ -2,6 +2,15 @@
 
 ### Recursion
 - 
+---
+# Video 7 :
+- **Title:** Basic Maths for DSA | Euclidean Algorithm | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/1xNbjMdbjug?si=NQf4xUmrGxAw1XTh)
+
+## Topics Covered
+- count digits in number
+- find GCD or HCF of two numbers
+- check prime
 
 ---
 # Video 8 :
