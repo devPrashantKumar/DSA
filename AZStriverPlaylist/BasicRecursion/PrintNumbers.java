@@ -1,22 +1,24 @@
 package AZStriverPlaylist.BasicRecursion;
 
 public class PrintNumbers {
+    // tail-recursion
     public static void printLinearly1toN(int i, int n){
         if(i>n) return;
         System.out.print(i+" ");
         printLinearly1toN(i+1,n);
     }
 
-    public static void printLinearly1toNUsingBackTracking(int n){
+    // classic-recursion
+    public static void printLinearly1toNUsingClassicRecursion(int n){
         if(n==0) return;
-        printLinearly1toNUsingBackTracking(n-1);
+        printLinearly1toNUsingClassicRecursion(n-1);
         System.out.print(n+" ");
 
     }
 
-    public static void printLinearlyNto1UsingBackTracking(int i, int n){
+    public static void printLinearlyNto1UsingClassicRecursion(int i, int n){
         if(i>n) return;
-        printLinearlyNto1UsingBackTracking(i+1,n);
+        printLinearlyNto1UsingClassicRecursion(i+1,n);
         System.out.print(i+" ");
     }
 
@@ -33,9 +35,9 @@ public class PrintNumbers {
         System.out.println();
 
         System.out.println("------------------------------------");
-        printLinearly1toNUsingBackTracking(5);
+        printLinearly1toNUsingClassicRecursion(5);
         System.out.println();
-        printLinearly1toNUsingBackTracking(3);
+        printLinearly1toNUsingClassicRecursion(3);
         System.out.println();
 
         System.out.println("------------------------------------");
@@ -45,9 +47,9 @@ public class PrintNumbers {
         System.out.println();
 
         System.out.println("------------------------------------");
-        printLinearlyNto1UsingBackTracking(1,5);
+        printLinearlyNto1UsingClassicRecursion(1,5);
         System.out.println();
-        printLinearlyNto1UsingBackTracking(1,3);
+        printLinearlyNto1UsingClassicRecursion(1,3);
         System.out.println();
 
     }
