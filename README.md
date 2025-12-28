@@ -66,3 +66,5 @@
 
 ## Topics Covered
 - Hashing
+- collision resolution techniques
+- time complexity
