@@ -22,3 +22,30 @@
 ## Topics Covered
 - Tail Recurson vs Classic Recursion
 - Some Problems
+
+---
+# Video 10 :
+- **Title:** Re 3. Parameterised and Functional Recursion | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/69ZCDFy-OUo?si=g7g7aANDh8P0yQ7L)
+
+## Topics Covered
+- Parametrised and functional recursion
+
+---
+# Video 11 :
+- **Title:** Re 4. Problems on Functional Recursion | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/twuC1F6gLI8?si=1oIUnKmZyMH49pxW)
+
+## Topics Covered
+- Some Problems
+    - reverse array
+    - check palidrome
+
+---
+# Video 12 :
+- **Title:** Re 5. Multiple Recursion Calls | Problems | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/kvRjNm4rVBE?si=5HAIa_YUU66PcqA0)
+
+## Topics Covered
+- Some Problems
+    - fibonacci sequence
