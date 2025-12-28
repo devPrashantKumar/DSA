@@ -58,3 +58,11 @@
 ## Topics Covered
 - Some Problems
     - fibonacci sequence
+
+---
+# Video 13 :
+- **Title:** Hashing | Maps | Time Complexity | Collisions | Division Rule of Hashing | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/KEs5UyBJ39g?si=zb8XPM0ONtp_rtta)
+
+## Topics Covered
+- Hashing
