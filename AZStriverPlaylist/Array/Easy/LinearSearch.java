@@ -1,4 +1,4 @@
-package Algorithms.Searching;
+package AZStriverPlaylist.Array.Easy;
 
 public class LinearSearch {
     /*
