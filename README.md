@@ -70,3 +70,53 @@
 - Hashing
 - collision resolution techniques
 - time complexity
+
+---
+# Video 14 :
+- **Title:** Sorting - Part 1 | Selection Sort, Bubble Sort, Insertion Sort | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/HGk_ypEuS24?si=CMQNimFNS2l1jXG6)
+
+## Topics Covered
+- Selection Sort
+- Bubble Sort
+- Insertion Sort
+
+---
+# Video 15 :
+- **Title:** Merge Sort | Algorithm | Pseudocode | Dry Run | Code | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/ogjf7ORKfd8?si=sWx_iPl5peo3p0up)
+
+## Topics Covered
+- Merge Sort
+
+---
+# Video 16 :
+- **Title:** Quick Sort For Beginners | Strivers A2Z DSA Course
+- **URL:** [Watch on YouTube](https://youtu.be/WIrA4YexLRQ?si=pG5i0xtgyvSDfABh)
+
+## Topics Covered
+- Quick Sort
+
+---
+# Video 17 :
+- **Title:** Find Second Largest Element in Array | Remove duplicates from Sorted Array | Arrays Intro Video
+- **URL:** [Watch on YouTube](https://youtu.be/37E9ckMDdTk?si=uwgS40E51lvSsDGO)
+
+## Topics Covered
+- Array Problems
+
+---
+# Video 18 :
+- **Title:** Rotate Array by K places | Union, Intersection of Sorted Arrays | Move Zeros to End | Arrays Part-2
+- **URL:** [Watch on YouTube](https://youtu.be/wvcQg43_V8U?si=b4UdasBRZSTRQQ9q)
+
+## Topics Covered
+- Array Problems
+
+---
+# Video 19 :
+- **Title:** Find element that appears once | Find missing number | Max Consecutive number of 1's | Arrays Part-3
+- **URL:** [Watch on YouTube](https://youtu.be/bYWLJb3vCWY?si=1jGzQFBLf8r4vWCw)
+
+## Topics Covered
+- Array Problems
