@@ -58,6 +58,18 @@ public class KadanesAlgoMaximumSubarray {
         return maxSum;
     }
 
+    public static int maxSubarraySumKadanesAlgo2(int[] arr){
+        int maxSum = Integer.MIN_VALUE;
+        int sum=0;
+        int lowestSum=0;
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
+            maxSum = Math.max(sum-lowestSum, maxSum);
+            lowestSum = Math.min(lowestSum, sum);
+        }
+        return maxSum;
+    }
+
     public static void main(String[] args) {
         int[] input1 = {-2,1,-3,4,-1,2,1,-5,4};
         System.out.println("Input : "+Arrays.toString(input1)+" Output : "+KadanesAlgoMaximumSubarray.maxSubarraySum(input1));
