@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Array.Easy;
+package AZStriverPlaylist.Array.Medium;
 
 import java.util.Arrays;
 import java.util.HashMap;

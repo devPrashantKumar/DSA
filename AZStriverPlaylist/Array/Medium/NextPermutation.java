@@ -3,7 +3,7 @@ package AZStriverPlaylist.Array.Medium;
 import java.util.*;
 
 public class NextPermutation {
-
+    // pre-requisite : generate all permutations of an array
     public static int[] nextPermutationOptimal(int[] arr) {
         int index1 = -1;
         int n = arr.length;
