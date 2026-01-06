@@ -30,7 +30,7 @@ public class SetMatrixZeros {
     }
     
     /*
-     * Time Complexity : O(n^2)
+     * Time Complexity : O(n^3)
      * space Complexity : O(n)
      */
     public static int[][] setZeroesBetterApproch(int[][] matrix){
