@@ -40,12 +40,11 @@ public class ThreeSum {
                     result.add(triplets);
                 }
                 hset.add(nums[j]);
-            }
-            hset.clear();
-            
+            }            
         }
         return result.stream().toList();
-    }
+    }            
+
 
 
     /*
