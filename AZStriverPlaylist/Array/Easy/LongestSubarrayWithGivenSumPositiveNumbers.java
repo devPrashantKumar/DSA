@@ -21,6 +21,9 @@ public class LongestSubarrayWithGivenSumPositiveNumbers {
         return maxLen;
     }
 
+    /*
+     * Time Complexity : O(n)
+     */
     public static int longestSubarray(int[] arr, int k) {
        int maxLen = 0;
         int i=0; 
