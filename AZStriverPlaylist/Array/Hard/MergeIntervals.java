@@ -3,6 +3,9 @@ package AZStriverPlaylist.Array.Hard;
 import java.util.*;
 
 public class MergeIntervals {
+    /*
+    * Time complexity : O(n logn)+O(n)
+    */
     public static int[][] merge(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
             return new int[0][0];
