@@ -7,7 +7,8 @@ public class AggressiveCows {
     * Time Complexity : O(n * maxPossibleDistance)
     */
     public static int aggressiveCows(int[] nums, int k) {
-        if(k==1) return -1;
+        if (k == 1) return 0;
+        if (k > nums.length) return -1;        
         Arrays.sort(nums);
         int maxDistance = 1;
         int maxPossibleDistance = nums[nums.length-1]-nums[0];
@@ -19,10 +20,16 @@ public class AggressiveCows {
     }
 
     /*
+    * We binary search on the minimum distance because the feasibility function is monotonic —
+    * if cows can be placed with distance d, they can also be placed with any smaller distance.
+    */
+
+    /*
     * Time Complexity : O(n * log(maxPossibleDistance))
     */
     public static int aggressiveCowsUsingBS(int[] nums, int k) {
-        if(k==1) return -1;
+        if (k == 1) return 0;
+        if (k > nums.length) return -1; 
         Arrays.sort(nums);
         int minPossibleDistance = 1;
         int maxPossibleDistance = nums[nums.length-1]-nums[0];
