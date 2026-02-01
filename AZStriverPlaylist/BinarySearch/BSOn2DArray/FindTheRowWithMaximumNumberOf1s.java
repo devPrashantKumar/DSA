@@ -47,7 +47,6 @@ public class FindTheRowWithMaximumNumberOf1s {
             boolean found=false;
             int mid = (left+(right-left)/2);
 
-
             for(int row=0;row<mat.length;row++){
                 if(mat[row][mid]==1){
                     rowIndex=row;
