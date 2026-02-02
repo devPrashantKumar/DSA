@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BinarySearch.BSOn2DArray;
+package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 
 public class SingleElementInASortedArray {
 
