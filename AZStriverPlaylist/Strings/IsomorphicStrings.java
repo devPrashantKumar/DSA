@@ -67,6 +67,8 @@ public class IsomorphicStrings {
             }
             indexS[s.charAt(i)] = i + 1;
             indexT[t.charAt(i)] = i + 1;
+            // indexS[s.charAt(i)] = s.charAt(i);
+            // indexT[t.charAt(i)] = s.charAt(i);
         }
 
         return true;
