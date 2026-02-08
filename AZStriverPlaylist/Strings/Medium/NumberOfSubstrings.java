@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Strings;
+package AZStriverPlaylist.Strings.Medium;
 
 import java.util.*;
 

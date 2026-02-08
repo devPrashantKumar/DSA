@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Strings;
+package AZStriverPlaylist.Strings.Medium;
 
 import java.util.*;
 
@@ -40,8 +40,7 @@ public class SortCharactersByFrequency {
     }
 
     /*
-     * Time conplexity : O(n)
-     * utilising buckets for sorting purpose
+     * Time conplexity : O(128 * n)
      */
     public static String frequencySortHashTable(String s) 
     {

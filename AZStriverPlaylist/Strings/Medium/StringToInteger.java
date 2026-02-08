@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Strings;
+package AZStriverPlaylist.Strings.Medium;
 
 public class StringToInteger {
     public static int myAtoiMyApproach(String s) {
