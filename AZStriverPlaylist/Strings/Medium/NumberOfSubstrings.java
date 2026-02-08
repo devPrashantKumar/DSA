@@ -53,8 +53,17 @@ public class NumberOfSubstrings {
         return ans;
     }
 
-    // wrong solution - this problem is pending
+    /*
+    * The optimal way is sliding window, but there’s a key trick:
+    * Exactly K distinct = (At most K distinct) − (At most K−1 distinct)
+    */
     public static int substringCountOptimal(String s, int k) {
+        return substringCountAtMaxKDistinct(s, k)-substringCountAtMaxKDistinct(s, k-1);
+    }
+
+    public static int substringCountAtMaxKDistinct(String s, int k) {
+        if (k <= 0) return 0;
+
         int n = s.length();
         int[] charOccurenceCounter = new int[26];
         int count = 0;
@@ -66,20 +75,18 @@ public class NumberOfSubstrings {
                 distinct++;
             }
             charOccurenceCounter[c - 'a']++;
-            if (distinct == k)
-                count++;
-            if (distinct > k) {
-                while (i <= j) {
+            if(distinct>k){
+                while(distinct>k && i <= j){
                     char c2 = s.charAt(i);
                     charOccurenceCounter[c2 - 'a']--;
                     if (charOccurenceCounter[c2 - 'a'] == 0) {
                         distinct--;
-                        count++;
-                        break;
                     }
+                    i++;
                 }
+                
             }
-
+            count += (j-i+1);    
         }
 
         return count;
