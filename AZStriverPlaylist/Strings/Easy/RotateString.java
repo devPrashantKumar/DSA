@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Strings;
+package AZStriverPlaylist.Strings.Easy;
 
 public class RotateString {
     /*
