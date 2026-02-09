@@ -17,7 +17,7 @@ package AZStriverPlaylist.LinkedList.SingleLinkedList;
  *      4) Deletion of Element
  * Clear Linked List
  */
-class SingleLinkedList<T> {
+public class SingleLinkedList<T> {
     private class Node {
         T value;
         Node next;
