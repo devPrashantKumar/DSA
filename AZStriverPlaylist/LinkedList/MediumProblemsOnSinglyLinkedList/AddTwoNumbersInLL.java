@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList.ProblemsOnLinkedList;
+package AZStriverPlaylist.LinkedList.MediumProblemsOnSinglyLinkedList;
 
 public class AddTwoNumbersInLL {
     public static SingleLinkedListNode<Integer> addTwoNumbersInLL(SingleLinkedListNode<Integer> head1, SingleLinkedListNode<Integer> head2){

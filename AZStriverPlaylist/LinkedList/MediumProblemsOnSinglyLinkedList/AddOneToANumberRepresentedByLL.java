@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList.ProblemsOnLinkedList;
+package AZStriverPlaylist.LinkedList.MediumProblemsOnSinglyLinkedList;
 
 public class AddOneToANumberRepresentedByLL {
     public static SingleLinkedListNode<Integer> addOneToLL(SingleLinkedListNode<Integer> head){

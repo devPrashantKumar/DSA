@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList.ProblemsOnLinkedList;
+package AZStriverPlaylist.LinkedList.MediumProblemsOnSinglyLinkedList;
 
 public class SegrregateoddAndEvenNodeInLL {
     public static <T> SingleLinkedListNode<T> segregate(SingleLinkedListNode<T> head){

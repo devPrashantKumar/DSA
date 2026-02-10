@@ -1,4 +1,4 @@
-package AZStriverPlaylist.LinkedList.ProblemsOnLinkedList;
+package AZStriverPlaylist.LinkedList.MediumProblemsOnSinglyLinkedList;
 
 public class LengthOfLoopInLinkedList {
     public static <T> int lengthOfLoopInLL(SingleLinkedListNode<T> head) {
