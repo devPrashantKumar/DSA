@@ -1,4 +1,4 @@
-package DataStructures.LinkedList.CircularSinglyLinkedList;
+package AZStriverPlaylist.LinkedList.CircularSinglyLinkedList;
 
 public class CircularSingleLinkedList {
     class Node {
