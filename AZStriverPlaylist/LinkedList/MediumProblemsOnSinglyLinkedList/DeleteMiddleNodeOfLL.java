@@ -31,6 +31,21 @@ public class DeleteMiddleNodeOfLL {
         tortoise.next = tortoise.next.next;
         return head;
     }
+
+    public static <T> SingleLinkedListNode<T> deleteMiddleNodeDeleteLeftInCaseOfEven(SingleLinkedListNode<T> head){
+        SingleLinkedListNode<T> tortoise = head;
+        SingleLinkedListNode<T> hare = head;
+        SingleLinkedListNode<T> prev = null;
+        hare = hare.next;
+        while(hare!=null && hare.next!=null){
+            prev = tortoise;
+            tortoise = tortoise.next;
+            hare = hare.next.next;
+        }
+        if(prev==null) return head.next;
+        prev.next = tortoise.next;
+        return head;
+    }
     public static void main(String[] args) {
         Integer[] arr1 = {1,2,3,4};
         SingleLinkedListNode<Integer> head = SingleLinkedListUtility.convertArrayToList(arr1);
@@ -104,6 +119,26 @@ public class DeleteMiddleNodeOfLL {
         SingleLinkedListUtility.printLinkedList(head4);
         head4 = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head4);
         SingleLinkedListUtility.printLinkedList(head4);
+        System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+
+        Integer[] arr5 = {1,2,3,4};
+        SingleLinkedListNode<Integer> head5 = SingleLinkedListUtility.convertArrayToList(arr5);
+        SingleLinkedListUtility.printLinkedList(head5);
+        head5 = DeleteMiddleNodeOfLL.deleteMiddleNodeDeleteLeftInCaseOfEven(head5);
+        SingleLinkedListUtility.printLinkedList(head5);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head5);
+        head5 = DeleteMiddleNodeOfLL.deleteMiddleNodeDeleteLeftInCaseOfEven(head5);
+        SingleLinkedListUtility.printLinkedList(head5);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head5);
+        head5 = DeleteMiddleNodeOfLL.deleteMiddleNodeDeleteLeftInCaseOfEven(head5);
+        SingleLinkedListUtility.printLinkedList(head5);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head5);
+        head5 = DeleteMiddleNodeOfLL.deleteMiddleNodeDeleteLeftInCaseOfEven(head5);
+        SingleLinkedListUtility.printLinkedList(head5);
         System.out.println("----------------------------------------------------------");
     }
 }
