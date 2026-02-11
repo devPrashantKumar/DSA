@@ -30,6 +30,7 @@ public class DetectACycleInAnUndirectedGraph {
         return false;
     }
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         int V1 = 6;
         List<Integer>[] adj1 = new List[6];
