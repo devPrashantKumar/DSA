@@ -11,8 +11,8 @@ public class DeleteAllOccurrencesOfAKeyInDLL {
         while(head!=null && head.data.equals(target)){
             head = head.next;
             if (head != null) {
-            head.prev = null;
-        }
+                head.prev = null;
+            }
         }
         DoubleLinkedListNode<T> curr = head;
         while(curr!=null){
