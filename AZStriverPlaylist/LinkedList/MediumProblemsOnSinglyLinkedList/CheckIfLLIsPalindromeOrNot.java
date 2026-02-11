@@ -24,6 +24,7 @@ public class CheckIfLLIsPalindromeOrNot {
     /*
      * Time Complexity : O(n)
      * Space Complexty : O(1)
+     * partition logic is importtant
      */
     public static <T> boolean isPalindromOptimized(SingleLinkedListNode<T> head) {
         SingleLinkedListNode<T> hare = head;
