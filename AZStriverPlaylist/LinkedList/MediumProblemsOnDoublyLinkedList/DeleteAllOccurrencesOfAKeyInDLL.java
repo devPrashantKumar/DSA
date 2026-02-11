@@ -10,7 +10,9 @@ public class DeleteAllOccurrencesOfAKeyInDLL {
     public static <T> DoubleLinkedListNode<T> deleteAllOccurrences(DoubleLinkedListNode<T> head, T target){
         while(head!=null && head.data.equals(target)){
             head = head.next;
+            if (head != null) {
             head.prev = null;
+        }
         }
         DoubleLinkedListNode<T> curr = head;
         while(curr!=null){
