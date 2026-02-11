@@ -1,6 +1,9 @@
 package AZStriverPlaylist.LinkedList.MediumProblemsOnSinglyLinkedList;
 
 public class FindTheStartingPointInLL {
+    /*
+    * Time Complexity : O(n)
+    */
     public static <T> SingleLinkedListNode<T> startingPointInLL(SingleLinkedListNode<T> head){
         SingleLinkedListNode<T> tortoise = head;
         SingleLinkedListNode<T> hare = head;

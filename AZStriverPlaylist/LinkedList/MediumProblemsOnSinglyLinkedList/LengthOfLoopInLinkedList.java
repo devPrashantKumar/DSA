@@ -1,6 +1,9 @@
 package AZStriverPlaylist.LinkedList.MediumProblemsOnSinglyLinkedList;
 
 public class LengthOfLoopInLinkedList {
+    /*
+    * Time Complexity : O(n)
+    */
     public static <T> int lengthOfLoopInLL(SingleLinkedListNode<T> head) {
         SingleLinkedListNode<T> tortoise = head;
         SingleLinkedListNode<T> hare = head;
@@ -9,7 +12,6 @@ public class LengthOfLoopInLinkedList {
             tortoise = tortoise.next;
             hare = hare.next.next;
             if (tortoise == hare) {
-                hare = head;
                 do {
                     hare = hare.next;
                     len++;
