@@ -50,12 +50,14 @@ public class SegrregateoddAndEvenNodeInLL {
         Integer[] arr1 = {1,2,3,4,5,6,7};
         SingleLinkedListNode<Integer> head = SingleLinkedListUtility.convertArrayToList(arr1);
         SingleLinkedListUtility.printLinkedList(head);
-        
+        System.out.println("----------------------------------------------------------");
+
         head = SegrregateoddAndEvenNodeInLL.segregate(head);
         SingleLinkedListUtility.printLinkedList(head);
         System.out.println("----------------------------------------------------------");
-        head = SegrregateoddAndEvenNodeInLL.segregate2(head);
-        SingleLinkedListUtility.printLinkedList(head);
+        SingleLinkedListNode<Integer> head2 = SingleLinkedListUtility.convertArrayToList(arr1);
+        head2 = SegrregateoddAndEvenNodeInLL.segregate2(head2);
+        SingleLinkedListUtility.printLinkedList(head2);
         System.out.println("----------------------------------------------------------");
     }
 }
