@@ -57,10 +57,6 @@ public class DeleteMiddleNodeOfLL {
         Integer[] arr2 = {1,2,3,4};
         SingleLinkedListNode<Integer> head2 = SingleLinkedListUtility.convertArrayToList(arr2);
         SingleLinkedListUtility.printLinkedList(head2);
-        head = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head2);
-        SingleLinkedListUtility.printLinkedList(head2);
-        System.out.println("----------------------------------------------------------");
-        SingleLinkedListUtility.printLinkedList(head2);
         head2 = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head2);
         SingleLinkedListUtility.printLinkedList(head2);
         System.out.println("----------------------------------------------------------");
@@ -71,6 +67,43 @@ public class DeleteMiddleNodeOfLL {
         SingleLinkedListUtility.printLinkedList(head2);
         head2 = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head2);
         SingleLinkedListUtility.printLinkedList(head2);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head2);
+        head2 = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head2);
+        SingleLinkedListUtility.printLinkedList(head2);
+        System.out.println("----------------------------------------------------------");
+
+        System.out.println("----------------------------------------------------------");
+
+        Integer[] arr3 = {1,2,3};
+        SingleLinkedListNode<Integer> head3 = SingleLinkedListUtility.convertArrayToList(arr3);
+        SingleLinkedListUtility.printLinkedList(head3);
+        head3 = DeleteMiddleNodeOfLL.deleteMiddleNode(head3);
+        SingleLinkedListUtility.printLinkedList(head3);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head3);
+        head3 = DeleteMiddleNodeOfLL.deleteMiddleNode(head3);
+        SingleLinkedListUtility.printLinkedList(head3);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head3);
+        head3 = DeleteMiddleNodeOfLL.deleteMiddleNode(head3);
+        SingleLinkedListUtility.printLinkedList(head3);
+        System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+
+        Integer[] arr4 = {1,2,3};
+        SingleLinkedListNode<Integer> head4 = SingleLinkedListUtility.convertArrayToList(arr4);
+        SingleLinkedListUtility.printLinkedList(head4);
+        head4 = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head4);
+        SingleLinkedListUtility.printLinkedList(head4);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head4);
+        head4 = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head4);
+        SingleLinkedListUtility.printLinkedList(head4);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head4);
+        head4 = DeleteMiddleNodeOfLL.deleteMiddleNodeApproach2(head4);
+        SingleLinkedListUtility.printLinkedList(head4);
         System.out.println("----------------------------------------------------------");
     }
 }
