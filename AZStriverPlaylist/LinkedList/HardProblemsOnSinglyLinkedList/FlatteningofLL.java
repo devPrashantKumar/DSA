@@ -26,8 +26,8 @@ public class FlatteningofLL {
     }
 
     /*
-    * Time Complexity : O(n^2)
-    */
+     * Time Complexity : O(n^2)
+     */
     public static ListNode flattenLinkedListBruteForce(ListNode head) {
         ListNode finalHead = new ListNode();
         ListNode tail = finalHead;
@@ -76,6 +76,41 @@ public class FlatteningofLL {
         System.out.println();
     }
 
+    public static ListNode flattenLinkedListOptimise(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode node = flattenLinkedListOptimise(head.next);
+        head = merge(head, node);
+        return head;
+    }
+
+    public static ListNode merge(ListNode head1, ListNode head2) {
+        ListNode head = new ListNode();
+        ListNode tail = head;
+        while (head1 != null && head2 != null) {
+            if (head1.val <= head2.val) {
+                tail.child = head1;
+                tail = tail.child;
+                head1 = head1.child;
+            } else {
+                tail.child = head2;
+                tail = tail.child;
+                head2 = head2.child;
+            }
+        }
+        while (head1 != null) {
+            tail.child = head1;
+            tail = tail.child;
+            head1 = head1.child;
+        }
+        while (head2 != null) {
+            tail.child = head2;
+            tail = tail.child;
+            head2 = head2.child;
+        }
+        return head.child;
+    }
+
     public static void main(String[] args) {
         ListNode head1 = new ListNode(3,
                 new ListNode(2,
@@ -88,5 +123,18 @@ public class FlatteningofLL {
 
         ListNode result1 = flattenLinkedListBruteForce(head1);
         printLinkedList(result1);
+        System.out.println("----------------------------------------------------------------");
+        ListNode head2 = new ListNode(3,
+                new ListNode(2,
+                        new ListNode(1,
+                                new ListNode(4, new ListNode(5, null, new ListNode(6, null, new ListNode(8))),
+                                        new ListNode(9)),
+                                new ListNode(7, null, new ListNode(11, null, new ListNode(12)))),
+                        new ListNode(10)),
+                null);
+
+        ListNode result2 = flattenLinkedListOptimise(head2);
+        printLinkedList(result2);
+        System.out.println("----------------------------------------------------------------");
     }
 }
