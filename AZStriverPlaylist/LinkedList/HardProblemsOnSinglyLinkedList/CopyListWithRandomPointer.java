@@ -16,6 +16,10 @@ public class CopyListWithRandomPointer {
         }
     }
 
+    /*
+    * Time Complexity : O(n)
+    * Space Complexity : O(2*n)
+    */
     public static Node copyRandomListBruteForce(Node head) {
         if(head==null) return head;
         Map<Node,Integer> map = new HashMap<>();
@@ -47,6 +51,10 @@ public class CopyListWithRandomPointer {
         return newHead;
     }
 
+    /*
+    * Time Complexity : O(n)
+    * Space Complexity : O(n)
+    */
     public static Node copyRandomListBruteForce2(Node head) {
         if(head==null) return head;
         Map<Node,Node> map = new HashMap<>();
@@ -74,6 +82,42 @@ public class CopyListWithRandomPointer {
             newHeadCurr = newHeadCurr.next;
         }
         return newHead;
+    }
+
+    /*
+    * Time Complexity : O(n)
+    * Space Complexity : O(1)
+    */
+    public static Node copyRandomListOptimised(Node head) {
+        if(head==null) return head;
+        Node curr = head;
+        Node newHead = new Node(-1);
+        Node newTail=newHead;
+        int i=0;
+        while(curr!=null){
+            Node newNode = new Node(curr.val);
+            newNode.next = curr.next;
+            curr.next = newNode;
+            curr = curr.next.next;
+        }
+
+        curr = head;
+        while(curr!=null){
+            if(curr.random!=null){
+                curr.next.random = curr.random.next;
+            }
+            curr = curr.next.next;
+        }
+
+        curr = head;
+        while(curr!=null){
+            newTail.next = curr.next;
+            newTail = newTail.next;
+            curr.next = curr.next.next;
+            curr = curr.next;
+
+        }
+        return newHead.next;
     }
 
     public static void printLinkedList(Node head) {
@@ -113,6 +157,20 @@ public class CopyListWithRandomPointer {
 
         Node result21 = copyRandomListBruteForce(node21);
         printLinkedList(result21);
+        System.out.println("----------------------------------------------------------------");
+        Node node31 = new Node(7);
+        Node node32 = new Node(13);
+        Node node33 = new Node(11);
+        Node node34 = new Node(10);
+        Node node35 = new Node(1);
+        node31.next = node32;
+        node32.next = node33; node32.random = node31;
+        node33.next = node34; node33.random = node35;
+        node34.next = node35; node34.random = node33;
+        node35.random = node31;
+
+        Node result31 = copyRandomListBruteForce(node31);
+        printLinkedList(result31);
         System.out.println("----------------------------------------------------------------");
     }
     
