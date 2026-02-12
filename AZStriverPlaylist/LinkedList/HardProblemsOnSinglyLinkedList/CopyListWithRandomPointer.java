@@ -60,7 +60,6 @@ public class CopyListWithRandomPointer {
         Map<Node,Node> map = new HashMap<>();
         Node curr = head;
         Node newHead = null, newTail=null;
-        int i=0;
         while(curr!=null){
             Node newNode = new Node(curr.val);
             if(newHead==null){
@@ -93,7 +92,6 @@ public class CopyListWithRandomPointer {
         Node curr = head;
         Node newHead = new Node(-1);
         Node newTail=newHead;
-        int i=0;
         while(curr!=null){
             Node newNode = new Node(curr.val);
             newNode.next = curr.next;
