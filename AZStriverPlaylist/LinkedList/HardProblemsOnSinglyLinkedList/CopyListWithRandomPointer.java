@@ -16,7 +16,7 @@ public class CopyListWithRandomPointer {
         }
     }
 
-    public static Node copyRandomList(Node head) {
+    public static Node copyRandomListBruteForce(Node head) {
         if(head==null) return head;
         Map<Node,Integer> map = new HashMap<>();
         Map<Integer,Node> map2 = new HashMap<>();
@@ -47,6 +47,35 @@ public class CopyListWithRandomPointer {
         return newHead;
     }
 
+    public static Node copyRandomListBruteForce2(Node head) {
+        if(head==null) return head;
+        Map<Node,Node> map = new HashMap<>();
+        Node curr = head;
+        Node newHead = null, newTail=null;
+        int i=0;
+        while(curr!=null){
+            Node newNode = new Node(curr.val);
+            if(newHead==null){
+                newHead = newTail = newNode;
+            }else{
+                newTail.next = newNode;
+                newTail = newTail.next;
+            }
+            map.put(curr,newNode);
+            curr = curr.next;
+        }
+        curr = head;
+        Node newHeadCurr = newHead;
+        while(curr!=null){
+            if(curr.random!=null){
+                newHeadCurr.random = map.get(curr.random);
+            }
+            curr = curr.next;
+            newHeadCurr = newHeadCurr.next;
+        }
+        return newHead;
+    }
+
     public static void printLinkedList(Node head) {
         Node curr = head;
         while (curr != null) {
@@ -68,8 +97,22 @@ public class CopyListWithRandomPointer {
         node4.next = node5; node4.random = node3;
         node5.random = node1;
 
-        Node result1 = copyRandomList(node1);
+        Node result1 = copyRandomListBruteForce(node1);
         printLinkedList(result1);
+        System.out.println("----------------------------------------------------------------");
+        Node node21 = new Node(7);
+        Node node22 = new Node(13);
+        Node node23 = new Node(11);
+        Node node24 = new Node(10);
+        Node node25 = new Node(1);
+        node21.next = node22;
+        node22.next = node23; node22.random = node21;
+        node23.next = node24; node23.random = node25;
+        node24.next = node25; node24.random = node23;
+        node25.random = node21;
+
+        Node result21 = copyRandomListBruteForce(node21);
+        printLinkedList(result21);
         System.out.println("----------------------------------------------------------------");
     }
     
