@@ -1,8 +1,8 @@
 package AZStriverPlaylist.LinkedList.MediumProblemsOnSinglyLinkedList;
 
 public class SingleLinkedListNode<T> {
-    T data;
-    SingleLinkedListNode<T> next;
+    public T data;
+    public SingleLinkedListNode<T> next;
 
     public SingleLinkedListNode(T data){
         this.data = data;
