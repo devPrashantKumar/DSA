@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CheckIfExistsSubsequencesWithSumK {
+
+    /*
+    * Time Complexity : O(n*2^n)
+    * Space Complexity : O(n) -> space occupied by recursion stack
+    */
     public static boolean checkIfExistsSubsetsOfSumK(int[] nums, int k) {
         List<Integer> set = new ArrayList<>();
         return generateSubsets(nums,0,set, k);
@@ -20,14 +25,36 @@ public class CheckIfExistsSubsequencesWithSumK {
         }
         
         boolean l = generateSubsets(nums,index+1,set,k);
-        List<Integer> set2= new ArrayList<>(set);
-        set2.add(nums[index]);
-        boolean r = generateSubsets(nums,index+1,set2,k);
+        set.add(nums[index]);
+        boolean r = generateSubsets(nums,index+1,set,k);
+        set.remove(set.size()-1);
+        return l||r;
+    }
+
+    /*
+    * Time Complexity : O(2^n)
+    * Space Complexity : O(n) -> space occupied by recursion stack
+    */
+    public static boolean checkIfExistsSubsetsOfSumKUsingRollingSum(int[] nums, int k) {
+        List<Integer> set = new ArrayList<>();
+        return generateSubsetsUsingRollingSum(nums,0,set, k,0);
+    }
+
+    public static boolean generateSubsetsUsingRollingSum(int[] nums, int index, List<Integer> set, int k, int currSum) {
+        if(index==nums.length){
+            return (currSum==k) ? true:false;
+        }
+        
+        boolean l = generateSubsetsUsingRollingSum(nums,index+1,set,k,currSum);
+        set.add(nums[index]);
+        boolean r = generateSubsetsUsingRollingSum(nums,index+1,set,k,currSum+nums[index]);
+        set.remove(set.size()-1);
         return l||r;
     }
 
     /*
      * Time Complexity : O(n*2^n)
+     * Space Complexity : O(1)
      */
     public static boolean checkIfExistsSubsetsOfSumKUsinBitManipulation(int[] nums, int k) {
         int numberOfElements = (int) Math.pow(2, nums.length);
@@ -47,6 +74,7 @@ public class CheckIfExistsSubsequencesWithSumK {
         int[] nums1 = {1,2,3,4};
         int k1 =5;
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CheckIfExistsSubsequencesWithSumK.checkIfExistsSubsetsOfSumK(nums1, k1));
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CheckIfExistsSubsequencesWithSumK.checkIfExistsSubsetsOfSumKUsingRollingSum(nums1, k1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CheckIfExistsSubsequencesWithSumK.checkIfExistsSubsetsOfSumKUsinBitManipulation(nums1,k1));
     }
 }
