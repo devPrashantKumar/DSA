@@ -6,8 +6,11 @@ import java.util.List;
 
 public class CombinationSum {
     /*
+     * n = number of candidates
+     * T = target
+     * m = smallest value in candidates
+     * t = T / m → maximum possible length of a combination
      * Time Comlexity: O(n^t) 
-     * where t is number of element in max length combination.
      * Space Complexity O(t)
      */
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
@@ -31,8 +34,11 @@ public class CombinationSum {
     }
 
     /*
-     * Time Comlexity: O(n * ^t) 
-     * where t is number of element in max length combination.
+     * n = number of candidates
+     * T = target
+     * m = smallest value in candidates
+     * t = T / m → maximum possible length of a combination
+     * Time Comlexity: O(n^t) 
      * Space Complexity O(t)
      */
     public static List<List<Integer>> combinationSumApproach2(int[] candidates, int target) {
