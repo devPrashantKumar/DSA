@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PrintAllSubsequencesOrPowerSet {
+    /*
+    * Time Complexity : O(n*2^n)
+    * Space Complexity : O(n) -> space occupied by recursion stack
+    */
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> set = new ArrayList<>();
@@ -24,8 +28,9 @@ public class PrintAllSubsequencesOrPowerSet {
     }
 
     /*
-     * Time Complexity : O(n*2^n)
-     */
+    * Time Complexity : O(n*2^n)
+    * Space Complexity : O(1)
+    */
     public static List<List<Integer>> subsetsUsinBitManipulation(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         int numberOfElements = (int) Math.pow(2, nums.length);
@@ -37,7 +42,6 @@ public class PrintAllSubsequencesOrPowerSet {
                 }
             }
             result.add(set);
-
         }
         return result;
     }
