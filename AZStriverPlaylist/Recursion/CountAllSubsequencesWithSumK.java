@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CountAllSubsequencesWithSumK {
+    /*
+    * Time Complexity : O(n*2^n)
+    * Space Complexity : O(n) -> space occupied by recursion stack
+    */
     public static int countSubsetsOfSumK(int[] nums, int k) {
         List<Integer> set = new ArrayList<>();
         return generateSubsets(nums,0,set, k);
@@ -27,8 +31,34 @@ public class CountAllSubsequencesWithSumK {
     }
 
     /*
-     * Time Complexity : O(n*2^n)
-     */
+    * Time Complexity : O(n*2^n)
+    * Space Complexity : O(n) -> space occupied by recursion stack
+    */
+    public static int countSubsetsOfSumKApproach2(int[] nums, int k) {
+        List<Integer> set = new ArrayList<>();
+        return generateSubsetsApproach2(nums,0,set, k);
+    }
+
+    public static int generateSubsetsApproach2(int[] nums, int index, List<Integer> set, int k) {
+        if(index==nums.length){
+            int sum=0;
+            for(int num:set){
+                sum+= num;
+            }
+            return (sum==k) ? 1:0;
+        }
+        
+        int l = generateSubsetsApproach2(nums,index+1,set,k);
+        set.add(nums[index]);
+        int r = generateSubsetsApproach2(nums,index+1,set,k);
+        set.remove(set.size()-1);
+        return l+r;
+    }
+
+    /*
+    * Time Complexity : O(n*2^n)
+    * Space Complexity : O(1)
+    */
     public static int countSubsetsOfSumKUsinBitManipulation(int[] nums, int k) {
         int count=0;
         int numberOfElements = (int) Math.pow(2, nums.length);
@@ -46,8 +76,9 @@ public class CountAllSubsequencesWithSumK {
 
     public static void main(String[] args) {
         int[] nums1 = {1,2,3,4};
-        int k1 =5;
+        int k1 = 5;
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CountAllSubsequencesWithSumK.countSubsetsOfSumK(nums1, k1));
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CountAllSubsequencesWithSumK.countSubsetsOfSumKApproach2(nums1, k1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CountAllSubsequencesWithSumK.countSubsetsOfSumKUsinBitManipulation(nums1,k1));
     }
 }
