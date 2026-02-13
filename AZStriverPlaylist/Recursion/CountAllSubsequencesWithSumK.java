@@ -56,6 +56,27 @@ public class CountAllSubsequencesWithSumK {
     }
 
     /*
+    * Time Complexity : O(2^n)
+    * Space Complexity : O(n) -> space occupied by recursion stack
+    */
+    public static int countSubsetsOfSumKUsingRunningSumApproach(int[] nums, int k) {
+        List<Integer> set = new ArrayList<>();
+        return generateSubsetsUsingRunningSumApproach(nums,0,set, k, 0);
+    }
+
+    public static int generateSubsetsUsingRunningSumApproach(int[] nums, int index, List<Integer> set, int k, int currentSum) {
+        if(index==nums.length){
+            return (currentSum==k) ? 1:0;
+        }
+        
+        int l = generateSubsetsUsingRunningSumApproach(nums,index+1,set,k, currentSum);
+        set.add(nums[index]);
+        int r = generateSubsetsUsingRunningSumApproach(nums,index+1,set,k,currentSum+nums[index]);
+        set.remove(set.size()-1);
+        return l+r;
+    }
+
+    /*
     * Time Complexity : O(n*2^n)
     * Space Complexity : O(1)
     */
@@ -79,6 +100,7 @@ public class CountAllSubsequencesWithSumK {
         int k1 = 5;
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CountAllSubsequencesWithSumK.countSubsetsOfSumK(nums1, k1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CountAllSubsequencesWithSumK.countSubsetsOfSumKApproach2(nums1, k1));
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CountAllSubsequencesWithSumK.countSubsetsOfSumKUsingRunningSumApproach(nums1, k1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CountAllSubsequencesWithSumK.countSubsetsOfSumKUsinBitManipulation(nums1,k1));
     }
 }
