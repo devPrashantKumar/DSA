@@ -49,11 +49,12 @@ public class CombinationSum {
     }
 
     public static void generateCombinationApproach2(int[] candidates, int target,List<Integer> combination, int index,List<List<Integer>> result){
-        if(target<0 || index>=candidates.length) return;
+        if(target<0) return;
         if(target==0){
             result.add(new ArrayList<>(combination));
             return;
         }
+        if(index>=candidates.length) return;
 
         generateCombinationApproach2(candidates, target, combination, index+1,result);
         combination.add(candidates[index]);
