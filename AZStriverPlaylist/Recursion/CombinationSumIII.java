@@ -15,14 +15,10 @@ public class CombinationSumIII {
         if(combination.size()==k && n==0){
             result.add(new ArrayList<>(combination));
         } 
-        int previous=Integer.MIN_VALUE;
         for(int i=index;i<9;i++){
-            if(previous!=i+1){
-                combination.add(i+1);
-                generateCombination(n-(i+1),k, combination, i+1,result);
-                combination.remove(combination.size()-1);
-            }
-            previous = i+1;
+            combination.add(i+1);
+            generateCombination(n-(i+1),k, combination, i+1,result);
+            combination.remove(combination.size()-1);
         }
     }
 
