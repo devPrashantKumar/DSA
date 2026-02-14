@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSumII {
+    /*
+    * Tiem Complexity : O (n * 2^n)
+    * Space Complexity : O(n) -> Recursion depth
+    */
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> combination = new ArrayList<>();
@@ -19,17 +23,21 @@ public class CombinationSumII {
             result.add(new ArrayList<>(combination));
             return;
         }
-        int previous=-1;
+        int used=-1;
         for(int i=index+1;i<candidates.length;i++){
-            if(previous!=candidates[i]){
+            if(used!=candidates[i]){
                 combination.add(candidates[i]);
                 generateCombination(candidates, target-candidates[i], combination, i,result);
                 combination.remove(combination.size()-1);
             }
-            previous = candidates[i];
+            used = candidates[i];
         }
     }
 
+    /*
+    * Tiem Complexity : O (n * 2^n)
+    * Space Complexity : O(n) -> Recursion depth
+    */
     public static List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> combination = new ArrayList<>();
@@ -44,17 +52,21 @@ public class CombinationSumII {
             result.add(new ArrayList<>(combination));
             return;
         }
-        int previous=-1;
+        int used=-1;
         for(int i=index;i<candidates.length;i++){
-            if(previous!=candidates[i]){
+            if(used!=candidates[i]){
                 combination.add(candidates[i]);
                 generateCombination2(candidates, target-candidates[i], combination, i+1,result);
                 combination.remove(combination.size()-1);
             }
-            previous = candidates[i];
+            used = candidates[i];
         }
     }
 
+    /*
+    * Tiem Complexity : O (n * 2^n)
+    * Space Complexity : O(n) -> Recursion depth
+    */
     public static List<List<Integer>> combinationSumApproach2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> combination = new ArrayList<>();
