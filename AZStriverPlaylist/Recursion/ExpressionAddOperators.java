@@ -10,7 +10,7 @@ public class ExpressionAddOperators {
         return result; 
     }
 
-    public static void addOperatorsUtil(String num, int target, int index, char lastChar, boolean nextAlllowed,  List<Character> list, List<String> result) {
+    public static void addOperatorsUtil(String num, int target, int index, char lastChar, boolean nextAllowed,  List<Character> list, List<String> result) {
         int n = num.length();
         if(index==n){
             if(calculateStackExpression(new ArrayList<>(list))==target){
@@ -20,12 +20,12 @@ public class ExpressionAddOperators {
             }
             return;
         }
-        if(!nextAlllowed) return;
+        if(!nextAllowed) return;
 
         list.add(num.charAt(index));
 
         if(num.charAt(index)=='0' && (lastChar=='_' || lastChar=='+' || lastChar=='*' || lastChar=='-')){
-            nextAlllowed=false;
+            nextAllowed=false;
         }
 
         if(num.charAt(index)!='0'){
@@ -45,7 +45,7 @@ public class ExpressionAddOperators {
             addOperatorsUtil(num, target, index+1, '-', true,list, result);
             list.remove(list.size()-1);
         }
-        addOperatorsUtil(num, target, index+1, lastChar,nextAlllowed, list, result);
+        addOperatorsUtil(num, target, index+1, lastChar,nextAllowed, list, result);
 
         list.remove(list.size()-1);
     }
