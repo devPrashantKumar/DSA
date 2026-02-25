@@ -20,6 +20,16 @@ public class CountNumberOfSetBits {
         return count;
     }
 
+    public static int countSetBitsNaive2(int num) {
+        int count = 0;
+        while (num > 1) {
+            count += (num % 2);
+            num /= 2; 
+        }
+        if(num==1) count++;
+        return count;
+    }
+
     // time complexity : O(log n)
     public static int countSetBitsOptimized(int num) {
         int count = 0;
@@ -39,6 +49,11 @@ public class CountNumberOfSetBits {
         System.out.println(countSetBitsNaive(10));
         System.out.println(countSetBitsNaive(15));
         System.out.println(countSetBitsNaive(0));
+        System.out.println("-----------------------------------------");
+
+        System.out.println(countSetBitsNaive2(10));
+        System.out.println(countSetBitsNaive2(15));
+        System.out.println(countSetBitsNaive2(0));
         System.out.println("-----------------------------------------");
 
         System.out.println(countSetBitsOptimized(10));
