@@ -24,6 +24,7 @@ public class BinaryOperator {
         return operand1>>operand2;
     }
 
+    // important  { ~x = -(x+1)  , for integers}
     public static int notOperator(int operand){
         return ~operand;
     }
@@ -69,6 +70,7 @@ public class BinaryOperator {
         System.out.println(BinaryOperator.notOperator(1));
         System.out.println(BinaryOperator.notOperator(32));
         System.out.println(BinaryOperator.notOperator(-1));
+        System.out.println(BinaryOperator.notOperator(-10));
 
         System.out.println("------------------------------------------------------------");
         System.out.println(Integer.toBinaryString(10));
@@ -76,6 +78,8 @@ public class BinaryOperator {
 
         System.out.println("------------------------------------------------------------");
         System.out.println(BinaryOperator.orOperator(-10, 1));
-
+        System.out.println("------------------------------------------------------------");
+        System.out.println(BinaryOperator.rightShiftOperator(32, 5));
+        System.out.println(BinaryOperator.rightShiftOperator(-32, 5));
     }
 }
