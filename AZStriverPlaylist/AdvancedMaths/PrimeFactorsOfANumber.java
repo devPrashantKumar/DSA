@@ -71,7 +71,7 @@ public class PrimeFactorsOfANumber {
         }
 
         if(num!=1) factors.add(num);
-        return factors.stream().mapToInt(Integer::intValue).toArray();
+        return factors.stream().mapToInt(Integer::intValue).distinct().toArray();
     }
 
     public static void main(String[] args) {
