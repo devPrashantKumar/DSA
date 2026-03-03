@@ -6,9 +6,6 @@ import java.util.List;
 
 public class PrimeFactorisationOfANumber {
 
-    /*
-     * Time Complexity : O(n*sqrt(n))
-     */
     public static int[] primeFactorisationBruteForce(int n) {
         List<Integer> primeFactors = new ArrayList<>();
         for (int i = 2; i <= n; i++) {
@@ -34,9 +31,6 @@ public class PrimeFactorisationOfANumber {
         return true;
     }
 
-    /*
-     * Time Complexity : O(sqrt(n)*sqrt(n)) -> O(n)
-     */
     public static int[] primeFactorisationBetter(int n) {
         List<Integer> primeFactors = new ArrayList<>();
         boolean flag = false;
@@ -86,6 +80,7 @@ public class PrimeFactorisationOfANumber {
         System.out.println("Prime Factorisations of " + 4 + " are " + Arrays.toString(primeFactorisationBruteForce(4)));
         System.out.println("Prime Factorisations of " + 4 + " are " + Arrays.toString(primeFactorisationBetter(8)));
         System.out.println("Prime Factorisations of " + 12 + " are " + Arrays.toString(primeFactors(12)));
+        System.out.println("Prime Factorisations of " + 12 + " are " + Arrays.toString(primeFactorisationBetter(12)));
 
     }
 }

@@ -42,10 +42,10 @@ public class AllDivisorsOfANumber {
     public static void main(String[] args) {
         System.out.println("Divisors of Number : " + 10 + " is : " + Arrays.toString(allDivisorsBruteForce(10)));
         System.out.println("Divisors of Number : " + 10 + " is : " + Arrays.toString(allDivisors(10)));
-        System.out.println("Divisors of Number : " + 10 + " is : " + Arrays.toString(allDivisorsBruteForce(8)));
-        System.out.println("Divisors of Number : " + 10 + " is : " + Arrays.toString(allDivisors(8)));
-        System.out.println("Divisors of Number : " + 10 + " is : " + Arrays.toString(allDivisorsBruteForce(7)));
-        System.out.println("Divisors of Number : " + 10 + " is : " + Arrays.toString(allDivisors(7)));
+        System.out.println("Divisors of Number : " + 8 + " is : " + Arrays.toString(allDivisorsBruteForce(8)));
+        System.out.println("Divisors of Number : " + 8 + " is : " + Arrays.toString(allDivisors(8)));
+        System.out.println("Divisors of Number : " + 7+ " is : " + Arrays.toString(allDivisorsBruteForce(7)));
+        System.out.println("Divisors of Number : " + 7 + " is : " + Arrays.toString(allDivisors(7)));
 
     }
 
