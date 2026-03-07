@@ -1,4 +1,4 @@
-package AZStriverPlaylist.StackAndQueues;
+package AZStriverPlaylist.StackAndQueues.Learning;
 
 public class LinearQueueUsingArray {
     private int[] arr;

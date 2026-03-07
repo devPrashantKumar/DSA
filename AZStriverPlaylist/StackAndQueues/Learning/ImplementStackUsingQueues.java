@@ -1,4 +1,4 @@
-package AZStriverPlaylist.StackAndQueues;
+package AZStriverPlaylist.StackAndQueues.Learning;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -38,6 +38,7 @@ public class ImplementStackUsingQueues {
         return deque.isEmpty();
     }
 
+    // printing in wrong order here
     public void printStack() {
         int n = deque.size();
         while (n-- > 0) {
