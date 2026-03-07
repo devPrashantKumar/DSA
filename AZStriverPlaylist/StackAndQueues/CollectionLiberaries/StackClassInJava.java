@@ -1,7 +1,7 @@
 package AZStriverPlaylist.StackAndQueues.CollectionLiberaries;
 import java.util.*;
 
-public class StackClassInJavaTest {
+public class StackClassInJava {
 
     public static void main(String[] args){
         Stack<Integer> stk = new Stack<>();
