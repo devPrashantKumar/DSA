@@ -4,63 +4,63 @@ import java.util.Stack;
 
 public class ImplementQueueUsingStackApproch2 {
 
-    Stack<Integer> stack;
-    Stack<Integer> tempStack;
+    Stack<Integer> inputStack;
+    Stack<Integer> outputStack;
 
     public ImplementQueueUsingStackApproch2() {
-        stack = new Stack<>();
-        tempStack = new Stack<>();
+        inputStack = new Stack<>();
+        outputStack = new Stack<>();
     }
 
     public void push(int x) {
-        stack.push(x);
+        inputStack.push(x);
     }
 
     public int pop() {
-        if (tempStack.isEmpty()) {
-            if (stack.isEmpty()) {
+        if (outputStack.isEmpty()) {
+            if (inputStack.isEmpty()) {
                 throw new RuntimeException("Queue is Empty");
             }
-            while (!stack.isEmpty()) {
-                tempStack.push(stack.pop());
+            while (!inputStack.isEmpty()) {
+                outputStack.push(inputStack.pop());
             }
         }
-        return tempStack.pop();
+        return outputStack.pop();
     }
 
     public int peek() {
-        if (tempStack.isEmpty()) {
-            if (stack.isEmpty()) {
+        if (outputStack.isEmpty()) {
+            if (inputStack.isEmpty()) {
                 throw new RuntimeException("Queue is Empty");
             }
-            while (!stack.isEmpty()) {
-                tempStack.push(stack.pop());
+            while (!inputStack.isEmpty()) {
+                outputStack.push(inputStack.pop());
             }
         }
-        return tempStack.peek();
+        return outputStack.peek();
     }
 
     public boolean empty() {
-        return stack.isEmpty();
+        return inputStack.isEmpty();
     }
 
     public void printQueue() {
-        Stack<Integer> tempStack2 = new Stack<>();
-        while (!tempStack.isEmpty()) {
-            Integer temp = tempStack.pop();
+        Stack<Integer> outputStack2 = new Stack<>();
+        while (!outputStack.isEmpty()) {
+            Integer temp = outputStack.pop();
             System.out.print(temp + " ");
-            tempStack2.push(temp);
+            outputStack2.push(temp);
         }
-        while (!tempStack2.isEmpty()) {
-            tempStack.push(tempStack2.pop());
+        while (!outputStack2.isEmpty()) {
+            outputStack.push(outputStack2.pop());
         }
-        while (!stack.isEmpty()) {
-            tempStack2.push(stack.pop());
+        while (!inputStack.isEmpty()) {
+            outputStack2.push(inputStack.pop());
         }
-        while (!tempStack2.isEmpty()) {
-            Integer temp = tempStack2.pop();
+        while (!outputStack2.isEmpty()) {
+            Integer temp = outputStack2.pop();
             System.out.print(temp + " ");
-            stack.push(temp);
+            inputStack.push(temp);
         }
         System.out.println();
     }
