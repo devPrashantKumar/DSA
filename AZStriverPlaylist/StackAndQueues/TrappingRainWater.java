@@ -18,8 +18,7 @@ public class TrappingRainWater {
         for (int i = 0; i < height.length; i++) {
             if (leftMaximum[i] > height[i] && rightMaximum[i] > height[i]) {
                 sum += Math.min(leftMaximum[i], rightMaximum[i]) - height[i];
-            }
-            ;
+            };
         }
         return sum;
     }
