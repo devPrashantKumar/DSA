@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/* Time complexity : O(4^(n^2))
+* Space Complexity : O(n^2)+O(n^2) , recursive stack + visited array
+ */
 public class RatInAMaze {
     public static List<String> findPath(int[][] grid) {
         List<String> result = new ArrayList<>();
