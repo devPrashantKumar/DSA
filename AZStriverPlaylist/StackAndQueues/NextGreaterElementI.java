@@ -24,6 +24,7 @@ public class NextGreaterElementI {
             nextGreater[i]=-1;
         }
         for (int i=0;i<nums2.length;i++) {
+            // All integers in nums1 and nums2 are unique. otherwise this will fail
             map.put(nums2[i], nextGreater[i]);
         }
         for (int i=0;i<nums1.length;i++) {
@@ -50,6 +51,7 @@ public class NextGreaterElementI {
             i--;
         }
         for (i=0;i<nums2.length;i++) {
+            // All integers in nums1 and nums2 are unique. otherwise this will fail
             map.put(nums2[i], nextGreater[i]);
         }
         for (i=0;i<nums1.length;i++) {
