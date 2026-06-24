@@ -42,6 +42,36 @@ public class InfixToPostfixConversion {
         return result.toString();
     }
 
+    public static String infixToPostfixRefratored(String exp) {
+        StringBuilder result = new StringBuilder();
+        Stack<Character> stk = new Stack<>();
+        for (int i = 0; i < exp.length(); i++) {
+            char character = exp.charAt(i);
+            if (Character.isLetterOrDigit(character)) {
+                result.append(character);
+            } 
+            else if (character == '(') {
+                stk.push(character);
+            } 
+            else if (isArithmaticOperator(character)) {
+                while (!stk.isEmpty() && precedence(stk.peek()) >= precedence(character)) {
+                    result.append(stk.pop());
+                }
+                stk.push(character);
+            } 
+            else {
+                while (!stk.isEmpty() && stk.peek() != '(') {
+                    result.append(stk.pop());
+                }
+                stk.pop();
+            }
+        }
+        while (!stk.isEmpty()) {
+            result.append(stk.pop());
+        }
+        return result.toString();
+    }
+
     public static int precedence(char c) {
         return switch (c) {
             case '^' -> 3;
@@ -52,12 +82,11 @@ public class InfixToPostfixConversion {
     }
 
     // public static int precedence2(char c) {
-    // switch (c) {
-    // case '^' : return 3;
-    // case '*', '/' : return 2;
-    // case '+', '-' : return 1;
-    // default : return -1;
-    // }
+    //     return switch (c) {
+    //         case '*', '/' : return 2;
+    //         case '+', '-' : return 1;
+    //         default : return -1;
+    //     }
     // }
 
     public static boolean isArithmaticOperator(char c) {
@@ -69,8 +98,15 @@ public class InfixToPostfixConversion {
     public static void main(String[] args) {
         String exp1 = "A*(B+C)/D";
         System.out.println("Input : " + exp1 + " Output : " + InfixToPostfixConversion.infixToPostfix(exp1));
+        System.out.println("Input : " + exp1 + " Output : " + InfixToPostfixConversion.infixToPostfixRefratored(exp1));
 
         String exp2 = "a+b*(c^d-e)^(f+g*h)-i";
         System.out.println("Input : " + exp2 + " Output : " + InfixToPostfixConversion.infixToPostfix(exp2));
+        System.out.println("Input : " + exp2 + " Output : " + InfixToPostfixConversion.infixToPostfixRefratored(exp2));
+
+        String exp3 = "A+B*(C^D-E)";
+        System.out.println("Input : " + exp3 + " Output : " + InfixToPostfixConversion.infixToPostfix(exp3));
+        System.out.println("Input : " + exp3 + " Output : " + InfixToPostfixConversion.infixToPostfixRefratored(exp3));
+
     }
 }

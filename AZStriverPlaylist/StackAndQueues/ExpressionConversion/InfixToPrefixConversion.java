@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /*
  * Reference : https://www.geeksforgeeks.org/dsa/convert-infix-prefix-notation/ - this article is wrong
- * refer this video for corrct solution : https://www.youtube.com/watch?v=4pIc9UBHJtk
+ * refer this video for corrct solution : https://www.youtube.com/watch?v=4pIc9UBHJtk - striver video
  */
 public class InfixToPrefixConversion {
     /*
@@ -29,7 +29,7 @@ public class InfixToPrefixConversion {
                 }
                 stk.pop();
             } else {
-                if (character == '^') {
+                if (character == '^') { // this case is important , think about this
                     while (!stk.isEmpty() && precedence(stk.peek()) >= precedence(character)) {
                         result.append(stk.pop());
                     }
