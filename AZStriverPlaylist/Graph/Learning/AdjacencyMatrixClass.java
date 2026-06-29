@@ -3,6 +3,9 @@ package AZStriverPlaylist.Graph.Learning;
 import java.util.*;
 
 public class AdjacencyMatrixClass {
+    /*
+    * Space complexity : O(V^2)
+    */
     int[][] adjacencyMatrix;
     int vertices;
 

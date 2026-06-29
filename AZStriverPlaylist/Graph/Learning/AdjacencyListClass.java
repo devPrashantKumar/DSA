@@ -4,6 +4,9 @@ import java.util.*;
 
 public class AdjacencyListClass {
     int vertices;
+    /*
+    * Space complexity : O(V+2*E)
+    */
     ArrayList<Integer>[] adjacencyList;
 
     @SuppressWarnings("unchecked")
