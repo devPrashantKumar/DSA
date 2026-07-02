@@ -68,6 +68,43 @@ public class AdjacencyListClass {
         return traversalResult;
     }
 
+    /*
+     * Time Complexity : O(V+2E)=O(V+E)
+    * Space Complexity : worst case O(V+E) for the queue,
+    *      since a vertex can be pushed multiple times before
+    *      it's marked visited (marking happens on pop, not on push)
+    */
+    public int[] BFSInAdjacencyList2() {
+        int[] traversalResult = new int[vertices];
+        Queue<Integer> queue = new LinkedList<>();
+        int[] visited = new int[vertices];
+        int k = 0;
+        for (int v = 0; v < visited.length; v++) {
+            if (visited[v] == 0) {
+                queue.add(v);
+                while (!queue.isEmpty()) {
+                    int vertex = queue.poll();
+                    if(visited[vertex]==0){
+                        visited[vertex] = 1;
+                        traversalResult[k++] = vertex;
+                        for (int i = 0; i < adjacencyList[vertex].size(); i++) {
+                            if (visited[adjacencyList[vertex].get(i)] == 0) {
+                                queue.add(adjacencyList[vertex].get(i));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return traversalResult;
+    }
+
+    /*
+    * Time Complexity : O(V+2E)=O(V+E)
+    * Space Complexity : O(V)+O(V)=O(V),
+    *      - O(V), space occupied by visited
+    *      - O(V), space occupied by stack
+    */
     public int[] DFSInAdjacencyList() {
         int[] traversalResult = new int[vertices];
         int[] visited = new int[vertices];
@@ -84,6 +121,37 @@ public class AdjacencyListClass {
                         if (visited[adjacencyList[vertex].get(i)] == 0) {
                             stk.add(adjacencyList[vertex].get(i));
                             visited[adjacencyList[vertex].get(i)] = 1;
+                        }
+                    }
+                }
+            }
+        }
+        return traversalResult;
+    }
+
+    /*
+    * Time Complexity : O(V+2E)=O(V+E)
+    * Space Complexity : worst case O(V+E) for the stack,
+    *      since a vertex can be pushed multiple times before
+    *      it's marked visited (marking happens on pop, not on push)
+    */
+    public int[] DFSInAdjacencyList2() {
+        int[] traversalResult = new int[vertices];
+        int[] visited = new int[vertices];
+        int k = 0;
+        Stack<Integer> stk = new Stack<>();
+        for (int v = 0; v < visited.length; v++) {
+            if (visited[v] == 0) {
+                stk.add(v);
+                while (!stk.isEmpty()) {
+                    int vertex = stk.pop();
+                    if(visited[vertex]==0){
+                        visited[vertex]=1;
+                        traversalResult[k++] = vertex;
+                        for (int i = 0; i < adjacencyList[vertex].size(); i++) {
+                            if (visited[adjacencyList[vertex].get(i)] == 0) {
+                                stk.add(adjacencyList[vertex].get(i));
+                            }
                         }
                     }
                 }
@@ -119,6 +187,36 @@ public class AdjacencyListClass {
         }
     }
 
+
+    /*
+    * Time Complexity : O(V+2E)=O(V+E)
+    * Space Complexity : O(V)+O(V)=O(V),
+    *      - O(V), space occupied by visited
+    *      - O(V), max recursive depth if all vertices form a linear chain
+    */
+    public int[] DFSInAdjacencyListRecursion2() {
+        List<Integer> traversalResult = new ArrayList<>();
+        int[] visited = new int[vertices];
+        for (int v = 0; v < visited.length; v++) {
+            if (visited[v] == 0) {
+                visited[v]=1;
+                traversalResult.add(v);
+                DFSInAdjacencyListRecursionUtil2(visited,v,traversalResult);
+            }
+        }
+        return traversalResult.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    public void DFSInAdjacencyListRecursionUtil2(int[] visited, int vertex, List<Integer> traversalResult) {
+        for (int v = 0; v < adjacencyList[vertex].size(); v++) {
+            if (visited[adjacencyList[vertex].get(v)] == 0) {
+                traversalResult.add(adjacencyList[vertex].get(v));
+                visited[adjacencyList[vertex].get(v)]=1;
+                DFSInAdjacencyListRecursionUtil2(visited,adjacencyList[vertex].get(v),traversalResult);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         AdjacencyListClass adjacencyListClass = new AdjacencyListClass(5);
         adjacencyListClass.addUndirectedEdge(0, 1);
@@ -127,7 +225,11 @@ public class AdjacencyListClass {
         adjacencyListClass.addDirectedEdge(0, 3);
         adjacencyListClass.printAdjacencyList();
         System.out.println(Arrays.toString(adjacencyListClass.BFSInAdjacencyList()));
+        System.out.println(Arrays.toString(adjacencyListClass.BFSInAdjacencyList2()));
         System.out.println(Arrays.toString(adjacencyListClass.DFSInAdjacencyList()));
+        System.out.println(Arrays.toString(adjacencyListClass.DFSInAdjacencyList2()));
         System.out.println(Arrays.toString(adjacencyListClass.DFSInAdjacencyListRecursion()));
+        System.out.println(Arrays.toString(adjacencyListClass.DFSInAdjacencyListRecursion2()));
+
     }
 }
