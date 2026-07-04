@@ -64,5 +64,8 @@ public class InfixToPrefixConversion {
 
         String exp2 = "(a-b/c)*(a/k-l)";
         System.out.println("Input : " + exp2 + " Output : " + InfixToPrefixConversion.infixToPrefix(exp2));
+
+        String exp3 = "A+B*(C^D-E)";
+        System.out.println("Input : " + exp3 + " Output : " + InfixToPrefixConversion.infixToPrefix(exp3));
     }
 }
