@@ -30,6 +30,27 @@ public class DetectACycleInAnUndirectedGraph {
         return false;
     }
 
+
+    public static boolean isCycleDFS(int V, List<Integer>[] adj) {
+        boolean[] visited = new boolean[V];
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                if(isCycleDFSUtil(V, adj, -1,i,visited)) return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isCycleDFSUtil(int V, List<Integer>[] adj, int parent, int node, boolean[] visited) {
+        visited[node]=true;
+        for(int i=0;i<adj[node].size();i++){
+            if(adj[node].get(i)==parent) continue;
+            if(visited[adj[node].get(i)]) return true;
+            if(isCycleDFSUtil(V, adj, node, adj[node].get(i), visited)) return true;
+        }
+        return false;
+    }
+
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         int V1 = 6;
@@ -42,6 +63,7 @@ public class DetectACycleInAnUndirectedGraph {
         adj1[5] = new ArrayList<>(List.of(2, 4));
 
         System.out.println(isCycle(V1, adj1));
+        System.out.println(isCycleDFS(V1, adj1));
         System.out.println("----------------------------------------------------");
 
         int V2 = 4;
@@ -52,6 +74,7 @@ public class DetectACycleInAnUndirectedGraph {
         adj2[3] = new ArrayList<>(List.of(2));
 
         System.out.println(isCycle(V2, adj2));
+        System.out.println(isCycleDFS(V2, adj2));
         System.out.println("----------------------------------------------------");
 
     }
