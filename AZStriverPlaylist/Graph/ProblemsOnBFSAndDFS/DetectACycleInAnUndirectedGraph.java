@@ -6,29 +6,29 @@ import java.util.List;
 import java.util.Queue;
 
 public class DetectACycleInAnUndirectedGraph {
-    // this is wrong implementation
-    // public static boolean isCycle(int V, List<Integer>[] adj) {
-    //     int[] visited = new int[V];
-    //     Queue<Integer> queue = new LinkedList<>();
-    //     for (int i = 0; i < V; i++) {
-    //         if (visited[i] == 0) {
-    //             queue.offer(i);
-    //             visited[i] = 1;
-    //             while (!queue.isEmpty()) {
-    //                 Integer vertex = queue.poll();
-    //                 for (int j = 0; j < adj[vertex].size(); j++) {
-    //                     if (adj[vertex].get(j) <= vertex)
-    //                         continue;
-    //                     if (visited[adj[vertex].get(j)] == 1)
-    //                         return true;
-    //                     queue.offer(adj[vertex].get(j));
-    //                     visited[adj[vertex].get(j)] = 1;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return false;
-    // }
+    // not standard approach
+    public static boolean isCycle(int V, List<Integer>[] adj) {
+        int[] visited = new int[V];
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < V; i++) {
+            if (visited[i] == 0) {
+                queue.offer(i);
+                visited[i] = 1;
+                while (!queue.isEmpty()) {
+                    Integer vertex = queue.poll();
+                    for (int j = 0; j < adj[vertex].size(); j++) {
+                        if (adj[vertex].get(j) <= vertex)
+                            continue;
+                        if (visited[adj[vertex].get(j)] == 1)
+                            return true;
+                        queue.offer(adj[vertex].get(j));
+                        visited[adj[vertex].get(j)] = 1;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     public static boolean isCycleBFS(int V, List<Integer>[] adj) {
         boolean[] visited = new boolean[V];
@@ -90,6 +90,8 @@ public class DetectACycleInAnUndirectedGraph {
         return false;
     }
 
+
+    // not standard approach
     public static boolean isCycleDFSWithoutParent(int V, List<Integer>[] adj) {
         boolean[] visited = new boolean[V];
         for (int i = 0; i < V; i++) {
@@ -156,16 +158,18 @@ public class DetectACycleInAnUndirectedGraph {
 
         System.out.println("----------------------------------------------------");
 
-        // isCycle fail for this
-        // int V3 = 5;
-        // List<Integer>[] adj3 = new List[5];
-        // adj3[0] = new ArrayList<>();
-        // adj3[1] = new ArrayList<>();
-        // adj3[2] = new ArrayList<>(List.of(3));
-        // adj3[3] = new ArrayList<>(List.of(2, 4));
-        // adj3[4] = new ArrayList<>(List.of(2, 3));
+        int V3 = 5;
+        List<Integer>[] adj3 = new List[5];
+        adj3[0] = new ArrayList<>();
+        adj3[1] = new ArrayList<>();
+        adj3[2] = new ArrayList<>(List.of(3,4));
+        adj3[3] = new ArrayList<>(List.of(2, 4));
+        adj3[4] = new ArrayList<>(List.of(2, 3));
 
-        // System.out.println(isCycle(V3, adj3));
+        System.out.println(isCycle(V3, adj3));
+        System.out.println(isCycleBFS(V3, adj3));
+        System.out.println(isCycleDFS(V3, adj3));
+        System.out.println(isCycleDFSWithoutParent(V3, adj3));
         System.out.println("----------------------------------------------------");
 
 
