@@ -17,6 +17,23 @@ public class FrogJump {
         return Math.min(oneJump, twoJump);
     }
 
+
+    /*
+     * Time Complexity : O(2^n)
+     * Space Complexity : O(n), recursive stack
+     */
+    public static int frogJump2(int[] heights) {
+        return frogJumpUtil2(heights,heights.length-1);
+    }
+
+    public static int frogJumpUtil2(int[] heights, int end) {
+        if(0==end) return 0;
+        int oneJump = Math.abs(heights[end-1]-heights[end])+frogJumpUtil2(heights, end-1);
+        if(end-2<0) return oneJump;
+        int twoJump = Math.abs(heights[end-2]-heights[end])+frogJumpUtil2(heights, end-2);
+        return Math.min(oneJump, twoJump);
+    }
+
     /*
      * Time Complexity : O(n)
      * Space Complexity : O(n)+O(n), (dp array + recursive stack)
@@ -78,6 +95,8 @@ public class FrogJump {
 
     public static void main(String[] args) {
         System.out.println(frogJump(new int[]{2, 1, 3, 5, 4}));
+        System.out.println(frogJump2(new int[]{2, 1, 3, 5, 4}));
+
         System.out.println(frogJumpDP(new int[]{2, 1, 3, 5, 4}));
         System.out.println(frogJumpDPTabulation(new int[]{2, 1, 3, 5, 4}));
         System.out.println(frogJumpDPTabulationSpaceOptimised(new int[]{2, 1, 3, 5, 4}));
@@ -85,6 +104,7 @@ public class FrogJump {
         System.out.println("----------------------------------------------------");
 
         System.out.println(frogJump(new int[]{7, 5, 1, 2, 6}));
+        System.out.println(frogJump2(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDP(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDPTabulation(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDPTabulationSpaceOptimised(new int[]{7, 5, 1, 2, 6}));
