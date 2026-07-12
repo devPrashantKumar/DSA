@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class BipartiteGraph {
+public class BipartiteGraphBFSAndDFS {
     /*
      * Time Complexity : O(V+2E)
      * Space Complexity :O(V)+O(V)=O(V),
