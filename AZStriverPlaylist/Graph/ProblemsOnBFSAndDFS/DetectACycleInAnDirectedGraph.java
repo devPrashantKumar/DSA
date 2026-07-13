@@ -1,27 +1,62 @@
 package AZStriverPlaylist.Graph.ProblemsOnBFSAndDFS;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class DetectACycleInAnDirectedGraph {
-    public static boolean isCycle(int V, List<Integer>[] adj) {
-        Queue<Integer> queue = new LinkedList<>();
+
+    public static boolean isCycleDFS(int V, List<Integer>[] adj) {
+        boolean[] visited = new boolean[V];
+        boolean[] pathVisited = new boolean[V];
+
         for(int i=0;i<V;i++){
-                boolean[] visited = new boolean[V];
-                queue.offer(i);
-                visited[i]=true;
-                while(!queue.isEmpty()){
-                    Integer vertex = queue.poll();
-                    for(Integer dependentOn : adj[vertex]){
-                        if(visited[dependentOn]) return true;
-                        queue.offer(dependentOn);
-                        visited[dependentOn]=true;
-                    }
-                }
-            //}
+            if(!visited[i]){
+                if(isCycleDFSUtil(V, adj, i,visited,pathVisited)) return true;
+            }
         }
+        return false;
+
+    }
+
+    public static boolean isCycleDFSUtil(int V, List<Integer>[] adj, int vertex, boolean[] visited, boolean[] pathVisited) {
+        visited[vertex]=true;
+        pathVisited[vertex]=true;
+
+        for(int i=0;i<adj[vertex].size();i++){
+            int neighbor = adj[vertex].get(i);
+            if(!visited[neighbor]) {
+                if(isCycleDFSUtil(V, adj, neighbor, visited, pathVisited)) return true;
+            }
+            else if(pathVisited[neighbor]) return true;
+        }
+        pathVisited[vertex]=false;
+        return false;
+    }
+
+
+    public static boolean isCycleDFS2(int V, List<Integer>[] adj) {
+        int[] visited = new int[V];
+
+        for(int i=0;i<V;i++){
+            if(visited[i]==0){
+                if(isCycleDFSUtil2(V, adj, i,visited)) return true;
+            }
+        }
+        return false;
+
+    }
+
+    public static boolean isCycleDFSUtil2(int V, List<Integer>[] adj, int vertex, int[] visited) {
+        visited[vertex]=2;
+
+        for(int i=0;i<adj[vertex].size();i++){
+            int neighbor = adj[vertex].get(i);
+            if(visited[neighbor]==0) {
+                if(isCycleDFSUtil2(V, adj, neighbor, visited)) return true;
+            }
+            else if(visited[neighbor]==2) return true;
+        }
+        visited[vertex]=1;
         return false;
     }
 
@@ -33,7 +68,9 @@ public class DetectACycleInAnDirectedGraph {
         adj1[0] = new ArrayList<>();
         adj1[1] = new ArrayList<>(List.of(0));
 
-        System.out.println(isCycle(V1, adj1));
+        System.out.println(isCycleDFS(V1, adj1));
+        System.out.println(isCycleDFS2(V1, adj1));
+
         System.out.println("----------------------------------------------------");
 
          int V2 = 2;
@@ -41,7 +78,9 @@ public class DetectACycleInAnDirectedGraph {
          adj2[0] = new ArrayList<>(List.of(1));
          adj2[1] = new ArrayList<>(List.of(0));
 
-        System.out.println(isCycle(V2, adj2));
+        System.out.println(isCycleDFS(V2, adj2));
+        System.out.println(isCycleDFS2(V2, adj2));
+
         System.out.println("----------------------------------------------------");
 
     }
