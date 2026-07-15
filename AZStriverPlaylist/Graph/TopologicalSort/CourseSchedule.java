@@ -1,45 +1,44 @@
-package AZStriverPlaylist.Graph.ProblemsOnBFSAndDFS;
+package AZStriverPlaylist.Graph.TopologicalSort;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class CourseSchedule {
 
-    public static boolean isCycle(int V, List<Integer>[] adj) {
-        boolean[] visited = new boolean[V];
+    public static boolean canFinishCourse(int V, List<Integer>[] adj) {
+        // 0 = unvisited, 1 = cuurent visited, 2 = visited
+        int[] visited = new int[V];
         for (int i = 0; i < V; i++) {
-            if (!visited[i]) {
-                if (!isCycleDFSUtil(V, adj, i, visited))
+            if (visited[i]==0) {
+                if(!canFinishCourseUtil(V, adj, i, visited))
                     return false;
             }
         }
         return true;
     }
 
-    public static boolean isCycleDFSUtil(int V, List<Integer>[] adj, int node, boolean[] visited) {
-        visited[node] = true;
+    public static boolean canFinishCourseUtil(int V, List<Integer>[] adj, int node, int[] visited) {
+        visited[node] = 1;
         for (int i = 0; i < adj[node].size(); i++) {
-            if (visited[adj[node].get(i)])
-                return false;
-            if (!isCycleDFSUtil(V, adj, adj[node].get(i), visited))
+            if (visited[adj[node].get(i)]==0)
+                if (!canFinishCourseUtil(V, adj, adj[node].get(i), visited)) return false;
+            if (visited[adj[node].get(i)]==1)
                 return false;
         }
+        visited[node] = 2;
         return true;
     }
 
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
-        return isCycle(numCourses, convertToAdjecencyList(numCourses, prerequisites));
+        return canFinishCourse(numCourses, convertToAdjecencyList(numCourses, prerequisites));
     }
 
     @SuppressWarnings("unchecked")
     public static List<Integer>[] convertToAdjecencyList(int numCourses, int[][] prerequisites){
         List<Integer>[] adj = new List[numCourses];
         for(int i=0;i<numCourses;i++) adj[i] = new ArrayList<>();
-        for(int[] prerequisite : prerequisites) adj[prerequisite[0]].add(prerequisite[1]);
+        for(int[] prerequisite : prerequisites) adj[prerequisite[1]].add(prerequisite[0]);
         return adj;
-
     }
 
     @SuppressWarnings("unchecked")
