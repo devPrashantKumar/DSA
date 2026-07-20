@@ -14,6 +14,10 @@ public class SurroundedRegions {
         }
     }
 
+    /* 
+    * Time Complexity : O(m*n)
+    * Space Complexity : O(m*n)
+     */
     public static void solve(char[][] board) {
         boolean[][] visited = new boolean[board.length][board[0].length];
         Queue<Pair> queue = new LinkedList<>();
@@ -55,6 +59,10 @@ public class SurroundedRegions {
     }
 
 
+    /* 
+    * Time Complexity : O(m*n)
+    * Space Complexity : O(m*n)
+     */
     public static void solveApproach2(char[][] board) {
         boundaryBFS(board);
         //normalBFS(board);
