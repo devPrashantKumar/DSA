@@ -39,7 +39,7 @@ public class AdjacencyListClass {
     }
 
     /*
-     * Time Complexity : O(V+2E)=O(V+E)
+     * Time Complexity : O(V+(V+E))=O(V+E)
      * Space Complexity : O(V)+O(V)=O(V),
      *      - O(V), space occupied by visited
      *      - O(V), space occupied by queue
@@ -100,7 +100,7 @@ public class AdjacencyListClass {
     }
 
     /*
-    * Time Complexity : O(V+2E)=O(V+E)
+    * Time Complexity : O(V+(V+E))=O(V+E)
     * Space Complexity : O(V)+O(V)=O(V),
     *      - O(V), space occupied by visited
     *      - O(V), space occupied by stack
@@ -130,7 +130,7 @@ public class AdjacencyListClass {
     }
 
     /*
-    * Time Complexity : O(V+2E)=O(V+E)
+    * Time Complexity : O(V+(V+E))=O(V+E)
     * Space Complexity : worst case O(V+E) for the stack,
     *      since a vertex can be pushed multiple times before
     *      it's marked visited (marking happens on pop, not on push)
@@ -161,7 +161,7 @@ public class AdjacencyListClass {
     }
     
     /*
-     * Time Complexity : O(V+2E)=O(V+E)
+     * Time Complexity : O(V+(V+E))=O(V+E)
      * Space Complexity :O(V)+O(V)=O(V),
      *      - O(V), space occupied by visited
      *      - O(V), max recursive depth dfs will go if all vertex are in linear chain
@@ -189,7 +189,7 @@ public class AdjacencyListClass {
 
 
     /*
-    * Time Complexity : O(V+2E)=O(V+E)
+    * Time Complexity : O(V+(V+E))=O(V+E)
     * Space Complexity : O(V)+O(V)=O(V),
     *      - O(V), space occupied by visited
     *      - O(V), max recursive depth if all vertices form a linear chain
