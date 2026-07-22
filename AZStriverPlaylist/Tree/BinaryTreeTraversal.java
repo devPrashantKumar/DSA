@@ -7,6 +7,22 @@ import java.util.Stack;
 
 public class BinaryTreeTraversal {
 
+    public static void recursivePreOrderTraversal(BinaryTreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        recursivePreOrderTraversalUtil(root,result);
+        for(int i=0;i<result.size();i++){
+            System.out.print(result.get(i)+" ");
+        }
+        System.out.println();
+    }
+
+    private static void recursivePreOrderTraversalUtil(BinaryTreeNode root, List<Integer> result) {
+        if(root==null) return;
+        result.add(root.data);
+        recursivePreOrderTraversalUtil(root.left,result);
+        recursivePreOrderTraversalUtil(root.right,result);
+    }
+
     public static void iterativePreOrderTraversal(BinaryTreeNode root) {
         Stack<BinaryTreeNode> stack = new Stack<>();
         BinaryTreeNode node = root;
@@ -48,6 +64,22 @@ public class BinaryTreeTraversal {
             }           
         }
         System.out.println();
+    }
+
+    public static void recursiveInOrderTraversal(BinaryTreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        recursiveInOrderTraversalUtil(root,result);
+        for(int i=0;i<result.size();i++){
+            System.out.print(result.get(i)+" ");
+        }
+        System.out.println();
+    }
+
+    public static void recursiveInOrderTraversalUtil(BinaryTreeNode root, List<Integer> result) {
+        if(root==null) return;
+        recursiveInOrderTraversalUtil(root.left,result);
+        result.add(root.data);
+        recursiveInOrderTraversalUtil(root.right,result);
     }
 
     public static void iterativeInorderTraversal(BinaryTreeNode root) {
@@ -97,6 +129,22 @@ public class BinaryTreeTraversal {
             }           
         }
         System.out.println();
+    }
+
+    public static void recursivePostOrderTraversal(BinaryTreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        recursivePostOrderTraversalUtil(root,result);
+        for(int i=0;i<result.size();i++){
+            System.out.print(result.get(i)+" ");
+        }
+        System.out.println();
+    }
+
+    public static void recursivePostOrderTraversalUtil(BinaryTreeNode root, List<Integer> result) {
+        if(root==null) return;
+        recursivePostOrderTraversalUtil(root.left,result);
+        recursivePostOrderTraversalUtil(root.right,result);
+        result.add(root.data);
     }
 
     /*
@@ -191,10 +239,13 @@ public class BinaryTreeTraversal {
         root1.right = new BinaryTreeNode(2);
         root1.right.left = new BinaryTreeNode(3);
 
+        recursiveInOrderTraversal(root1);
         iterativeInorderTraversal(root1);
         iterativeInOrderTraversalUsingMorrisTraversal(root1);
+        recursivePreOrderTraversal(root1);
         iterativePreOrderTraversal(root1);
         iterativePreOrderTraversalUsingMorrisTraversal(root1);
+        recursivePostOrderTraversal(root1);
         iterativePostOrderTraversal(root1);
         iterativePostOrderTraversalUsingMorrisTraversal(root1);
         iterativePostOrderTraversalUsing2Stack(root1);
@@ -210,23 +261,41 @@ public class BinaryTreeTraversal {
         root2.right.right = new BinaryTreeNode(8);
         root2.right.right.left = new BinaryTreeNode(9);
 
+        recursiveInOrderTraversal(root2);
         iterativeInorderTraversal(root2);
+        iterativeInOrderTraversalUsingMorrisTraversal(root2);
+        recursivePreOrderTraversal(root2);
         iterativePreOrderTraversal(root2);
+        iterativePreOrderTraversalUsingMorrisTraversal(root2);
+        recursivePostOrderTraversal(root2);
         iterativePostOrderTraversal(root2);
+        iterativePostOrderTraversalUsingMorrisTraversal(root2);
         iterativePostOrderTraversalUsing2Stack(root2);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root3 = null;
+        recursiveInOrderTraversal(root3);
         iterativeInorderTraversal(root3);
+        iterativeInOrderTraversalUsingMorrisTraversal(root3);
+        recursivePreOrderTraversal(root3);
         iterativePreOrderTraversal(root3);
+        iterativePreOrderTraversalUsingMorrisTraversal(root3);
+        recursivePostOrderTraversal(root3);
         iterativePostOrderTraversal(root3);
+        iterativePostOrderTraversalUsingMorrisTraversal(root3);
         iterativePostOrderTraversalUsing2Stack(root3);
         System.out.println("------------------------------------------------------");
 
         BinaryTreeNode root4 = new BinaryTreeNode(1);
+        recursiveInOrderTraversal(root4);
         iterativeInorderTraversal(root4);
+        iterativeInOrderTraversalUsingMorrisTraversal(root4);
+        recursivePreOrderTraversal(root4);
         iterativePreOrderTraversal(root4);
+        iterativePreOrderTraversalUsingMorrisTraversal(root4);
+        recursivePostOrderTraversal(root4);
         iterativePostOrderTraversal(root4);
+        iterativePostOrderTraversalUsingMorrisTraversal(root4);
         iterativePostOrderTraversalUsing2Stack(root4);
         System.out.println("------------------------------------------------------");
     }
