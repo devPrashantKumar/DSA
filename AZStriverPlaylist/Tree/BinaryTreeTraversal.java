@@ -1,5 +1,8 @@
 package AZStriverPlaylist.Tree;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class BinaryTreeTraversal {
@@ -16,6 +19,33 @@ public class BinaryTreeTraversal {
             } else {
                 node = stack.isEmpty() ? null : stack.pop();
             }
+        }
+        System.out.println();
+    }
+
+    public static void iterativePreOrderTraversalUsingMorrisTraversal(BinaryTreeNode root) {
+        BinaryTreeNode node = root;
+        while (node != null) {
+            if(node.left==null){
+                System.out.print(node.data + " ");
+                node = node.right;
+
+            }
+            else{
+                BinaryTreeNode btn = node.left;
+                while(btn.right!=null && btn.right!=node){
+                    btn = btn.right;
+                }
+                if(btn.right==null){
+                    btn.right=node;
+                    System.out.print(node.data + " ");
+                    node = node.left;
+                }
+                else if(btn.right==node){
+                    btn.right=null;
+                    node = node.right;
+                }
+            }           
         }
         System.out.println();
     }
@@ -38,6 +68,33 @@ public class BinaryTreeTraversal {
                     visited = true;
                 }
             }
+        }
+        System.out.println();
+    }
+
+    public static void iterativeInOrderTraversalUsingMorrisTraversal(BinaryTreeNode root) {
+        BinaryTreeNode node = root;
+        while (node != null) {
+            if(node.left==null){
+                System.out.print(node.data + " ");
+                node = node.right;
+
+            }
+            else{
+                BinaryTreeNode btn = node.left;
+                while(btn.right!=null && btn.right!=node){
+                    btn = btn.right;
+                }
+                if(btn.right==null){
+                    btn.right=node;
+                    node = node.left;
+                }
+                else if(btn.right==node){
+                    btn.right=null;
+                    System.out.print(node.data + " ");
+                    node = node.right;
+                }
+            }           
         }
         System.out.println();
     }
@@ -66,6 +123,38 @@ public class BinaryTreeTraversal {
                     visited = true;
                 }
             }
+        }
+        System.out.println();
+    }
+
+    public static void iterativePostOrderTraversalUsingMorrisTraversal(BinaryTreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        BinaryTreeNode node = root;
+        while (node != null) {
+            if(node.right==null){
+               result.add(node.data);
+                node = node.left;
+
+            }
+            else{
+                BinaryTreeNode btn = node.right;
+                while(btn.left!=null && btn.left!=node){
+                    btn = btn.left;
+                }
+                if(btn.left==null){
+                    btn.left=node;
+                    result.add(node.data);
+                    node = node.right;
+                }
+                else if(btn.left==node){
+                    btn.left=null;
+                    node = node.left;
+                }
+            }           
+        }
+        Collections.reverse(result);
+        for(int i=0;i<result.size();i++){
+            System.out.print(result.get(i)+" ");
         }
         System.out.println();
     }
@@ -103,8 +192,11 @@ public class BinaryTreeTraversal {
         root1.right.left = new BinaryTreeNode(3);
 
         iterativeInorderTraversal(root1);
+        iterativeInOrderTraversalUsingMorrisTraversal(root1);
         iterativePreOrderTraversal(root1);
+        iterativePreOrderTraversalUsingMorrisTraversal(root1);
         iterativePostOrderTraversal(root1);
+        iterativePostOrderTraversalUsingMorrisTraversal(root1);
         iterativePostOrderTraversalUsing2Stack(root1);
         System.out.println("------------------------------------------------------");
 
