@@ -1,4 +1,4 @@
-package DataStructures.Tree.BinaryTree;
+package AZStriverPlaylist.Tree.BinaryTree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -34,7 +34,7 @@ public class BinaryTreeClass {
 
     BinaryTreeNode root;
 
-    public BinaryTree() {
+    public BinaryTreeClass() {
         this.root = null;
     }
 

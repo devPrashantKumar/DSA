@@ -1,4 +1,4 @@
-package DataStructures.Tree.BinaryTree;
+package AZStriverPlaylist.Tree.BinaryTree;
 
 public class BinaryTreeNodeClass {
     int data;

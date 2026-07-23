@@ -1,8 +1,8 @@
-package DataStructures.Tree.GenericTree;
+package AZStriverPlaylist.Tree.GenericTree;
 
 import java.util.ArrayList;
 
-public class Tree {
+public class TreeClass {
     class TreeNode {
         int data;
         ArrayList<TreeNode> children;
@@ -23,7 +23,7 @@ public class Tree {
 
     TreeNode root;
     
-    public Tree(){
+    public TreeClass(){
         root = null;
     }
 
@@ -45,5 +45,29 @@ public class Tree {
         for(TreeNode node : root.children){
             printTreeUtil(node,level+1);
         }
+    }
+
+    public static void main(String[] args) {
+        TreeClass tree = new TreeClass();
+
+        // Create the root
+        tree.createRoot(1);
+
+        // Add children to the root
+        TreeClass.TreeNode root = tree.getRoot();
+        root.addChild(2);
+        root.addChild(3);
+
+        // Add children to one of the root's children
+        TreeClass.TreeNode child1 = root.getChild(0); // Node with data 2
+        child1.addChild(4);
+        child1.addChild(5);
+
+        // Add children to another root's child
+        TreeClass.TreeNode child2 = root.getChild(1); // Node with data 3
+        child2.addChild(6);
+
+        // Print the tree
+        tree.printTree();
     }
 }

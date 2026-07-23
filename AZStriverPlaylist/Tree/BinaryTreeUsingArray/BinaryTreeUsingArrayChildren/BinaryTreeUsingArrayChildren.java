@@ -1,4 +1,4 @@
-package DataStructures.Tree.BinaryTreeUsingArray.BinaryTreeUsingArrayChildren;
+package AZStriverPlaylist.Tree.BinaryTreeUsingArray.BinaryTreeUsingArrayChildren;
 
 public class BinaryTreeUsingArrayChildren {
     class BinaryTreeNode{
@@ -50,5 +50,24 @@ public class BinaryTreeUsingArrayChildren {
         System.out.println(indentation+root.data);
         if(root.children[0]!=null) printTreeUtil(root.children[0],level+1);            
         if(root.children[1]!=null) printTreeUtil(root.children[1],level+1);
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeUsingArrayChildren binaryTree = new BinaryTreeUsingArrayChildren();
+
+        binaryTree.createRoot(1);
+
+        BinaryTreeNode root = binaryTree.getRoot();
+        root.addLeftChild(2);
+        root.addRightChild(3);
+
+        BinaryTreeNode child1 = binaryTree.getRoot().getLeftChild();
+        child1.addLeftChild(4);
+        child1.addRightChild(5);
+
+        BinaryTreeNode child2 = binaryTree.getRoot().getRightChild();
+        child2.addRightChild(6);
+
+        binaryTree.printTree();
     }
 }
