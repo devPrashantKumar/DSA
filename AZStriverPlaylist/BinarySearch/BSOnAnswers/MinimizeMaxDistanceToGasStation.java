@@ -72,7 +72,7 @@ public class MinimizeMaxDistanceToGasStation {
             queue.add(new Pair(sectionLength, pair.index));
         }
 
-        return queue.isEmpty() ? Integer.MIN_VALUE : queue.poll().distance;
+        return queue.poll().distance;
     }
 
     /* -------------------- 3. Binary Search (Optimal) -------------------- */
