@@ -65,21 +65,14 @@ public class MinimizeMaxDistanceToGasStation {
         }
         for(int i=1;i<=k;i++){
             Pair pair = queue.poll();
-            int currentPlaced = placed[pair.index]+1;
-            double distance = pair.distance*(currentPlaced);
-            double sectionLength = distance/(currentPlaced+1);
+            int currentGaps = placed[pair.index]+1;
+            double distance = pair.distance*(currentGaps);
+            double sectionLength = distance/(currentGaps+1);
             placed[pair.index]++;
             queue.add(new Pair(sectionLength, pair.index));
         }
 
-        double maxLength = Integer.MIN_VALUE;
-        for(int j=0;j<arr.length-1;j++){
-            Pair pair = queue.poll();
-            if(pair.distance>maxLength){
-                maxLength = pair.distance;
-            }
-        }
-        return maxLength;
+        return queue.isEmpty() ? Integer.MIN_VALUE : queue.poll().distance;
     }
 
     /* -------------------- 3. Binary Search (Optimal) -------------------- */

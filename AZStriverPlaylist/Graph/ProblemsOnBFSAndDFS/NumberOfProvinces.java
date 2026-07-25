@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class NumberOfProvinces {
+    /* 
+    * Time Complexity : O(V^2) 
+    * Space Complexity : O(V) space occupied by recursive stack
+    */
     public static int findCircleNum(int[][] isConnected) {
         boolean[] visited = new boolean[isConnected.length];
         int provinces=0;
@@ -25,6 +29,10 @@ public class NumberOfProvinces {
         }
     }
 
+    /* 
+    * Time Complexity : O(V^2) 
+    * Space Complexity : O(V) space occupied by queue
+    */
     public static int findCircleNumUsingBFS(int[][] isConnected) {
         boolean[] visited = new boolean[isConnected.length];
         Queue<Integer> queue = new LinkedList<>();
