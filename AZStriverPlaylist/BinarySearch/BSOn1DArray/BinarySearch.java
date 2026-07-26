@@ -3,7 +3,7 @@ package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 public class BinarySearch {
     /*
      * Time Complexity - O(logn)
-     * Space Complexity - O(logn) for recursive stack
+     * Space Complexity - O(logn) for tail-recursive stack
      */
     public static Integer binarySearchUsingRecursion(Integer[] arr, Integer data){
         return binarySearchUtilForRecursion(arr,data,0,arr.length-1);

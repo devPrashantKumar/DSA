@@ -2,6 +2,7 @@ package AZStriverPlaylist.BasicRecursion;
 
 public class PrintNumbers {
     // tail-recursion
+    // the recursive call is the last operation
     public static void printLinearly1toN(int i, int n){
         if(i>n) return;
         System.out.print(i+" ");
@@ -9,6 +10,7 @@ public class PrintNumbers {
     }
 
     // classic-recursion
+    // the recursive call is not the last operation — there's still work to do with its result after it returns.
     public static void printLinearly1toNUsingClassicRecursion(int n){
         if(n==0) return;
         printLinearly1toNUsingClassicRecursion(n-1);
