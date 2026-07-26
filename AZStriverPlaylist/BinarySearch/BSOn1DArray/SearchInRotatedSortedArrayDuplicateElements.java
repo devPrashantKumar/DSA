@@ -28,22 +28,56 @@ public class SearchInRotatedSortedArrayDuplicateElements {
         return false;
     }
 
+    public static boolean searchRecursive(int[] arr, int target) {
+        return searchRecursiveUtil(arr, target, 0, arr.length-1);
+    }
+
+    public static boolean searchRecursiveUtil(int[] arr, int target, int start, int end) {
+        if(start>end) return false;
+
+        int mid = start + (end - start) / 2;
+        
+        if (arr[mid] == target)
+            return true;
+
+        if(arr[start] == arr[mid] && arr[mid] == arr[end])
+            return searchRecursiveUtil(arr, target, start+1,end-1);
+
+        if (arr[start] <= arr[mid]) {
+            if (arr[start] <= target && target <= arr[mid])
+                return searchRecursiveUtil(arr, target, start,mid - 1);
+            else  
+                return searchRecursiveUtil(arr, target, mid+1,end);
+        } else {
+            if (arr[mid] <= target && target <= arr[end])
+                return searchRecursiveUtil(arr, target, mid+1,end);
+            else
+                return searchRecursiveUtil(arr, target, start,mid - 1);
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums1 = { 2,5,6,0,0,1,2 };
         int target1 = 0;
 
         System.out.println(SearchInRotatedSortedArrayDuplicateElements.search(nums1, target1));
+        System.out.println(SearchInRotatedSortedArrayDuplicateElements.searchRecursive(nums1, target1));
+
         System.out.println("===========================================================================");
 
         int[] nums2 = { 2,5,6,0,0,1,2 };
         int target2 = 3;
 
         System.out.println(SearchInRotatedSortedArrayDuplicateElements.search(nums2, target2));
+        System.out.println(SearchInRotatedSortedArrayDuplicateElements.searchRecursive(nums2, target2));
+
         System.out.println("===========================================================================");
 
         int[] nums3 = { 1 };
         int target3 = -1;
         System.out.println(SearchInRotatedSortedArrayDuplicateElements.search(nums3, target3));
+        System.out.println(SearchInRotatedSortedArrayDuplicateElements.searchRecursive(nums3, target3));
+
         System.out.println("===========================================================================");
 
     }
