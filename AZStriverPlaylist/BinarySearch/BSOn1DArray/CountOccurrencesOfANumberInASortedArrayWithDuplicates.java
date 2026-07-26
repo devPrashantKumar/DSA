@@ -5,8 +5,7 @@ public class CountOccurrencesOfANumberInASortedArrayWithDuplicates {
     public static int countOccurence(int[] arr, int x) {
         int firstOccurence = FindFirstAndLastPositionOfElementInSortedArray.firstOccurence(arr, x);
         return (firstOccurence == -1) ? 0
-                : FindFirstAndLastPositionOfElementInSortedArray.lastOccurence(arr, x)
-                        - FindFirstAndLastPositionOfElementInSortedArray.firstOccurence(arr, x) + 1;
+                : (FindFirstAndLastPositionOfElementInSortedArray.lastOccurence(arr, x) - firstOccurence) + 1;
     }
     
     public static void main(String[] args) {
