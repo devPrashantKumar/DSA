@@ -33,7 +33,7 @@ public class KokoEatingBananas {
         for (int pile : piles) {
             // hours += pile/k;
             // hours += (pile%k==0) ? 0 : 1;
-            hours += (pile + k - 1) / k;
+            hours += (pile + k - 1) / k; // this line is important
             if (hours > h)
                 return false;
         }
