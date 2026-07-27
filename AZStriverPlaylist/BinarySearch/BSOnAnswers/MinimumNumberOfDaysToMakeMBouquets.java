@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class MinimumNumberOfDaysToMakeMBouquets {
 
+    /*
+    * Time Complexity  : O(n * log(maxDay - minDay))
+    * Space Complexity : O(1)
+    */
     public static int minDays(int[] bloomDay, int m, int k) {
         if (bloomDay.length < 1L * m * k)
             return -1;
