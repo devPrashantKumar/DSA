@@ -14,7 +14,7 @@ public class FindTheNthRootOfANumberUsingBinarySearch {
         while (left <= right) {
             int mid = left + (right - left) / 2;
             double power = Math.pow(mid, N);
-            //if (power == (double) M)
+            //if (power == (double) M) - this line will not work due to double precision
             //if ((int)power == M)
             if (Math.abs(power - M) < 1e-9)
                 return mid;
