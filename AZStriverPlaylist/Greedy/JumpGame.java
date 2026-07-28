@@ -30,10 +30,11 @@ public class JumpGame {
             if (i + nums[i] > reach) {
                 reach = i + nums[i];
             }
+            if (reach >= nums.length - 1)
+                return true;
         }
-        if (reach >= nums.length - 1)
-            return true;
-        return false;
+
+        return (reach >= nums.length - 1) ? true : false;
     }
 
     /*
