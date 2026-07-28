@@ -68,8 +68,8 @@ public class JumpGame {
                 + canJump2(new int[] { 3, 2, 1, 0, 4 }));
 
         System.out.println("Jump for " + Arrays.toString(new int[] { 2, 3, 1, 1, 4 }) + " is possible : "
-                + canJump2(new int[] { 2, 3, 1, 1, 4 }));
+                + canJump3(new int[] { 2, 3, 1, 1, 4 }));
         System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
-                + canJump2(new int[] { 3, 2, 1, 0, 4 }));
+                + canJump3(new int[] { 3, 2, 1, 0, 4 }));
     }
 }
