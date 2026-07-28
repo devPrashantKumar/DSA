@@ -98,7 +98,22 @@ public class KadanesAlgoMaximumSubarray {
         int lowestSum = 0;
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
-            maxSum = Math.max(sum - lowestSum, maxSum);
+            int maxSumEndingAtI = sum - lowestSum;
+            maxSum = Math.max(maxSumEndingAtI, maxSum);
+            lowestSum = Math.min(lowestSum, sum);
+        }
+        return maxSum;
+    }
+
+    public static int maxSubarraySum2AllowEmpty(int[] arr) {
+        int maxSum = 0; // empty subarray is a valid candidate
+        int sum = 0;
+        int lowestSum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            int maxSumEndingAtI = sum - lowestSum;
+            maxSum = Math.max(maxSumEndingAtI, maxSum);
             lowestSum = Math.min(lowestSum, sum);
         }
         return maxSum;
@@ -109,6 +124,16 @@ public class KadanesAlgoMaximumSubarray {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             sum = Math.max(sum + arr[i], arr[i]);
+            maxSum = Math.max(maxSum, sum);
+        }
+        return maxSum;
+    }
+
+    public static int maxSubarraySum3AllowEmpty(int[] arr) {
+        int maxSum = 0;
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum = Math.max(0, sum + arr[i]); // reset to 0 (empty), not arr[i]
             maxSum = Math.max(maxSum, sum);
         }
         return maxSum;
@@ -169,6 +194,10 @@ public class KadanesAlgoMaximumSubarray {
                 + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgo3(input4));
         System.out.println("Input : " + Arrays.toString(input4) + " Output : "
                 + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgoWhenEmptySubArrayAllowed(input4));
+        System.out.println("Input : " + Arrays.toString(input4) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySum2AllowEmpty(input4));
+        System.out.println("Input : " + Arrays.toString(input4) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySum3AllowEmpty(input4));
 
         System.out.println("------------------------------------------------------");
 
