@@ -25,6 +25,7 @@ public class JumpGame {
      * Time Complexity : O(n)
      */
     public static boolean canJump2(int[] nums) {
+        if (nums == null || nums.length == 0) return false;
         int reach = nums[0];
         for (int i = 1; (i <= reach && i < nums.length - 1); i++) {
             if (i + nums[i] > reach) {
@@ -62,10 +63,14 @@ public class JumpGame {
         System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
                 + canJump(new int[] { 3, 2, 1, 0, 4 }));
 
+        System.out.println("---------------------------------------------------------------");
+
         System.out.println("Jump for " + Arrays.toString(new int[] { 2, 3, 1, 1, 4 }) + " is possible : "
                 + canJump2(new int[] { 2, 3, 1, 1, 4 }));
         System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
                 + canJump2(new int[] { 3, 2, 1, 0, 4 }));
+
+        System.out.println("---------------------------------------------------------------");
 
         System.out.println("Jump for " + Arrays.toString(new int[] { 2, 3, 1, 1, 4 }) + " is possible : "
                 + canJump3(new int[] { 2, 3, 1, 1, 4 }));
