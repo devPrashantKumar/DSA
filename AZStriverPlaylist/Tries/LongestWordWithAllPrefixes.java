@@ -7,23 +7,28 @@ public class LongestWordWithAllPrefixes {
         TrieNode[] childrenCharacter;
         boolean endNode;
 
+        // Time: O(1) (fixed 26-letter alphabet) | Space: O(1) — 26-slot array per node
         TrieNode() {
             childrenCharacter = new TrieNode[26];
             endNode = false;
         }
 
+        // Time: O(1) | Space: O(1)
         public boolean containsKey(char c) {
             return childrenCharacter[c - 'a'] != null;
         }
 
+        // Time: O(1) | Space: O(1)
         public TrieNode get(char c) {
             return childrenCharacter[c - 'a'];
         }
 
+        // Time: O(1) | Space: O(1) extra (one new TrieNode allocated)
         public void put(char c) {
             childrenCharacter[c - 'a'] = new TrieNode();
         }
 
+        // Time: O(1) | Space: O(1)
         public boolean isEndNode() {
             return endNode;
         }
@@ -35,6 +40,7 @@ public class LongestWordWithAllPrefixes {
         root = new TrieNode();
     }
 
+    // Time: O(L) — L = str.length() | Space: O(L) worst case (a new node per character)
     public void insert(String str) {
         TrieNode node = root;
         for (int i = 0; i < str.length(); i++) {
@@ -46,10 +52,14 @@ public class LongestWordWithAllPrefixes {
         node.endNode = true;
     }
 
+    // Time: O(S) — delegates to the recursive DFS below, S = total characters across inserted words
+    // Space: O(H) — H = length of the longest word (recursion depth)
     public int longestWordWithAllPrefixes() {
         return longestWordWithAllPrefixes(root, 0);
     }
 
+    // Time: O(S) — visits every trie node once, S = total characters across inserted words
+    // Space: O(H) — H = recursion depth, bounded by the longest word length
     public int longestWordWithAllPrefixes(TrieNode node, int length) {
         int maxLength = length;
         for (int i = 0; i < 26; i++) {
@@ -63,6 +73,8 @@ public class LongestWordWithAllPrefixes {
         return maxLength;
     }
 
+    // Time: O(sum of strs[i].length()) — each string is walked once via the util call
+    // Space: O(1) extra (trie already built; no recursion)
     public String longestWordWithAllPrefixes2(String[] strs){
         int longestStringIndex = -1;
         int longestStringSize  = 0;
@@ -76,6 +88,8 @@ public class LongestWordWithAllPrefixes {
         return (longestStringIndex!=-1) ? strs[longestStringIndex] : "";
     }
 
+    // Time: O(L) — L = str.length(), early-exits on the first missing prefix
+    // Space: O(1)
     public boolean longestWordWithAllPrefixes2Util(String str) {
         TrieNode node = root;
         for (int i = 0; i < str.length(); i++) {
@@ -87,12 +101,17 @@ public class LongestWordWithAllPrefixes {
         return true;
     }
 
+    // Time: O(S) — delegates to the recursive DFS below, S = total characters across inserted words
+    // Space: O(H) — H = length of the longest word (recursion depth + strb buffer)
     public String longestWordWithAllPrefixesWord() {
         StringBuilder result = new StringBuilder();
         longestWordWithAllPrefixesWord(root, new StringBuilder(), result);
         return result.toString();
     }
 
+    // Time: O(S) — visits every trie node once, S = total characters across inserted words;
+    //             each new-best update copies up to H chars, but that happens at most H times
+    // Space: O(H) — H = recursion depth / strb buffer length, bounded by the longest word
     public void longestWordWithAllPrefixesWord(TrieNode node, StringBuilder strb, StringBuilder result) {
         for (int i = 0; i < 26; i++) {
             if (node.childrenCharacter[i] != null) {
