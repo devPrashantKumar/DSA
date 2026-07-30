@@ -3,59 +3,59 @@ package AZStriverPlaylist.Tries;
 import java.util.Arrays;
 
 public class LongestWordWithAllPrefixes {
-    class TrieNode{
-        TrieNode [] childrenCharacter;
+    class TrieNode {
+        TrieNode[] childrenCharacter;
         boolean endNode;
 
-        TrieNode(){
+        TrieNode() {
             childrenCharacter = new TrieNode[26];
-            endNode=false;
+            endNode = false;
         }
 
-        public boolean containsKey(char c){
-            return childrenCharacter[c-'a']!=null;
+        public boolean containsKey(char c) {
+            return childrenCharacter[c - 'a'] != null;
         }
 
-        public TrieNode get(char c){
-            return childrenCharacter[c-'a'];
+        public TrieNode get(char c) {
+            return childrenCharacter[c - 'a'];
         }
 
-        public void put(char c){
-            childrenCharacter[c-'a'] = new TrieNode();
+        public void put(char c) {
+            childrenCharacter[c - 'a'] = new TrieNode();
         }
 
-        public boolean isEndNode(){
+        public boolean isEndNode() {
             return endNode;
         }
     }
 
     TrieNode root;
 
-    LongestWordWithAllPrefixes(){
+    LongestWordWithAllPrefixes() {
         root = new TrieNode();
     }
 
-    public void insert(String str){
+    public void insert(String str) {
         TrieNode node = root;
-        for(int i=0;i<str.length();i++){
-            if(!node.containsKey(str.charAt(i))){
+        for (int i = 0; i < str.length(); i++) {
+            if (!node.containsKey(str.charAt(i))) {
                 node.put(str.charAt(i));
             }
             node = node.get(str.charAt(i));
         }
-        node.endNode=true;
+        node.endNode = true;
     }
-    
-    public int longestWordWithAllPrefixes(){
+
+    public int longestWordWithAllPrefixes() {
         return longestWordWithAllPrefixes(root, 0);
     }
 
-    public int longestWordWithAllPrefixes(TrieNode node, int length){
-        int maxLength=length;
-        for(int i=0;i<26;i++){
-            if(node.childrenCharacter[i]!=null){
-                if(node.childrenCharacter[i].isEndNode()){
-                    int suffixMaxLength = longestWordWithAllPrefixes(node.childrenCharacter[i],length+1);
+    public int longestWordWithAllPrefixes(TrieNode node, int length) {
+        int maxLength = length;
+        for (int i = 0; i < 26; i++) {
+            if (node.childrenCharacter[i] != null) {
+                if (node.childrenCharacter[i].isEndNode()) {
+                    int suffixMaxLength = longestWordWithAllPrefixes(node.childrenCharacter[i], length + 1);
                     maxLength = Math.max(maxLength, suffixMaxLength);
                 }
             }
@@ -63,42 +63,69 @@ public class LongestWordWithAllPrefixes {
         return maxLength;
     }
 
-    public String longestWordWithAllPrefixesWord(){
+    public String longestWordWithAllPrefixes2(String[] strs){
+        int longestStringIndex = -1;
+        int longestStringSize  = 0;
+        for(int i=0;i<strs.length;i++){
+            boolean isPrefixStringExists = longestWordWithAllPrefixes2Util(strs[i]);
+            if(isPrefixStringExists && strs[i].length()>longestStringSize){
+                longestStringSize = strs[i].length();
+                longestStringIndex = i;
+            }
+        }
+        return (longestStringIndex!=-1) ? strs[longestStringIndex] : "";
+    }
+
+    public boolean longestWordWithAllPrefixes2Util(String str) {
+        TrieNode node = root;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (node.childrenCharacter[c - 'a'] == null || !node.childrenCharacter[c - 'a'].isEndNode())
+                return false;
+            node = node.childrenCharacter[c - 'a'];
+        }
+        return true;
+    }
+
+    public String longestWordWithAllPrefixesWord() {
         StringBuilder result = new StringBuilder();
-        longestWordWithAllPrefixesWord(root, new StringBuilder(),result);
+        longestWordWithAllPrefixesWord(root, new StringBuilder(), result);
         return result.toString();
     }
 
-    public void longestWordWithAllPrefixesWord(TrieNode node, StringBuilder strb, StringBuilder result){
-        for(int i=0;i<26;i++){
-            if(node.childrenCharacter[i]!=null){
-                if(node.childrenCharacter[i].isEndNode()){
-                    strb.append((char)('a'+i));
-                    longestWordWithAllPrefixesWord(node.childrenCharacter[i],strb, result);
-                    if(strb.length()>result.length()){
+    public void longestWordWithAllPrefixesWord(TrieNode node, StringBuilder strb, StringBuilder result) {
+        for (int i = 0; i < 26; i++) {
+            if (node.childrenCharacter[i] != null) {
+                if (node.childrenCharacter[i].isEndNode()) {
+                    strb.append((char) ('a' + i));
+                    longestWordWithAllPrefixesWord(node.childrenCharacter[i], strb, result);
+                    if (strb.length() > result.length()) {
                         result.setLength(0);
                         result.append(strb);
                     }
-                    strb.deleteCharAt(strb.length()-1);
+                    strb.deleteCharAt(strb.length() - 1);
                 }
             }
         }
     }
 
     public static void main(String[] args) {
-        String[] nums = { "n", "ni", "nin", "ninj" , "ninja" , "nil" };
+        String[] nums = { "n", "ni", "nin", "ninj", "ninja", "nil" };
         LongestWordWithAllPrefixes longestWordWithAllPrefixes = new LongestWordWithAllPrefixes();
         Arrays.stream(nums).forEachOrdered(longestWordWithAllPrefixes::insert);
         System.out.println(longestWordWithAllPrefixes.longestWordWithAllPrefixes());
         System.out.println(longestWordWithAllPrefixes.longestWordWithAllPrefixesWord());
+        System.out.println(longestWordWithAllPrefixes.longestWordWithAllPrefixes2(nums));
+
         System.out.println("----------------------------------------------------------------------");
 
-        String[] nums2 = { "ninja" , "night" , "nil" };
+        String[] nums2 = { "ninja", "night", "nil" };
         LongestWordWithAllPrefixes longestWordWithAllPrefixes2 = new LongestWordWithAllPrefixes();
         Arrays.stream(nums2).forEachOrdered(longestWordWithAllPrefixes2::insert);
         System.out.println(longestWordWithAllPrefixes2.longestWordWithAllPrefixes());
         System.out.println(longestWordWithAllPrefixes2.longestWordWithAllPrefixesWord());
-        System.out.println("----------------------------------------------------------------------");
+        System.out.println(longestWordWithAllPrefixes2.longestWordWithAllPrefixes2(nums2));
 
+        System.out.println("----------------------------------------------------------------------");
     }
 }
