@@ -59,7 +59,13 @@ public class MaximumXOROfTwoNumbersInAnArray {
             int secondNum=0;
             for(int i=31;i>=0;i--){
                 int bitMask = 1<<i;
+                
+                // Current — can misfire on negative numbers due to sign-bit AND behavior
                 int positionBit = (num&bitMask)>0 ? 1 : 0;
+
+                // Safer alternative — works correctly regardless of sign
+                // int positionBit = (num >>> i) & 1;  // unsigned right shift extracts the bit cleanly
+                
                 int oppositeBit = (positionBit+1)%2;
                 if(node.bits[oppositeBit]!=null) {
                     secondNum =  (secondNum<<1)+oppositeBit;
