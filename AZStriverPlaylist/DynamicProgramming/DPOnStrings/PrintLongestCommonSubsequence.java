@@ -89,6 +89,7 @@ public class PrintLongestCommonSubsequence {
         String str2 = "bfg";
 
         System.out.println(longestCommonSubsequence(str1, str2));
+        System.out.println(longestCommonSubsequenceMemoization(str1, str2));
         System.out.println(longestCommonSubsequenceUsingTabulation(str1, str2));
 
         System.out.println("--------------------------------------------------");
@@ -96,6 +97,7 @@ public class PrintLongestCommonSubsequence {
         String str12 = "mnq";
 
         System.out.println(longestCommonSubsequence(str11, str12));
+        System.out.println(longestCommonSubsequenceMemoization(str11, str12));
         System.out.println(longestCommonSubsequenceUsingTabulation(str11, str12));
 
         System.out.println("--------------------------------------------------");
