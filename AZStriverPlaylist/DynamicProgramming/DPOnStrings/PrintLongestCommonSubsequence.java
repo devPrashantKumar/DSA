@@ -19,6 +19,7 @@ public class PrintLongestCommonSubsequence {
             strb.append(str1.charAt(index1));
             longestCommonSubsequenceUtil(str1, str2, index1 - 1, index2 - 1, strb, result);
             strb.deleteCharAt(strb.length()-1);
+            return;
         }
         longestCommonSubsequenceUtil(str1, str2, index1 - 1, index2, strb, result);
         longestCommonSubsequenceUtil(str1, str2, index1, index2 - 1, strb, result);
