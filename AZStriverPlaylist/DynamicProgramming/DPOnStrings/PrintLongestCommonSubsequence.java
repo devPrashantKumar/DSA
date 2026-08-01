@@ -1,6 +1,11 @@
 package AZStriverPlaylist.DynamicProgramming.DPOnStrings;
 
+import java.util.Arrays;
+
 public class PrintLongestCommonSubsequence {
+    
+    // Time: O(2^(m+n)) - each call branches into 2 unless chars match
+    // Space: O(m+n) - recursion stack depth
     public static String longestCommonSubsequence(String str1, String str2) {
         StringBuilder result = new StringBuilder();
         longestCommonSubsequenceUtil(str1, str2, str1.length() - 1, str2.length() - 1, new StringBuilder(), result);
@@ -25,18 +30,49 @@ public class PrintLongestCommonSubsequence {
         longestCommonSubsequenceUtil(str1, str2, index1, index2 - 1, strb, result);
     }
 
+
+    // Time: O(m*n) - table build O(m*n) + backtrack O(m+n)
+    // Space: O(m*n) dp array
+    public static String longestCommonSubsequenceUsingTabulation(String str1, String str2) {
+        int[][] dp = new int[str1.length()+1][str2.length()+1];
+        StringBuilder strb = new StringBuilder();
+        for(int i=1;i<=str1.length();i++){
+            for(int j=1;j<=str2.length();j++){
+                if(str1.charAt(i-1)==str2.charAt(j-1)) dp[i][j] = 1+dp[i-1][j-1];
+                else dp[i][j] = Math.max(dp[i][j-1],dp[i-1][j]);
+            }
+        }
+        //System.out.println(Arrays.deepToString(dp));
+        int i=str1.length();
+        int j=str2.length();
+        while(i>0 && j>0){
+            if(str1.charAt(i-1)==str2.charAt(j-1)) {
+                strb.append(str1.charAt(i-1)); 
+                i--;
+                j--;
+            }else{
+                if(dp[i-1][j]>=dp[i][j-1]) i--;
+                else j--;
+            }
+            
+        }
+        return strb.reverse().toString();
+    }
+
     public static void main(String[] args) {
         String str1 = "bdefg";
         String str2 = "bfg";
 
         System.out.println(longestCommonSubsequence(str1, str2));
+        System.out.println(longestCommonSubsequenceUsingTabulation(str1, str2));
 
         System.out.println("--------------------------------------------------");
         String str11 = "mnop";
         String str12 = "mnq";
 
         System.out.println(longestCommonSubsequence(str11, str12));
-       
+        System.out.println(longestCommonSubsequenceUsingTabulation(str11, str12));
+
         System.out.println("--------------------------------------------------");
     
     }
