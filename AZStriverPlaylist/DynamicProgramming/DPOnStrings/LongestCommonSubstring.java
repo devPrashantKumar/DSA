@@ -48,6 +48,27 @@ public class LongestCommonSubstring {
         return 1 + longestCommonSubstringUtil2(str1, str2, index1 - 1, index2 - 1);
     }
 
+    public static String printLongestCommonSubstring2(String str1, String str2) {
+        String maxLenString = "";
+        for (int i = 0; i < str1.length(); i++) {
+            for (int j = 0; j < str2.length(); j++) {
+                    String result = printLongestCommonSubstringUtil2(str1, str2, i, j);
+                    if(result.length()>maxLenString.length()){
+                        maxLenString = result;
+                    }
+            }
+        }
+        return maxLenString;
+    }
+
+    public static String printLongestCommonSubstringUtil2(String str1, String str2, int index1, int index2) {
+        if (index1 < 0 || index2 < 0)
+            return "";
+        if (str1.charAt(index1) != str2.charAt(index2))
+            return "";
+        return printLongestCommonSubstringUtil2(str1, str2, index1 - 1, index2 - 1)+str1.charAt(index1);
+    }
+
     // Time: O(m*n*2) - each (index1, index2, matched) state computed once
     // Space: O(2*(m*n)) dp array + O(m+n) recursion stack
     public static int longestCommonSubstringMemoization(String str1, String str2) {
@@ -107,6 +128,36 @@ public class LongestCommonSubstring {
             dp[index1][index2] = 1 + longestCommonSubstringMemoizationUtil2(str1, str2, index1 - 1, index2 - 1, dp);
         } else {
             dp[index1][index2] = 0;
+        }
+        return dp[index1][index2];
+    }
+
+
+    public static String printLongestCommonSubstringMemoization2(String str1, String str2) {
+        String[][] dp = new String[str1.length()][str2.length()];
+        String maxLenString = "";
+        for (int i = 0; i < str1.length(); i++) {
+            for (int j = 0; j < str2.length(); j++) {
+                String result = printLongestCommonSubstringMemoizationUtil2(str1, str2, i, j,dp);
+                    if(result.length()>maxLenString.length()){
+                        maxLenString = result;
+                    }
+            }
+        }
+        return maxLenString;
+    }
+
+    public static String  printLongestCommonSubstringMemoizationUtil2(String str1, String str2, int index1, int index2,
+            String[][] dp) {
+        if (index1 < 0 || index2 < 0)
+            return "";
+        if (dp[index1][index2] != null)
+            return dp[index1][index2];
+
+        if (str1.charAt(index1) == str2.charAt(index2)) {
+            dp[index1][index2] = printLongestCommonSubstringMemoizationUtil2(str1, str2, index1 - 1, index2 - 1, dp)+str1.charAt(index1);
+        } else {
+            dp[index1][index2] = "";
         }
         return dp[index1][index2];
     }
@@ -184,7 +235,7 @@ public class LongestCommonSubstring {
         }
         return maxLen;
     }
-    
+
     public static String printLongestCommonSubstringTabulation2(String str1, String str2) {
         int[][] dp = new int[str1.length() + 1][str2.length() + 1];
         int maxLen = 0;
@@ -217,9 +268,11 @@ public class LongestCommonSubstring {
 
         System.out.println(longestCommonSubstring(str1, str2));
         System.out.println(longestCommonSubstring2(str1, str2));
+        System.out.println(printLongestCommonSubstring2(str1, str2));
 
         System.out.println(longestCommonSubstringMemoization(str1, str2));
         System.out.println(longestCommonSubstringMemoization2(str1, str2));
+        System.out.println(printLongestCommonSubstringMemoization2(str1, str2));
 
         System.out.println(longestCommonSubstringTabulation(str1, str2));
         System.out.println(longestCommonSubstringTabulation2(str1, str2));
@@ -233,9 +286,11 @@ public class LongestCommonSubstring {
 
         System.out.println(longestCommonSubstring(str11, str12));
         System.out.println(longestCommonSubstring2(str11, str12));
+        System.out.println(printLongestCommonSubstring2(str11, str12));
 
         System.out.println(longestCommonSubstringMemoization(str11, str12));
         System.out.println(longestCommonSubstringMemoization2(str11, str12));
+        System.out.println(printLongestCommonSubstringMemoization2(str11, str12));
 
         System.out.println(longestCommonSubstringTabulation(str11, str12));
         System.out.println(longestCommonSubstringTabulation2(str11, str12));
