@@ -31,6 +31,24 @@ public class PrintLongestCommonSubsequence {
         longestCommonSubsequenceUtil(str1, str2, index1, index2 - 1, strb, result);
     }
 
+    // Time: O(2^(m+n)) - each call branches into 2 unless chars match
+    // Space: O(m+n) - recursion stack depth
+    public static String longestCommonSubsequence2(String str1, String str2) {
+        return longestCommonSubsequenceUtil2(str1, str2, str1.length() - 1, str2.length() - 1);
+    }
+
+    public static String longestCommonSubsequenceUtil2(String str1, String str2, int index1, int index2) {
+        if (index1 < 0 || index2 < 0) {
+            return "";
+        }
+        if (str1.charAt(index1) == str2.charAt(index2)) {
+            return longestCommonSubsequenceUtil2(str1, str2, index1 - 1, index2 - 1)+str1.charAt(index1);
+        }
+        String skipFromStr1 = longestCommonSubsequenceUtil2(str1, str2, index1 - 1, index2);
+        String skipFromStr2 = longestCommonSubsequenceUtil2(str1, str2, index1, index2 - 1);
+        return (skipFromStr1.length() >= skipFromStr2.length()) ? skipFromStr1 : skipFromStr2;
+    }
+
     // Time: O(m*n*min(m,n)) - m*n states, each doing O(min(m,n)) string concat/comparison
     // Space: O(m*n*min(m,n)) - dp cache stores a string (up to length min(m,n)) per state
     public static String longestCommonSubsequenceMemoization(String str1, String str2) {
@@ -89,6 +107,8 @@ public class PrintLongestCommonSubsequence {
         String str2 = "bfg";
 
         System.out.println(longestCommonSubsequence(str1, str2));
+        System.out.println(longestCommonSubsequence2(str1, str2));
+
         System.out.println(longestCommonSubsequenceMemoization(str1, str2));
         System.out.println(longestCommonSubsequenceUsingTabulation(str1, str2));
 
@@ -97,6 +117,8 @@ public class PrintLongestCommonSubsequence {
         String str12 = "mnq";
 
         System.out.println(longestCommonSubsequence(str11, str12));
+        System.out.println(longestCommonSubsequence2(str11, str12));
+
         System.out.println(longestCommonSubsequenceMemoization(str11, str12));
         System.out.println(longestCommonSubsequenceUsingTabulation(str11, str12));
 
