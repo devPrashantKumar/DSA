@@ -184,6 +184,32 @@ public class LongestCommonSubstring {
         }
         return maxLen;
     }
+    
+    public static String printLongestCommonSubstringTabulation2(String str1, String str2) {
+        int[][] dp = new int[str1.length() + 1][str2.length() + 1];
+        int maxLen = 0;
+        String maxString="";
+
+        for (int i = 1; i <= str1.length(); i++) {
+            for (int j = 1; j <= str2.length(); j++) {
+                if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                    if(dp[i][j]>maxLen){
+                        maxLen = dp[i][j];
+                        StringBuilder strb = new StringBuilder();
+                        int m=i;
+                        int n=j;
+                        while(m>0 && n>0 && dp[m][n]>0){
+                            strb.append(str1.charAt(--m));
+                            n--;
+                        }
+                        maxString = strb.reverse().toString();
+                    }
+                }
+            }
+        }
+        return maxString;
+    }
 
     public static void main(String[] args) {
         String str1 = "abcde";
@@ -198,6 +224,8 @@ public class LongestCommonSubstring {
         System.out.println(longestCommonSubstringTabulation(str1, str2));
         System.out.println(longestCommonSubstringTabulation2(str1, str2));
         System.out.println(longestCommonSubstringSpaceOptimised(str1, str2));
+        
+        System.out.println(printLongestCommonSubstringTabulation2(str1, str2));
 
         System.out.println("--------------------------------------------------");
         String str11 = "abcdxyz";
@@ -212,6 +240,8 @@ public class LongestCommonSubstring {
         System.out.println(longestCommonSubstringTabulation(str11, str12));
         System.out.println(longestCommonSubstringTabulation2(str11, str12));
         System.out.println(longestCommonSubstringSpaceOptimised(str11, str12));
+        
+        System.out.println(printLongestCommonSubstringTabulation2(str11, str12));
 
         System.out.println("--------------------------------------------------");
     }
