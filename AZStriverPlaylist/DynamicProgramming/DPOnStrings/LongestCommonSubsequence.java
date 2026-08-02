@@ -8,7 +8,7 @@ public class LongestCommonSubsequence {
         return longestCommonSubsequenceUtil(str1, str2, str1.length() - 1, str2.length() - 1);
     }
 
-    public static int longestCommonSubsequenceUtil(String str1, String str2, int index1, int index2) {
+    private static int longestCommonSubsequenceUtil(String str1, String str2, int index1, int index2) {
         if (index1 < 0 || index2 < 0)
             return 0;
         if (str1.charAt(index1) == str2.charAt(index2)) {
@@ -26,7 +26,7 @@ public class LongestCommonSubsequence {
         return dp[str1.length() - 1][str2.length() - 1];
     }
 
-    public static int longestCommonSubsequenceMemoizationUtil(String str1, String str2, int index1, int index2,
+    private static int longestCommonSubsequenceMemoizationUtil(String str1, String str2, int index1, int index2,
             Integer[][] dp) {
         if (index1 < 0 || index2 < 0)
             return 0;
