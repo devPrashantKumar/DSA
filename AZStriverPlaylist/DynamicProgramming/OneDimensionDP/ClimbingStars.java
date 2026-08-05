@@ -33,7 +33,7 @@ public class ClimbingStars {
      * Time Complexity : O(n)
      * Space Complexity : O(n)
      */
-    public static int climbStairsTabulatiion(int n) {
+    public static int climbStairsTabulation(int n) {
         if(n<=2) return n;
         int[] dp = new int[n + 1];
         dp[1]=1;
@@ -48,7 +48,7 @@ public class ClimbingStars {
      * Time Complexity : O(n)
      * Space Complexity : O(1)
      */
-    public static int climbStairsTabulatiionSpaceOptimised(int n) {
+    public static int climbStairsTabulationSpaceOptimised(int n) {
         if(n<=2) return n;
         int farPrev=1;
         int prev=2;
@@ -63,15 +63,15 @@ public class ClimbingStars {
     public static void main(String[] args) {
         System.out.println(climbStairs(2));
         System.out.println(climbStairsMemoization(2));
-        System.out.println(climbStairsTabulatiion(2));
-        System.out.println(climbStairsTabulatiionSpaceOptimised(2));
+        System.out.println(climbStairsTabulation(2));
+        System.out.println(climbStairsTabulationSpaceOptimised(2));
 
         System.out.println("---------------------------------------------------");
 
         System.out.println(climbStairs(3));
         System.out.println(climbStairsMemoization(3));
-        System.out.println(climbStairsTabulatiion(3));
-        System.out.println(climbStairsTabulatiionSpaceOptimised(3));
+        System.out.println(climbStairsTabulation(3));
+        System.out.println(climbStairsTabulationSpaceOptimised(3));
 
         System.out.println("---------------------------------------------------");
     }
