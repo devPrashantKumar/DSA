@@ -31,9 +31,6 @@ public class WildcardMatching {
     }
 
     public static boolean isMatchMemoization(String s, String p) {
-        if (s.length() == 0 || p.length() == 0) {
-            return isMatchMemoizationUtil(s, p, s.length() - 1, p.length() - 1, new Boolean[0][0]);
-        }
         Boolean[][] dp = new Boolean[s.length()][p.length()];
         isMatchMemoizationUtil(s, p, s.length() - 1, p.length() - 1,dp);
         return dp[s.length()-1][p.length()-1];
