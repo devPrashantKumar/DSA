@@ -75,6 +75,24 @@ public class FrogJump {
 
     /*
      * Time Complexity : O(n)
+     * Space Complexity : O(n)
+     */
+    public static int frogJumpDPTabulation2(int[] heights) {
+        Integer[] dp = new Integer[heights.length];
+        dp[0]=0;
+        for(int i=1;i<heights.length;i++){
+            int oneJump = Math.abs(heights[i]-heights[i-1])+dp[i-1];
+            int  twoJump = Integer.MAX_VALUE;
+            if(i-2>=0)
+                twoJump = Math.abs(heights[i]-heights[i-2])+dp[i-2];
+            dp[i] = Math.min(oneJump, twoJump);
+            
+        }
+        return dp[heights.length-1];
+    }
+
+    /*
+     * Time Complexity : O(n)
      * Space Complexity : O(1)
      */
     public static int frogJumpDPTabulationSpaceOptimised(int[] heights) {
@@ -92,6 +110,21 @@ public class FrogJump {
         return last;
     }
 
+    public static int frogJumpDPTabulationSpaceOptimised2(int[] heights) {
+        int farlast=-1;
+        int last=0;
+        for(int i=1;i<heights.length;i++){
+            int oneJump = Math.abs(heights[i]-heights[i-1])+last;
+            int  twoJump = Integer.MAX_VALUE;
+            if(i-2>=0)
+                twoJump = Math.abs(heights[i]-heights[i-2])+farlast;
+
+            farlast = last;
+            last = Math.min(oneJump, twoJump);
+        }
+        return last;
+    }
+
 
     public static void main(String[] args) {
         System.out.println(frogJump(new int[]{2, 1, 3, 5, 4}));
@@ -99,7 +132,9 @@ public class FrogJump {
 
         System.out.println(frogJumpDP(new int[]{2, 1, 3, 5, 4}));
         System.out.println(frogJumpDPTabulation(new int[]{2, 1, 3, 5, 4}));
+        System.out.println(frogJumpDPTabulation(new int[]{2, 1, 3, 5, 4}));
         System.out.println(frogJumpDPTabulationSpaceOptimised(new int[]{2, 1, 3, 5, 4}));
+        System.out.println(frogJumpDPTabulationSpaceOptimised2(new int[]{2, 1, 3, 5, 4}));
 
         System.out.println("----------------------------------------------------");
 
@@ -107,7 +142,9 @@ public class FrogJump {
         System.out.println(frogJump2(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDP(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDPTabulation(new int[]{7, 5, 1, 2, 6}));
+        System.out.println(frogJumpDPTabulation(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDPTabulationSpaceOptimised(new int[]{7, 5, 1, 2, 6}));
+        System.out.println(frogJumpDPTabulationSpaceOptimised2(new int[]{7, 5, 1, 2, 6}));
 
         System.out.println("----------------------------------------------------");
     }
