@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class GridUniquePaths {
     /*
-     * Time Complexity : O(3^n)
-     * Space Complexity : O(n)
+     * Time Complexity : O(2^(m+n))
+     * Space Complexity : O(m+n) recursion stack depth
      */
     public static int uniquePaths(int m, int n) {
         return uniquePathsUtil(0, 0, m, n);
@@ -22,8 +22,8 @@ public class GridUniquePaths {
     }
 
     /*
-     * Time Complexity : O(n)
-     * Space Complexity : O(n)+O(n), (dp + recursive stack)
+     * Time Complexity : O(m*n)
+     * Space Complexity : O(m*n)+O(m+n), (dp + recursive stack)
      */
     public static int uniquePathsMemoization(int m, int n) {
         int[][] dp = new int[m][n];
@@ -41,15 +41,15 @@ public class GridUniquePaths {
             return 0;
         if (dp[row][col] != -1)
             return dp[row][col];
-        int goRight = uniquePathsUtil(row, col + 1, m, n);
-        int goDown = uniquePathsUtil(row + 1, col, m, n);
+        int goRight = uniquePathsMemoizationUtil(row, col + 1, m, n, dp);
+        int goDown = uniquePathsMemoizationUtil(row + 1, col, m, n, dp);
         dp[row][col] = goRight + goDown;
         return dp[row][col];
     }
 
     /*
-     * Time Complexity : O(n)
-     * Space Complexity : O(n), (dp)
+     * Time Complexity : O(m*n)
+     * Space Complexity : O(m*n), (dp)
      */
     public static int uniquePathsTabulation(int m, int n) {
         int[][] dp = new int[m][n];
@@ -68,16 +68,16 @@ public class GridUniquePaths {
     }
 
     /*
-    * Time Complexity : O(n)
-    * Space Complexity : O(1)
+    * Time Complexity : O(m*n)
+    * Space Complexity : O(n)
     */
-    public static int ninjaTrainingDPTabulationSpaceOptimised(int m, int n) {
+    public static int uniquePathsTabulationSpaceOptimised(int m, int n) {
     int[] dp = new int[n];
     Arrays.fill(dp, 1);
 
     for(int i=1;i<m;i++){
         for(int j=1;j<n;j++){
-            dp[i] = dp[i]+dp[i-1];
+            dp[j] = dp[j]+dp[j-1];
         }
     }
         return dp[n-1];
@@ -90,7 +90,7 @@ public class GridUniquePaths {
         System.out.println(uniquePaths(m, n));
         System.out.println(uniquePathsMemoization(m, n));
         System.out.println(uniquePathsTabulation(m, n));
-        // System.out.println(ninjaTrainingDPTabulationSpaceOptimised(matrix1));
+        System.out.println(uniquePathsTabulationSpaceOptimised(m,n));
 
         System.out.println("================================================");
 
@@ -99,7 +99,7 @@ public class GridUniquePaths {
         System.out.println(uniquePaths(m1, n1));
         System.out.println(uniquePathsMemoization(m1, n1));
         System.out.println(uniquePathsTabulation(m1, n1));
-        // System.out.println(ninjaTrainingDPTabulationSpaceOptimised(matrix2));
+        System.out.println(uniquePathsTabulationSpaceOptimised(m1,n1));
 
         System.out.println("================================================");
     }
