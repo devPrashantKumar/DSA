@@ -68,19 +68,19 @@ public class GridUniquePaths {
     }
 
     /*
-    * Time Complexity : O(m*n)
-    * Space Complexity : O(n)
-    */
+     * Time Complexity : O(m*n)
+     * Space Complexity : O(n)
+     */
     public static int uniquePathsTabulationSpaceOptimised(int m, int n) {
-    int[] dp = new int[n];
-    Arrays.fill(dp, 1);
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
 
-    for(int i=1;i<m;i++){
-        for(int j=1;j<n;j++){
-            dp[j] = dp[j]+dp[j-1];
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[j] = dp[j] + dp[j - 1];
+            }
         }
-    }
-        return dp[n-1];
+        return dp[n - 1];
     }
 
     public static void main(String[] args) {
@@ -90,7 +90,7 @@ public class GridUniquePaths {
         System.out.println(uniquePaths(m, n));
         System.out.println(uniquePathsMemoization(m, n));
         System.out.println(uniquePathsTabulation(m, n));
-        System.out.println(uniquePathsTabulationSpaceOptimised(m,n));
+        System.out.println(uniquePathsTabulationSpaceOptimised(m, n));
 
         System.out.println("================================================");
 
@@ -99,7 +99,7 @@ public class GridUniquePaths {
         System.out.println(uniquePaths(m1, n1));
         System.out.println(uniquePathsMemoization(m1, n1));
         System.out.println(uniquePathsTabulation(m1, n1));
-        System.out.println(uniquePathsTabulationSpaceOptimised(m1,n1));
+        System.out.println(uniquePathsTabulationSpaceOptimised(m1, n1));
 
         System.out.println("================================================");
     }
