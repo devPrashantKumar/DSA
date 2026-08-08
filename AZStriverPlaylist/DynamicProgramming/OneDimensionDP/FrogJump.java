@@ -1,5 +1,7 @@
 package AZStriverPlaylist.DynamicProgramming.OneDimensionDP;
 
+import java.util.Arrays;
+
 public class FrogJump {
     /*
      * Time Complexity : O(2^n)
@@ -48,7 +50,10 @@ public class FrogJump {
         if(dp[start]!=null) return dp[start];
 
         int oneJump = Math.abs(heights[start+1]-heights[start])+frogJumpDPUtil(heights, start+1, end,dp);
-        if(start+2>end) return oneJump;
+        if(start+2>end) {
+            dp[start] = oneJump;
+            return oneJump;
+        }
         int twoJump = Math.abs(heights[start+2]-heights[start])+frogJumpDPUtil(heights, start+2, end,dp);
         
         dp[start] = Math.min(oneJump, twoJump);
@@ -110,6 +115,20 @@ public class FrogJump {
         return last;
     }
 
+    public static int frogJumpDPTabulationSpaceOptimised_2(int[] heights) {
+        int[] dp = new int[2];
+        Arrays.fill(dp, -1);
+        dp[(heights.length-1)%2]=0;
+        for(int i=heights.length-2;i>=0;i--){
+            int oneJump = Math.abs(heights[i]-heights[i+1])+dp[(i+1)%2];
+            int  twoJump = Integer.MAX_VALUE;
+            if(i+2<heights.length)
+                twoJump = Math.abs(heights[i]-heights[i+2])+dp[(i+2)%2];
+            dp[i%2] = Math.min(oneJump, twoJump);
+        }
+        return dp[0%2];
+    }
+
     public static int frogJumpDPTabulationSpaceOptimised2(int[] heights) {
         int farlast=-1;
         int last=0;
@@ -125,6 +144,20 @@ public class FrogJump {
         return last;
     }
 
+    public static int frogJumpDPTabulationSpaceOptimised2_2(int[] heights) {
+        int[] dp = new int[2];
+        Arrays.fill(dp, -1);
+        dp[0]=0;
+        for(int i=1;i<heights.length;i++){
+            int oneJump = Math.abs(heights[i]-heights[i-1])+dp[(i-1)%2];
+            int  twoJump = Integer.MAX_VALUE;
+            if(i-2>=0)
+                twoJump = Math.abs(heights[i]-heights[i-2])+dp[(i-2)%2];
+            dp[i%2] = Math.min(oneJump, twoJump);
+        }
+        return dp[(heights.length-1)%2];
+    }
+
 
     public static void main(String[] args) {
         System.out.println(frogJump(new int[]{2, 1, 3, 5, 4}));
@@ -133,8 +166,12 @@ public class FrogJump {
         System.out.println(frogJumpDP(new int[]{2, 1, 3, 5, 4}));
         System.out.println(frogJumpDPTabulation(new int[]{2, 1, 3, 5, 4}));
         System.out.println(frogJumpDPTabulation(new int[]{2, 1, 3, 5, 4}));
+        
         System.out.println(frogJumpDPTabulationSpaceOptimised(new int[]{2, 1, 3, 5, 4}));
+        System.out.println(frogJumpDPTabulationSpaceOptimised_2(new int[]{2, 1, 3, 5, 4}));
+
         System.out.println(frogJumpDPTabulationSpaceOptimised2(new int[]{2, 1, 3, 5, 4}));
+        System.out.println(frogJumpDPTabulationSpaceOptimised2_2(new int[]{2, 1, 3, 5, 4}));
 
         System.out.println("----------------------------------------------------");
 
@@ -143,8 +180,12 @@ public class FrogJump {
         System.out.println(frogJumpDP(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDPTabulation(new int[]{7, 5, 1, 2, 6}));
         System.out.println(frogJumpDPTabulation(new int[]{7, 5, 1, 2, 6}));
+
         System.out.println(frogJumpDPTabulationSpaceOptimised(new int[]{7, 5, 1, 2, 6}));
+        System.out.println(frogJumpDPTabulationSpaceOptimised_2(new int[]{7, 5, 1, 2, 6}));
+
         System.out.println(frogJumpDPTabulationSpaceOptimised2(new int[]{7, 5, 1, 2, 6}));
+        System.out.println(frogJumpDPTabulationSpaceOptimised2_2(new int[]{7, 5, 1, 2, 6}));
 
         System.out.println("----------------------------------------------------");
     }
