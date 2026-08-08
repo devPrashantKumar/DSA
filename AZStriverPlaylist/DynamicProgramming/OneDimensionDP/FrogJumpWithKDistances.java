@@ -126,17 +126,17 @@ public class FrogJumpWithKDistances {
      * Space Complexity : O(k)
      */
     public static int frogJumpSpaceOptimized_2(int[] heights, int k) {
-        int n = heights.length;
         int[] dp = new int[k];
-        for (int i = 1; i < n; i++) {
+        dp[(heights.length-1)%k]=0;
+        for (int i = heights.length-2; i >=0 ; i--) {
             int min = Integer.MAX_VALUE;
-            for (int j = 1; j <= k && i - j >= 0; j++) {
-                int cost = Math.abs(heights[i] - heights[i - j]) + dp[(i - j) % k];
+            for (int j = 1; j <= k && i + j <heights.length; j++) {
+                int cost = Math.abs(heights[i] - heights[i + j]) + dp[(i + j) % k];
                 min = Math.min(min, cost);
             }
             dp[i % k] = min;
         }
-        return dp[(n - 1) % k];
+        return dp[0% k];
     }
     public static void main(String[] args) {
         System.out.println(frogJump(new int[] { 10, 5, 20, 0, 15 }, 2));
@@ -146,7 +146,7 @@ public class FrogJumpWithKDistances {
 
         System.out.println(frogJumpTabulation(new int[] { 10, 5, 20, 0, 15 }, 2));
         System.out.println(frogJumpTabulation2(new int[] { 10, 5, 20, 0, 15 }, 2));
-        
+
         System.out.println(frogJumpSpaceOptimized(new int[] { 10, 5, 20, 0, 15 }, 2));
         System.out.println(frogJumpSpaceOptimized_2(new int[] { 10, 5, 20, 0, 15 }, 2));
 
