@@ -109,6 +109,7 @@ public class FrogJumpWithKDistances {
     public static int frogJumpSpaceOptimized(int[] heights, int k) {
         int n = heights.length;
         int[] dp = new int[k];
+        dp[0]=0;
         for (int i = 1; i < n; i++) {
             int min = Integer.MAX_VALUE;
             for (int j = 1; j <= k && i - j >= 0; j++) {
