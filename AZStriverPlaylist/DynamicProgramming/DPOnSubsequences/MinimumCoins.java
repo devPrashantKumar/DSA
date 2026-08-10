@@ -16,6 +16,25 @@ public class MinimumCoins {
         return minCoinsRequired;
     }
 
+    public static int coinChange2(int[] coins, int amount) {
+        return coinChange2util(coins, amount, 0);
+    }
+
+    public static int coinChange2util(int[] coins, int amount, int index) {
+        if(index==coins.length) return (amount==0)? 0 :-1;
+        if(amount<0) return -1;
+
+        int ithCoinSelected = coinChange2util(coins, amount-coins[index], index);
+        int ithCoinNotSelected = coinChange2util(coins, amount, index+1);
+
+        if(ithCoinSelected==-1 && ithCoinNotSelected==-1) return  -1;
+        else if(ithCoinSelected==-1) return ithCoinNotSelected;
+        else if(ithCoinNotSelected==-1) return ithCoinSelected+1;
+        else if(ithCoinNotSelected<=ithCoinSelected) return ithCoinNotSelected;
+        else return ithCoinSelected+1;
+        
+    }
+
     public static int coinChangeMemoization(int[] coins, int amount) {
         Integer[] dp = new Integer[amount+1];
         coinChangeMemoizationUtil(coins, amount,dp);
@@ -59,6 +78,7 @@ public class MinimumCoins {
         int[] coins = {1, 2, 5};
         int amount = 11;
         System.out.println(coinChange(coins, amount));
+        System.out.println(coinChange2(coins, amount));
         System.out.println(coinChangeMemoization(coins, amount));
         System.out.println(coinChangeTabulation(coins, amount));
 
@@ -67,6 +87,7 @@ public class MinimumCoins {
         int[] coins1 = {2};
         int amount1 = 3;
         System.out.println(coinChange(coins1, amount1));
+        System.out.println(coinChange2(coins1, amount1));
         System.out.println(coinChangeMemoization(coins1, amount1));
         System.out.println(coinChangeTabulation(coins1, amount1));
 
@@ -75,6 +96,7 @@ public class MinimumCoins {
         int[] coins2 = {1};
         int amount2 = 0;
         System.out.println(coinChange(coins2, amount2));
+        System.out.println(coinChange2(coins2, amount2));
         System.out.println(coinChangeMemoization(coins2, amount2));
         System.out.println(coinChangeTabulation(coins2, amount2));
 
@@ -83,6 +105,7 @@ public class MinimumCoins {
         int[] coins3 = {9, 6, 5, 1};
         int amount3 = 11;
         System.out.println(coinChange(coins3, amount3));
+        System.out.println(coinChange2(coins3, amount3));
         System.out.println(coinChangeMemoization(coins3, amount3));
         System.out.println(coinChangeTabulation(coins3, amount3));
 
