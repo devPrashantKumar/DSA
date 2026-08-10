@@ -164,6 +164,26 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
     }
 
     /*
+     * Time Complexity : O(n*totalSum)
+     * Space Complexity : O(totalSum) , dp space
+     */
+    public static int minimumDifferenceTabulationSpaceOptimised2_2(int[] nums) {
+        int totalSum = Arrays.stream(nums).sum();
+        int n = nums.length;
+        int[] dp = new int[totalSum + 1];
+        for (int s = 0; s <= totalSum; s++)
+            dp[s] = Math.abs(totalSum - 2 * s);
+        for (int index = 0; index < n; index++) {
+            for (int s = 0; s + nums[index] <= totalSum; s++) {
+                int take = dp[s + nums[index]];
+                int notTake = dp[s];
+                dp[s] = Math.min(take, notTake);
+            }
+        }
+        return dp[0];
+    }
+
+    /*
      * Time Complexity : O(n*totalSum^2) , totalSum iterations * O(n*totalSum)
      * subset sum check
      * Space Complexity : O(totalSum) , dp space
@@ -205,6 +225,7 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         System.out.println(minimumDifferenceTabulation2(nums));
         System.out.println(minimumDifferenceTabulation2_2(nums));
         System.out.println(minimumDifferenceTabulationSpaceOptimised2(nums));
+        System.out.println(minimumDifferenceTabulationSpaceOptimised2_2(nums));
         System.out.println(minimumDifference3(nums));
         System.out.println(minimumDifference4(nums));
 
@@ -219,6 +240,7 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         System.out.println(minimumDifferenceTabulation2(nums1));
         System.out.println(minimumDifferenceTabulation2_2(nums1));
         System.out.println(minimumDifferenceTabulationSpaceOptimised2(nums1));
+        System.out.println(minimumDifferenceTabulationSpaceOptimised2_2(nums1));
         System.out.println(minimumDifference3(nums1));
         System.out.println(minimumDifference4(nums1));
         System.out.println("--------------------------------------------");
@@ -232,6 +254,7 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         System.out.println(minimumDifferenceTabulation2(nums2));
         System.out.println(minimumDifferenceTabulation2_2(nums2));
         System.out.println(minimumDifferenceTabulationSpaceOptimised2(nums2));
+        System.out.println(minimumDifferenceTabulationSpaceOptimised2_2(nums2));
         System.out.println(minimumDifference3(nums2));
         System.out.println(minimumDifference4(nums2));
     }
