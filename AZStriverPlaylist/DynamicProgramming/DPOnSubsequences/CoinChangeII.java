@@ -3,6 +3,10 @@ package AZStriverPlaylist.DynamicProgramming.DPOnSubsequences;
 public class CoinChangeII {
     // this approach will not work
     // counts permutations, not combinations.
+    /*
+    * Time Complexity : O(n^amount) , at every call amount decreases by at least 1 and branches into n calls
+    * Space Complexity : O(amount) , recursion stack space (worst case, coin of value 1 present)
+    */
     public static int coinChange(int[] coins, int amount) {
         if(amount==0) return 1;
         if(amount<0) return 0;
@@ -14,6 +18,10 @@ public class CoinChangeII {
         return noOfWays;
     }
 
+    /*
+    * Time Complexity : O(2^amount) , at every index either the coin is picked (staying at same index) or skipped
+    * Space Complexity : O(n + amount) , recursion stack space (n for the not-picked chain, amount for the picked chain)
+    */
     public static int coinChange2(int[] coins, int amount) {
         return coinChange2util(coins, amount, 0);
     }
@@ -31,6 +39,10 @@ public class CoinChangeII {
     }
 
     // this approach will work
+    /*
+    * Time Complexity : O(2^amount) , at every index either the coin is picked (staying at same index) or skipped
+    * Space Complexity : O(n + amount) , recursion stack space (n for the not-picked chain, amount for the picked chain)
+    */
     public static int coinChange2_2(int[] coins, int amount) {
         return coinChange2_2util(coins, amount, coins.length-1);
     }
@@ -47,6 +59,10 @@ public class CoinChangeII {
         
     }
 
+    /*
+    * Time Complexity : O(n*amount) , each (index, amount) state is computed once
+    * Space Complexity : O(n*amount) + O(n+amount) , dp array + recursion stack space
+    */
     public static int coinChange2_2Memoization(int[] coins, int amount) {
         Integer[][] dp = new Integer[coins.length][amount+1];
         coinChange2_2coinChange2_2MemoizationUtil(coins, amount, coins.length-1,dp);
@@ -67,6 +83,10 @@ public class CoinChangeII {
         
     }
 
+    /*
+    * Time Complexity : O(n*amount) , two nested loops over coins and amount
+    * Space Complexity : O(n*amount) , dp array
+    */
     public static int coinChange2_2Tabulationation(int[] coins, int amount) {
         int[][] dp = new int[coins.length+1][amount+1];
         for(int i=0;i<=coins.length;i++) dp[i][0] = 1;
@@ -80,6 +100,10 @@ public class CoinChangeII {
         return dp[coins.length][amount];
     }
 
+    /*
+    * Time Complexity : O(n*amount) , two nested loops over coins and amount
+    * Space Complexity : O(amount) , dp array
+    */
     public static int coinChange2_2SpaceOptimisedTabulationation(int[] coins, int amount) {
         int[] dp = new int[amount+1];
         dp[0] = 1;
