@@ -9,7 +9,7 @@ public class MinimumCoins {
         for(int i=0;i<coins.length;i++){
             int ithCoinSelected = coinChange(coins, amount-coins[i]);
             if(ithCoinSelected!=-1){
-                minCoinsRequired = 1+Math.min(minCoinsRequired,ithCoinSelected);
+                minCoinsRequired = Math.min(minCoinsRequired, 1+ithCoinSelected);
             }
         }
         if(minCoinsRequired==Integer.MAX_VALUE) return -1;
@@ -30,7 +30,7 @@ public class MinimumCoins {
         for(int i=0;i<coins.length;i++){
             int ithCoinSelected = coinChangeMemoizationUtil(coins, amount-coins[i],dp);
             if(ithCoinSelected!=-1){
-                minCoinsRequired = 1+Math.min(minCoinsRequired,ithCoinSelected);
+                minCoinsRequired = Math.min(minCoinsRequired, 1+ithCoinSelected);
             }
         }
         if(minCoinsRequired==Integer.MAX_VALUE) return dp[amount] = -1;
@@ -77,6 +77,14 @@ public class MinimumCoins {
         System.out.println(coinChange(coins2, amount2));
         System.out.println(coinChangeMemoization(coins2, amount2));
         System.out.println(coinChangeTabulation(coins2, amount2));
+
+        System.out.println("--------------------------------------------");
+
+        int[] coins3 = {9, 6, 5, 1};
+        int amount3 = 11;
+        System.out.println(coinChange(coins3, amount3));
+        System.out.println(coinChangeMemoization(coins3, amount3));
+        System.out.println(coinChangeTabulation(coins3, amount3));
 
     }
 
