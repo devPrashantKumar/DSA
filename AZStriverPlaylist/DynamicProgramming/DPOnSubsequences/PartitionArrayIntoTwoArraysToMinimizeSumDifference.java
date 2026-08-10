@@ -38,6 +38,10 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         return Math.min(chooseSubset1, chooseSubset2);
     }
 
+    /*
+     * Time Complexity : O(n)+O(2^n) , sum + branching
+     * Space Complexity : O(n) , recursion stack space
+     */
     public static int minimumDifference2_2(int[] nums) {
         int totalSum = Arrays.stream(nums).sum();
         return minimumDifferenceUtil2_2(nums, nums.length - 1, totalSum, 0);
@@ -74,6 +78,10 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         return dp[index][subset1] = Math.min(chooseSubset1, chooseSubset2);
     }
 
+    /*
+     * Time Complexity : O(n*totalSum)
+     * Space Complexity : O(n*totalSum) + O(n) , dp + recursion stack space
+     */
     public static int minimumDifferenceMemoization2_2(int[] nums) {
         int totalSum = Arrays.stream(nums).sum();
         Integer[][] dp = new Integer[nums.length][totalSum + 1];
@@ -93,6 +101,10 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         return dp[index][subset1] = Math.min(chooseSubset1, chooseSubset2);
     }
 
+    /*
+     * Time Complexity : O(n*totalSum)
+     * Space Complexity : O(n*totalSum) , dp space
+     */
     public static int minimumDifferenceTabulation2(int[] nums) {
         int n = nums.length;
         int totalSum = Arrays.stream(nums).sum();
@@ -118,6 +130,10 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         return dp[0][0];
     }
 
+    /*
+     * Time Complexity : O(n*totalSum)
+     * Space Complexity : O(n*totalSum) , dp space
+     */
     public static int minimumDifferenceTabulation2_2(int[] nums) {
         int n = nums.length;
         int totalSum = Arrays.stream(nums).sum();
