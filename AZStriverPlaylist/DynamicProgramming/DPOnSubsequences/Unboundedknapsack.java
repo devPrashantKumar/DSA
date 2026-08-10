@@ -1,6 +1,10 @@
 package AZStriverPlaylist.DynamicProgramming.DPOnSubsequences;
 
 public class Unboundedknapsack {
+    /*
+    * Time Complexity : O(2^W) , at every index either the item is picked (staying at same index) or skipped
+    * Space Complexity : O(n + W) , recursion stack space (n for the not-picked chain, W for the picked chain)
+    */
     public static int knapsack(int W, int[] val, int[] wt) {
         return knapsackUtil(W, val, wt, 0);   
     }
@@ -14,6 +18,10 @@ public class Unboundedknapsack {
         return Math.max(select,notSelect);
     }
 
+    /*
+    * Time Complexity : O(n*W) , each (index, W) state is computed once
+    * Space Complexity : O(n*W) + O(n+W) , dp array + recursion stack space
+    */
     public static int knapsackMemoization(int W, int[] val, int[] wt) {
         Integer[][] dp = new Integer[wt.length][W+1]; 
         knapsackMemoizationUtil(W, val, wt, 0,dp);
@@ -32,6 +40,10 @@ public class Unboundedknapsack {
         return dp[index][W] = Math.max(select,notSelect);
     }
 
+    /*
+    * Time Complexity : O(n*W) , two nested loops over items and capacity
+    * Space Complexity : O(n*W) , dp array
+    */
     public static int knapsackTabulation(int W, int[] val, int[] wt) {
         int[][] dp = new int[wt.length+1][W+1]; 
         for(int i=1;i<=wt.length;i++){
@@ -45,6 +57,10 @@ public class Unboundedknapsack {
         return dp[wt.length][W];
     }
 
+    /*
+    * Time Complexity : O(n*W) , two nested loops over items and capacity
+    * Space Complexity : O(W) , dp array
+    */
     public static int knapsackTabulationSpaceOptimised(int W, int[] val, int[] wt) {
         int[] dp = new int[W+1]; 
         for(int i=1;i<=wt.length;i++){
