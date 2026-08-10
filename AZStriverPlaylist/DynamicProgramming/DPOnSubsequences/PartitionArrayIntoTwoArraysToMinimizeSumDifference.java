@@ -63,7 +63,8 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
     public static int minimumDifferenceMemoization2(int[] nums) {
         int totalSum = Arrays.stream(nums).sum();
         Integer[][] dp = new Integer[nums.length][totalSum + 1];
-        return minimumDifferenceMemoizationUtil2(nums, 0, totalSum, 0, dp);
+        minimumDifferenceMemoizationUtil2(nums, 0, totalSum, 0, dp);
+        return dp[0][0];
     }
 
     public static int minimumDifferenceMemoizationUtil2(int[] nums, int index, int totalSum, int subset1,
@@ -145,15 +146,15 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference {
         }
 
         // Fill bottom-up
-        for (int index = 0; index < n; index++) {
-            for (int s1 = 0; s1 + nums[index] <= totalSum; s1++) {
-                int take = dp[index][s1 + nums[index]];
-                int notTake = dp[index][s1];
-                dp[index + 1][s1] = Math.min(take, notTake);
+        for (int index = 1; index <= n; index++) {
+            for (int s1 = 0; s1 + nums[index-1] <= totalSum; s1++) {
+                int take = dp[index-1][s1 + nums[index-1]];
+                int notTake = dp[index-1][s1];
+                dp[index][s1] = Math.min(take, notTake);
             }
             // s1 values where s1+nums[index] > totalSum: only notTake valid
-            for (int s1 = totalSum - nums[index] + 1; s1 <= totalSum; s1++) {
-                dp[index + 1][s1] = dp[index][s1];
+            for (int s1 = totalSum - nums[index-1] + 1; s1 <= totalSum; s1++) {
+                dp[index][s1] = dp[index-1][s1];
             }
         }
         return dp[n][0];
