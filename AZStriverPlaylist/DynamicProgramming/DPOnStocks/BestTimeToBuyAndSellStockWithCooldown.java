@@ -1,6 +1,6 @@
 package AZStriverPlaylist.DynamicProgramming.DPOnStocks;
 
-public class BestTimeToBuyAndsellStockV {
+public class BestTimeToBuyAndSellStockWithCooldown {
     /*
      * Time : O(2^n)
      * Space : O(n), recursion stack space
