@@ -23,6 +23,24 @@ public class BestTimeToBuyAndsellStockIV {
         }
     }
 
+    public static int maxProfitRecursion2(int[] prices, int capacity) {
+        return maxProfitRecursionUtil2(prices, 0, capacity, 0);
+    }
+
+    public static int maxProfitRecursionUtil2(int[] prices, int index, int capacity, int buyOrSell) {
+        if (index == prices.length || 2 * capacity == buyOrSell)
+            return 0;
+
+        int skipStock = maxProfitRecursionUtil2(prices, index + 1, capacity, buyOrSell);
+        if (buyOrSell % 2 == 0) {
+            int buyStock = (-prices[index]) + maxProfitRecursionUtil2(prices, index + 1, capacity, buyOrSell + 1);
+            return Math.max(buyStock, skipStock);
+        } else {
+            int sellStock = (prices[index]) + maxProfitRecursionUtil2(prices, index + 1, capacity, buyOrSell + 1);
+            return Math.max(sellStock, skipStock);
+        }
+    }
+
     public static int maxProfitRecursionMemoization(int[] prices, int capacity) {
         Integer[][][] dp = new Integer[prices.length][capacity + 1][2];
         return maxProfitRecursionMemoizationUtil(prices, 0, capacity, 1, dp);
@@ -47,6 +65,31 @@ public class BestTimeToBuyAndsellStockIV {
             int skipStock = maxProfitRecursionMemoizationUtil(prices, index + 1, capacity, 0, dp);
             return dp[index][capacity][buy] = Math.max(sellStock, skipStock);
         }
+    }
+
+    /*
+     * Time : O(k*n)
+     * Space : O(2*k*n), dp space
+     */
+    public static int maxProfitRecursionTabulation2(int[] prices, int capacity) {
+        int n = prices.length;
+        int[][] dp = new int[n + 1][2 * capacity + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int transaction = 2 * capacity - 1; transaction >= 0; transaction--) {
+                if (transaction % 2 == 0) {
+                    int buyStock = -prices[i] + dp[i + 1][transaction + 1];
+                    int skipStock = dp[i + 1][transaction];
+                    dp[i][transaction] = Math.max(buyStock, skipStock);
+
+                } else {
+                    int sellStock = prices[i] + dp[i + 1][transaction + 1];
+                    int skipStock = dp[i + 1][transaction];
+                    dp[i][transaction] = Math.max(sellStock, skipStock);
+                }
+            }
+        }
+
+        return dp[0][0];
     }
 
     /*
@@ -89,22 +132,48 @@ public class BestTimeToBuyAndsellStockIV {
         return nextBuy[capacity];
     }
 
+    /*
+     * Time : O(n * k)
+     * Space : O(k)
+     */
+    public static int maxProfitSpaceOptimized2(int[] prices, int capacity) {
+        int[] next = new int[2 * capacity + 1];
+        for (int i = prices.length - 1; i >= 0; i--) {
+            int[] curr = new int[2 * capacity + 1];
+            for (int transaction = 2 * capacity - 1; transaction >= 0; transaction--) {
+                if (transaction % 2 == 0) {
+                    curr[transaction] = Math.max(-prices[i] + next[transaction + 1], next[transaction]);
+                } else {
+                    curr[transaction] = Math.max(prices[i] + next[transaction + 1], next[transaction]);
+                }
+            }
+            next = curr;
+        }
+        return next[0];
+    }
+
     public static void main(String[] args) {
         int[] prices = { 2, 4, 1 };
         int capacity = 2;
         System.out.println(maxProfitRecursion(prices, capacity));
+        System.out.println(maxProfitRecursion2(prices, capacity));
         System.out.println(maxProfitRecursionMemoization(prices, capacity));
         System.out.println(maxProfitRecursionTabulation(prices, capacity));
+        System.out.println(maxProfitRecursionTabulation2(prices, capacity));
         System.out.println(maxProfitSpaceOptimized(prices, capacity));
+        System.out.println(maxProfitSpaceOptimized2(prices, capacity));
 
         System.out.println("-------------------------------");
 
         int[] prices1 = { 3, 2, 6, 5, 0, 3 };
         int capacity1 = 2;
         System.out.println(maxProfitRecursion(prices1, capacity1));
+        System.out.println(maxProfitRecursion2(prices1, capacity1));
         System.out.println(maxProfitRecursionMemoization(prices1, capacity1));
         System.out.println(maxProfitRecursionTabulation(prices1, capacity1));
+        System.out.println(maxProfitRecursionTabulation2(prices1, capacity1));
         System.out.println(maxProfitSpaceOptimized(prices1, capacity1));
+        System.out.println(maxProfitSpaceOptimized2(prices1, capacity1));
 
         System.out.println("-------------------------------");
 
