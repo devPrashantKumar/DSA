@@ -1,4 +1,4 @@
-package AZStriverPlaylist.ImportantTopics;
+package AZStriverPlaylist.AdvancedMaths;
 
 public class CatalanNumbers {
 
