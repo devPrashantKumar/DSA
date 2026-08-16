@@ -1,6 +1,9 @@
 
 # Types of Sorting Algorithms
 
+## Reference 
+https://www.geeksforgeeks.org/dsa/sorting-algorithms/
+
 Sorting algorithms can be categorized based on various factors, such as their time complexity, space complexity, stability, and whether they are comparison-based or non-comparison-based. Below are the common types of sorting algorithms:
 
 ## 1. Comparison-Based Sorting Algorithms
