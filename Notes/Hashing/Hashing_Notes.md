@@ -1,6 +1,9 @@
 
 # Hashing and Its Notes
 
+## **Resouces**
+topic: https://www.geeksforgeeks.org/hashing-data-structure/
+
 ## **Overview**
 Hashing is a technique used to map data of arbitrary size to fixed-size values, often for efficient searching, insertion, and deletion in data structures like hash tables. It uses a **hash function** to compute an index (hash value) that determines where the data is stored or retrieved.
 
@@ -37,9 +40,9 @@ Collisions occur when two different keys hash to the same index. Handling collis
 
 - **Collision Resolution Techniques**:
   1. **Open Addressing**: Resolves collisions by probing (searching) for an empty slot.
-     - **Linear Probing**: Check the next slot sequentially.
-     - **Quadratic Probing**: Use a quadratic formula to find the next slot.
-     - **Double Hashing**: Use a secondary hash function for probing.
+     - **Linear Probing**: Check the next slot sequentially. (clustering issue)
+     - **Quadratic Probing**: Use a quadratic formula to find the next slot.  (resolve clustering, but stll clustering can happen)
+     - **Double Hashing**: Use a secondary hash function for probing. (no clustering issue)
   2. **Chaining**: Store all colliding keys at the same index using a linked list or another data structure.
 
 ---
@@ -88,3 +91,4 @@ The load factor is the ratio of the number of elements to the size of the hash t
 2. The choice of hash function is critical for efficiency.
 3. In open addressing, the hash table must never be completely full.
 4. Proper handling of the load factor ensures the performance remains optimal.
+
