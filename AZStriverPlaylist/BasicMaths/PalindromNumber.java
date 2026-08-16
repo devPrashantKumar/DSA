@@ -5,11 +5,10 @@ public class PalindromNumber{
      * Time Complexity: O(log10N + 1) 
      */
     public static boolean checkPalindromNumber(int x){
-        int num=x;
         if(x==Integer.MIN_VALUE) return false;
         if(x==0) return true;
-
         x = Math.abs(x);
+        int num=x;
         int reverseNum=0;
         while(x>0){
             int digit = x%10;
@@ -40,6 +39,10 @@ public class PalindromNumber{
         System.out.println("-------------------------------------------------------------------------------");
         int input5 = 10;
         System.out.println("Input : "+ input5+" Output : "+PalindromNumber.checkPalindromNumber(input5));
+
+         System.out.println("-------------------------------------------------------------------------------");
+        int input6 = -121;
+        System.out.println("Input : "+ input6+" Output : "+PalindromNumber.checkPalindromNumber(input6));
 
     }
 }
