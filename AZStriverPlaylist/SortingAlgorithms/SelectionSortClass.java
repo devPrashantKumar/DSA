@@ -101,14 +101,24 @@ public class SelectionSortClass {
         selectionSort(arr);
         System.out.println(Arrays.toString(arr));
 
+        System.out.println("-------------------------------------");
+
+        int[] arr1 = {2,3,1,7,3,9,6};
+        selectionSortRecursive(arr1);
+        System.out.println(Arrays.toString(arr1));
+
+        System.out.println("-------------------------------------");
+
         int[] arr2 = {4, 5, 3, 5, 1};
         selectionSortStable(arr2);
         System.out.println(Arrays.toString(arr2));
 
         System.out.println("-------------------------------------");
 
-        int[] arr3 = {2,3,1,7,3,9,6};
-        selectionSortRecursive(arr3);
-        System.out.println(Arrays.toString(arr3));
+        int[] arr12 = {4, 5, 3, 5, 1};
+        selectionSortRecursive(arr12);
+        System.out.println(Arrays.toString(arr12));
+
+        System.out.println("-------------------------------------");
     }
 }
