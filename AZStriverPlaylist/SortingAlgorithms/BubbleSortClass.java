@@ -1,4 +1,4 @@
-package AZStriverPlaylist.SortingAlgorithms.BubbleSort;
+package AZStriverPlaylist.SortingAlgorithms;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package AZStriverPlaylist.SortingAlgorithms.SelectionSort;
+package AZStriverPlaylist.SortingAlgorithms;
 
 import java.util.Arrays;
 
@@ -74,13 +74,41 @@ public class SelectionSortClass {
         return arr;
     }
 
+    public static int[] selectionSortRecursive(int[] arr){
+        selectionSortRecursiveUtil(0, arr);
+        return arr;
+    }
+
+    public static void selectionSortRecursiveUtil(int index, int[] arr){
+        int n = arr.length;
+        if(index==n) return;
+        int minIndex = index;
+        for(int j=index+1;j<n;j++){
+            if(arr[j]<arr[minIndex]){
+                minIndex=j;
+            }
+        }
+        if(index!=minIndex){
+            int temp= arr[minIndex];
+            arr[minIndex]=arr[index];
+            arr[index]=temp;
+        }
+        selectionSortRecursiveUtil(index+1,arr);
+    }
+
     public static void main(String[] args) {
         int[] arr = {2,3,1,7,3,9,6};
-        SelectionSortClass.selectionSort(arr);
+        selectionSort(arr);
         System.out.println(Arrays.toString(arr));
 
         int[] arr2 = {4, 5, 3, 5, 1};
-        SelectionSortClass.selectionSortStable(arr2);
+        selectionSortStable(arr2);
         System.out.println(Arrays.toString(arr2));
+
+        System.out.println("-------------------------------------");
+
+        int[] arr3 = {2,3,1,7,3,9,6};
+        selectionSortRecursive(arr3);
+        System.out.println(Arrays.toString(arr3));
     }
 }
