@@ -4,10 +4,14 @@ import java.util.Arrays;
 
 public class QuickSortClassII {
     /*
-     * Time Complexity : O(n log n), worst case (n^2)
-     * Space Complexity : O(1)
+     * Time Complexity : 
+     * average case - O(n log n), 
+     * worst case (n^2)) when pivot is smallest or largest element each time
+     * Space Complexity : 
+     * average case  - O(log n) , recursive stack when pivot is around mid
+     * worst case - O(n), recursive stack when pivot is smallest or largest element each time
      * Inplace Sorting Algo
-     * Unstable Sorting Algo
+     * Unstable Sorting Algo (due to swapping)
      */
     public static int[] quickSort(int[] arr) {
         quickSortUtil(arr, 0, arr.length-1);
@@ -23,6 +27,7 @@ public class QuickSortClassII {
         }
     }
 
+    // Hoare's Partition
     private static int partition2(int[] arr, int start, int end) {
         int pivot = arr[end]; 
         int left = start;

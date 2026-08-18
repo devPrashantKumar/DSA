@@ -4,10 +4,14 @@ import java.util.Arrays;
 
 public class QuickSortClass_I {
     /*
-     * Time Complexity : O(n log n), worst case (n^2)
-     * Space Complexity : O(1)
+     * Time Complexity : 
+     * average case - O(n log n), 
+     * worst case (n^2)) when pivot is smallest or largest element each time
+     * Space Complexity : 
+     * average case  - O(log n) , recursive stack when pivot is around mid
+     * worst case - O(n), recursive stack when pivot is smallest or largest element each time
      * Inplace Sorting Algo
-     * Unstable Sorting Algo
+     * Unstable Sorting Algo (due to swapping)
      */
     public static int[] quickSort(int[] arr) {
         quickSortUtil(arr, 0, arr.length-1);
@@ -56,11 +60,11 @@ public class QuickSortClass_I {
 
     public static void main(String[] args) {
         int[] arr = {2,3,1,7,2,9,6};
-        QuickSortClass.quickSort(arr);
+        quickSort(arr);
         System.out.println(Arrays.toString(arr));
 
         int[] arr2 = {2,3,1,7,9,6,3};
-        QuickSortClass.quickSort(arr2);
+        quickSort(arr2);
         System.out.println(Arrays.toString(arr2));
     }
 }

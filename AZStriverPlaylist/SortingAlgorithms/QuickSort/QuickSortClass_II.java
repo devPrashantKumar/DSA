@@ -2,7 +2,7 @@ package AZStriverPlaylist.SortingAlgorithms.QuickSort;
 
 import java.util.Arrays;
 
-public class QuickSortClass {
+public class QuickSortClass_II {
     /*
      * Time Complexity : 
      * average case - O(n log n), 
@@ -27,26 +27,18 @@ public class QuickSortClass {
         }
     }
 
-    // Hoare's Partition
+    // Lomuto Partition
     private static int partition(int[] arr, int start, int end) {
-        int pivot = arr[start]; 
+        int pivot = arr[end]; 
         int left = start;
         int right = end;
-
-        while (left < right) {
-            while (left <= end && arr[left] <= pivot)
-                left++;
-            while (right >= start && arr[right] > pivot)
-                right--;
-            if (left < right) {
-                swap(arr, left, right);
+        int i = left-1;
+        for(int j=left;j<=right;j++){
+            if(arr[j]<=pivot) {
+                swap(arr, ++i, j);
             }
         }
-        // swap(arr, left-1, start);
-        // return left-1;
-
-        swap(arr, right, start);
-        return right;
+        return i;
     }
 
     private static void randomizePartition(int[] arr, int start, int end){
@@ -63,11 +55,11 @@ public class QuickSortClass {
 
     public static void main(String[] args) {
         int[] arr = {2,3,1,7,2,9,6};
-        QuickSortClass.quickSort(arr);
+        quickSort(arr);
         System.out.println(Arrays.toString(arr));
 
         int[] arr2 = {2,3,1,7,9,6,3};
-        QuickSortClass.quickSort(arr2);
+        quickSort(arr2);
         System.out.println(Arrays.toString(arr2));
     }
 }
