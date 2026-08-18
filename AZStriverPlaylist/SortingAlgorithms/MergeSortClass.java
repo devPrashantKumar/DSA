@@ -5,7 +5,7 @@ import java.util.*;
 public class MergeSortClass {
   /*
    * Time Complexity : O(n logn)
-   * Space Complexity : O(log n)+O(n)
+   * Space Complexity : O(log n)+O(n), recursion stack + temp array
    * O(log n) recursive stack
    * O(n) tempArray required during merge operation
    * not In-Place Algorithm
