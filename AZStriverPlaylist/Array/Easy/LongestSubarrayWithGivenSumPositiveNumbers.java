@@ -29,15 +29,13 @@ public class LongestSubarrayWithGivenSumPositiveNumbers {
         int i=0; 
         int sum=0;
         for(int j=0;j<arr.length;j++){
-            if(sum<=k){
-                sum += arr[j];
-            } 
-            if(sum==k){
-                maxLen = Math.max(maxLen, j-i+1);
-            }
+            sum += arr[j];
             while(sum>k){
                 sum -= arr[i];
                 i++;
+            }
+            if(sum==k){
+                maxLen = Math.max(maxLen, j-i+1);
             }
         }
         return maxLen;
