@@ -22,17 +22,17 @@ public class SecondLargestNumberInArray {
      * Time complexity : O(n*k)
      */
     public static int secondLargestNumberBetterApproach(int[] arr, int k) {
-        int previosLargest = Integer.MAX_VALUE;
+        int previousLargest = Integer.MAX_VALUE;
         while (k-- > 0) {
             int largest = Integer.MIN_VALUE;
             for (int i = 0; i < arr.length; i++) {
-                if (arr[i] < previosLargest && arr[i] > largest) {
+                if (arr[i] < previousLargest && arr[i] > largest) {
                     largest = arr[i];
                 }
             }
-            previosLargest = largest;
+            previousLargest = largest;
         }
-        return previosLargest;
+        return previousLargest;
     }
 
     /*
