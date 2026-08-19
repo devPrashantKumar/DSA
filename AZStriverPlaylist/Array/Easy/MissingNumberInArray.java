@@ -10,7 +10,7 @@ public class MissingNumberInArray {
      */
     public static int missingNumberBruteforce(int[] arr){
         int len = arr.length;
-        for(int i=1;i<=len;i++){
+        for(int i=0;i<=len;i++){
             boolean flag=false;
             for(int j=0;j<len;j++){
                 if(arr[j]==i){
@@ -35,7 +35,7 @@ public class MissingNumberInArray {
         for(int i=0;i<len;i++){
             set.add(arr[i]);
         }
-        for(int i=1;i<=len;i++){
+        for(int i=0;i<=len;i++){
             if(!set.contains(i)){
                 return i;
             }
@@ -55,7 +55,7 @@ public class MissingNumberInArray {
         for(int i=0;i<len;i++){
             sum +=arr[i];
         }
-        int sumOfNaturalNumbers = (len+1)*(len+2)/2;
+        int sumOfNaturalNumbers = (len)*(len+1)/2;
         return sumOfNaturalNumbers-sum;
     }
 /*
@@ -68,14 +68,14 @@ public class MissingNumberInArray {
         int xor=0;
         for(int i=0;i<len;i++){
             xor ^= arr[i];
-            xor ^= (i+1);
+            xor ^= i;
         }
-        xor ^= arr.length+1;
+        xor ^= arr.length;
         return xor;
     }
 
     public static void main(String[] args) {
-        int[] input1 = {1,4,3,7,6,5};
+        int[] input1 = {0,4,3,1,6,5};
         System.out.println("Input : "+Arrays.toString(input1)+" Output : "+MissingNumberInArray.missingNumberBruteforce(input1));
         System.out.println("Input : "+Arrays.toString(input1)+" Output : "+MissingNumberInArray.missingNumberBetter(input1));
         System.out.println("Input : "+Arrays.toString(input1)+" Output : "+MissingNumberInArray.missingNumberOptimalUsingSumApproch(input1));

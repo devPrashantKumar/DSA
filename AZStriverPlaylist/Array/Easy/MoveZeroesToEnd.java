@@ -24,6 +24,7 @@ public class MoveZeroesToEnd {
     /*
      * Time Complexity : O(n)
      */
+    // Hoare's Approach
     public static int[] moveAllZeroesToEndTwoPointer(int[] arr) {
         int l = 0, r = arr.length - 1;
         while (l < r) {
