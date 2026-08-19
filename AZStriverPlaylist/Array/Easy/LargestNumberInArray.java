@@ -32,11 +32,15 @@ public class LargestNumberInArray {
      * Time Complexity : O(n)
      * Space Complexity : O(n) recursive stack memory
      */
-    public static int largestNumberRecursionApproach(int[] arr, int n){
+    public static int largestNumberRecursionApproach(int[] arr){
+        return largestNumberRecursionApproachUtil(arr, arr.length-1);
+    }
+
+    public static int largestNumberRecursionApproachUtil(int[] arr, int n){
         if(n==0){
             return arr[0];
         }
-        return Math.max(arr[n],largestNumberRecursionApproach(arr, n-1));
+        return Math.max(arr[n],largestNumberRecursionApproachUtil(arr, n-1));
     }
 
     public static void main(String[] args) {
@@ -47,6 +51,6 @@ public class LargestNumberInArray {
         System.out.println("Input : "+Arrays.toString(input2)+" Output : "+LargestNumberInArray.largestNumberOptimalApproach(input2));
         System.out.println("------------------------------------------------------");
         int[] input3 = {2,4,1,7,8,3};
-        System.out.println("Input : "+Arrays.toString(input3)+" Output : "+LargestNumberInArray.largestNumberRecursionApproach(input3,input3.length-1));
+        System.out.println("Input : "+Arrays.toString(input3)+" Output : "+LargestNumberInArray.largestNumberRecursionApproach(input3));
     }
 }
