@@ -8,7 +8,7 @@ public class LongestSubarrayWithGivenSumPositiveNumbers {
      * Time Complexity : O(n^2)
      */
     public static int longestSubarrayBruteforce(int[] arr, int k){
-        int maxLen = Integer.MIN_VALUE;
+        int maxLen = 0;
         for(int i=0;i<arr.length;i++){
             int sum=0;
             for(int j=i;j<arr.length;j++){
@@ -24,6 +24,10 @@ public class LongestSubarrayWithGivenSumPositiveNumbers {
     /*
      * Time Complexity : O(n)
      */
+    // This shrink logic assumes: removing an element from the front always decreases the sum. 
+    // That's only guaranteed true if every element is strictly positive. With zeros or negatives, 
+    // shrinking the window wouldn't reliably reduce sum, and the two-pointer technique would break — 
+    // you'd need a prefix-sum + HashMap approach instead for the general case
     public static int longestSubarray(int[] arr, int k) {
        int maxLen = 0;
         int i=0; 
