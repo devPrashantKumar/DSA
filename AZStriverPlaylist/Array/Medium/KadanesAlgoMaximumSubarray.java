@@ -61,6 +61,44 @@ public class KadanesAlgoMaximumSubarray {
         return maxSum;
     }
 
+    /*
+     * Time Complexity : O(n)
+     * Optimised approach - Kadanes Algorithm
+     */
+    public static int maxSubarraySumKadanesAlgo_2(int[] arr) {
+        int maxSum = Integer.MIN_VALUE;
+        int sum = 0;
+        boolean started = false;
+        int index = -1, startIndex = -1, endIndex = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (sum == 0 && !started) {
+                started = true;
+                index = i;
+            }
+
+            sum += arr[i];
+
+            if (sum > maxSum ||
+                (sum == maxSum && i - index > endIndex - startIndex)) {
+
+            maxSum = sum;
+            startIndex = index;
+            endIndex = i;
+        }
+
+            if (sum < 0) {
+                started = false;
+                sum = 0;
+            }
+        }
+
+        for (int i = startIndex; i <= endIndex; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        return maxSum;
+    }
+
     public static int maxSubarraySumKadanesAlgoWhenEmptySubArrayAllowed(int[] arr) {
         int maxSum = 0;
         int sum = 0;
@@ -201,13 +239,15 @@ public class KadanesAlgoMaximumSubarray {
 
         System.out.println("------------------------------------------------------");
 
-        int[] input5 = { -5, -4, -1, -7, -8 };
+        int[] input5 = { 0, 0, -1, 0, 0, 0, -2 };
         System.out.println("Input : " + Arrays.toString(input5) + " Output : "
                 + KadanesAlgoMaximumSubarray.maxSubarraySum(input5));
         System.out.println("Input : " + Arrays.toString(input5) + " Output : "
                 + KadanesAlgoMaximumSubarray.maxSubarraySum2(input5));
         System.out.println("Input : " + Arrays.toString(input5) + " Output : "
                 + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgo(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgo_2(input5));
         System.out.println("Input : " + Arrays.toString(input5) + " Output : "
                 + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgo2(input5));
         System.out.println("Input : " + Arrays.toString(input5) + " Output : "
