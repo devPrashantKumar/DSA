@@ -201,5 +201,25 @@ public class KadanesAlgoMaximumSubarray {
 
         System.out.println("------------------------------------------------------");
 
+        int[] input5 = { -5, -4, -1, -7, -8 };
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySum(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySum2(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgo(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgo2(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgo3(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySumKadanesAlgoWhenEmptySubArrayAllowed(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySum2AllowEmpty(input5));
+        System.out.println("Input : " + Arrays.toString(input5) + " Output : "
+                + KadanesAlgoMaximumSubarray.maxSubarraySum3AllowEmpty(input5));
+
+        System.out.println("------------------------------------------------------");
+
     }
 }

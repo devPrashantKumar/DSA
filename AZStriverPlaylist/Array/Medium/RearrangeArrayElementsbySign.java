@@ -18,9 +18,8 @@ public class RearrangeArrayElementsbySign {
         }
         for(int i=0;i<result.length;i=i+2){
             result[i] = positive[i/2];
-            result[i+1] = negative[i/2];
+            result[i+1] = negative[(i+1)/2];
         }
-
         return result;
     }
 

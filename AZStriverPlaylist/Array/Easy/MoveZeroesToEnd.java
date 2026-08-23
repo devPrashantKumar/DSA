@@ -6,6 +6,7 @@ public class MoveZeroesToEnd {
     /*
      * Time Complexity : O(n)
      */
+    // Lomuto Partition
     public static int[] moveAllZeroesToEnd(int[] arr) {
         int j = 0;
         for (int i = 0; i < arr.length; i++) {

@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 public class MajorityElement {
 
     //brute force
+    // TC : O(n^2)
     public static int findMajorityElementBruteForce(int[] arr){
         int majorityElement=-1;
         int maxElementCount=0;
