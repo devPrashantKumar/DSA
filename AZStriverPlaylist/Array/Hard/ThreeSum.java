@@ -43,7 +43,28 @@ public class ThreeSum {
             }            
         }
         return result.stream().toList();
-    }            
+    }   
+    
+    /*
+    * Time Complexity : O(n^2)
+    * Space Complexity : O(n)
+    */
+    public static List<List<Integer>> threeSumBetter_2(int[] nums) {
+        Set<List<Integer>> result = new HashSet<>();
+        HashSet<Integer> hset = new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(hset.contains(-(nums[i]+nums[j]))){
+                    List<Integer> triplets = Arrays.asList(nums[i],nums[j],-(nums[i]+nums[j]));
+                    triplets.sort((a,b)->a-b);
+                    result.add(triplets);
+                }
+                
+            }  
+            hset.add(nums[i]);          
+        }
+        return result.stream().toList();
+    }   
 
 
 
@@ -87,18 +108,21 @@ public class ThreeSum {
         System.out.println("Input : " + Arrays.toString(nums1));
         System.out.println("Output : " +ThreeSum.threeSumBruteForce(nums1));
         System.out.println("Output : " +ThreeSum.threeSumBetter(nums1));
+        System.out.println("Output : " +ThreeSum.threeSumBetter_2(nums1));
         System.out.println("Output : " +ThreeSum.threeSum(nums1));
 
         System.out.println("---------------------------------------------------");
         System.out.println("Input : " + Arrays.toString(nums2));
         System.out.println("Output : " + ThreeSum.threeSumBruteForce(nums2));
         System.out.println("Output : " + ThreeSum.threeSumBetter(nums2));
+        System.out.println("Output : " + ThreeSum.threeSumBetter_2(nums2));
         System.out.println("Output : " + ThreeSum.threeSum(nums2));
 
         System.out.println("---------------------------------------------------");
         System.out.println("Input : " + Arrays.toString(nums3));
         System.out.println("Output : " + ThreeSum.threeSumBruteForce(nums3));
         System.out.println("Output : " + ThreeSum.threeSumBetter(nums3));
+        System.out.println("Output : " + ThreeSum.threeSumBetter_2(nums3));
         System.out.println("Output : " + ThreeSum.threeSum(nums3));
 
         System.out.println("---------------------------------------------------");
