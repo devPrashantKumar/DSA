@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class MergeTwoSortedArraysWithoutExtraSpaceIII {
 
+    // TC : O((m+n)log(m+n))
+    //  SC : O(1)
     // using Gap aaproach (inspired from shell sort)
     public static void mergeOptimal(int[] nums1, int m, int[] nums2, int n) {
         int len = m+n;
