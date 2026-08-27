@@ -55,7 +55,7 @@ public class LeftRotateArray {
     public static int[] leftRotateByKOptimal(int[] arr, int k) {
         k = k % arr.length;
         for (int i = 0; i < k / 2; i++) {
-            swap(arr, i, k - i - 1);
+            swap(arr, i, k - 1 - i);
         }
         for (int i = k; i < k + (arr.length - k) / 2; i++) {
             swap(arr, i, arr.length - (i - k)-1);
