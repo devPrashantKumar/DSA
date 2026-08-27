@@ -58,10 +58,10 @@ public class LeftRotateArray {
             swap(arr, i, k - 1 - i);
         }
         for (int i = k; i < k + (arr.length - k) / 2; i++) {
-            swap(arr, i, arr.length - (i - k)-1);
+            swap(arr, i, (arr.length - 1) - (i - k));
         }
         for (int i = 0; i < arr.length / 2; i++) {
-            swap(arr, i, arr.length - i - 1);
+            swap(arr, i, arr.length - 1 - i);
         }
         return arr;
     }
