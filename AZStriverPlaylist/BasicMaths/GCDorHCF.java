@@ -2,6 +2,8 @@ package AZStriverPlaylist.BasicMaths;
 
 public class GCDorHCF {
     //euclidean algorithm
+    // Time Complexity: O(log(min(a, b)))
+    // Space Complexity: O(log(min(a, b))), recursion stack space
     public static int gcdUsingRecursion(int num1, int num2) {
         if (num1 == 0 && num2 == 0)
             return 1;
