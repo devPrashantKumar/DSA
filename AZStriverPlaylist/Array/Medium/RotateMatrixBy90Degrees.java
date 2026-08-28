@@ -119,6 +119,8 @@ public class RotateMatrixBy90Degrees {
         return matrix;
     }
 
+    // for clockwise - reverse rows
+    // for anticlockwise - reverse columns
     public static int[][] reverseRowsInMatrix(int[][] matrix){
         int n = matrix.length;
         for(int i=0;i<n;i++){
