@@ -27,14 +27,14 @@ public class QuickSortClass_I {
         }
     }
 
+    // combination of Hoar's and Lamuto
     private static int partition(int[] arr, int start, int end) {
-        int pivot = arr[start]; 
-        int left = start+1;
-        int right = end;
+        int pivot = arr[end]; 
+        int left = start;
+        int right = end-1;
 
         while (left <= right) {
             if(arr[left]<=pivot) {
-                arr[left-1]=arr[left];
                 left++;
             }
             else {
@@ -42,8 +42,8 @@ public class QuickSortClass_I {
                 right--;
             }
         }
-        arr[right]=pivot;
-        return right;
+        swap(arr,left,end);
+        return left;
     }
 
     private static void randomizePartition(int[] arr, int start, int end){
@@ -59,12 +59,24 @@ public class QuickSortClass_I {
 
 
     public static void main(String[] args) {
-        int[] arr = {2,3,1,7,2,9,6};
+        int[] arr = {6,5,4,3,2,1};
         quickSort(arr);
         System.out.println(Arrays.toString(arr));
 
-        int[] arr2 = {2,3,1,7,9,6,3};
+        int[] arr2 = {7, 4, 1, 5, 3};
         quickSort(arr2);
         System.out.println(Arrays.toString(arr2));
+
+        int[] arr3 = {7};
+        quickSort(arr3);
+        System.out.println(Arrays.toString(arr3));
+
+        int[] arr4 = {};
+        quickSort(arr4);
+        System.out.println(Arrays.toString(arr4));
+
+        int[] arr5 = {1,2,3,4,5,6};
+        quickSort(arr5);
+        System.out.println(Arrays.toString(arr5));
     }
 }

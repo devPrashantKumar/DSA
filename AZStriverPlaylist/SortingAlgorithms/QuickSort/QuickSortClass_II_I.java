@@ -2,7 +2,7 @@ package AZStriverPlaylist.SortingAlgorithms.QuickSort;
 
 import java.util.Arrays;
 
-public class QuickSortClass_II {
+public class QuickSortClass_II_I {
     /*
      * Time Complexity : 
      * average case - O(n log n), 
@@ -29,7 +29,7 @@ public class QuickSortClass_II {
 
     // Lomuto Partition
     private static int partition(int[] arr, int start, int end) {
-        int pivot = arr[end]; 
+        int pivot = arr[start]; 
         int left = start;
         int right = end;
         int i = left;
@@ -39,6 +39,7 @@ public class QuickSortClass_II {
                 i++;
             }
         }
+        swap(arr,start,i-1);
         return i-1;
     }
 
