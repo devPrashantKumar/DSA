@@ -171,6 +171,7 @@ public class KadanesAlgoMaximumSubarray {
         int maxSum = 0;
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
+            //sum = Math.max(0, Math.max(arr[i],sum + arr[i]));
             sum = Math.max(0, sum + arr[i]); // reset to 0 (empty), not arr[i]
             maxSum = Math.max(maxSum, sum);
         }

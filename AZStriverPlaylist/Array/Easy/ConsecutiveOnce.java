@@ -12,7 +12,7 @@ public class ConsecutiveOnce {
         int i=-1;int j=0;
         for(;j<arr.length;j++){
             if(arr[j]==0){
-                int window = j-i-1;
+                int window = (j-1)-i;
                 maxWindow = Math.max(maxWindow, window);
                 i=j;
             }
