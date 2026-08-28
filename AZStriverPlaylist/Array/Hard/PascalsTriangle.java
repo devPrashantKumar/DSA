@@ -14,11 +14,9 @@ public class PascalsTriangle {
         for(int i=1;i<numRows;i++){
             List<Integer> prevList = reList.get(i-1);
             List<Integer> rowList = new ArrayList<>();
-            for(int j=0;j<prevList.size();j++){
-                if(j==0) rowList.add(1);
-                else{
-                    rowList.add(prevList.get(j-1)+prevList.get(j));
-                }
+            rowList.add(1);
+            for(int j=0;j<prevList.size()-1;j++){
+                rowList.add(prevList.get(j)+prevList.get(j+1));
             }
             rowList.add(1);
             reList.add(rowList);
@@ -61,7 +59,7 @@ public class PascalsTriangle {
     public static void main(String[] args) {
         int input1 = 5;
         System.out.println("Input : "+input1+" Output : "+PascalsTriangle.generate(input1));
-                System.out.println("Input : "+input1+" Output : "+PascalsTriangle.generateOptimal(input1));
+        System.out.println("Input : "+input1+" Output : "+PascalsTriangle.generateOptimal(input1));
 
         System.out.println("------------------------------------------------------");
         int input2 = 4;
