@@ -27,10 +27,16 @@ public class ReversePairs2 {
         int  j = mid + 1;
         int i = start;
         int newi=start;
+        int newj=mid+1;
         int[] tempArr = new int[end - start + 1];
         int k = 0;
         while (i <= mid && j <= end) {
             if (arr[i] < arr[j]) {
+                if(newj<j) newj=j;
+                while (newj <= end && (long) arr[i] <= 2L * arr[newj]) {
+                    newj++;
+                }
+                count += (end-newj+1);
                 tempArr[k++] = arr[i++];
             } else {
                 //if(arr[i] > 2*arr[j]) count += (mid-i+1); // this will not work we will miss out some pairs
