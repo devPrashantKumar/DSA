@@ -112,6 +112,27 @@ public class MajorityElementII {
         return result;
     }
 
+    public static List<Integer> majorityElement5(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        int n = nums.length;
+        int oneThird = n / 3;
+        Arrays.sort(nums);
+        int j=0;int i=0;
+        for (; i < n; i++) {
+            if (nums[i] != nums[j]) {
+                if (i-j > oneThird) {
+                    result.add(nums[j]);
+                }
+                j=i;
+            } 
+        }
+
+        if (i-j > oneThird) {
+            result.add(nums[j]);
+        }
+        return result;
+    }
+
     /*
      * Time Complexity : O(n)
      * Space Complexity : O(1)
@@ -156,6 +177,7 @@ public class MajorityElementII {
         System.out.println("Input : " + input1 + " Output : " + MajorityElementII.majorityElement2(input1));
         System.out.println("Input : " + input1 + " Output : " + MajorityElementII.majorityElement3(input1));
         System.out.println("Input : " + input1 + " Output : " + MajorityElementII.majorityElement4(input1));
+        System.out.println("Input : " + input1 + " Output : " + MajorityElementII.majorityElement5(input1));
         System.out.println("Input : " + input1 + " Output : " + MajorityElementII.majorityElementOptimal(input1));
 
         System.out.println("------------------------------------------------------");
@@ -164,6 +186,7 @@ public class MajorityElementII {
         System.out.println("Input : " + input2 + " Output : " + MajorityElementII.majorityElement2(input2));
         System.out.println("Input : " + input2 + " Output : " + MajorityElementII.majorityElement3(input2));
         System.out.println("Input : " + input2 + " Output : " + MajorityElementII.majorityElement4(input2));
+        System.out.println("Input : " + input2 + " Output : " + MajorityElementII.majorityElement5(input2));
         System.out.println("Input : " + input2 + " Output : " + MajorityElementII.majorityElementOptimal(input2));
 
         System.out.println("------------------------------------------------------");
@@ -172,6 +195,7 @@ public class MajorityElementII {
         System.out.println("Input : " + input3 + " Output : " + MajorityElementII.majorityElement(input3));
         System.out.println("Input : " + input3 + " Output : " + MajorityElementII.majorityElement3(input3));
         System.out.println("Input : " + input3 + " Output : " + MajorityElementII.majorityElement4(input3));
+        System.out.println("Input : " + input3 + " Output : " + MajorityElementII.majorityElement5(input3));
         System.out.println("Input : " + input3 + " Output : " + MajorityElementII.majorityElementOptimal(input3));
 
     }
