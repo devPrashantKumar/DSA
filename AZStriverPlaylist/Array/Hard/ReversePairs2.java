@@ -21,6 +21,7 @@ public class ReversePairs2 {
         return leftCount+rightCount+count;
     }
 
+    //wrong approach
     public static int merge(int[] arr, int start, int mid, int end) {
         int count=0;
         int  j = mid + 1;
@@ -29,7 +30,7 @@ public class ReversePairs2 {
         int[] tempArr = new int[end - start + 1];
         int k = 0;
         while (i <= mid && j <= end) {
-            if (arr[i] <= arr[j]) {
+            if (arr[i] < arr[j]) {
                 tempArr[k++] = arr[i++];
             } else {
                 //if(arr[i] > 2*arr[j]) count += (mid-i+1); // this will not work we will miss out some pairs
@@ -47,7 +48,6 @@ public class ReversePairs2 {
         while (j <= end) {
             tempArr[k++] = arr[j++];
         }
-    // SC : O(1)
 
         for (int n = start; n <= end; n++) {
             arr[n] = tempArr[n - start];
