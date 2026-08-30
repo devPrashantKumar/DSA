@@ -2,6 +2,10 @@ package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 
 public class SearchInRotatedSortedArrayUniqueElements {
 
+    /*
+    * Time Complexity : O(log n)
+    * Space Complexity : O(1)
+    */
     public static int search(int[] arr, int target) {
         int left = 0;
         int right = arr.length - 1;
@@ -10,12 +14,12 @@ public class SearchInRotatedSortedArrayUniqueElements {
             if (arr[mid] == target)
                 return mid;
             else if (arr[left] <= arr[mid]) {
-                if (arr[left] <= target && target <= arr[mid])
+                if (arr[left] <= target && target < arr[mid])
                     right = mid - 1;
                 else
                     left = mid + 1;
             } else {
-                if (arr[mid] <= target && target <= arr[right])
+                if (arr[mid] < target && target <= arr[right])
                     left = mid + 1;
                 else
                     right = mid - 1;
@@ -24,6 +28,10 @@ public class SearchInRotatedSortedArrayUniqueElements {
         return -1;
     }
 
+    /*
+    * Time Complexity : O(log n)
+    * Space Complexity : O(log n) , recursion call stack
+    */
     public static int searchRecursive(int[] arr, int target) {
         return searchRecursiveUtil(arr, target, 0, arr.length-1);
     }
@@ -37,12 +45,12 @@ public class SearchInRotatedSortedArrayUniqueElements {
             return mid;
 
         if (arr[start] <= arr[mid]) {
-            if (arr[start] <= target && target <= arr[mid])
+            if (arr[start] <= target && target < arr[mid])
                 return searchRecursiveUtil(arr, target, start,mid - 1);
             else  
                 return searchRecursiveUtil(arr, target, mid+1,end);
         } else {
-            if (arr[mid] <= target && target <= arr[end])
+            if (arr[mid] < target && target <= arr[end])
                 return searchRecursiveUtil(arr, target, mid+1,end);
             else
                 return searchRecursiveUtil(arr, target, start,mid - 1);
