@@ -7,12 +7,19 @@ public class CountOccurrencesOfANumberInASortedArrayWithDuplicates {
         return (firstOccurence == -1) ? 0
                 : (FindFirstAndLastPositionOfElementInSortedArray.lastOccurence(arr, x) - firstOccurence) + 1;
     }
+
+    public static int countOccurence2(int[] arr, int x) {
+        int firstOccurence = BinarySearchUpperAndLowerBounds.lowerBound(arr, x);
+        return (firstOccurence == arr.length) ? 0
+                : (BinarySearchUpperAndLowerBounds.upperBound(arr, x) - BinarySearchUpperAndLowerBounds.lowerBound(arr, x));
+    }
     
     public static void main(String[] args) {
         int[] nums1 = { 5, 7, 7, 8, 8, 10 };
         int target1 = 8;
         
         System.out.println(CountOccurrencesOfANumberInASortedArrayWithDuplicates.countOccurence(nums1, target1));
+        System.out.println(CountOccurrencesOfANumberInASortedArrayWithDuplicates.countOccurence2(nums1, target1));
 
         System.out.println("===========================================================================");
 
@@ -20,12 +27,14 @@ public class CountOccurrencesOfANumberInASortedArrayWithDuplicates {
         int target2 = 5;
     
         System.out.println(CountOccurrencesOfANumberInASortedArrayWithDuplicates.countOccurence(nums2, target2));
+        System.out.println(CountOccurrencesOfANumberInASortedArrayWithDuplicates.countOccurence2(nums2, target2));
 
         System.out.println("===========================================================================");
 
         int[] nums3 = { 5, 7, 7, 8, 8, 10 };
         int target3 = 0;
         System.out.println(CountOccurrencesOfANumberInASortedArrayWithDuplicates.countOccurence(nums3, target3));
+        System.out.println(CountOccurrencesOfANumberInASortedArrayWithDuplicates.countOccurence2(nums3, target3));
 
     }
 }
