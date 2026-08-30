@@ -16,14 +16,13 @@ public class SearchInRotatedSortedArrayDuplicateElements {
             else if (arr[left] == arr[mid] && arr[mid] == arr[right]) {
                 left++;
                 right--;
-                continue;
             } else if (arr[left] <= arr[mid]) {
-                if (arr[left] <= target && target <= arr[mid])
+                if (arr[left] <= target && target < arr[mid])
                     right = mid - 1;
                 else
                     left = mid + 1;
             } else {
-                if (arr[mid] <= target && target <= arr[right])
+                if (arr[mid] < target && target <= arr[right])
                     left = mid + 1;
                 else
                     right = mid - 1;
@@ -37,7 +36,7 @@ public class SearchInRotatedSortedArrayDuplicateElements {
     // Space: O(log n) average case, O(n) worst case — call stack depth tracks
     // the same shrinkage as the time complexity, since each recursive
     // call is a stack frame. In the degenerate all-duplicates case,
-    // this becomes O(n) stack depth instead of O(1).
+    // this becomes O(n) stack depth instead of O(log n).
     public static boolean searchRecursive(int[] arr, int target) {
         return searchRecursiveUtil(arr, target, 0, arr.length - 1);
     }
@@ -55,12 +54,12 @@ public class SearchInRotatedSortedArrayDuplicateElements {
             return searchRecursiveUtil(arr, target, start + 1, end - 1);
 
         if (arr[start] <= arr[mid]) {
-            if (arr[start] <= target && target <= arr[mid])
+            if (arr[start] <= target && target < arr[mid])
                 return searchRecursiveUtil(arr, target, start, mid - 1);
             else
                 return searchRecursiveUtil(arr, target, mid + 1, end);
         } else {
-            if (arr[mid] <= target && target <= arr[end])
+            if (arr[mid] < target && target <= arr[end])
                 return searchRecursiveUtil(arr, target, mid + 1, end);
             else
                 return searchRecursiveUtil(arr, target, start, mid - 1);
@@ -71,23 +70,23 @@ public class SearchInRotatedSortedArrayDuplicateElements {
         int[] nums1 = { 2, 5, 6, 0, 0, 1, 2 };
         int target1 = 0;
 
-        System.out.println(SearchInRotatedSortedArrayDuplicateElements.search(nums1, target1));
-        System.out.println(SearchInRotatedSortedArrayDuplicateElements.searchRecursive(nums1, target1));
+        System.out.println(search(nums1, target1));
+        System.out.println(searchRecursive(nums1, target1));
 
         System.out.println("===========================================================================");
 
         int[] nums2 = { 2, 5, 6, 0, 0, 1, 2 };
         int target2 = 3;
 
-        System.out.println(SearchInRotatedSortedArrayDuplicateElements.search(nums2, target2));
-        System.out.println(SearchInRotatedSortedArrayDuplicateElements.searchRecursive(nums2, target2));
+        System.out.println(search(nums2, target2));
+        System.out.println(searchRecursive(nums2, target2));
 
         System.out.println("===========================================================================");
 
         int[] nums3 = { 1 };
         int target3 = -1;
-        System.out.println(SearchInRotatedSortedArrayDuplicateElements.search(nums3, target3));
-        System.out.println(SearchInRotatedSortedArrayDuplicateElements.searchRecursive(nums3, target3));
+        System.out.println(search(nums3, target3));
+        System.out.println(searchRecursive(nums3, target3));
 
         System.out.println("===========================================================================");
 
