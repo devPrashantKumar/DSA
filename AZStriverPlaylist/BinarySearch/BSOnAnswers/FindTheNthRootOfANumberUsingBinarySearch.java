@@ -6,7 +6,7 @@ public class FindTheNthRootOfANumberUsingBinarySearch {
      *      - O(logM) - binary search
      *      - O(logN) - Math.pow(mid, N), which internally computes the power in O(log N) time using fast exponentiation.
      * Space Complexity : O(1)
-     */
+     */// check it again
     public static int NthRoot(int N, int M) {
         int left = 1;
         int right = M;
@@ -33,6 +33,11 @@ public class FindTheNthRootOfANumberUsingBinarySearch {
      * Space Complexity : O(1)
      */
     public static int NthRoot2(int N, int M) {
+        if (N <= 0 || M < 0) return -1;
+        if (M == 0) return 0;
+        if (N == 1) return M;
+        if (M == 1) return 1;
+        
         int left = 1, right = M;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -54,9 +59,8 @@ public class FindTheNthRootOfANumberUsingBinarySearch {
             if (result > limit)
                 return 2; // overflow case
         }
-        if (result == limit)
-            return 1;
-        return result < limit ? 0 : 2;
+        if (result == limit) return 1;
+        return 0;
     }
 
     public static void main(String[] args) {
