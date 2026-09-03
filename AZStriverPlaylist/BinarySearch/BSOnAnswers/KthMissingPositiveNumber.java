@@ -21,10 +21,12 @@ public class KthMissingPositiveNumber {
         int right = arr.length-1;
         while(left<=right){
             int mid = left+(right-left)/2;
-            if(arr[mid]>k+mid) right = mid-1;
+            if(arr[mid] - (mid + 1) >= k) right = mid-1;
+            //if(arr[mid]>k+mid) right = mid-1;
             else left = mid+1;
         }
-        return left+k;
+        return right>=0 ? arr[right]+(k-(arr[right]-(right+1))) : k;
+        //return left+k; simplified version of above formula
     }
 
     public static void main(String[] args) {
