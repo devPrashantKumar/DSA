@@ -18,7 +18,7 @@ public class PaintersPartition {
             else left = mid+1;
         }
         //return left*timePerUnit;
-        return (int) ((left % MOD) * (timePerUnit % MOD) % MOD);
+        return (int) (((left % MOD) * (timePerUnit % MOD)) % MOD);
 
     }
 

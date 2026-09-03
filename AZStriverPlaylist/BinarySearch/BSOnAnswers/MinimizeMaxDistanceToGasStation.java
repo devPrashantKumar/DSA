@@ -67,6 +67,7 @@ public class MinimizeMaxDistanceToGasStation {
             Pair pair = queue.poll();
             int currentGaps = placed[pair.index]+1;
             double distance = pair.distance*(currentGaps);
+            //double distance = (double)arr[pair.index+1]-arr[pair.index]; // this also we can use
             double sectionLength = distance/(currentGaps+1);
             placed[pair.index]++;
             queue.add(new Pair(sectionLength, pair.index));
@@ -91,6 +92,8 @@ public class MinimizeMaxDistanceToGasStation {
                 right = mid;
             }
         }
+        // here concept of oppsite polarity will not work,
+        // in pevious iterations we stored correct answer in rigth so answer will still be stored in right only in this case
         return right;
     }
 
@@ -105,22 +108,43 @@ public class MinimizeMaxDistanceToGasStation {
         return count;
     }
 
+    public static double minimiseMaxDistanceBinarySearch2(int[] arr, int k) {
+        double ans = -1;
+        double left = 0;
+        double right = Arrays.stream(arr).max().orElse(0);
+        while(right-left>1e-6){
+            double mid = left+(right-left)/2;
+            int placed = placeAtDistance(arr,mid);
+            if(placed>k){
+                left = mid;
+            }
+            else{
+                ans = mid;
+                right = mid;
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
          System.out.println(minimiseMaxDistanceBruteforce(new int[] { 1, 2, 3, 4, 5, 6 ,7, 8, 9, 10 },10));
         System.out.println(minimiseMaxDistanceBetter(new int[] { 1, 2, 3, 4, 5, 6 ,7, 8, 9, 10 }, 10));
         System.out.println(minimiseMaxDistanceBinarySearch(new int[] { 1, 2, 3, 4, 5, 6 ,7, 8, 9, 10 }, 10));
+        System.out.println(minimiseMaxDistanceBinarySearch2(new int[] { 1, 2, 3, 4, 5, 6 ,7, 8, 9, 10 }, 10));
 
         System.out.println("---------------------------------------------");
         
         System.out.println(minimiseMaxDistanceBruteforce(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 1));
         System.out.println(minimiseMaxDistanceBetter(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 1));
         System.out.println(minimiseMaxDistanceBinarySearch(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 1));
+        System.out.println(minimiseMaxDistanceBinarySearch2(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 1));
 
         System.out.println("---------------------------------------------");
 
         System.out.println(minimiseMaxDistanceBruteforce(new int[] { 3, 6, 12, 19, 33, 44, 67, 72, 89, 95 }, 2));
         System.out.println(minimiseMaxDistanceBetter(new int[] { 3, 6, 12, 19, 33, 44, 67, 72, 89, 95 }, 2));
         System.out.println(minimiseMaxDistanceBinarySearch(new int[] { 3, 6, 12, 19, 33, 44, 67, 72, 89, 95 }, 2));
+        System.out.println(minimiseMaxDistanceBinarySearch2(new int[] { 3, 6, 12, 19, 33, 44, 67, 72, 89, 95 }, 2));
 
         System.out.println("---------------------------------------------");
     }
