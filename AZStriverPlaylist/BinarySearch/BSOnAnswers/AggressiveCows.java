@@ -51,7 +51,7 @@ public class AggressiveCows {
                 cows++;
                 lastCow = nums[j];
             }
-            if(cows==k) return true;;
+            if(cows==k) return true;
         }
         return false;
     }
