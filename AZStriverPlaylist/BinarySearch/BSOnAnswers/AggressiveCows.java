@@ -37,7 +37,7 @@ public class AggressiveCows {
         int right = maxPossibleDistance;
         while(left<=right){
             int mid = left+(right-left)/2;
-            if(canPlaceCows(nums,k,mid)) left = mid+1;
+            if(canPlaceCows2(nums,k,mid)) left = mid+1;
             else right = mid-1;
         }
         return right;
@@ -52,6 +52,19 @@ public class AggressiveCows {
                 lastCow = nums[j];
             }
             if(cows==k) return true;
+        }
+        return false;
+    }
+
+    private static boolean canPlaceCows2(int[] nums, int k, int dist){
+        int lastCow = nums[0];
+        k--;
+        for(int j=1;j<nums.length;j++){
+            if(nums[j]-lastCow>=dist){
+                k--;
+                lastCow = nums[j];
+            }
+            if(k==0) return true;
         }
         return false;
     }
