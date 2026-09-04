@@ -6,11 +6,7 @@ public class KthElementOfTwoSortedArrays {
     * Space Complexity : O(1)
     */
     public static double kthElement(int[] nums1, int[] nums2, int k) {
-        if (nums1.length > nums2.length)
-            return kthElement(nums2, nums1, k);
-
-        if (k < 1 || k > nums1.length + nums2.length)
-            throw new IllegalArgumentException("Invalid k");
+        // if (nums1.length > nums2.length) return kthElement(nums2, nums1, k);
         
         int left = Math.max(0, k-nums2.length);
         int right = Math.min(nums1.length,k);

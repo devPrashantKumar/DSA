@@ -66,8 +66,7 @@ public class MedianOfTwoSortedArrays {
     * Space Complexity : O(1)
     */
     public static double findMedianSortedArraysUsingBS(int[] nums1, int[] nums2) {
-        if (nums1.length > nums2.length)
-            return findMedianSortedArraysUsingBS(nums2, nums1);
+        // if (nums1.length > nums2.length) return findMedianSortedArraysUsingBS(nums2, nums1);
         int n = nums1.length+nums2.length;
         int k = (n+1)/2;
         int left = Math.max(0, k-nums2.length);
