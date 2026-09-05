@@ -29,26 +29,27 @@ public class IsomorphicStrings {
     }
 
     public static boolean isIsomorphicSimple(String s, String t) {
+        // input range is ascii characters, so declared character array of size 300
         int[] indexS = new int[300];
         int[] indexT = new int[300];
-        int len = s.length();
-        if (len != t.length()) {
+
+        if (s.length() != t.length()) {
             return false;
         }
-        for (int i = 0; i < len; i++) {
-            if ((indexS[s.charAt(i)] == 0 && indexT[t.charAt(i)] != 0)
-                    || (indexS[s.charAt(i)] != 0 && indexT[t.charAt(i)] == 0)) {
-                return false;
-            }
-
-            if ((indexS[s.charAt(i)] != 0 && indexT[t.charAt(i)] != 0)
-                    && (indexS[s.charAt(i)] != t.charAt(i) || s.charAt(i) != indexT[t.charAt(i)])) {
-                return false;
-            }
-
-            indexS[s.charAt(i)] = t.charAt(i);
-            indexT[t.charAt(i)] = s.charAt(i);
+        for (int i = 0; i < 300; i++){
+            indexS[i]=-1;
+            indexT[i]=-1;
         }
+
+        int len = s.length();
+        for (int i = 0; i < len; i++) {
+            if(indexS[s.charAt(i)]!=-1 && indexS[s.charAt(i)]!=t.charAt(i)) return false;
+            else indexS[s.charAt(i)] = t.charAt(i);
+
+            if(indexT[t.charAt(i)]!=-1 && indexT[t.charAt(i)]!=s.charAt(i)) return false;
+            else indexT[t.charAt(i)] = s.charAt(i);
+        }
+
         return true;
     }
 
@@ -56,11 +57,11 @@ public class IsomorphicStrings {
         int[] indexS = new int[300];
         int[] indexT = new int[300];
 
-        int len = s.length();
-        if (len != t.length()) {
+        if (s.length() != t.length()) {
             return false;
         }
 
+        int len = s.length();
         for (int i = 0; i < len; i++) {
             if (indexS[s.charAt(i)] != indexT[t.charAt(i)]) {
                 return false;
