@@ -8,7 +8,7 @@ public class RotateString {
     public static boolean rotateStringSimpleApproach(String s, String goal) {
         if(s.length()!=goal.length()) return false;
         String sTemp = s+s;
-        for(int i=0;i<=sTemp.length()-goal.length();i++){
+        for(int i=0;i<sTemp.length()-goal.length();i++){
             int j=0;
             for(;j<goal.length();j++){
                 if(sTemp.charAt(i+j)!=goal.charAt(j)) break;
