@@ -6,7 +6,7 @@ public class LongestCommonPrefix {
 
 
     /*
-     * Time complexity : O(m*n)
+     * Time complexity : O(n*n)
      */
     public static String commanPrefix(String[] strings) {
         int i=0;
@@ -19,6 +19,9 @@ public class LongestCommonPrefix {
         return strings[0].substring(0,i);
     }
 
+    /*
+     * Time complexity : O(n*log(m))
+     */
     public static String commanPrefixUsingBS(String[] strings) {
         int minLength = Integer.MAX_VALUE;
         for(String s : strings) minLength = Math.min(minLength,s.length());
