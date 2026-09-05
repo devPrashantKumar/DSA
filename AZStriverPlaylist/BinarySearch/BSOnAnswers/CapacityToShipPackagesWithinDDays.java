@@ -28,6 +28,13 @@ public class CapacityToShipPackagesWithinDDays {
             if (days==0) return false;
         }
         days--;
-        return (days>=0);
+        //return (days>=0);
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(shipWithinDays(new int[] { 1,2,3,4,5,6,7,8,9,10 }, 5));
+        System.out.println(shipWithinDays(new int[] { 3,2,2,4,1,4 }, 3));
+        System.out.println(shipWithinDays(new int[] { 1,2,3,1,1 }, 4));
     }
 }
