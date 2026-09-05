@@ -5,11 +5,11 @@ import java.util.HashMap;
 
 public class ValidAnagram {
     public static boolean isAnagram1(String s, String t) {
+        if(s.length()!=t.length()) return false;
         char[] charArray1 = s.toCharArray();
         char[] charArray2 = t.toCharArray();
         Arrays.sort(charArray1);
         Arrays.sort(charArray2);
-        if(charArray1.length!=charArray2.length) return false;
         for(int i=0;i<charArray1.length;i++){
             if(charArray1[i]!=charArray2[i]) return false;
         }
@@ -17,6 +17,7 @@ public class ValidAnagram {
     }
 
     public static boolean isAnagram2(String s, String t) {
+        if(s.length()!=t.length()) return false;
         HashMap<Character,Integer> hmap1 = new HashMap<>();
         HashMap<Character,Integer> hmap2 = new HashMap<>();
         for(char c : s.toCharArray()){
@@ -30,9 +31,8 @@ public class ValidAnagram {
     }
 
     public static boolean isAnagram3(String s, String t) {
-        HashMap<Character,Integer> hmap1 = new HashMap<>();
-
         if(s.length()!=t.length()) return false;
+        HashMap<Character,Integer> hmap1 = new HashMap<>();
         for(int i=0;i<s.length();i++){
             hmap1.put(s.charAt(i),hmap1.getOrDefault(s.charAt(i), 0)+1);
             hmap1.put(t.charAt(i),hmap1.getOrDefault(t.charAt(i), 0)-1);
@@ -47,6 +47,8 @@ public class ValidAnagram {
     }
 
     public static boolean isAnagram4(String s, String t) {
+        if(s.length()!=t.length()) return false;
+
         char[] charArray1 = s.toCharArray();
         char[] charArray2 = t.toCharArray();
         int[] characterArray1 = new int[26];
@@ -63,6 +65,8 @@ public class ValidAnagram {
     }
 
     public static boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()) return false;
+
         char[] charArray1 = s.toCharArray();
         char[] charArray2 = t.toCharArray();
         int[] characterArray1 = new int[26];
@@ -77,6 +81,24 @@ public class ValidAnagram {
         return Arrays.stream(characterArray1).allMatch(num -> num == 0);
     }
 
+    public static boolean isAnagram5(String s, String t) {
+        if(s.length()!=t.length()) return false;
+
+        char[] charArray1 = s.toCharArray();
+        char[] charArray2 = t.toCharArray();
+        int[] characterArray = new int[26];
+
+        for(int i=0;i<charArray1.length;i++){
+            characterArray[charArray1[i]-'a']++;
+        } 
+
+        for(int i=0;i<charArray2.length;i++){
+            characterArray[charArray2[i]-'a']--;
+            if(characterArray[charArray2[i]-'a']<0) return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String s1 = "racecar";
         String t1 = "carrace";
@@ -84,10 +106,22 @@ public class ValidAnagram {
         String t2 = "jam";
         System.out.println("---------------------------------------------------");
         System.out.println("Input : s - "+s1+" , t - "+t1);
+        System.out.println("Output : " + ValidAnagram.isAnagram(s1,t1));
         System.out.println("Output : " + ValidAnagram.isAnagram1(s1,t1));
+        System.out.println("Output : " + ValidAnagram.isAnagram2(s1,t1));
+        System.out.println("Output : " + ValidAnagram.isAnagram3(s1,t1));
+        System.out.println("Output : " + ValidAnagram.isAnagram4(s1,t1));
+        System.out.println("Output : " + ValidAnagram.isAnagram5(s1,t1));
+
         System.out.println("---------------------------------------------------");
         System.out.println("Input : s - "+s2+" , t - "+t2);
+        System.out.println("Output : " + ValidAnagram.isAnagram(s2, t2));
+        System.out.println("Output : " + ValidAnagram.isAnagram1(s2, t2));
         System.out.println("Output : " + ValidAnagram.isAnagram2(s2, t2));
+        System.out.println("Output : " + ValidAnagram.isAnagram3(s2, t2));
+        System.out.println("Output : " + ValidAnagram.isAnagram4(s2, t2));
+        System.out.println("Output : " + ValidAnagram.isAnagram5(s2, t2));
+
         System.out.println("---------------------------------------------------");
         
     }
