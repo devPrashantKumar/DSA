@@ -54,7 +54,7 @@ public class FindTheNthRootOfANumberUsingBinarySearch {
 
     private static int power(int base, int exp, int limit) {
         long result = 1;
-        for (int i = 0; i < exp; i++) {
+        for (int i = 1; i <= exp; i++) {
             result *= base;
             if (result > limit)
                 return 2; // overflow case

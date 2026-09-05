@@ -18,12 +18,42 @@ public class FindSquareRootOfANumberInLogN {
         return ans;   
     }
 
+    public static int floorSqrtUsingOppositePolarity(int n) {
+        int left = 1;
+        int right = n;
+        while(left<=right){
+            int mid = left+(right-left)/2;
+            if(mid <= n/mid)
+                left = mid+1;
+            else right = mid-1;
+            
+        }
+        return right;   
+    }
+
     public static void main(String[] args) {
         System.out.println(floorSqrt(36));
+        System.out.println(floorSqrtUsingOppositePolarity(36));
+        System.out.println("------------------------------------");
+
         System.out.println(floorSqrt(38));
+        System.out.println(floorSqrtUsingOppositePolarity(38));
+        System.out.println("------------------------------------");
+
         System.out.println(floorSqrt(48));
+        System.out.println(floorSqrtUsingOppositePolarity(48));
+        System.out.println("------------------------------------");
+
         System.out.println(floorSqrt(49));
+        System.out.println(floorSqrtUsingOppositePolarity(49));
+        System.out.println("------------------------------------");
+
         System.out.println(floorSqrt(1));
+        System.out.println(floorSqrtUsingOppositePolarity(1));
+        System.out.println("------------------------------------");
+
         System.out.println(floorSqrt(11));
+        System.out.println(floorSqrtUsingOppositePolarity(11));
+        System.out.println("------------------------------------");
     }
 }
