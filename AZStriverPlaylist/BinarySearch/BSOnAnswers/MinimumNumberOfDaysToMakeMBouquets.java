@@ -18,7 +18,7 @@ public class MinimumNumberOfDaysToMakeMBouquets {
         //int ans = -1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (calculateBouquet(bloomDay, m, k, mid)) {
+            if (calculateBouquetUsingWindow(bloomDay, m, k, mid)) {
                 //ans = mid;
                 right = mid - 1;
             } else
@@ -39,6 +39,24 @@ public class MinimumNumberOfDaysToMakeMBouquets {
                 if(m==0) return true;
             } else {
                 count = 0;
+            }
+        }
+        return false;
+    }
+
+
+    public static boolean calculateBouquetUsingWindow(int[] bloomDay, int m, int k, int day) {
+        int j=-1;
+        for (int i=0;i<bloomDay.length;i++) {
+            if (bloomDay[i] > day){ 
+                j=i;
+            }
+            else {
+                if((i-j)==k) {
+                    j=i;
+                    m--;
+                }
+                if(m==0) return true;
             }
         }
         return false;
