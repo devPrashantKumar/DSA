@@ -34,10 +34,12 @@ public class FindPeakElement {
         int prev = (mid-1<0) ? Integer.MIN_VALUE : nums[mid-1];
         int next = (mid+1>=n) ? Integer.MIN_VALUE : nums[mid+1];
 
-        Integer leftHalf=null,rightHalf=null;
+        Integer leftHalf=null;
+        Integer rightHalf=null;
         if(nums[mid]>prev){
             if(nums[mid]>next) return mid;
             leftHalf = makeDecision(nums, left, mid-2);
+            if(leftHalf!=null) return leftHalf;
             if(nums[mid]==next){    
                 rightHalf = makeDecision(nums, mid+2, right);
             }
@@ -46,15 +48,16 @@ public class FindPeakElement {
             }
         }else if(nums[mid]==prev){
             leftHalf = makeDecision(nums, left, mid-2);
+            if(leftHalf!=null) return leftHalf;
             if(nums[mid]==next || nums[mid]>next) rightHalf = makeDecision(nums, mid+2, right);
             else rightHalf = makeDecision(nums, mid+1, right);
         }else{
             leftHalf = makeDecision(nums, left, mid-1);
+            if(leftHalf!=null) return leftHalf;
             if(nums[mid]==next || nums[mid]>next) rightHalf = makeDecision(nums, mid+2, right);
             else rightHalf = makeDecision(nums, mid+1, right);
         }
 
-        if(leftHalf!=null) return leftHalf;
         if(rightHalf!=null) return rightHalf;
         return null;
     }
