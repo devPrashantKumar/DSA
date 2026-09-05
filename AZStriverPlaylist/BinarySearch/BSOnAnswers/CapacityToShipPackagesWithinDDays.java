@@ -25,7 +25,7 @@ public class CapacityToShipPackagesWithinDDays {
                 currentWeight=0;
             }
             currentWeight += weight;
-            if (days<0) return false;
+            if (days==0) return false;
         }
         days--;
         return (days>=0);
