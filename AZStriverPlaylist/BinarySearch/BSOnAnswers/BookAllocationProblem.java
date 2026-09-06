@@ -14,7 +14,7 @@ public class BookAllocationProblem {
         int right = maxPages;
         while(left<=right){
             int mid = left+(right-left)/2;
-            if(isDistributionPossible(nums,m,mid)) right = mid-1;
+            if(isDistributionPossible_2(nums,m,mid)) right = mid-1;
             else left = mid+1;
         }
         return left;
@@ -32,7 +32,24 @@ public class BookAllocationProblem {
                 pagesSum += nums[i];
             }
         }
-        if(m>1) return true;
+        m--;
+        if(m==0) return true;
+        return true;
+    }
+
+    // this will also work
+    public static boolean isDistributionPossible_2(int[] nums, int m, int pages){
+        int pagesSum=0;
+        for(int i=0;i<nums.length;i++){
+            if(pagesSum+nums[i]>pages){
+                pagesSum = nums[i];
+                m--;   
+            }
+            pagesSum += nums[i];
+            if(m==0) return false;
+        }
+        m--;
+        if(m==0) return true;
         return true;
     }
 
