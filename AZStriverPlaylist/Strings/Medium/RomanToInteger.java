@@ -72,6 +72,21 @@ public class RomanToInteger {
         return result;
     }
 
+    public static int romanToIntOptimal2(String s) {
+        int n = s.length();
+        if(n==0) return 0;
+        int result = mapCharToNum(s.charAt(0));
+        for (int i = 1; i < n; i++) {
+            char prev = s.charAt(i-1);
+            char curr = s.charAt(i);
+            int num1 = RomanToInteger.mapCharToNum(prev);
+            int num2 = RomanToInteger.mapCharToNum(curr);
+            result+=num2;
+            if (num1 < num2) result -= (2*num1);
+        }
+        return result;
+    }
+
     public static int mapCharToNum(char c) {
         switch (c) {
             case 'M':
@@ -97,14 +112,17 @@ public class RomanToInteger {
         String input1 = "III";
         System.out.println("Input : " + input1 + " Output : " + RomanToInteger.romanToIntSimple(input1));
         System.out.println("Input : " + input1 + " Output : " + RomanToInteger.romanToIntOptimal(input1));
+        System.out.println("Input : " + input1 + " Output : " + RomanToInteger.romanToIntOptimal2(input1));
 
         String input2 = "LVIII";
         System.out.println("Input : " + input2 + " Output : " + RomanToInteger.romanToIntSimple(input2));
         System.out.println("Input : " + input2 + " Output : " + RomanToInteger.romanToIntOptimal(input2));
+        System.out.println("Input : " + input2 + " Output : " + RomanToInteger.romanToIntOptimal2(input2));
 
         String input3 = "MCMXCIV";
         System.out.println("Input : " + input3 + " Output : " + RomanToInteger.romanToIntSimple(input3));
         System.out.println("Input : " + input3 + " Output : " + RomanToInteger.romanToIntOptimal(input3));
+        System.out.println("Input : " + input3 + " Output : " + RomanToInteger.romanToIntOptimal2(input3));
 
     }
 }
