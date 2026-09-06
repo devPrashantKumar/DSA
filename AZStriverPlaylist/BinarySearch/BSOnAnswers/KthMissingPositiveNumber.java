@@ -45,14 +45,30 @@ public class KthMissingPositiveNumber {
         //return left+k; simplified version of above formula
     }
 
+    // this will also work
+    public static int findKthPositiveUsingBS2UsingOppositePolarity(int[] arr, int k) {
+        int left=0;
+        int right = arr.length-1;
+        while(left<=right){
+            int mid = left+(right-left)/2;
+            if(arr[mid] - (mid + 1) < k) left = mid+1;
+            else right = mid-1;
+        }
+        return right>=0 ? arr[right]+(k-(arr[right]-(right+1))) : k;
+        //return left+k; simplified version of above formula
+    }
+
     public static void main(String[] args) {
         System.out.println(findKthPositive(new int[] { 2,3,4,7,11 }, 5));
         System.out.println(findKthPositiveUsingBS(new int[] { 2,3,4,7,11 }, 5));
         System.out.println(findKthPositiveUsingBS2(new int[] { 2,3,4,7,11 }, 5));
+        System.out.println(findKthPositiveUsingBS2UsingOppositePolarity(new int[] { 2,3,4,7,11 }, 5));
 
         System.out.println("===================================");
         System.out.println(findKthPositive(new int[] { 1,2,3,4 }, 2));
         System.out.println(findKthPositiveUsingBS(new int[] { 1,2,3,4 }, 2));
         System.out.println(findKthPositiveUsingBS2(new int[] { 1,2,3,4 }, 2));
+        System.out.println(findKthPositiveUsingBS2UsingOppositePolarity(new int[] { 1,2,3,4 }, 2));
+
     }
 }
