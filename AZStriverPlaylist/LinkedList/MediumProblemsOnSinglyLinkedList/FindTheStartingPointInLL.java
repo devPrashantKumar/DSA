@@ -4,6 +4,7 @@ public class FindTheStartingPointInLL {
     /*
     * Time Complexity : O(n)
     */
+    //Floyd’s Cycle Detection Algorithm (Tortoise & Hare).
     public static <T> SingleLinkedListNode<T> startingPointInLL(SingleLinkedListNode<T> head){
         SingleLinkedListNode<T> tortoise = head;
         SingleLinkedListNode<T> hare = head;

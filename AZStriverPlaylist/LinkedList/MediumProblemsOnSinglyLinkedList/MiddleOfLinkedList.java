@@ -15,9 +15,15 @@ public class MiddleOfLinkedList {
         Integer[] arr1 = {1,2,3,4,5,6,7};
         SingleLinkedListNode<Integer> head = SingleLinkedListUtility.convertArrayToList(arr1);
         SingleLinkedListUtility.printLinkedList(head);
-        
         head = MiddleOfLinkedList.findMiddleofList(head);
         SingleLinkedListUtility.printLinkedList(head);
+        System.out.println("----------------------------------------------------------");
+        
+        Integer[] arr2 = {1,2,3,4,5,6,};
+        SingleLinkedListNode<Integer> head2 = SingleLinkedListUtility.convertArrayToList(arr2);
+        SingleLinkedListUtility.printLinkedList(head2);
+        head2 = MiddleOfLinkedList.findMiddleofList(head2);
+        SingleLinkedListUtility.printLinkedList(head2);
         System.out.println("----------------------------------------------------------");
     }
 }

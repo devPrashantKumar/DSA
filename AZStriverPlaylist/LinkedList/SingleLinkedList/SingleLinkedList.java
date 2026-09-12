@@ -159,6 +159,7 @@ public class SingleLinkedList<T> {
             throw new RuntimeException("Linked List is Empty");
         }
         head = head.next;
+        if(head==null) tail=null;
     }
 
     public void deleteLastNodeInLinkedList() {
