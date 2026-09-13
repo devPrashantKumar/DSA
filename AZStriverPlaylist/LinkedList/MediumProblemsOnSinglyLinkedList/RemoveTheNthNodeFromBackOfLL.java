@@ -6,6 +6,7 @@ public class RemoveTheNthNodeFromBackOfLL {
      * Space Complexity : O(1)
      */
     public static <T> SingleLinkedListNode<T> removeNthNodeFromBack(SingleLinkedListNode<T> head, int n){
+        if (head==null) return null;
         SingleLinkedListNode<T> tortoise = head;
         SingleLinkedListNode<T> hare = head;
         SingleLinkedListNode<T> prev = null;
@@ -22,24 +23,69 @@ public class RemoveTheNthNodeFromBackOfLL {
         prev.next = tortoise.next;
         return head;
     }
+
+    public static <T> SingleLinkedListNode<T> removeNthNodeFromBack2(SingleLinkedListNode<T> head, int n){
+        if (head==null) return null;
+        SingleLinkedListNode<T> tortoise = head;
+        SingleLinkedListNode<T> hare = head;
+        for(int i=0;i<n;i++){
+            if(hare==null) return null;
+            hare = hare.next;
+        }
+        if(hare==null) return head.next;
+        else hare = hare.next;
+
+        while(hare!=null){
+            tortoise = tortoise.next;
+            hare = hare.next;
+        }
+        tortoise.next = tortoise.next.next;
+        return head;
+    }
     public static void main(String[] args) {
         Integer[] arr1 = {1,2,3,4,5,6,7};
+
         SingleLinkedListNode<Integer> head = SingleLinkedListUtility.convertArrayToList(arr1);
+        SingleLinkedListNode<Integer> head2 = SingleLinkedListUtility.convertArrayToList(arr1);
+
         SingleLinkedListUtility.printLinkedList(head);
         head = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack(head,1);
         SingleLinkedListUtility.printLinkedList(head);
+        System.out.println("---------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head2);
+        head2 = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack2(head2,1);
+        SingleLinkedListUtility.printLinkedList(head2);
         System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+
         SingleLinkedListUtility.printLinkedList(head);
         head = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack(head,3);
         SingleLinkedListUtility.printLinkedList(head);
+        System.out.println("---------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head2);
+        head2 = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack2(head2,3);
+        SingleLinkedListUtility.printLinkedList(head2);
         System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+
         SingleLinkedListUtility.printLinkedList(head);
         head = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack(head,2);
         SingleLinkedListUtility.printLinkedList(head);
+        System.out.println("---------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head2);
+        head2 = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack2(head2,2);
+        SingleLinkedListUtility.printLinkedList(head2);
         System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+
         SingleLinkedListUtility.printLinkedList(head);
         head = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack(head,4);
         SingleLinkedListUtility.printLinkedList(head);
+        System.out.println("---------------------------------------");
+        SingleLinkedListUtility.printLinkedList(head2);
+        head2 = RemoveTheNthNodeFromBackOfLL.removeNthNodeFromBack2(head2,4);
+        SingleLinkedListUtility.printLinkedList(head2);
         System.out.println("----------------------------------------------------------");
+        System.out.println();
     }
 }
