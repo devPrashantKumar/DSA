@@ -14,6 +14,7 @@ public class FindTheIntersectionPointOfYLL {
         return curr1;
     }
 
+    // important
     public static <T> SingleLinkedListNode<T> findIntersectionPoint2(SingleLinkedListNode<T> head1, SingleLinkedListNode<T> head2){
         SingleLinkedListNode<T> curr1 = head1;
         SingleLinkedListNode<T> curr2 = head2;
