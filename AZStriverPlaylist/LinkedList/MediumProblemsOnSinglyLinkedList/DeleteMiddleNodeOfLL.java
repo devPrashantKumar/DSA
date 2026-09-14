@@ -23,7 +23,7 @@ public class DeleteMiddleNodeOfLL {
         if(head==null || head.next==null) return null;
         SingleLinkedListNode<T> tortoise = head;
         SingleLinkedListNode<T> hare = head;
-        hare = hare.next.next;
+        hare = hare.next.next; // important
         while(hare!=null && hare.next!=null){
             tortoise = tortoise.next;
             hare = hare.next.next;
@@ -32,6 +32,7 @@ public class DeleteMiddleNodeOfLL {
         return head;
     }
 
+    //important
     public static <T> SingleLinkedListNode<T> deleteMiddleNodeDeleteLeftInCaseOfEven(SingleLinkedListNode<T> head){
         SingleLinkedListNode<T> tortoise = head;
         SingleLinkedListNode<T> hare = head;
