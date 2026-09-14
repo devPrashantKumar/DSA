@@ -13,6 +13,19 @@ public class FindTheIntersectionPointOfYLL {
         }
         return curr1;
     }
+
+    public static <T> SingleLinkedListNode<T> findIntersectionPoint2(SingleLinkedListNode<T> head1, SingleLinkedListNode<T> head2){
+        SingleLinkedListNode<T> curr1 = head1;
+        SingleLinkedListNode<T> curr2 = head2;
+        while(curr1!=curr2){
+            if(curr1==null) curr1=head2;
+            if(curr2==null) curr2=head1;
+            if(curr1==curr2) return curr1;
+            curr1 = curr1.next;
+            curr2 = curr2.next;
+        }
+        return curr1;
+    }
     public static void main(String[] args) {
         Integer[] arr1 = {1,2,3,4,5,6,7};
         SingleLinkedListNode<Integer> head1 = SingleLinkedListUtility.convertArrayToList(arr1);
@@ -22,8 +35,11 @@ public class FindTheIntersectionPointOfYLL {
         SingleLinkedListUtility.printLinkedList(head2);
         head1.next.next.next = head2.next.next.next;
         
-        head1 = FindTheIntersectionPointOfYLL.findIntersectionPoint(head1,head2);
-        SingleLinkedListUtility.printLinkedList(head1);
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(FindTheIntersectionPointOfYLL.findIntersectionPoint(head1,head2));
+        System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+        SingleLinkedListUtility.printLinkedList(FindTheIntersectionPointOfYLL.findIntersectionPoint2(head1,head2));
         System.out.println("----------------------------------------------------------");
     }
 }
