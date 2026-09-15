@@ -7,13 +7,11 @@ public class RemoveDuplicateFromSortedDLL {
     public static <T> DoubleLinkedListNode<T> removeDuplicates(DoubleLinkedListNode<T> head){
         if(head==null || head.next==null) return head;
 
-        DoubleLinkedListNode<T> curr = head;
-        T lastUsed = null;
+        DoubleLinkedListNode<T> curr = head.next;
+        T lastUsed = head.data;
         while(curr!=null){
             if(curr.data.equals(lastUsed)){
-                if(curr.prev!=null){
-                    curr.prev.next = curr.next;
-                }
+                curr.prev.next = curr.next;
                 if(curr.next!=null){
                     curr.next.prev = curr.prev;
                 }
@@ -25,6 +23,22 @@ public class RemoveDuplicateFromSortedDLL {
     }
 
     public static <T> DoubleLinkedListNode<T> removeDuplicatesApproach2(DoubleLinkedListNode<T> head){
+        if(head==null || head.next==null) return head;
+
+        DoubleLinkedListNode<T> curr = head.next;
+        while(curr!=null){
+            if(curr.data.equals(curr.prev.data)){
+                curr.prev.next = curr.next;
+                if(curr.next!=null){
+                    curr.next.prev = curr.prev;
+                }
+            }
+            curr = curr.next;
+        }
+        return head;
+    }
+
+    public static <T> DoubleLinkedListNode<T> removeDuplicatesApproach3(DoubleLinkedListNode<T> head){
         if(head==null || head.next==null) return head;
         DoubleLinkedListNode<T> curr1 = head;
         DoubleLinkedListNode<T> curr2 = head.next;
@@ -63,6 +77,7 @@ public class RemoveDuplicateFromSortedDLL {
         head2 = RemoveDuplicateFromSortedDLL.removeDuplicates(head2);
         DoubleLinkedListUtility.printDoubleLinkedList(head2);
         System.out.println("----------------------------------------------------------");
+
         System.out.println("----------------------------------------------------------");
         System.out.println("----------------------------------------------------------");
 
@@ -83,6 +98,28 @@ public class RemoveDuplicateFromSortedDLL {
 
         head4 = RemoveDuplicateFromSortedDLL.removeDuplicatesApproach2(head4);
         DoubleLinkedListUtility.printDoubleLinkedList(head4);
+        System.out.println("----------------------------------------------------------");
+               
+        System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
+
+        Integer[] arr5 = {1,1,3,3,4,5};
+        DoubleLinkedListNode<Integer> head5 = DoubleLinkedListUtility.convertArrayToList(arr5);
+        DoubleLinkedListUtility.printDoubleLinkedList(head5);
+        System.out.println("----------------------------------------------------------");
+
+        head5 = RemoveDuplicateFromSortedDLL.removeDuplicatesApproach2(head5);
+        DoubleLinkedListUtility.printDoubleLinkedList(head5);
+        System.out.println("----------------------------------------------------------");
+
+
+        Integer[] arr6 = {1,1,1,1,2};
+        DoubleLinkedListNode<Integer> head6 = DoubleLinkedListUtility.convertArrayToList(arr6);
+        DoubleLinkedListUtility.printDoubleLinkedList(head6);
+        System.out.println("----------------------------------------------------------");
+
+        head6 = RemoveDuplicateFromSortedDLL.removeDuplicatesApproach2(head6);
+        DoubleLinkedListUtility.printDoubleLinkedList(head6);
         System.out.println("----------------------------------------------------------");
     }
 }
