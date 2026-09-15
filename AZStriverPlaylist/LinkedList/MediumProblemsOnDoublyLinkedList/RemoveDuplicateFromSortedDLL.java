@@ -59,7 +59,7 @@ public class RemoveDuplicateFromSortedDLL {
     }
 
     public static void main(String[] args) {
-        Integer[] arr1 = {1,1,3,3,4,5};
+        Integer[] arr1 = {1,1,3,3,4,5,5};
         DoubleLinkedListNode<Integer> head1 = DoubleLinkedListUtility.convertArrayToList(arr1);
         DoubleLinkedListUtility.printDoubleLinkedList(head1);
         System.out.println("----------------------------------------------------------");
@@ -81,7 +81,7 @@ public class RemoveDuplicateFromSortedDLL {
         System.out.println("----------------------------------------------------------");
         System.out.println("----------------------------------------------------------");
 
-        Integer[] arr3 = {1,1,3,3,4,5};
+        Integer[] arr3 = {1,1,3,3,4,5,5};
         DoubleLinkedListNode<Integer> head3 = DoubleLinkedListUtility.convertArrayToList(arr3);
         DoubleLinkedListUtility.printDoubleLinkedList(head3);
         System.out.println("----------------------------------------------------------");
@@ -103,7 +103,7 @@ public class RemoveDuplicateFromSortedDLL {
         System.out.println("----------------------------------------------------------");
         System.out.println("----------------------------------------------------------");
 
-        Integer[] arr5 = {1,1,3,3,4,5};
+        Integer[] arr5 = {1,1,3,3,4,5,5};
         DoubleLinkedListNode<Integer> head5 = DoubleLinkedListUtility.convertArrayToList(arr5);
         DoubleLinkedListUtility.printDoubleLinkedList(head5);
         System.out.println("----------------------------------------------------------");
