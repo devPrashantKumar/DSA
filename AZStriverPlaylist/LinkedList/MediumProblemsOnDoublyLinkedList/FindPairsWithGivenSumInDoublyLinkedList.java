@@ -7,6 +7,10 @@ import AZStriverPlaylist.LinkedList.ProblemsOnDoubleLinkedList.DoubleLinkedListN
 import AZStriverPlaylist.LinkedList.ProblemsOnDoubleLinkedList.DoubleLinkedListUtility;
 
 public class FindPairsWithGivenSumInDoublyLinkedList {
+    /*
+    * Time Complexity : O(n)
+    * Space Complexity : O(1)
+    */
     public static List<List<Integer>> findPairsWithGivenSum(DoubleLinkedListNode<Integer> head, Integer target){
         List<List<Integer>> result = new ArrayList<>();
         if(head==null || head.next==null) return result;
@@ -17,11 +21,14 @@ public class FindPairsWithGivenSumInDoublyLinkedList {
         }
 
         while(head!=tail){
-            if(head.data+tail.data==target){
-                result.add(List.of(head.data,tail.data));
-                head = head.next;
+            Integer data1 = head.data;
+            Integer data2 = tail.data;
+            if(data1+data2==target){
+                result.add(List.of(data1,data2));
+                while(head!=tail && data1.equals(head.data)) head = head.next;
+                while(head!=tail && data2.equals(tail.data)) tail = tail.prev;
             }
-            else if(head.data+tail.data<target){
+            else if(data1+data2<target){
                 head = head.next;
             }else{
                 tail = tail.prev;
@@ -31,7 +38,7 @@ public class FindPairsWithGivenSumInDoublyLinkedList {
     }
 
     public static void main(String[] args) {
-        Integer[] arr1 = {1, 2, 4, 5, 6, 8, 9};
+        Integer[] arr1 = {1, 2, 2, 4, 4, 5, 5, 6, 8, 9};
         Integer target1 = 7;
         DoubleLinkedListNode<Integer> head1 = DoubleLinkedListUtility.convertArrayToList(arr1);
         DoubleLinkedListUtility.printDoubleLinkedList(head1);
