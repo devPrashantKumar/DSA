@@ -14,7 +14,7 @@ public class RotateList {
                 hare = head;
             }
         }
-        while(tortoise.next!=null && hare.next!=null){
+        while(hare.next!=null){
             tortoise = tortoise.next;
             hare = hare.next;
         }
@@ -33,7 +33,7 @@ public class RotateList {
         for(int i=0;i<k;i++){
             hare = hare.next;
         }
-        while(tortoise.next!=null && hare.next!=null){
+        while(hare.next!=null){
             tortoise = tortoise.next;
             hare = hare.next;
         }
@@ -75,7 +75,7 @@ public class RotateList {
 
     public static void main(String[] args) {
         Integer[] arr1 = {1,2,3,4,5};
-        int k1 = 2;
+        int k1 = 5;
         SingleLinkedListNode<Integer> head = SingleLinkedListUtility.convertArrayToList(arr1);
         SingleLinkedListUtility.printLinkedList(head);
         head = RotateList.rotateRight(head, k1);

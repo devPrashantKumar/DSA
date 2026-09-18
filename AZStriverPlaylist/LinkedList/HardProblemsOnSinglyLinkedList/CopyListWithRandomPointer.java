@@ -118,6 +118,37 @@ public class CopyListWithRandomPointer {
         return newHead.next;
     }
 
+    public static Node copyRandomListOptimised2(Node head) {
+        if(head==null) return head;
+        Node curr = head;
+        while(curr!=null){
+            Node newNode = new Node(curr.val);
+            newNode.next = curr.next;
+            curr.next = newNode;
+            curr = curr.next.next;
+        }
+
+        curr = head;
+        while(curr!=null){
+            if(curr.random!=null){
+                curr.next.random = curr.random.next;
+            }
+            curr = curr.next.next;
+        }
+
+        curr = head;
+        Node newHead = head.next;
+        Node newHeadCurr = newHead;
+        while(curr!=null){
+            curr.next = curr.next.next;
+            if(newHeadCurr.next!=null) 
+                newHeadCurr.next=newHeadCurr.next.next;
+            curr = curr.next;
+            newHeadCurr = newHeadCurr.next;
+        }
+        return newHead;
+    }
+
     public static void printLinkedList(Node head) {
         Node curr = head;
         while (curr != null) {
@@ -141,6 +172,12 @@ public class CopyListWithRandomPointer {
 
         Node result1 = copyRandomListBruteForce(node1);
         printLinkedList(result1);
+        result1 = copyRandomListBruteForce2(node1);
+        printLinkedList(result1);
+        result1 = copyRandomListOptimised(node1);
+        printLinkedList(result1);
+        result1 = copyRandomListOptimised2(node1);
+        printLinkedList(result1);
         System.out.println("----------------------------------------------------------------");
         Node node21 = new Node(7);
         Node node22 = new Node(13);
@@ -155,6 +192,12 @@ public class CopyListWithRandomPointer {
 
         Node result21 = copyRandomListBruteForce(node21);
         printLinkedList(result21);
+        result21 = copyRandomListBruteForce2(node21);
+        printLinkedList(result21);
+        result21 = copyRandomListOptimised(node21);
+        printLinkedList(result21);
+        result21 = copyRandomListOptimised2(node21);
+        printLinkedList(result21);
         System.out.println("----------------------------------------------------------------");
         Node node31 = new Node(7);
         Node node32 = new Node(13);
@@ -168,6 +211,12 @@ public class CopyListWithRandomPointer {
         node35.random = node31;
 
         Node result31 = copyRandomListBruteForce(node31);
+        printLinkedList(result31);
+        result31 = copyRandomListBruteForce2(node31);
+        printLinkedList(result31);
+        result31 = copyRandomListOptimised(node31);
+        printLinkedList(result31);
+        result31 = copyRandomListOptimised2(node31);
         printLinkedList(result31);
         System.out.println("----------------------------------------------------------------");
     }
