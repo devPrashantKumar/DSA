@@ -47,6 +47,22 @@ public class PrintAllSubsequencesOrPowerSet {
 
     }
 
+    public static List<List<Integer>> subsetsApproach3(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> set = new ArrayList<>();
+        generateSubsetsApproach3(nums,-1,set,result);
+        return result;
+    }
+
+    public static void generateSubsetsApproach3(int[] nums, int index, List<Integer> set, List<List<Integer>> result) {
+        result.add(new ArrayList<>(set));  
+        for(int i=index+1;i<nums.length;i++) {
+            set.add(nums[i]);
+            generateSubsetsApproach3(nums,i,set,result);
+            set.remove(set.size()-1);
+        }   
+    }
+
     /*
     * Time Complexity : O(n*2^n)
     * Space Complexity : O(1)
@@ -69,7 +85,11 @@ public class PrintAllSubsequencesOrPowerSet {
     public static void main(String[] args) {
         int[] nums1 = {1,2,3,4};
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+PrintAllSubsequencesOrPowerSet.subsets(nums1));
+        System.out.println("----------------------------");
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+PrintAllSubsequencesOrPowerSet.subsetsApproach2(nums1));
+        System.out.println("----------------------------");
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+PrintAllSubsequencesOrPowerSet.subsetsApproach3(nums1));
+        System.out.println("----------------------------");
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+PrintAllSubsequencesOrPowerSet.subsetsUsinBitManipulation(nums1));
     }
 }
