@@ -10,7 +10,7 @@ public class ReverseAStackUsingRecursion {
         if(stk.empty()) return;
         Integer element = stk.pop();
         reverseStack(stk);
-        ReverseAStackUsingRecursion.insertAtEnd(stk,element);
+        insertAtEnd(stk,element);
     }
 
     public static void insertAtEnd(Stack<Integer> stk, Integer element){
