@@ -10,22 +10,18 @@ public class SortAStackUsingRecursion {
         if(stk.empty()) return;
         Integer element = stk.pop();
         sortStack(stk);
-        SortAStackUsingRecursion.insertAtSortedPosition(stk,element);
+        insertAtSortedPosition(stk,element);
     }
 
+    // kind of insertionsort
     public static void insertAtSortedPosition(Stack<Integer> stk, Integer element){
-        if(stk.empty()){
+        if(stk.empty() || stk.peek()<element){
             stk.push(element);
             return;
         }
-        Integer topElement = stk.peek();
-        if(topElement>element){
-            Integer element2 = stk.pop();
-            insertAtSortedPosition(stk,element);
-            stk.push(element2);
-        }else{
-           stk.push(element); 
-        }
+        Integer element2 = stk.pop();
+        insertAtSortedPosition(stk,element);
+        stk.push(element2);
     }
 
     public static void main(String[] args) {
