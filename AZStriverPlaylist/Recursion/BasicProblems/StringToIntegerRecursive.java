@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.Recursion.BasicProblems;
 
 public class StringToIntegerRecursive {
 
