@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.Recursion.Extras;
 
 public class TowerOfHanoi {
     public static void towerOfHanoiSol(int n, char source, char helper, char destination){

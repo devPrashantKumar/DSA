@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion.MediumProblems;
+package AZStriverPlaylist.Recursion.ImplementationProblems;
 
 import java.util.ArrayList;
 import java.util.List;

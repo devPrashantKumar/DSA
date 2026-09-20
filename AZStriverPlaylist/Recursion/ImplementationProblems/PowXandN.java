@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion.BasicProblems;
+package AZStriverPlaylist.Recursion.ImplementationProblems;
 
 
 public class PowXandN {

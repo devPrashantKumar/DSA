@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion.MediumProblems;
+package AZStriverPlaylist.Recursion.Extras;
 
 import java.util.*;
 public class GenerateAllBinaryStrings {

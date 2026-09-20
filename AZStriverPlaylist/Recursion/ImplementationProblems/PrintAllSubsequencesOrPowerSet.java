@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion;
+package AZStriverPlaylist.Recursion.ImplementationProblems;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion.BasicProblems;
+package AZStriverPlaylist.Recursion.Extras;
 
 public class CountGoodNumbers {
     private static final int MOD = 1_000_000_007;
