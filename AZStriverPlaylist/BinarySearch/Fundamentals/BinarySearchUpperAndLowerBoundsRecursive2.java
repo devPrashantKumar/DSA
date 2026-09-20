@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BinarySearch.BSOn1DArray;
+package AZStriverPlaylist.BinarySearch.Fundamentals;
 
 public class BinarySearchUpperAndLowerBoundsRecursive2 {
 

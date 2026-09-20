@@ -1,5 +1,7 @@
 package AZStriverPlaylist.BinarySearch.BSOn1DArray;
 
+import AZStriverPlaylist.BinarySearch.Fundamentals.BinarySearchUpperAndLowerBounds;
+
 public class CountOccurrencesOfANumberInASortedArrayWithDuplicates {
 
     public static int countOccurence(int[] arr, int x) {
