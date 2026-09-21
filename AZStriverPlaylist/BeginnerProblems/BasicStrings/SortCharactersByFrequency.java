@@ -75,16 +75,16 @@ public class SortCharactersByFrequency {
 
     public static void main(String[] args) {
         String input1 = "tree";
-        System.out.println("Input : "+input1+" Output : "+SortCharactersByFrequency.frequencySort(input1));
-        System.out.println("Input : "+input1+" Output : "+SortCharactersByFrequency.frequencySortHashTable(input1));
+        System.out.println("Input : "+input1+" Output : "+frequencySort(input1));
+        System.out.println("Input : "+input1+" Output : "+frequencySortHashTable(input1));
 
         String input2 = "cccbbaaaa";
-        System.out.println("Input : "+input2+" Output : "+SortCharactersByFrequency.frequencySort(input2));
-        System.out.println("Input : "+input2+" Output : "+SortCharactersByFrequency.frequencySortHashTable(input2));
+        System.out.println("Input : "+input2+" Output : "+frequencySort(input2));
+        System.out.println("Input : "+input2+" Output : "+frequencySortHashTable(input2));
 
         String input3 = "ccaabbb";
-        System.out.println("Input : "+input3+" Output : "+SortCharactersByFrequency.frequencySort(input3));
-        System.out.println("Input : "+input3+" Output : "+SortCharactersByFrequency.frequencySortHashTable(input3));
+        System.out.println("Input : "+input3+" Output : "+frequencySort(input3));
+        System.out.println("Input : "+input3+" Output : "+frequencySortHashTable(input3));
 
     }
 }
