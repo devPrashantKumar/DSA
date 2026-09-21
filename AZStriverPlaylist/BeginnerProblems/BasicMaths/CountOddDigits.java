@@ -27,14 +27,30 @@ public class CountOddDigits{
         else return countNumberOfOddDigitsUsingRecursion(num/10);
     }
 
+    /*
+     * Time Complexity: O(log10N + 1) 
+     */
+    public static int countNumberOfOddDigitsUsingStringApproach(int num){
+        String str = String.valueOf(num);
+        int count = 0;
+
+        for (char ch : str.toCharArray()) {
+        if ((ch - '0') % 2 == 1)
+            count++;
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         int input1 = 8721648;
         System.out.println("Input : "+ input1+" Output : "+countNumberOfOddDigits(input1));
         System.out.println("Input : "+ input1+" Output : "+countNumberOfOddDigitsUsingRecursion(input1));
+        System.out.println("Input : "+ input1+" Output : "+countNumberOfOddDigitsUsingStringApproach(input1));
 
         System.out.println("-------------------------------------------------------------------------------");
         int input2 = 0;
         System.out.println("Input : "+ input2+" Output : "+countNumberOfOddDigits(input2));
         System.out.println("Input : "+ input2+" Output : "+countNumberOfOddDigitsUsingRecursion(input2));
+        System.out.println("Input : "+ input2+" Output : "+countNumberOfOddDigitsUsingStringApproach(input2));
     }
 }
