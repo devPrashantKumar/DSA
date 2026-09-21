@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BeginnerProblems.BasicStrings.Easy;
+package AZStriverPlaylist.BeginnerProblems.BasicStrings;
 
 import java.util.Arrays;
 import java.util.HashMap;

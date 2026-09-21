@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BeginnerProblems.BasicStrings.Medium;
+package AZStriverPlaylist.BeginnerProblems.BasicStrings;
 
 import java.util.*;
 
