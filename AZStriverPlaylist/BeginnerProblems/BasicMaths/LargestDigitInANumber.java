@@ -26,6 +26,10 @@ public class LargestDigitInANumber {
         return Math.max(num%10,largestDigitUsingRecursion(num/10));
     }
 
+    /*
+     * Time Complexity: O(log10(N))
+     * Space Complexity: O(1)
+     */
     public static int largestDigitUsingStringConversion(int num) {
         String str = String.valueOf(num);
         int max = 0;

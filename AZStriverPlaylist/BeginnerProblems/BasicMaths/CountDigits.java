@@ -14,6 +14,10 @@ public class CountDigits{
         return counter;
     }
 
+    /*
+     * Time Complexity: O(log10(N))
+     * Space Complexity: O(log10(N)) - Recursion Stack
+     */
     public static int countNumberOfDigitsUsingRecursion(int num){
         if(num==0) return 1;
         return countNumberOfDigitsUsingRecursionUtil(num);
