@@ -14,6 +14,16 @@ public class CountDigits{
         return counter;
     }
 
+    public static int countNumberOfDigitsUsingRecursion(int num){
+        if(num==0) return 1;
+        return countNumberOfDigitsUsingRecursionUtil(num);
+    }
+
+    public static int countNumberOfDigitsUsingRecursionUtil(int num){
+        if(num<=0) return 0;
+        return 1+countNumberOfDigitsUsingRecursionUtil(num/10);
+    }
+
     /*
      * Time Complexity: O(1) 
      */
@@ -24,13 +34,15 @@ public class CountDigits{
 
     public static void main(String[] args) {
         int input1 = 8721648;
-        System.out.println("Input : "+ input1+" Output : "+CountDigits.countNumberOfDigits(input1));
-        System.out.println("Input : "+ input1+" Output : "+CountDigits.countNumberOfDigitsUsingMaths(input1));
+        System.out.println("Input : "+ input1+" Output : "+countNumberOfDigits(input1));
+        System.out.println("Input : "+ input1+" Output : "+countNumberOfDigitsUsingRecursion(input1));
+        System.out.println("Input : "+ input1+" Output : "+countNumberOfDigitsUsingMaths(input1));
 
         System.out.println("-------------------------------------------------------------------------------");
         int input2 = 0;
-        System.out.println("Input : "+ input2+" Output : "+CountDigits.countNumberOfDigits(input2));
-        System.out.println("Input : "+ input2+" Output : "+CountDigits.countNumberOfDigitsUsingMaths(input2));
+        System.out.println("Input : "+ input2+" Output : "+countNumberOfDigits(input2));
+        System.out.println("Input : "+ input2+" Output : "+countNumberOfDigitsUsingRecursion(input2));
+        System.out.println("Input : "+ input2+" Output : "+countNumberOfDigitsUsingMaths(input2));
 
     }
 }
