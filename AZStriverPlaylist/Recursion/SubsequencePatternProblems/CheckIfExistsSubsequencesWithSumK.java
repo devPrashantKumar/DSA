@@ -11,8 +11,7 @@ public class CheckIfExistsSubsequencesWithSumK {
     * Space Complexity : O(n) -> space occupied by recursion stack
     */
     public static boolean checkIfExistsSubsetsOfSumK(int[] nums, int k) {
-        List<Integer> set = new ArrayList<>();
-        return generateSubsets(nums,0,set, k);
+        return generateSubsets(nums,0,new ArrayList<>(), k);
     }
 
     public static boolean generateSubsets(int[] nums, int index, List<Integer> set, int k) {
@@ -21,7 +20,7 @@ public class CheckIfExistsSubsequencesWithSumK {
             for(int num:set){
                 sum+= num;
             }
-            return (sum==k) ? true:false;
+            return (sum==k);
         }
         
         boolean l = generateSubsets(nums,index+1,set,k);
@@ -36,8 +35,7 @@ public class CheckIfExistsSubsequencesWithSumK {
     * Space Complexity : O(n) -> space occupied by recursion stack
     */
     public static boolean checkIfExistsSubsetsOfSumKUsingRollingSum(int[] nums, int k) {
-        List<Integer> set = new ArrayList<>();
-        return generateSubsetsUsingRollingSum(nums,0,set, k,0);
+        return generateSubsetsUsingRollingSum(nums,0,new ArrayList<>(), k,0);
     }
 
     public static boolean generateSubsetsUsingRollingSum(int[] nums, int index, List<Integer> set, int k, int currSum) {
@@ -49,6 +47,20 @@ public class CheckIfExistsSubsequencesWithSumK {
         set.add(nums[index]);
         boolean r = generateSubsetsUsingRollingSum(nums,index+1,set,k,currSum+nums[index]);
         set.remove(set.size()-1);
+        return l||r;
+    }
+
+    public static boolean checkIfExistsSubsetsOfSumKUsingRollingSum2(int[] nums, int k) {
+        return generateSubsetsUsingRollingSum2(nums,0,k,0);
+    }
+
+    public static boolean generateSubsetsUsingRollingSum2(int[] nums, int index, int k, int currSum) {
+        if(index==nums.length){
+            return (currSum==k);
+        }
+        
+        boolean l = generateSubsetsUsingRollingSum2(nums,index+1,k,currSum);
+        boolean r = generateSubsetsUsingRollingSum2(nums,index+1,k,currSum+nums[index]);
         return l||r;
     }
 
@@ -75,6 +87,7 @@ public class CheckIfExistsSubsequencesWithSumK {
         int k1 =5;
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CheckIfExistsSubsequencesWithSumK.checkIfExistsSubsetsOfSumK(nums1, k1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CheckIfExistsSubsequencesWithSumK.checkIfExistsSubsetsOfSumKUsingRollingSum(nums1, k1));
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CheckIfExistsSubsequencesWithSumK.checkIfExistsSubsetsOfSumKUsingRollingSum2(nums1,k1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+CheckIfExistsSubsequencesWithSumK.checkIfExistsSubsetsOfSumKUsinBitManipulation(nums1,k1));
     }
 }

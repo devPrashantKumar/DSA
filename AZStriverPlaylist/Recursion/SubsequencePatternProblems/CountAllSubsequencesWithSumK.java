@@ -5,13 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CountAllSubsequencesWithSumK {
+    
     /*
-    * Time Complexity : O(n*2^n)
-    * Space Complexity : O(n) -> space occupied by recursion stack
+    * Time Complexity: O(N * 2^N)
+    * Space Complexity: O(N^2) - Recursion Stack + Copied Lists
     */
     public static int countSubsetsOfSumK(int[] nums, int k) {
-        List<Integer> set = new ArrayList<>();
-        return generateSubsets(nums,0,set, k);
+        return generateSubsets(nums,0,new ArrayList<>(), k);
     }
 
     public static int generateSubsets(int[] nums, int index, List<Integer> set, int k) {
@@ -60,19 +60,16 @@ public class CountAllSubsequencesWithSumK {
     * Space Complexity : O(n) -> space occupied by recursion stack
     */
     public static int countSubsetsOfSumKUsingRunningSumApproach(int[] nums, int k) {
-        List<Integer> set = new ArrayList<>();
-        return generateSubsetsUsingRunningSumApproach(nums,0,set, k, 0);
+        return generateSubsetsUsingRunningSumApproach(nums,0, k, 0);
     }
 
-    public static int generateSubsetsUsingRunningSumApproach(int[] nums, int index, List<Integer> set, int k, int currentSum) {
+    public static int generateSubsetsUsingRunningSumApproach(int[] nums, int index, int k, int currentSum) {
         if(index==nums.length){
             return (currentSum==k) ? 1:0;
         }
         
-        int l = generateSubsetsUsingRunningSumApproach(nums,index+1,set,k, currentSum);
-        set.add(nums[index]);
-        int r = generateSubsetsUsingRunningSumApproach(nums,index+1,set,k,currentSum+nums[index]);
-        set.remove(set.size()-1);
+        int l = generateSubsetsUsingRunningSumApproach(nums,index+1,k, currentSum);
+        int r = generateSubsetsUsingRunningSumApproach(nums,index+1,k,currentSum+nums[index]);
         return l+r;
     }
 
