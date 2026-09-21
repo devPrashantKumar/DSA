@@ -1,8 +1,9 @@
 package AZStriverPlaylist.BeginnerProblems.BasicMaths;
 
 public class CountOddDigits{
-    /*
-     * Time Complexity: O(log10N + 1) 
+     /*
+     * Time Complexity: O(log10(N) + 1)
+     * Space Complexity: O(1)
      */
     public static int countNumberOfOddDigits(int num){
         if(num==0) return 0;
@@ -15,6 +16,10 @@ public class CountOddDigits{
         return counter;
     }
 
+    /*
+     * Time Complexity: O(log10(N) + 1)
+     * Space Complexity: O(log10(N) + 1) - Recursion Stack
+     */
     public static int countNumberOfOddDigitsUsingRecursion(int num){
         if(num<=0) return 0;
         int digit = num%10;
