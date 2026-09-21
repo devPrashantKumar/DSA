@@ -11,7 +11,7 @@ public class CombinationSum {
      * m = smallest value in candidates
      * t = T / m → maximum possible length of a combination
      * Time Comlexity: O(n^t) 
-     * Space Complexity O(t)
+     * Space Complexity O(t), recurson stack space
      */
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
@@ -19,7 +19,8 @@ public class CombinationSum {
         generateCombination(candidates,target,combination,0,result);
         return result;
     }
-
+    
+    // for-loop backtracking approach
     public static void generateCombination(int[] candidates, int target,List<Integer> combination, int index,List<List<Integer>> result){
         if(target<0) return;
         if(target==0){
@@ -38,8 +39,8 @@ public class CombinationSum {
      * T = target
      * m = smallest value in candidates
      * t = T / m → maximum possible length of a combination
-     * Time Comlexity: O(n^t) 
-     * Space Complexity O(t)
+     * Time Comlexity: O(n^t) // important
+     * Space Complexity O(t), recurson stack space
      */
     public static List<List<Integer>> combinationSumApproach2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
@@ -48,6 +49,7 @@ public class CombinationSum {
         return result;
     }
 
+    // Include/Exclude backtracking approach
     public static void generateCombinationApproach2(int[] candidates, int target,List<Integer> combination, int index,List<List<Integer>> result){
         if(target<0) return;
         if(target==0){
