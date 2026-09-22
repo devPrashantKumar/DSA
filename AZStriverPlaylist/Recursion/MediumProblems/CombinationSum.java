@@ -52,6 +52,7 @@ public class CombinationSum {
     // Include/Exclude backtracking approach
     public static void generateCombinationApproach2(int[] candidates, int target,List<Integer> combination, int index,List<List<Integer>> result){
         if(target<0) return;
+        //if(target==0  && index==candidates.length){ // if negative allowed, then should we this condition
         if(target==0){
             result.add(new ArrayList<>(combination));
             return;
