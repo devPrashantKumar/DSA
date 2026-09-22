@@ -27,6 +27,19 @@ public class SubsetSumI {
         generateSubsets(nums,index+1,sum+nums[index],result);
     }
 
+    public static List<Integer> subsets2(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        generateSubsets2(nums,0,0,result);
+        Collections.sort(result);
+        return result;
+    }
+
+    public static void generateSubsets2(int[] nums, int index, int sum, List<Integer> result) {
+        result.add(sum);
+        for(int i=index;i<nums.length;i++)
+            generateSubsets2(nums,i+1,sum+nums[i],result);
+    }
+
     /*
      * Time Complexity : O(n *2^n)+(2^n * log 2^n)
      * (n*2^n) -> to generate subsets
@@ -51,6 +64,8 @@ public class SubsetSumI {
     public static void main(String[] args) {
         int[] nums1 = {3,1,2};
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+SubsetSumI.subsets(nums1));
+        System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+SubsetSumI.subsets2(nums1));
         System.out.println("Input 1 " + Arrays.toString(nums1)+" Output : "+SubsetSumI.subsetsUsinBitManipulation(nums1));
+
     }
 }
