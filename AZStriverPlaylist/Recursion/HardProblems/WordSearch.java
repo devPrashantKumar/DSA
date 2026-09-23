@@ -18,10 +18,11 @@ public class WordSearch {
         if(row <0 || column<0 || row>=board.length || column>=board[0].length) return false;
         if(!visited[row][column] && board[row][column]==word.charAt(index)){
             visited[row][column]=true;
-            boolean isExists = wordExistsUtil(board, word, row, column+1, index+1, visited) || 
-            wordExistsUtil(board, word, row, column-1, index+1, visited) || 
-            wordExistsUtil(board, word, row+1, column, index+1, visited) || 
-            wordExistsUtil(board, word, row-1, column, index+1, visited);
+            boolean isExists = (
+                wordExistsUtil(board, word, row, column+1, index+1, visited) || 
+                wordExistsUtil(board, word, row, column-1, index+1, visited) || 
+                wordExistsUtil(board, word, row+1, column, index+1, visited) || 
+                wordExistsUtil(board, word, row-1, column, index+1, visited));
             visited[row][column]=false;
             return isExists;
         }

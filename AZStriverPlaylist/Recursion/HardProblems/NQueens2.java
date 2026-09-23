@@ -11,11 +11,7 @@ public class NQueens2 {
         return result;
     }
 
-    public static void placeQueen(boolean[][] board,
-            int row,
-            int n,
-            List<List<String>> result) {
-
+    public static void placeQueen(boolean[][] board, int row, int n, List<List<String>> result) {
         if (row == n) {
             processBoardAndStoreResult(board, result, n);
             return;
