@@ -69,7 +69,7 @@ public class RatInAMaze {
             result.add(str.toString()); 
         }
         visited[row][col]=false;
-        // "" is an empty string, so it contains zero characters. so stl.length()=0
+        // "" is an empty string, so it contains zero characters. so str.length()=0
         if(!str.isEmpty()) 
             str.deleteCharAt(str.length()-1);
 
