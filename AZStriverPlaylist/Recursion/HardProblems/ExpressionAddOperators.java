@@ -1,90 +1,82 @@
 package AZStriverPlaylist.Recursion.HardProblems;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
+import java.util.Stack;
 
 public class ExpressionAddOperators {
     public static List<String> addOperators(String num, int target) {
         List<String> result = new ArrayList<>();
-        addOperatorsUtil(num, target, 0, '_',true, new ArrayList<>(), result);
+        Deque<String> stk = new ArrayDeque<>();
+        stk.push(""+num.charAt(0));
+        StringBuilder str = new StringBuilder();
+        str.append(num.charAt(0));
+        addOperatorsUtil(num, target, 1, stk, str, result);
         return result; 
     }
 
-    public static void addOperatorsUtil(String num, int target, int index, char lastChar, boolean nextAllowed,  List<Character> list, List<String> result) {
+    public static void addOperatorsUtil(String num, int target, int index, Deque<String> stk,  StringBuilder str, List<String> result) {
         int n = num.length();
         if(index==n){
-            if(calculateStackExpression(new ArrayList<>(list))==target){
-                StringBuilder str = new StringBuilder();
-                for(Character item : list) str.append(item);
+            Deque<String> stk2 = new ArrayDeque<>(stk);
+            if(calculateStackExpression(stk2)==target){
                 result.add(str.toString());
             }
             return;
         }
-        if(!nextAllowed) return;
 
-        list.add(num.charAt(index));
+        str.append('*'); str.append(num.charAt(index));
+        Integer top  = Integer.valueOf(stk.pop());
+        stk.push(String.valueOf(top*(num.charAt(index)-'0')));
+        addOperatorsUtil(num, target, index+1, stk, str, result);
+        top  = Integer.valueOf(stk.pop());
+        stk.push(String.valueOf(top/(num.charAt(index)-'0')));
+        str.delete(str.length()-2, str.length());
 
-        if(num.charAt(index)=='0' && (lastChar=='_' || lastChar=='+' || lastChar=='*' || lastChar=='-')){
-            nextAllowed=false;
-        }
+        str.append('+'); str.append(num.charAt(index));
+        stk.push("+"); stk.push(""+num.charAt(index));
+        addOperatorsUtil(num, target, index+1, stk, str, result);
+        stk.pop(); stk.pop();
+        str.delete(str.length()-2, str.length());
 
-        if(num.charAt(index)!='0'){
-            lastChar = num.charAt(index);
-        }
-
-        if(index!=n-1){
-            list.add('*');
-            addOperatorsUtil(num, target, index+1, '*', true, list, result);
-            list.remove(list.size()-1); 
-
-            list.add('+');
-            addOperatorsUtil(num, target, index+1, '+', true,list, result);
-            list.remove(list.size()-1);
-
-            list.add('-');
-            addOperatorsUtil(num, target, index+1, '-', true,list, result);
-            list.remove(list.size()-1);
-        }
-        addOperatorsUtil(num, target, index+1, lastChar,nextAllowed, list, result);
-
-        list.remove(list.size()-1);
+        str.append('-'); str.append(num.charAt(index));
+        stk.push("-"); stk.push(""+num.charAt(index));
+        addOperatorsUtil(num, target, index+1, stk, str, result);
+        stk.pop(); stk.pop();
+        str.delete(str.length()-2, str.length());
     }
 
-    public static Long calculateStackExpression(List<Character> list){
-        List<Long> tempList = new ArrayList<>();
-        int i=0;
-        while(i<list.size()){
-            if(list.get(i)=='+'){
-                tempList.add(1L); i++;
-            } 
-            else if(list.get(i)=='-'){
-                tempList.add(-1L); i++;
-            } 
-            else if(list.get(i)=='*'){
-                i++;
-                Long operand1 = tempList.get(tempList.size()-1);
-                Long operand2 =0L;
-                while(i<list.size() && Character.isDigit(list.get(i))){
-                    operand2 = (operand2*10)+Character.getNumericValue(list.get(i));
-                    i++;
-                }
-                tempList.remove(tempList.size()-1);
-                tempList.add(operand1*operand2);
-            }else{
-                Long num=0L;
-                while(i<list.size() && Character.isDigit(list.get(i))){
-                    num = (num*10)+Character.getNumericValue(list.get(i));
-                    i++;
-                }
-                tempList.add(num);
-            }
+    public static Long calculateStackExpression(Deque<String> stk){
+        Long num = Long.valueOf(stk.pollLast());
+        while(!stk.isEmpty()){
+            String sign = stk.pollLast();
+            Long num2 = Long.valueOf(stk.pollLast());
+            if(sign.equals("-")) num  -= num2;
+            else num += num2;
         }
-        Long result = tempList.get(0);
-        for(i=1;i<tempList.size();i=i+2){
-            result += (tempList.get(i)*tempList.get(i+1));
-        }
-        return result;
+        return num;
     }
+
+//     public static Long calculateStackExpression(Deque<String> stk) {
+
+//     Long num = Long.valueOf(stk.pollLast());
+
+//     while (!stk.isEmpty()) {
+
+//         String sign = stk.pollLast();
+//         Long num2 = Long.valueOf(stk.pollLast());
+
+//         if (sign.equals("-")) {
+//             num -= num2;
+//         } else {
+//             num += num2;
+//         }
+//     }
+
+//     return num;
+// }
 
     public static void main(String[] args) {
         String str1 = "123";
@@ -97,12 +89,12 @@ public class ExpressionAddOperators {
         System.out.println("Input : str -> "+str2+" target -> "+target2);
         System.out.println("Output : "+addOperators(str2, target2));
         System.out.println("----------------------------------------------");
-        String str3 = "3456237490";
+        String str3 = "3456237491";
         int target3 = 9191;
         System.out.println("Input : str -> "+str3+" target -> "+target3);
         System.out.println("Output : "+addOperators(str3, target3));
         System.out.println("----------------------------------------------");
-        String str4 = "105";
+        String str4 = "115";
         int target4 = 5;
         System.out.println("Input : str -> "+str4+" target -> "+target4);
         System.out.println("Output : "+addOperators(str4, target4));
