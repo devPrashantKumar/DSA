@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Recursion.Extras;
+package AZStriverPlaylist.Recursion.SubsequencePatternProblems;
 
 import java.util.*;
 public class GenerateAllBinaryStrings {
