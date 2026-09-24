@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BeginnerProblems.BasicStrings.Extras;
+package AZStriverPlaylist.Strings;
 
 public class RemoveOuterParenthesis {
     /*

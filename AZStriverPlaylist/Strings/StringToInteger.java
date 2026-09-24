@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BeginnerProblems.BasicStrings.Extras;
+package AZStriverPlaylist.Strings;
 
 public class StringToInteger {
     public static int myAtoiMyApproach(String s) {

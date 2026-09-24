@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BeginnerProblems.BasicStrings.Extras;
+package AZStriverPlaylist.Strings;
 
 public class RomanToInteger {
     public static int romanToIntSimple(String s) {

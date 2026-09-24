@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BeginnerProblems.BasicStrings.Extras;
+package AZStriverPlaylist.Strings;
 
 public class IntegerToRoman {
     public static String intToRomanSimple(int num) {
