@@ -1,9 +1,10 @@
-package AZStriverPlaylist.BitManipulation.Problems;
+package AZStriverPlaylist.BitManipulation.Fundamentals;
 
 public class CheckIfNumberIsPowerOfTwo {
 
     public static boolean isPowerOfTwo(int num) {
-        return num > 0 && (num & (num - 1)) == 0;
+        if(num<=0) return false;
+        return (num & (num - 1)) == 0;
     }
 
     public static void main(String[] args) {

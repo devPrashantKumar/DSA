@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BitManipulation.Problems;
+package AZStriverPlaylist.BitManipulation.Fundamentals;
 
 public class CheckIfNumberIsOddOrNot {
     public static boolean checkIfNumberIsOddOrNot(int num) {
