@@ -33,8 +33,7 @@ public class ExpressionAddOperators {
             }
 
             currentNumber = currentNumber * 10 + (num.charAt(i) - '0');
-
-            String currentNumberString =num.substring(index, i + 1);
+            String currentNumberString = num.substring(index, i + 1);
 
             if (index == 0) {
                 expression.append(currentNumberString);
@@ -53,14 +52,15 @@ public class ExpressionAddOperators {
 
                 expression.append('*');
                 expression.append(currentNumberString);
-                addOperatorsUtil(num,target,i + 1,value - previous + previous * currentNumber,previous * currentNumber,expression,result);
+                // this logic is important
+                addOperatorsUtil(num,target,i + 1,((value - previous) + (previous * currentNumber)),previous * currentNumber,expression,result);
                 expression.setLength(expressionLength);
             }
         }
     }
 
     public static void main(String[] args) {
-String str1 = "123";
+        String str1 = "123";
         int target1 = 6;
         System.out.println("Input : str -> "+str1+" target -> "+target1);
         System.out.println("Output : "+addOperators(str1, target1));
