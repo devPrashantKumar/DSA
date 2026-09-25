@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BitManipulation.Problems;
+package AZStriverPlaylist.BitManipulation;
 
 public class CountNumberOfSetBits {
     public static int countSetBits(int num) {

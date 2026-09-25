@@ -1,5 +1,6 @@
 package AZStriverPlaylist.BitManipulation;
 public class BinaryNotationUtility {
+
     public static String decimalToBinaryString(int val){
         StringBuilder binary = new StringBuilder();
         do{
@@ -49,7 +50,7 @@ public class BinaryNotationUtility {
      * twos compliment - find ones compliment and add 1
      */
     public static String twosComplimentOfBinaryString(String binary){
-        String onesCompliment = BinaryNotationUtility.onesComplimentOfBinaryString(binary);
+        String onesCompliment = onesComplimentOfBinaryString(binary);
         StringBuilder twosCompliment = new StringBuilder();
         int carry=1;
         for(int i=onesCompliment.length()-1;i>=0;i--){
@@ -65,36 +66,36 @@ public class BinaryNotationUtility {
     }
 
     public static void main(String[] args) {
-        System.out.println(BinaryNotationUtility.decimalToBinaryString(0));
-        System.out.println(BinaryNotationUtility.decimalToBinaryString(10));
-        System.out.println(BinaryNotationUtility.decimalToBinaryString(8));
-        System.out.println(BinaryNotationUtility.decimalToBinaryString(7));
+        System.out.println(decimalToBinaryString(0));
+        System.out.println(decimalToBinaryString(10));
+        System.out.println(decimalToBinaryString(8));
+        System.out.println(decimalToBinaryString(7));
 
         System.out.println("---------------------------------------------------------");
 
-        System.out.println(BinaryNotationUtility.binaryStringToDecimal("0"));
-        System.out.println(BinaryNotationUtility.binaryStringToDecimal("1010"));
-        System.out.println(BinaryNotationUtility.binaryStringToDecimal("1000"));
-        System.out.println(BinaryNotationUtility.binaryStringToDecimal("111"));
+        System.out.println(binaryStringToDecimal("0"));
+        System.out.println(binaryStringToDecimal("1010"));
+        System.out.println(binaryStringToDecimal("1000"));
+        System.out.println(binaryStringToDecimal("111"));
         try {
-            System.out.println(BinaryNotationUtility.binaryStringToDecimal("11221"));
+            System.out.println(binaryStringToDecimal("11221"));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         System.out.println("---------------------------------------------------------");
 
-        System.out.println(BinaryNotationUtility.onesComplimentOfBinaryString("0"));
-        System.out.println(BinaryNotationUtility.onesComplimentOfBinaryString("1010"));
-        System.out.println(BinaryNotationUtility.onesComplimentOfBinaryString("1000"));
-        System.out.println(BinaryNotationUtility.onesComplimentOfBinaryString("111"));
+        System.out.println(onesComplimentOfBinaryString("0"));
+        System.out.println(onesComplimentOfBinaryString("1010"));
+        System.out.println(onesComplimentOfBinaryString("1000"));
+        System.out.println(onesComplimentOfBinaryString("111"));
 
         System.out.println("---------------------------------------------------------");
 
-        System.out.println(BinaryNotationUtility.twosComplimentOfBinaryString("0"));
-        System.out.println(BinaryNotationUtility.twosComplimentOfBinaryString("1010"));
-        System.out.println(BinaryNotationUtility.twosComplimentOfBinaryString("1000"));
-        System.out.println(BinaryNotationUtility.twosComplimentOfBinaryString("111"));
+        System.out.println(twosComplimentOfBinaryString("0"));
+        System.out.println(twosComplimentOfBinaryString("1010"));
+        System.out.println(twosComplimentOfBinaryString("1000"));
+        System.out.println(twosComplimentOfBinaryString("111"));
 
     }
 }
