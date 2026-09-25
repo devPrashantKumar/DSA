@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BitManipulation.Problems;
+package AZStriverPlaylist.BitManipulation.Fundamentals;
 
 public class SetUnsetTheRightmostSetUnsetBit {
     public static int setRightmostUnsetBit(int num) {

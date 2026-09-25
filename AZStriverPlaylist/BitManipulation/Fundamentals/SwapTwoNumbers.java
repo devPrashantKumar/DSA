@@ -1,4 +1,4 @@
-package AZStriverPlaylist.BitManipulation.Problems;
+package AZStriverPlaylist.BitManipulation.Fundamentals;
 
 public class SwapTwoNumbers {
     public static void main(String[] args) {
