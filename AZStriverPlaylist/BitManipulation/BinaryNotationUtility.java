@@ -1,6 +1,10 @@
 package AZStriverPlaylist.BitManipulation;
 public class BinaryNotationUtility {
 
+    /* 
+    * Time Complexity : O(logN)
+    * Space Complexity : O(logN)
+    */
     public static String decimalToBinaryString(int val){
         StringBuilder binary = new StringBuilder();
         do{
@@ -10,6 +14,10 @@ public class BinaryNotationUtility {
         return binary.reverse().toString();
     }
 
+    /* 
+    * Time Complexity : O(N)
+    * Space Complexity : O(1)
+    */
     public static int binaryStringToDecimal(String binary){
         int factor=1;
         int decimal=0;
@@ -26,6 +34,8 @@ public class BinaryNotationUtility {
 
     /*
     * ones compliment - reverse all bits
+    * Time Complexity : O(N)
+    * Space Complexity : O(1)
     */
     public static String onesComplimentOfBinaryString(String binary){
         StringBuilder onesCompliment = new StringBuilder();
@@ -47,8 +57,10 @@ public class BinaryNotationUtility {
     }
 
     /*
-     * twos compliment - find ones compliment and add 1
-     */
+    * twos compliment - find ones compliment and add 1
+    * Time Complexity : O(N)
+    * Space Complexity : O(1)
+    */
     public static String twosComplimentOfBinaryString(String binary){
         String onesCompliment = onesComplimentOfBinaryString(binary);
         StringBuilder twosCompliment = new StringBuilder();
