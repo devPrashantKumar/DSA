@@ -1,85 +1,66 @@
 package AZStriverPlaylist.Recursion.HardProblems;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 
 public class ExpressionAddOperators {
+
     public static List<String> addOperators(String num, int target) {
         List<String> result = new ArrayList<>();
-        Deque<String> stk = new ArrayDeque<>();
-        stk.push(""+num.charAt(0));
-        StringBuilder str = new StringBuilder();
-        str.append(num.charAt(0));
-        addOperatorsUtil(num, target, 1, stk, str, result);
-        return result; 
+        if (num == null || num.isEmpty()) {
+            return result;
+        }
+        StringBuilder expression = new StringBuilder();
+        addOperatorsUtil(num,target,0,0,0,expression,result);
+        return result;
     }
 
-    public static void addOperatorsUtil(String num, int target, int index, Deque<String> stk,  StringBuilder str, List<String> result) {
-        int n = num.length();
-        if(index==n){
-            Deque<String> stk2 = new ArrayDeque<>(stk);
-            if(calculateStackExpression(stk2)==target){
-                result.add(str.toString());
+    private static void addOperatorsUtil(String num,int target,int index,long value,long previous,StringBuilder expression,List<String> result) {
+        if (index == num.length()) {
+            if (value == target) {
+                result.add(expression.toString());
             }
             return;
         }
 
-        str.append('*'); str.append(num.charAt(index));
-        Integer top  = Integer.valueOf(stk.pop());
-        stk.push(String.valueOf(top*(num.charAt(index)-'0')));
-        addOperatorsUtil(num, target, index+1, stk, str, result);
-        top  = Integer.valueOf(stk.pop());
-        stk.push(String.valueOf(top/(num.charAt(index)-'0')));
-        str.delete(str.length()-2, str.length());
+        int expressionLength = expression.length();
+        long currentNumber = 0;
 
-        str.append('+'); str.append(num.charAt(index));
-        stk.push("+"); stk.push(""+num.charAt(index));
-        addOperatorsUtil(num, target, index+1, stk, str, result);
-        stk.pop(); stk.pop();
-        str.delete(str.length()-2, str.length());
+        for (int i = index; i < num.length(); i++) {
+            // Leading zero is not allowed
+            if (i > index && num.charAt(index) == '0') {
+                break;
+            }
 
-        str.append('-'); str.append(num.charAt(index));
-        stk.push("-"); stk.push(""+num.charAt(index));
-        addOperatorsUtil(num, target, index+1, stk, str, result);
-        stk.pop(); stk.pop();
-        str.delete(str.length()-2, str.length());
-    }
+            currentNumber = currentNumber * 10 + (num.charAt(i) - '0');
 
-    public static Long calculateStackExpression(Deque<String> stk){
-        Long num = Long.valueOf(stk.pollLast());
-        while(!stk.isEmpty()){
-            String sign = stk.pollLast();
-            Long num2 = Long.valueOf(stk.pollLast());
-            if(sign.equals("-")) num  -= num2;
-            else num += num2;
+            String currentNumberString =num.substring(index, i + 1);
+
+            if (index == 0) {
+                expression.append(currentNumberString);
+                addOperatorsUtil(num,target,i + 1,currentNumber,currentNumber,expression,result);
+                expression.setLength(expressionLength);
+            } else {
+                expression.append('+');
+                expression.append(currentNumberString);
+                addOperatorsUtil(num,target,i + 1,value + currentNumber,currentNumber,expression,result);
+                expression.setLength(expressionLength);
+
+                expression.append('-');
+                expression.append(currentNumberString);
+                addOperatorsUtil(num,target,i + 1,value - currentNumber,-currentNumber,expression,result);
+                expression.setLength(expressionLength);
+
+                expression.append('*');
+                expression.append(currentNumberString);
+                addOperatorsUtil(num,target,i + 1,value - previous + previous * currentNumber,previous * currentNumber,expression,result);
+                expression.setLength(expressionLength);
+            }
         }
-        return num;
     }
-
-//     public static Long calculateStackExpression(Deque<String> stk) {
-
-//     Long num = Long.valueOf(stk.pollLast());
-
-//     while (!stk.isEmpty()) {
-
-//         String sign = stk.pollLast();
-//         Long num2 = Long.valueOf(stk.pollLast());
-
-//         if (sign.equals("-")) {
-//             num -= num2;
-//         } else {
-//             num += num2;
-//         }
-//     }
-
-//     return num;
-// }
 
     public static void main(String[] args) {
-        String str1 = "123";
+String str1 = "123";
         int target1 = 6;
         System.out.println("Input : str -> "+str1+" target -> "+target1);
         System.out.println("Output : "+addOperators(str1, target1));
@@ -89,12 +70,12 @@ public class ExpressionAddOperators {
         System.out.println("Input : str -> "+str2+" target -> "+target2);
         System.out.println("Output : "+addOperators(str2, target2));
         System.out.println("----------------------------------------------");
-        String str3 = "3456237491";
+        String str3 = "3456237490";
         int target3 = 9191;
         System.out.println("Input : str -> "+str3+" target -> "+target3);
         System.out.println("Output : "+addOperators(str3, target3));
         System.out.println("----------------------------------------------");
-        String str4 = "115";
+        String str4 = "105";
         int target4 = 5;
         System.out.println("Input : str -> "+str4+" target -> "+target4);
         System.out.println("Output : "+addOperators(str4, target4));
