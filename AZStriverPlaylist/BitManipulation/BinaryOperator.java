@@ -25,6 +25,7 @@ public class BinaryOperator {
     }
 
     // important  { ~x = -(x+1)  , for integers}
+    // (~(~a)) = a
     public static int notOperator(int operand){
         return ~operand;
     }
