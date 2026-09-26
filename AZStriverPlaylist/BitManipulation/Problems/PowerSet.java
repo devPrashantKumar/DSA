@@ -27,35 +27,63 @@ public class PowerSet {
     }
 
     /*
-     * Time Complexity : (2^n)
-     * Space Complexity : (n) - occupied by recusive stack
-     */
+    * Time Complexity: O(n * 2^n), 2^n for generating powerset, n for copying each set into result
+    * Auxiliary Space: O(n)
+    * Excluding space occupied by the result
+    */
     public static List<List<Integer>> powersetUsingBacktracking(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        List<Integer> set = new ArrayList<>();
-        generateSubsets(nums,0,set,result);
+        generateSubsets(nums,0,new ArrayList<>(),result);
         return result;
     }
 
     public static void generateSubsets(int[] nums, int index, List<Integer> set, List<List<Integer>> result) {
         if(index==nums.length){
-            result.add(set);
+            result.add(new ArrayList<>(set));
             return;
         }
         generateSubsets(nums,index+1,set,result);
-        List<Integer> set2= new ArrayList<>(set);
-        set2.add(nums[index]);
-        generateSubsets(nums,index+1,set2,result);
+        set.add(nums[index]);
+        generateSubsets(nums,index+1,set,result);
+        set.remove(set.size()-1);
+    }
+
+    /*
+    * Time Complexity: O(n * 2^n), 2^n for generating powerset, n for copying each set into result
+    * Auxiliary Space: O(n)
+    * Excluding space occupied by the result
+    */
+    public static List<List<Integer>> powersetUsingBacktracking2(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        powersetUsingForLoopBasedBacktracking(nums,0,new ArrayList<>(),result);
+        return result;
+    }
+
+
+    public static void powersetUsingForLoopBasedBacktracking(int[] nums, int index, List<Integer> set, List<List<Integer>> result) {
+        result.add(new ArrayList<>(set));
+        for(int i=index;i<nums.length;i++){
+            set.add(nums[i]);
+            powersetUsingForLoopBasedBacktracking(nums,i+1,set,result);
+            set.remove(set.size()-1);
+        }
+        
     }
 
     public static void main(String[] args) {
         System.out.println("Power Set : " + powerSet(new int[] {1,2,3}));
-        System.out.println("Power Set : " + powerSet(new int[] {4,1,2,1,2}));
-        System.out.println("Power Set : " + powerSet(new int[] {0}));
-        System.out.println("-------------------------------------------------");
         System.out.println("Power Set : " + powersetUsingBacktracking(new int[] {1,2,3}));
+        System.out.println("Power Set : " + powersetUsingBacktracking2(new int[] {1,2,3}));
+        System.out.println("-------------------------------------------------");
+
+        System.out.println("Power Set : " + powerSet(new int[] {4,1,2,1,2}));
         System.out.println("Power Set : " + powersetUsingBacktracking(new int[] {4,1,2,1,2}));
+        System.out.println("Power Set : " + powersetUsingBacktracking2(new int[] {4,1,2,1,2}));
+        System.out.println("-------------------------------------------------");
+
+        System.out.println("Power Set : " + powerSet(new int[] {0}));
         System.out.println("Power Set : " + powersetUsingBacktracking(new int[] {0}));
+        System.out.println("Power Set : " + powersetUsingBacktracking2(new int[] {0}));
         System.out.println("-------------------------------------------------");
     }
 }
