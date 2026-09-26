@@ -24,6 +24,12 @@ public class BinaryOperator {
         return operand1>>operand2;
     }
 
+    // Unsigned / logical right shift
+    // Zeros are inserted from the left.
+    public static int unsignedRightShiftOperator(int operand1, int operand2) {
+        return operand1 >>> operand2;
+    }
+
     // important  { ~x = -(x+1)  , for integers}
     // (~(~a)) = a
     public static int notOperator(int operand){
@@ -82,5 +88,11 @@ public class BinaryOperator {
         System.out.println("------------------------------------------------------------");
         System.out.println(BinaryOperator.rightShiftOperator(32, 5));
         System.out.println(BinaryOperator.rightShiftOperator(-32, 5));
+        System.out.println("------------------------------------------------------------");
+        System.out.println(Integer.toBinaryString(BinaryOperator.rightShiftOperator(-32, 5)));
+        System.out.println(BinaryOperator.rightShiftOperator(-32, 5));
+        System.out.println(Integer.toBinaryString(BinaryOperator.unsignedRightShiftOperator(-32, 5)));
+        System.out.println(BinaryOperator.unsignedRightShiftOperator(-32, 5));
+
     }
 }
