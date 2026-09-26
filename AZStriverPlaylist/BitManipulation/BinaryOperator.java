@@ -90,9 +90,9 @@ public class BinaryOperator {
         System.out.println(BinaryOperator.rightShiftOperator(-32, 5));
         System.out.println("------------------------------------------------------------");
         System.out.println(Integer.toBinaryString(BinaryOperator.rightShiftOperator(-32, 5)));
-        System.out.println(BinaryOperator.rightShiftOperator(-32, 5));
+        System.out.println(BinaryOperator.rightShiftOperator(-32, 5)); // 11111111 11111111 11111111 11111111
         System.out.println(Integer.toBinaryString(BinaryOperator.unsignedRightShiftOperator(-32, 5)));
-        System.out.println(BinaryOperator.unsignedRightShiftOperator(-32, 5));
+        System.out.println(BinaryOperator.unsignedRightShiftOperator(-32, 5)); // 00000111 11111111 11111111 11111111
 
     }
 }
