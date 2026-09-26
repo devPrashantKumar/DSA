@@ -16,6 +16,7 @@ public class FindXOROfNumbersFromLToR {
     /*
      * Time Complexity : O(1)
      */
+    // modulo 4 pattern
     public static int findXOR(int n) {
         int mod = n % 4;
         if (mod == 0)
