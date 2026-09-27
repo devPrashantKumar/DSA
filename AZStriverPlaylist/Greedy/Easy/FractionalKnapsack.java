@@ -24,11 +24,13 @@ public class FractionalKnapsack {
       for(int i=0;i<values.length;i++){
         valuePerWeight[i] = new Pair(i, (double)values[i]/weights[i]);
       }
-      Arrays.sort(valuePerWeight, (s1, s2) ->{
-        if(s2.valueWeightRatio - s1.valueWeightRatio>0) return 1;
-        else if(s2.valueWeightRatio - s1.valueWeightRatio==0) return 0;
-        else return -1;
-      } );
+      // Arrays.sort(valuePerWeight, (s1, s2) ->{
+      //   if((s2.valueWeightRatio - s1.valueWeightRatio)>0) return 1;
+      //   else if((s2.valueWeightRatio - s1.valueWeightRatio)==0) return 0;
+      //   else return -1;
+      // } );
+      // System.out.println(Arrays.toString(valuePerWeight));
+      Arrays.sort(valuePerWeight, (s1, s2) -> Double.compare(s2.valueWeightRatio, s1.valueWeightRatio));
       System.out.println(Arrays.toString(valuePerWeight));
       
       int i=0;

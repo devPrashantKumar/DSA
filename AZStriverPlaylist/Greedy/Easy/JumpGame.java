@@ -46,35 +46,28 @@ public class JumpGame {
         int i = 0;
 
         for (; (i <= reach && i < nums.length); i++) {
-            if (i == 0)
-                reach = nums[0];
-            else if (i + nums[i] > reach) {
+            if (i + nums[i] > reach) {
                 reach = i + nums[i];
             }
         }
-        if (i == nums.length)
-            return true;
-        return false;
+        return (i == nums.length);
     }
 
     public static void main(String[] args) {
         System.out.println("Jump for " + Arrays.toString(new int[] { 2, 3, 1, 1, 4 }) + " is possible : "
                 + canJump(new int[] { 2, 3, 1, 1, 4 }));
-        System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
-                + canJump(new int[] { 3, 2, 1, 0, 4 }));
-
-        System.out.println("---------------------------------------------------------------");
-
         System.out.println("Jump for " + Arrays.toString(new int[] { 2, 3, 1, 1, 4 }) + " is possible : "
                 + canJump2(new int[] { 2, 3, 1, 1, 4 }));
-        System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
-                + canJump2(new int[] { 3, 2, 1, 0, 4 }));
-
-        System.out.println("---------------------------------------------------------------");
-
         System.out.println("Jump for " + Arrays.toString(new int[] { 2, 3, 1, 1, 4 }) + " is possible : "
                 + canJump3(new int[] { 2, 3, 1, 1, 4 }));
+        System.out.println("---------------------------------------------------------------");
+
+        System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
+                + canJump(new int[] { 3, 2, 1, 0, 4 }));
+        System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
+                + canJump2(new int[] { 3, 2, 1, 0, 4 }));
         System.out.println("Jump for " + Arrays.toString(new int[] { 3, 2, 1, 0, 4 }) + " is possible : "
                 + canJump3(new int[] { 3, 2, 1, 0, 4 }));
+        System.out.println("---------------------------------------------------------------");
     }
 }
