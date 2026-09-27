@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Greedy;
+package AZStriverPlaylist.Greedy.SchedulingAndIntervalProblems;
 
 import java.util.ArrayList;
 import java.util.Comparator;

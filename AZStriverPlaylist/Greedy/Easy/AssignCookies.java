@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Greedy;
+package AZStriverPlaylist.Greedy.Easy;
 
 import java.util.*;
 

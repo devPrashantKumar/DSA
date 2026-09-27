@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Greedy;
+package AZStriverPlaylist.Greedy.Hard;
 
 import java.util.Stack;
 

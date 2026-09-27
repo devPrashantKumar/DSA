@@ -1,4 +1,4 @@
-package AZStriverPlaylist.Greedy;
+package AZStriverPlaylist.Greedy.Extras;
 
 public class FindMinimumNumberOfCoins {
     public static int minimuCoins(int value){
