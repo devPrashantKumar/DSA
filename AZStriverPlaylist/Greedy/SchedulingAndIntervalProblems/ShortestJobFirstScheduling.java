@@ -34,7 +34,7 @@ public class ShortestJobFirstScheduling {
     public static long solve2(int[] bt) {
         if (bt == null || bt.length == 0)
             return 0;
-        Arrays.sort(bt);
+        Arrays.sort(bt); // this sorting is important
         long waitingTime = 0;
         long noOfJobsWaiting = bt.length - 1;
         for (int i = 0; i < bt.length - 1; i++) {
