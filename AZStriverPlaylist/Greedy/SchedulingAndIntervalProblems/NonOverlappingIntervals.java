@@ -20,7 +20,7 @@ public class NonOverlappingIntervals {
         return count;
     }
 
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         int[][] jobsInput1 = {{1, 2},{2,3},{3,4},{1,3}};
         System.out.println("Input : "+Arrays.deepToString(jobsInput1));
         System.out.println("Output : "+maximumNonOverlappingIntervals(jobsInput1));
