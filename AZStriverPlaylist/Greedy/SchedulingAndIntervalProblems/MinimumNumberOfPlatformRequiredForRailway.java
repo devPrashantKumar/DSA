@@ -78,6 +78,7 @@ public class MinimumNumberOfPlatformRequiredForRailway {
     /*
      * Time Complexity : O(nlog)
      */
+    // good approach
     public static int findPlatformBetter(int[] Arrival, int[] Departure) {
         List<TrainProcessing> trains = new ArrayList<>();
         for (int i = 0; i < Arrival.length; i++) {
