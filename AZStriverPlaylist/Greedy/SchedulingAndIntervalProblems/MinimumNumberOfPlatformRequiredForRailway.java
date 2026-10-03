@@ -66,16 +66,19 @@ public class MinimumNumberOfPlatformRequiredForRailway {
         for (int i = 0; i < Arrival.length; i++) {
             trains.add(new TrainSchedule(Arrival[i], Departure[i]));
         }
+        // here both sorting will work because we are placing train at optimised platform
         trains.sort((item1, item2) -> item1.departure - item2.departure);
+        //trains.sort((item1, item2) -> item1.arrival - item2.arrival);
+
         List<Integer> platform = new ArrayList<>();
 
         for (int t = 0; t < trains.size(); t++) {
-            int emptyPlatfromDuration = Integer.MAX_VALUE;
+            int emptyPlatformDuration = Integer.MAX_VALUE;
             int minIndex = -1;
             for (int i = 0; i < platform.size(); i++) {
                 if (trains.get(t).arrival > platform.get(i)) {
-                    if (trains.get(t).arrival - platform.get(i) < emptyPlatfromDuration) {
-                        emptyPlatfromDuration = trains.get(t).arrival - platform.get(i);
+                    if (trains.get(t).arrival - platform.get(i) < emptyPlatformDuration) {
+                        emptyPlatformDuration = trains.get(t).arrival - platform.get(i);
                         minIndex = i;
                     }
                 }
@@ -94,7 +97,7 @@ public class MinimumNumberOfPlatformRequiredForRailway {
         for (int i = 0; i < Arrival.length; i++) {
             trains.add(new TrainSchedule(Arrival[i], Departure[i]));
         }
-        trains.sort((item1, item2) -> item1.departure - item2.departure);
+        trains.sort((item1, item2) -> item1.arrival - item2.arrival);
         List<Integer> platform = new ArrayList<>();
 
         for (int t = 0; t < trains.size(); t++) {
