@@ -83,6 +83,31 @@ public class FruitIntoBaskets {
         return maxFruits;
     }
 
+    /*
+    * Time Complexity : O(n)
+    * Space Complexity : O(1) 
+    */
+    public static int totalFruit4(int[] fruits) {
+        Map<Integer,Integer> fruitMap = new HashMap<>();
+        int i=0;
+        int j=0;
+        int maxFruits=0;
+        while(j<fruits.length){
+            fruitMap.put(fruits[j], fruitMap.getOrDefault(fruits[j],0)+1);
+            // we need to maximise length so we don't care about valid sequence of lesser curr max length.
+            if(fruitMap.size()>2){
+                fruitMap.put(fruits[i], fruitMap.getOrDefault(fruits[i],0)-1);
+                if(fruitMap.get(fruits[i])==0) fruitMap.remove(fruits[i]);
+                i++;
+            }
+            if(fruitMap.size()<=2){
+                maxFruits = Math.max(maxFruits,j-i+1);
+            }
+            j++;
+        }
+        return maxFruits;
+    }
+
 
 
     public static void main(String[] args) {
@@ -90,6 +115,7 @@ public class FruitIntoBaskets {
         System.out.println("Input : " + Arrays.toString(nums1));
         System.out.println("output : " + FruitIntoBaskets.totalFruit2(nums1));
         System.out.println("output : " + FruitIntoBaskets.totalFruit3(nums1));
+        System.out.println("output : " + FruitIntoBaskets.totalFruit4(nums1));
 
         System.out.println("-----------------------------------------------");
         
@@ -97,6 +123,7 @@ public class FruitIntoBaskets {
         System.out.println("Input : " + Arrays.toString(nums12));
         System.out.println("output : " + FruitIntoBaskets.totalFruit2(nums12));
         System.out.println("output : " + FruitIntoBaskets.totalFruit3(nums12));
+        System.out.println("output : " + FruitIntoBaskets.totalFruit4(nums12));
 
         System.out.println("-----------------------------------------------");
 
@@ -104,6 +131,7 @@ public class FruitIntoBaskets {
         System.out.println("Input : " + Arrays.toString(nums3));
         System.out.println("output : " + FruitIntoBaskets.totalFruit2(nums3));
         System.out.println("output : " + FruitIntoBaskets.totalFruit3(nums3));
+        System.out.println("output : " + FruitIntoBaskets.totalFruit4(nums3));
 
         System.out.println("-----------------------------------------------");
 
@@ -111,6 +139,7 @@ public class FruitIntoBaskets {
         System.out.println("Input : " + Arrays.toString(nums4));
         System.out.println("output : " + FruitIntoBaskets.totalFruit2(nums4));
         System.out.println("output : " + FruitIntoBaskets.totalFruit3(nums4));
+        System.out.println("output : " + FruitIntoBaskets.totalFruit4(nums4));
 
         System.out.println("-----------------------------------------------");
 
