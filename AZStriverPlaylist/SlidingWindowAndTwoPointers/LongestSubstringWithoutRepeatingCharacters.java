@@ -37,6 +37,23 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return maxWindow;
     }
 
+     public static int lengthOfLongestSubstring3(String s) {
+       int[] frequencyMap = new int[26];
+       int i=0;
+       int j=0;
+       int maxLength=0;
+       while(j<s.length()){
+        frequencyMap[s.charAt(j)-'a']++;
+        while(frequencyMap[s.charAt(j)-'a']>1){
+            frequencyMap[s.charAt(i)-'a']--;
+            i++;
+        }
+        maxLength = Math.max(maxLength,j-i+1);
+        j++;
+       }
+       return maxLength;
+    }
+
     public static void main(String[] args) {
         String s1 = "zxyzxyz";
         String s2 = "xxxx";
@@ -48,27 +65,33 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println("Input : " + s1);
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring(s1));
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2(s1));
+        System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring3(s1));
 
         System.out.println("---------------------------------------------------");
         System.out.println("Input : " + s2);
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring(s2));
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2(s2));
+        System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring3(s2));
 
         System.out.println("---------------------------------------------------");
         System.out.println("---------------------------------------------------");
         System.out.println("Input : " + s3);
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring(s3));
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2(s3));
+        System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring3(s3));
 
         System.out.println("---------------------------------------------------");
         System.out.println("Input : " + s4);
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring(s4));
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2(s4));
+        System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring3(s4));
 
         System.out.println("---------------------------------------------------");
         System.out.println("---------------------------------------------------");
         System.out.println("Input : " + s5);
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring(s5));
         System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring2(s5));
+        System.out.println("Output : " + LongestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring3(s5));
+
     }
 }
