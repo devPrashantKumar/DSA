@@ -60,10 +60,10 @@ public class MaxConsecutiveOnesIII {
                 k--;  
             }
             if(k<0){
+                // we need to maximise length so we don't care about valid sequence of lesser curr max length.
                 if(nums[i]==0) k++;
                 i++;
             }
-            // we need to maximise length so we don't care about valid sequence of lesser curr max length.
             if(k>=0){
                 maxLen = Math.max(maxLen, j-i+1);
             }
