@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class MaxConsecutiveOnesIII {
     /*
-    * Time COmplexity : O(n)
-    * Space COmplexity : O(1) 
+    * Time Complexity : O(n)
+    * Space Complexity : O(1) 
     */
     public static int longestOnes(int[] nums, int k) {
         int maxLen=0;
@@ -28,8 +28,8 @@ public class MaxConsecutiveOnesIII {
     }
 
     /*
-    * Time COmplexity : O(n)
-    * Space COmplexity : O(1) 
+    * Time Complexity : O(n)
+    * Space Complexity : O(1) 
     */
     public static int longestOnes2(int[] nums, int k) {
         int maxLen=0;
