@@ -37,21 +37,21 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return maxWindow;
     }
 
-     public static int lengthOfLongestSubstring3(String s) {
-       int[] frequencyMap = new int[26];
-       int i=0;
-       int j=0;
-       int maxLength=0;
-       while(j<s.length()){
-        frequencyMap[s.charAt(j)-'a']++;
-        while(frequencyMap[s.charAt(j)-'a']>1){
-            frequencyMap[s.charAt(i)-'a']--;
-            i++;
+    public static int lengthOfLongestSubstring3(String s) {
+        int[] frequencyMap = new int[26];
+        int i = 0;
+        int j = 0;
+        int maxLength = 0;
+        while (j < s.length()) {
+            frequencyMap[s.charAt(j) - 'a']++;
+            while (frequencyMap[s.charAt(j) - 'a'] > 1) {
+                frequencyMap[s.charAt(i) - 'a']--;
+                i++;
+            }
+            maxLength = Math.max(maxLength, j - i + 1);
+            j++;
         }
-        maxLength = Math.max(maxLength,j-i+1);
-        j++;
-       }
-       return maxLength;
+        return maxLength;
     }
 
     public static void main(String[] args) {
