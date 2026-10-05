@@ -97,6 +97,31 @@ public class LongestRepeatingCharacterReplacement {
         return maxLen;
     }
 
+    // non-shrinking / lazy sliding window approach.
+    public static int characterReplacement4(String s, int k) {
+        int maxLen = 0;
+        int maxCountElementOccurence = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int j = 0, i = 0;
+        for (; i < s.length(); i++) {
+            int occurence = map.getOrDefault(s.charAt(i), 0) + 1;
+            map.put(s.charAt(i), occurence);
+            if (occurence > maxCountElementOccurence) {
+                maxCountElementOccurence = occurence;
+            }
+            int otherElementOccurence = i - j + 1 - maxCountElementOccurence;
+            //length-maxFrequency = k
+            //k is constant , so if we want to increase length , we need to increase max frequency
+            if (otherElementOccurence > k) {
+                map.put(s.charAt(j), map.get(s.charAt(j)) - 1);
+                j++;
+            }
+            if(otherElementOccurence<=k)
+                maxLen = Math.max(maxLen, i - j+1);
+        }
+        return maxLen;
+    }
+
     public static void main(String[] args) {
         String stringInput2 = "AABABBA";
         int k2 = 1;
@@ -106,11 +131,13 @@ public class LongestRepeatingCharacterReplacement {
         System.out.println("Input String : " + stringInput2 + " Output : "+ characterReplacement(stringInput2, k2));
         System.out.println("Input String : " + stringInput2 + " Output : "+ characterReplacement2(stringInput2, k2));
         System.out.println("Input String : " + stringInput2 + " Output : "+ characterReplacement3(stringInput2, k2));
+        System.out.println("Input String : " + stringInput2 + " Output : "+ characterReplacement4(stringInput2, k2));
 
         System.out.println("---------------------------------------------------------");
         System.out.println("Input String : " + stringInput3 + " Output : "+ characterReplacement(stringInput3, k3));
         System.out.println("Input String : " + stringInput3 + " Output : "+ characterReplacement2(stringInput3, k3));
         System.out.println("Input String : " + stringInput3 + " Output : "+ characterReplacement3(stringInput3, k3));
+        System.out.println("Input String : " + stringInput3 + " Output : "+ characterReplacement4(stringInput3, k3));
 
     }
 }
