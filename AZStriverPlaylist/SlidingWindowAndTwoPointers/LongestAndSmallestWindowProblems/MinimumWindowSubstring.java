@@ -1,4 +1,4 @@
-package AZStriverPlaylist.SlidingWindowAndTwoPointers;
+package AZStriverPlaylist.SlidingWindowAndTwoPointers.LongestAndSmallestWindowProblems;
 
 public class MinimumWindowSubstring {
     /*

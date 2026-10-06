@@ -1,4 +1,4 @@
-package AZStriverPlaylist.SlidingWindowAndTwoPointers;
+package AZStriverPlaylist.SlidingWindowAndTwoPointers.CountingSubArraysSubstringsProblems;
 
 import java.util.Arrays;
 import java.util.HashMap;

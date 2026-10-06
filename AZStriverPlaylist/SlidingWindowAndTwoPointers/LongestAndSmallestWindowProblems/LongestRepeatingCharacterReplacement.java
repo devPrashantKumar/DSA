@@ -1,4 +1,4 @@
-package AZStriverPlaylist.SlidingWindowAndTwoPointers;
+package AZStriverPlaylist.SlidingWindowAndTwoPointers.LongestAndSmallestWindowProblems;
 
 import java.util.HashMap;
 import java.util.Map;

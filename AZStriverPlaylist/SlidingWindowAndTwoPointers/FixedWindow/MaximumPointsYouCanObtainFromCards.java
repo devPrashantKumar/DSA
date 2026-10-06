@@ -1,4 +1,4 @@
-package AZStriverPlaylist.SlidingWindowAndTwoPointers;
+package AZStriverPlaylist.SlidingWindowAndTwoPointers.FixedWindow;
 
 import java.util.Arrays;
 
