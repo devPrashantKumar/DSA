@@ -43,15 +43,34 @@ public class NumberOfSubstringsContainingAllThreeCharacters {
         return stringsCount;
     }
 
+    // Important
+    public static int numberOfSubstrings3(String s) {
+        int stringsCount=0;
+        int j=0;
+        int[] charMap = new int[3];
+        for(int k=0;k<3;k++) charMap[k]--;
+        while(j<s.length()){
+            charMap[s.charAt(j)-'a']=j;
+            if(charMap[0]!=-1 && charMap[1]!=-1 && charMap[2]!=-1){
+                int minIndex = Math.min(charMap[0],Math.min(charMap[1],charMap[2]));
+                stringsCount += (minIndex+1);
+            }
+            j++;
+        }
+        return stringsCount;
+    }
+
     public static void main(String[] args) {
         String s1 = "abcba";
         String s2 = "ccabcc";
 
         System.out.println("Input String : " + s1 + " Output : "+ numberOfSubstrings(s1));
         System.out.println("Input String : " + s1 + " Output : "+ numberOfSubstrings2(s1));
+        System.out.println("Input String : " + s1 + " Output : "+ numberOfSubstrings3(s1));
 
         System.out.println("---------------------------------------------------------");
         System.out.println("Input String : " + s2 + " Output : "+ numberOfSubstrings(s2));
         System.out.println("Input String : " + s2 + " Output : "+ numberOfSubstrings2(s2));
+        System.out.println("Input String : " + s2 + " Output : "+ numberOfSubstrings3(s2));
     }
 }
