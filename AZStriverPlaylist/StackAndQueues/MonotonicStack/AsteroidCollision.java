@@ -51,26 +51,22 @@ public class AsteroidCollision {
     public static void main(String[] args) {
         int[] nums1 = { 5,10,-5 };
         System.out.println("output : " + Arrays.toString(asteroidCollision(nums1)));
-                System.out.println("output : " + Arrays.toString(asteroidCollision2(nums1)));
-
+        System.out.println("output : " + Arrays.toString(asteroidCollision2(nums1)));
         System.out.println("----------------------------------------------");
         
         int[] nums12 = { 8,-8 };
         System.out.println("output : " + Arrays.toString(asteroidCollision(nums12)));
-                System.out.println("output : " + Arrays.toString(asteroidCollision2(nums12)));
-
+        System.out.println("output : " + Arrays.toString(asteroidCollision2(nums12)));
         System.out.println("----------------------------------------------");
 
         int[] nums3 = { 10,2,-5 };
         System.out.println("output : " + Arrays.toString(asteroidCollision(nums3)));
-                System.out.println("output : " + Arrays.toString(asteroidCollision2(nums3)));
-
+        System.out.println("output : " + Arrays.toString(asteroidCollision2(nums3)));
         System.out.println("----------------------------------------------");
 
         int[] nums4 = { 3,5,-6,2,-1,4 };
         System.out.println("output : " + Arrays.toString(asteroidCollision(nums4)));
-                System.out.println("output : " + Arrays.toString(asteroidCollision2(nums4)));
-
+        System.out.println("output : " + Arrays.toString(asteroidCollision2(nums4)));
         System.out.println("----------------------------------------------");
     }
 }
