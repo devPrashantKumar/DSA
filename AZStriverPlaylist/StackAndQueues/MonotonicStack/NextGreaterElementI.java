@@ -61,13 +61,13 @@ public class NextGreaterElementI {
 
     public static void main(String[] args) {
         int[] nums1 = {4,1,2}, nums2 = {1,3,4,2};
-        System.out.println("output : "+Arrays.toString(NextGreaterElementI.nextGreaterElement1BruteForce(nums1, nums2)));
-        System.out.println("output : "+Arrays.toString(NextGreaterElementI.nextGreaterElement1(nums1, nums2)));
+        System.out.println("output : "+Arrays.toString(nextGreaterElement1BruteForce(nums1, nums2)));
+        System.out.println("output : "+Arrays.toString(nextGreaterElement1(nums1, nums2)));
         System.out.println("-------------------------------------------------------");
         
         int[] nums12 = {2,4}, nums22 = {1,2,3,4};
-        System.out.println("output : "+Arrays.toString(NextGreaterElementI.nextGreaterElement1BruteForce(nums12, nums22)));
-        System.out.println("output : "+Arrays.toString(NextGreaterElementI.nextGreaterElement1(nums12, nums22)));
+        System.out.println("output : "+Arrays.toString(nextGreaterElement1BruteForce(nums12, nums22)));
+        System.out.println("output : "+Arrays.toString(nextGreaterElement1(nums12, nums22)));
         System.out.println("--------------------------------------------------");
     }
 }
