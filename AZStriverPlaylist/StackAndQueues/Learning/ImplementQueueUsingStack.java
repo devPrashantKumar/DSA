@@ -29,6 +29,23 @@ public class ImplementQueueUsingStack {
         return stack.pop();
     }
 
+    // public void push2(int x) {
+    //     stack.push(x);
+    // }
+
+    // public int pop2() {
+    //     if (stack.isEmpty()) {
+    //         throw new RuntimeException("Queue is Empty");
+    //     }
+    //     if(stack.size()==1){
+    //         return stack.pop();
+    //     }
+    //     Integer temp = stack.pop();
+    //     int lastPop = pop();
+    //     stack.push(temp);
+    //     return lastPop;
+    // }
+
     public int peek() {
         if (stack.isEmpty()) {
             throw new RuntimeException("Queue is Empty");

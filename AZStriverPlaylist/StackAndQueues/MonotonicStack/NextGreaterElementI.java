@@ -1,4 +1,4 @@
-package AZStriverPlaylist.StackAndQueues;
+package AZStriverPlaylist.StackAndQueues.MonotonicStack;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -42,19 +42,18 @@ public class NextGreaterElementI {
         int[] nextGreater = new int[nums2.length];
         int[] result = new int[nums1.length];
         Stack<Integer> stk = new Stack<>();
-        int i=nums2.length-1;
-        while(i>=0){
+        
+        for(int i=nums2.length-1; i>=0;i--){
             while(!stk.isEmpty() && stk.peek()<=nums2[i]) stk.pop();
             if(stk.isEmpty()) nextGreater[i]=-1;
             else nextGreater[i]=stk.peek();
             stk.push(nums2[i]);
-            i--;
         }
-        for (i=0;i<nums2.length;i++) {
+        for (int i=0;i<nums2.length;i++) {
             // All integers in nums1 and nums2 are unique. otherwise this will fail
             map.put(nums2[i], nextGreater[i]);
         }
-        for (i=0;i<nums1.length;i++) {
+        for (int i=0;i<nums1.length;i++) {
             result[i]=map.get(nums1[i]);
         }
         return result;
