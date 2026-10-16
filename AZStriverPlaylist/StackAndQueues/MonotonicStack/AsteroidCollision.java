@@ -40,7 +40,7 @@ public class AsteroidCollision {
                 while(!stk.isEmpty() && stk.peek()>=0 && stk.peek()<Math.abs(asteroid)) stk.pop();
                 if(stk.isEmpty() || stk.peek()<0){
                     stk.push(asteroid);
-                }else if(!stk.isEmpty() &&stk.peek()==Math.abs(asteroid)){
+                }else if(!stk.isEmpty() && stk.peek()==Math.abs(asteroid)){
                     stk.pop(); 
                 }
             }

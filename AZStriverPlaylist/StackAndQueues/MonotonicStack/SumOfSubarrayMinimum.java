@@ -14,7 +14,7 @@ public class SumOfSubarrayMinimum {
             int min = Integer.MAX_VALUE;
             for (int j = i; j < nums.length; j++) {
                 min = Math.min(min, nums[j]);
-                sum = (sum + min) % MAX_NUM;
+                sum = (sum + min) % MAX_NUM;min = Math.min(min, nums[j]);
             }
         }
         return sum;
