@@ -27,9 +27,12 @@ public class SumOfSubarrayMinimum {
         final int MAX_NUM = 1000000007;
         int sum = 0;
         int[] nextSmalller = nextSmaller(nums);
+        int[] prevSmaller = prevSmallerOrEqual(nums);
+
+        // below combination also work
         //int[] nextSmalller = nextSmallerOrEqual(nums);
         //int[] prevSmaller = prevSmaller(nums);
-        int[] prevSmaller = prevSmallerOrEqual(nums);
+        
         for (int i = 0; i < nums.length; i++) {
             // Java evaluates all arithmetic in int unless explicitly told otherwise. If the intermediate product:
             // exceeds Integer.MAX_VALUE (≈ 2.1 * 10⁹), you'll get overflow, even before % MAX_NUM is applied.

@@ -31,7 +31,7 @@ public class RemoveKDigits {
         String stringInput1 = "1432219";
         int k1 = 3;
         String stringInput2 = "10200";
-        int k2=1;
+        int k2=2;
         String stringInput3 = "10";
         int k3=2;
 
