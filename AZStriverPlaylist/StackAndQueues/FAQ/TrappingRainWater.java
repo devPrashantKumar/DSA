@@ -129,18 +129,47 @@ public class TrappingRainWater {
         return nextGreater;
     }
 
+    public static int trapMostOptimised(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int leftMax = 0;
+        int rightMax = 0;
+        int totalWater = 0;
+
+        while (left < right) {
+            if (height[left] <= height[right]) {
+                if (height[left] >= leftMax) {
+                    leftMax = height[left];
+                } else {
+                    totalWater += leftMax - height[left];
+                }
+                left++;
+            } else {
+                if (height[right] >= rightMax) {
+                    rightMax = height[right];
+                } else {
+                    totalWater += rightMax - height[right];
+                }
+                right--;
+            }
+        }
+        return totalWater;
+    }
+
     public static void main(String[] args) {
         int[] nums1 = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
         System.out.println("Input : " + Arrays.toString(nums1));
         System.out.println("output : " + TrappingRainWater.trap(nums1));
         System.out.println("output : " + TrappingRainWater.trapUsingTwoPointer(nums1));
         System.out.println("output : " + TrappingRainWater.trapUsingTwoPointerOptimised(nums1));
+        System.out.println("output : " + TrappingRainWater.trapMostOptimised(nums1));
 
         int[] nums12 = { 4, 2, 0, 3, 2, 5 };
         System.out.println("Input : " + Arrays.toString(nums12));
         System.out.println("output : " + TrappingRainWater.trap(nums12));
         System.out.println("output : " + TrappingRainWater.trapUsingTwoPointer(nums12));
         System.out.println("output : " + TrappingRainWater.trapUsingTwoPointerOptimised(nums12));
+        System.out.println("output : " + TrappingRainWater.trapMostOptimised(nums12));
 
     }
 }
