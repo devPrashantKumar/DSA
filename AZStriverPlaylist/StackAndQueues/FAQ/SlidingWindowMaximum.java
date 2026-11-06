@@ -1,4 +1,4 @@
-package AZStriverPlaylist.StackAndQueues;
+package AZStriverPlaylist.StackAndQueues.FAQ;
 
 import java.util.*;
 
